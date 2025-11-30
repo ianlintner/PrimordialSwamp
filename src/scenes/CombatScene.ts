@@ -272,21 +272,35 @@ export class CombatScene extends Phaser.Scene {
     const buttonSpacing = 160;
     const startX = 200;
     
-    // Attack button
-    this.createButton(startX, buttonY, '⚔ ATTACK', () => this.playerAttack());
+    // Attack button with stamina cost display
+    this.createActionButton(startX, buttonY, '⚔ ATTACK', '10 STA', 'attack', () => this.playerAttack());
     
-    // Defend button
-    this.createButton(startX + buttonSpacing, buttonY, '🛡 DEFEND', () => this.playerDefend());
+    // Defend button with effect display
+    this.createActionButton(startX + buttonSpacing, buttonY, '🛡 DEFEND', '+15 STA', 'defend', () => this.playerDefend());
     
-    // Ability button
-    this.createButton(startX + buttonSpacing * 2, buttonY, '✨ ABILITY', () => this.playerAbility());
+    // Ability button with stamina cost display
+    this.createActionButton(startX + buttonSpacing * 2, buttonY, '✨ ABILITY', '30 STA', 'ability', () => this.playerAbility());
     
     // Flee button
-    this.createButton(startX + buttonSpacing * 3, buttonY, '🏃 FLEE', () => this.playerFlee());
+    this.createActionButton(startX + buttonSpacing * 3, buttonY, '🏃 FLEE', '', 'flee', () => this.playerFlee());
+    
+    // Add keyboard shortcut hints below buttons
+    this.addKeyboardHints(startX, buttonY + 50, buttonSpacing);
   }
 
-  private createButton(x: number, y: number, text: string, callback: () => void): void {
-    const button = this.add.text(x, y, text, {
+  private createActionButton(
+    x: number, 
+    y: number, 
+    text: string, 
+    costText: string,
+    actionType: string,
+    callback: () => void
+  ): void {
+    const container = this.add.container(x, y);
+    container.setName(`btn_${actionType}`);
+    
+    // Main button text
+    const button = this.add.text(0, 0, text, {
       fontSize: '20px',
       color: '#4a9d5f',
       fontFamily: 'Courier New, monospace',
@@ -294,17 +308,130 @@ export class CombatScene extends Phaser.Scene {
       padding: { x: 15, y: 10 }
     }).setInteractive({ useHandCursor: true });
     
+    // Cost indicator below button
+    let costIndicator: Phaser.GameObjects.Text | null = null;
+    if (costText) {
+      costIndicator = this.add.text(
+        button.width / 2 + 15, 
+        button.height + 18, 
+        costText, 
+        {
+          fontSize: '12px',
+          color: '#888888',
+          fontFamily: 'Courier New, monospace'
+        }
+      ).setOrigin(0.5);
+    }
+    
+    container.add(button);
+    if (costIndicator) container.add(costIndicator);
+    
+    // Hover effects with tooltip
     button.on('pointerover', () => {
       button.setColor('#ffffff');
       button.setBackgroundColor('#4a9d5f');
+      this.showActionTooltip(x, y - 80, actionType);
     });
     
     button.on('pointerout', () => {
       button.setColor('#4a9d5f');
       button.setBackgroundColor('#2a2a2a');
+      this.hideActionTooltip();
     });
     
     button.on('pointerdown', callback);
+  }
+
+  private addKeyboardHints(startX: number, y: number, spacing: number): void {
+    const hints = ['[1]', '[2]', '[3]', '[4]'];
+    hints.forEach((hint, index) => {
+      this.add.text(startX + (spacing * index), y, hint, {
+        fontSize: '12px',
+        color: '#666666',
+        fontFamily: 'Courier New, monospace'
+      }).setOrigin(0, 0.5);
+    });
+  }
+
+  private showActionTooltip(x: number, y: number, actionType: string): void {
+    // Remove existing tooltip
+    this.hideActionTooltip();
+    
+    const tooltips: Record<string, { title: string; desc: string; extra?: string }> = {
+      attack: { 
+        title: 'Basic Attack', 
+        desc: 'Strike your enemy. Damage based on ATK vs DEF.',
+        extra: 'Cost: 10 Stamina'
+      },
+      defend: { 
+        title: 'Defend', 
+        desc: 'Increase defense by 50% and recover stamina.',
+        extra: 'Gain: +15 Stamina'
+      },
+      ability: { 
+        title: 'Special Ability', 
+        desc: 'Powerful attack that ignores 50% defense.',
+        extra: 'Cost: 30 STA • 3 turn cooldown'
+      },
+      flee: { 
+        title: 'Flee', 
+        desc: 'Attempt to escape. Success based on Speed.',
+        extra: '⚠ Failed flee allows free enemy attack'
+      }
+    };
+    
+    const tip = tooltips[actionType];
+    if (!tip) return;
+    
+    const container = this.add.container(x, y);
+    container.setName('actionTooltip');
+    container.setDepth(100);
+    
+    // Background
+    const bg = this.add.rectangle(0, 0, 220, 80, 0x1a1a1a, 0.95);
+    bg.setStrokeStyle(2, 0x4a9d5f);
+    
+    // Title
+    const title = this.add.text(-100, -30, tip.title, {
+      fontSize: '16px',
+      color: '#4a9d5f',
+      fontFamily: 'Courier New, monospace',
+      fontStyle: 'bold'
+    });
+    
+    // Description
+    const desc = this.add.text(-100, -8, tip.desc, {
+      fontSize: '12px',
+      color: '#cccccc',
+      fontFamily: 'Courier New, monospace',
+      wordWrap: { width: 200 }
+    });
+    
+    // Extra info
+    const extraText = tip.extra ? this.add.text(-100, 18, tip.extra, {
+      fontSize: '11px',
+      color: actionType === 'flee' ? '#e8a735' : '#4a8bd9',
+      fontFamily: 'Courier New, monospace'
+    }) : null;
+    
+    container.add([bg, title, desc]);
+    if (extraText) container.add(extraText);
+    
+    // Fade in
+    container.setAlpha(0);
+    this.tweens.add({
+      targets: container,
+      alpha: 1,
+      duration: 100,
+      ease: 'Power2'
+    });
+  }
+
+  private hideActionTooltip(): void {
+    const tooltip = this.children.getByName('actionTooltip');
+    if (tooltip) {
+      tooltip.destroy();
+    }
   }
 
   private createCombatLog(): void {

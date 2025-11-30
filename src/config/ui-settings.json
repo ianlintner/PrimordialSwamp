@@ -1,0 +1,255 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "Primordial Swamp UI Settings",
+  "version": "1.0.0",
+  "description": "Default UI settings template for agentic adjustment and user preferences",
+  
+  "defaults": {
+    "audio": {
+      "masterVolume": 1.0,
+      "musicVolume": 0.5,
+      "sfxVolume": 0.8,
+      "ambientVolume": 0.6,
+      "muteOnFocusLoss": false,
+      "description": "Audio volume settings (0.0 - 1.0)"
+    },
+    
+    "display": {
+      "uiScale": 1.0,
+      "fullscreen": false,
+      "vsync": true,
+      "particleEffects": true,
+      "screenShake": true,
+      "flashEffects": true,
+      "pixelPerfect": true,
+      "showFps": false,
+      "description": "Display and graphics settings"
+    },
+    
+    "accessibility": {
+      "colorBlindMode": "none",
+      "highContrast": false,
+      "reducedMotion": false,
+      "largeText": false,
+      "textSizeMultiplier": 1.0,
+      "screenReader": false,
+      "autoAdvanceText": false,
+      "showSubtitles": true,
+      "flashWarnings": true,
+      "description": "Accessibility options for inclusive gameplay"
+    },
+    
+    "gameplay": {
+      "combatSpeed": 1.0,
+      "autoPause": true,
+      "confirmActions": false,
+      "showDamageNumbers": true,
+      "showTooltips": true,
+      "tooltipDelay": 500,
+      "extendedTooltips": false,
+      "pauseBetweenTurns": false,
+      "showTutorialHints": true,
+      "description": "Gameplay experience settings"
+    },
+    
+    "controls": {
+      "keyboardEnabled": true,
+      "gamepadEnabled": true,
+      "touchEnabled": false,
+      "mouseSensitivity": 1.0,
+      "holdTimeMs": 300,
+      "doubleTapPreventionMs": 200,
+      "keyRepeatDelayMs": 500,
+      "description": "Input and control settings"
+    }
+  },
+
+  "keyBindings": {
+    "combat": {
+      "attack": ["1", "A"],
+      "defend": ["2", "D"],
+      "ability": ["3", "S"],
+      "flee": ["4", "F"],
+      "description": "Combat action keys"
+    },
+    "navigation": {
+      "up": ["ArrowUp", "W"],
+      "down": ["ArrowDown", "S"],
+      "left": ["ArrowLeft", "A"],
+      "right": ["ArrowRight", "D"],
+      "confirm": ["Enter", "Space"],
+      "cancel": ["Escape", "Backspace"],
+      "description": "Menu and map navigation keys"
+    },
+    "system": {
+      "pause": ["P", "Escape"],
+      "settings": ["O"],
+      "codex": ["C"],
+      "map": ["M"],
+      "description": "System and menu shortcuts"
+    }
+  },
+
+  "uiLayout": {
+    "combatScene": {
+      "playerPosition": { "x": 250, "y": 360 },
+      "enemyPosition": { "x": 1030, "y": 360 },
+      "actionButtonsY": 540,
+      "actionButtonSpacing": 160,
+      "combatLogPosition": { "x": 50, "y": 120 },
+      "combatLogSize": { "width": 380, "height": 180 },
+      "description": "Combat scene layout positions"
+    },
+    "mapScene": {
+      "mapStartX": 100,
+      "mapStartY": 120,
+      "columnSpacing": 180,
+      "nodeSpacing": 100,
+      "statsPanelX": 1080,
+      "statsPanelY": 150,
+      "description": "Map scene layout positions"
+    },
+    "menuScene": {
+      "titleY": 150,
+      "buttonStartY": 400,
+      "buttonSpacing": 80,
+      "description": "Menu scene layout positions"
+    }
+  },
+
+  "tooltipContent": {
+    "combat": {
+      "attack": {
+        "title": "Basic Attack",
+        "description": "Strike your enemy with a basic attack.",
+        "cost": "10 Stamina",
+        "shortcut": "Press 1 or A"
+      },
+      "defend": {
+        "title": "Defend",
+        "description": "Take a defensive stance, reducing incoming damage and recovering stamina.",
+        "effect": "+50% Defense, +15 Stamina",
+        "shortcut": "Press 2 or D"
+      },
+      "ability": {
+        "title": "Special Ability",
+        "description": "Use your species' unique ability for increased damage and effects.",
+        "cost": "30 Stamina",
+        "cooldown": "3 turns",
+        "shortcut": "Press 3 or S"
+      },
+      "flee": {
+        "title": "Flee",
+        "description": "Attempt to escape from combat. Success based on Speed difference.",
+        "risk": "Failed flee allows enemy free attack",
+        "shortcut": "Press 4 or F"
+      }
+    },
+    "mapNodes": {
+      "combat": {
+        "title": "Combat Encounter",
+        "description": "Face a dinosaur in battle. Defeat it to continue."
+      },
+      "resource": {
+        "title": "Resource Site",
+        "description": "Gather fossil fragments and other resources."
+      },
+      "event": {
+        "title": "Random Event",
+        "description": "Encounter a random event with various outcomes."
+      },
+      "elite": {
+        "title": "Elite Enemy",
+        "description": "A powerful enemy with better rewards. Prepare carefully!"
+      },
+      "rest": {
+        "title": "Rest Site",
+        "description": "Rest to recover HP and fully restore stamina."
+      },
+      "boss": {
+        "title": "Boss Encounter",
+        "description": "Face the biome's boss. Victory leads to the next area!"
+      }
+    },
+    "stats": {
+      "hp": {
+        "title": "Health Points (HP)",
+        "description": "Your current health. When it reaches 0, your run ends."
+      },
+      "stamina": {
+        "title": "Stamina",
+        "description": "Energy for actions. Regenerates each turn. Defending restores extra."
+      },
+      "attack": {
+        "title": "Attack (ATK)",
+        "description": "Base damage for attacks. Higher = more damage dealt."
+      },
+      "defense": {
+        "title": "Defense (DEF)",
+        "description": "Damage reduction. Higher = less damage taken."
+      },
+      "speed": {
+        "title": "Speed (SPD)",
+        "description": "Determines turn order and flee success chance."
+      }
+    }
+  },
+
+  "notifications": {
+    "position": "top-center",
+    "duration": 3000,
+    "maxStack": 3,
+    "animations": {
+      "enter": "slideDown",
+      "exit": "fadeOut"
+    },
+    "description": "In-game notification settings"
+  },
+
+  "tutorial": {
+    "enabled": true,
+    "showOnFirstRun": true,
+    "stages": [
+      {
+        "id": "welcome",
+        "title": "Welcome to Primordial Swamp",
+        "content": "Survive the prehistoric wilderness in this roguelite adventure!",
+        "trigger": "firstLaunch"
+      },
+      {
+        "id": "selectDinosaur",
+        "title": "Choose Your Dinosaur",
+        "content": "Each dinosaur has unique stats and abilities. Click to select, then start your run.",
+        "trigger": "characterSelect",
+        "highlight": "dinosaurCards"
+      },
+      {
+        "id": "mapNavigation",
+        "title": "Navigate the Map",
+        "content": "Click on available nodes to progress. Different nodes offer combat, resources, or events.",
+        "trigger": "firstMapView",
+        "highlight": "mapNodes"
+      },
+      {
+        "id": "combatBasics",
+        "title": "Combat Actions",
+        "content": "Attack deals damage, Defend reduces damage taken, Ability uses your special move, Flee attempts escape.",
+        "trigger": "firstCombat",
+        "highlight": "actionButtons"
+      }
+    ],
+    "description": "Tutorial system configuration"
+  },
+
+  "agentConfiguration": {
+    "allowRemoteConfig": false,
+    "configEndpoint": null,
+    "refreshInterval": 0,
+    "experimentFlags": {
+      "enhancedTooltips": false,
+      "newCombatUI": false,
+      "improvedMapView": false
+    },
+    "description": "Configuration for agentic/automated adjustments"
+  }
+}

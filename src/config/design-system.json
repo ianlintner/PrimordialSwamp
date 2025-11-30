@@ -1,0 +1,313 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "Primordial Swamp Design System",
+  "version": "1.0.0",
+  "description": "Centralized design tokens for consistent UI styling across the game",
+  
+  "colors": {
+    "primary": {
+      "main": "#4a9d5f",
+      "light": "#6ab87a",
+      "dark": "#3d7a4d",
+      "hex": "0x4a9d5f",
+      "description": "Primary brand color - Forest green, used for buttons, highlights, and positive feedback"
+    },
+    "secondary": {
+      "main": "#3d7a4d",
+      "light": "#5a9d6a",
+      "dark": "#2a5a3a",
+      "hex": "0x3d7a4d",
+      "description": "Secondary color - Darker green for accents and hover states"
+    },
+    "danger": {
+      "main": "#d94a3d",
+      "light": "#e86b5f",
+      "dark": "#b33d32",
+      "hex": "0xd94a3d",
+      "description": "Danger/error color - Red for damage, enemies, warnings"
+    },
+    "warning": {
+      "main": "#e8a735",
+      "light": "#f0be5a",
+      "dark": "#c08d2a",
+      "hex": "0xe8a735",
+      "description": "Warning color - Yellow for caution states and events"
+    },
+    "info": {
+      "main": "#4a8bd9",
+      "light": "#6ba3e8",
+      "dark": "#3d72b3",
+      "hex": "0x4a8bd9",
+      "description": "Info color - Blue for stamina, rest areas, neutral info"
+    },
+    "text": {
+      "primary": "#f0f0f0",
+      "secondary": "#cccccc",
+      "muted": "#888888",
+      "disabled": "#666666",
+      "hex": "0xf0f0f0",
+      "description": "Text colors for different emphasis levels"
+    },
+    "background": {
+      "main": "#1a1a1a",
+      "panel": "#2a2a2a",
+      "elevated": "#3a3a3a",
+      "overlay": "rgba(0, 0, 0, 0.8)",
+      "hex": "0x1a1a1a",
+      "description": "Background colors for different surface levels"
+    },
+    "semantic": {
+      "health": "#4a9d5f",
+      "stamina": "#4a8bd9",
+      "damage": "#d94a3d",
+      "heal": "#51cf66",
+      "buff": "#ffd43b",
+      "debuff": "#845ef7",
+      "poison": "#9d4a9d",
+      "bleed": "#d94a3d",
+      "stun": "#e8a735",
+      "description": "Semantic colors for game-specific states"
+    },
+    "nodeTypes": {
+      "combat": "#4a9d5f",
+      "resource": "#5f9d4a",
+      "event": "#9d7a4a",
+      "elite": "#9d4a4a",
+      "rest": "#4a7a9d",
+      "boss": "#9d4a9d",
+      "description": "Colors for map node types"
+    }
+  },
+
+  "highContrastColors": {
+    "primary": {
+      "main": "#00ff00",
+      "dark": "#00cc00"
+    },
+    "danger": {
+      "main": "#ff0000",
+      "dark": "#cc0000"
+    },
+    "text": {
+      "primary": "#ffffff",
+      "secondary": "#ffffff"
+    },
+    "background": {
+      "main": "#000000",
+      "panel": "#1a1a1a"
+    },
+    "description": "High contrast mode overrides for accessibility"
+  },
+
+  "colorBlindModes": {
+    "deuteranopia": {
+      "primary": "#0077bb",
+      "danger": "#ee7733",
+      "health": "#0077bb",
+      "damage": "#ee7733",
+      "description": "Red-green color blindness (deuteranomaly/deuteranopia)"
+    },
+    "protanopia": {
+      "primary": "#0077bb",
+      "danger": "#ee7733",
+      "health": "#0077bb",
+      "damage": "#ee7733",
+      "description": "Red weakness (protanomaly/protanopia)"
+    },
+    "tritanopia": {
+      "primary": "#33bbee",
+      "danger": "#ee3377",
+      "health": "#33bbee",
+      "damage": "#ee3377",
+      "description": "Blue-yellow color blindness (tritanomaly/tritanopia)"
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "primary": "Courier New, monospace",
+      "display": "Courier New, monospace",
+      "mono": "Courier New, monospace",
+      "description": "Font families for different contexts"
+    },
+    "fontSize": {
+      "xs": "12px",
+      "sm": "14px",
+      "base": "16px",
+      "md": "18px",
+      "lg": "20px",
+      "xl": "24px",
+      "2xl": "28px",
+      "3xl": "32px",
+      "4xl": "36px",
+      "5xl": "48px",
+      "hero": "72px",
+      "description": "Font size scale for consistent text sizing"
+    },
+    "fontWeight": {
+      "normal": "normal",
+      "bold": "bold",
+      "description": "Font weight options"
+    },
+    "lineHeight": {
+      "tight": 1.2,
+      "normal": 1.5,
+      "relaxed": 1.8,
+      "description": "Line height multipliers"
+    },
+    "letterSpacing": {
+      "tight": "-0.02em",
+      "normal": "0",
+      "wide": "0.05em",
+      "description": "Letter spacing options"
+    }
+  },
+
+  "spacing": {
+    "unit": 8,
+    "xs": 4,
+    "sm": 8,
+    "md": 16,
+    "lg": 24,
+    "xl": 32,
+    "2xl": 48,
+    "3xl": 64,
+    "description": "Spacing scale based on 8px grid"
+  },
+
+  "sizing": {
+    "buttonPadding": {
+      "x": 20,
+      "y": 10
+    },
+    "buttonPaddingLarge": {
+      "x": 30,
+      "y": 15
+    },
+    "panelPadding": 20,
+    "cardWidth": 320,
+    "nodeRadius": 25,
+    "healthBarWidth": 200,
+    "healthBarHeight": 20,
+    "staminaBarHeight": 15,
+    "touchTargetMin": 44,
+    "description": "Standard sizing for UI components"
+  },
+
+  "borders": {
+    "radius": {
+      "none": 0,
+      "sm": 4,
+      "md": 8,
+      "lg": 12,
+      "full": 9999
+    },
+    "width": {
+      "thin": 1,
+      "normal": 2,
+      "thick": 3,
+      "heavy": 4
+    },
+    "description": "Border radius and width options"
+  },
+
+  "shadows": {
+    "none": "none",
+    "sm": "0 1px 2px rgba(0, 0, 0, 0.5)",
+    "md": "0 2px 4px rgba(0, 0, 0, 0.5)",
+    "lg": "0 4px 8px rgba(0, 0, 0, 0.5)",
+    "description": "Shadow options for depth"
+  },
+
+  "animation": {
+    "duration": {
+      "instant": 0,
+      "fast": 100,
+      "normal": 200,
+      "slow": 500,
+      "verySlow": 1000
+    },
+    "easing": {
+      "linear": "Linear",
+      "easeIn": "Power1",
+      "easeOut": "Power2",
+      "easeInOut": "Sine.easeInOut",
+      "bounce": "Bounce"
+    },
+    "description": "Animation timing and easing options"
+  },
+
+  "layout": {
+    "gameWidth": 1280,
+    "gameHeight": 720,
+    "safeAreaPadding": 40,
+    "headerHeight": 60,
+    "footerHeight": 60,
+    "sidebarWidth": 200,
+    "description": "Layout dimensions and safe areas"
+  },
+
+  "icons": {
+    "combat": "⚔",
+    "resource": "🌿",
+    "event": "❓",
+    "elite": "💀",
+    "rest": "🔥",
+    "boss": "👑",
+    "attack": "⚔",
+    "defend": "🛡",
+    "ability": "✨",
+    "flee": "🏃",
+    "fossil": "🦴",
+    "health": "❤",
+    "stamina": "⚡",
+    "victory": "🏆",
+    "defeat": "💀",
+    "warning": "⚠",
+    "info": "ℹ",
+    "settings": "⚙",
+    "back": "←",
+    "forward": "→",
+    "description": "Standard icons for UI elements"
+  },
+
+  "tooltips": {
+    "delay": 500,
+    "fadeIn": 150,
+    "fadeOut": 100,
+    "maxWidth": 300,
+    "padding": 12,
+    "backgroundColor": "rgba(26, 26, 26, 0.95)",
+    "borderColor": "#4a9d5f",
+    "description": "Tooltip configuration"
+  },
+
+  "accessibility": {
+    "minContrastRatio": 4.5,
+    "focusIndicatorWidth": 3,
+    "focusIndicatorColor": "#ffffff",
+    "touchTargetMinSize": 44,
+    "keyboardShortcuts": {
+      "attack": "1",
+      "defend": "2",
+      "ability": "3",
+      "flee": "4",
+      "confirm": "Enter",
+      "cancel": "Escape",
+      "pause": "P"
+    },
+    "description": "Accessibility requirements and defaults"
+  },
+
+  "zIndex": {
+    "background": -10,
+    "mapConnections": -1,
+    "mapNodes": 0,
+    "ui": 10,
+    "overlay": 20,
+    "tooltip": 30,
+    "modal": 40,
+    "notification": 50,
+    "description": "Z-index layers for UI stacking"
+  }
+}

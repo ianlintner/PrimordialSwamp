@@ -96,66 +96,186 @@ export class MapScene extends Phaser.Scene {
     const x = GAME_CONFIG.WIDTH - 200;
     const y = 150;
     
-    const panel = this.add.rectangle(x, y, 180, 400, 0x2a2a2a, 1);
+    const panel = this.add.rectangle(x, y, 180, 420, 0x2a2a2a, 1);
     panel.setStrokeStyle(2, 0x4a9d5f);
     
-    this.add.text(x, y - 180, 'STATUS', {
-      fontSize: '20px',
+    // STATUS header with icon
+    this.add.text(x, y - 190, '📊 STATUS', {
+      fontSize: '18px',
       color: '#4a9d5f',
       fontFamily: 'Courier New, monospace',
       fontStyle: 'bold'
     }).setOrigin(0.5);
     
-    // Dinosaur name
+    // Dinosaur name with emoji
     const dinoName = this.selectedDinosaur.charAt(0).toUpperCase() + 
                       this.selectedDinosaur.slice(1);
-    this.add.text(x, y - 150, dinoName, {
-      fontSize: '18px',
+    const dinoEmoji = this.getDinosaurEmoji(this.selectedDinosaur);
+    this.add.text(x, y - 160, `${dinoEmoji} ${dinoName}`, {
+      fontSize: '16px',
       color: '#ffffff',
       fontFamily: 'Courier New, monospace'
     }).setOrigin(0.5);
     
-    // Stats (will be updated dynamically)
-    const statsText = this.add.text(x - 70, y - 110,
-      `HP: ${this.playerHealth}/${this.playerMaxHealth}\n` +
-      `STA: ${this.playerStamina}/${this.playerMaxStamina}\n\n` +
-      `Depth: ${this.currentColumn + 1}/5\n` +
-      `Fossils: ${this.fossils}`,
-      {
-        fontSize: '14px',
-        color: '#f0f0f0',
-        fontFamily: 'Courier New, monospace',
-        lineSpacing: 8
-      }
-    );
-    statsText.setName('statsText');
+    // Health bar visual
+    const hpBarY = y - 125;
+    this.createMiniHealthBar(x, hpBarY, this.playerHealth, this.playerMaxHealth, 'HP');
     
-    // Legend
-    this.add.text(x, y + 50, 'MAP LEGEND', {
-      fontSize: '16px',
+    // Stamina bar visual  
+    const staBarY = y - 85;
+    this.createMiniStaminaBar(x, staBarY, this.playerStamina, this.playerMaxStamina, 'STA');
+    
+    // Depth progress with visual indicator
+    const depthY = y - 40;
+    this.add.text(x - 70, depthY, 'PROGRESS', {
+      fontSize: '12px',
+      color: '#888888',
+      fontFamily: 'Courier New, monospace'
+    });
+    
+    // Depth progress bar
+    const depthBarWidth = 140;
+    const depthProgress = (this.currentColumn + 1) / 5;
+    this.add.rectangle(x, depthY + 20, depthBarWidth, 8, 0x2a2a2a)
+      .setStrokeStyle(1, 0x4a9d5f);
+    this.add.rectangle(
+      x - depthBarWidth/2 + (depthProgress * depthBarWidth)/2,
+      depthY + 20,
+      depthProgress * depthBarWidth,
+      6,
+      0x4a9d5f
+    ).setName('depthFill');
+    
+    this.add.text(x, depthY + 35, `Depth ${this.currentColumn + 1}/5`, {
+      fontSize: '14px',
+      color: '#ffffff',
+      fontFamily: 'Courier New, monospace'
+    }).setOrigin(0.5).setName('depthText');
+    
+    // Fossils collected with icon
+    this.add.text(x, depthY + 60, `🦴 ${this.fossils} Fossils`, {
+      fontSize: '14px',
+      color: '#ffd43b',
+      fontFamily: 'Courier New, monospace'
+    }).setOrigin(0.5).setName('fossilText');
+    
+    // Legend header
+    this.add.text(x, y + 60, 'MAP LEGEND', {
+      fontSize: '14px',
       color: '#4a9d5f',
       fontFamily: 'Courier New, monospace',
       fontStyle: 'bold'
     }).setOrigin(0.5);
     
-    const legendText = 
-      '⚔ Combat\n' +
-      '🌿 Resource\n' +
-      '❓ Event\n' +
-      '💀 Elite\n' +
-      '🔥 Rest\n' +
-      '👑 Boss';
+    // Legend with colored text
+    const legendItems = [
+      { icon: '⚔', label: 'Combat', color: '#4a9d5f' },
+      { icon: '🌿', label: 'Resource', color: '#5f9d4a' },
+      { icon: '❓', label: 'Event', color: '#9d7a4a' },
+      { icon: '💀', label: 'Elite', color: '#9d4a4a' },
+      { icon: '🔥', label: 'Rest', color: '#4a7a9d' },
+      { icon: '👑', label: 'Boss', color: '#9d4a9d' }
+    ];
     
-    this.add.text(x - 70, y + 80, legendText, {
-      fontSize: '12px',
-      color: '#cccccc',
-      fontFamily: 'Courier New, monospace',
-      lineSpacing: 6
+    legendItems.forEach((item, index) => {
+      const itemY = y + 85 + (index * 22);
+      this.add.text(x - 60, itemY, `${item.icon} ${item.label}`, {
+        fontSize: '12px',
+        color: item.color,
+        fontFamily: 'Courier New, monospace'
+      });
     });
+    
+    // Next action hint at bottom
+    this.add.text(x, y + 205, 'Click a node\nto continue', {
+      fontSize: '11px',
+      color: '#666666',
+      fontFamily: 'Courier New, monospace',
+      align: 'center'
+    }).setOrigin(0.5);
+  }
+
+  private createMiniHealthBar(x: number, y: number, current: number, max: number, label: string): void {
+    const barWidth = 140;
+    const barHeight = 16;
+    const percentage = current / max;
+    
+    // Label
+    this.add.text(x - 70, y - 10, label, {
+      fontSize: '12px',
+      color: '#888888',
+      fontFamily: 'Courier New, monospace'
+    });
+    
+    // Background
+    this.add.rectangle(x, y + 8, barWidth, barHeight, 0x2a2a2a)
+      .setStrokeStyle(1, 0x4a9d5f);
+    
+    // Fill - color based on health level
+    let fillColor = 0x4a9d5f; // Green
+    if (percentage < 0.3) fillColor = 0xd94a3d; // Red when low
+    else if (percentage < 0.6) fillColor = 0xe8a735; // Yellow when medium
+    
+    this.add.rectangle(
+      x - barWidth/2 + (percentage * barWidth)/2,
+      y + 8,
+      percentage * barWidth,
+      barHeight - 2,
+      fillColor
+    ).setName('hpFill');
+    
+    // Value text
+    this.add.text(x, y + 8, `${current}/${max}`, {
+      fontSize: '11px',
+      color: '#ffffff',
+      fontFamily: 'Courier New, monospace'
+    }).setOrigin(0.5).setName('hpText');
+  }
+
+  private createMiniStaminaBar(x: number, y: number, current: number, max: number, label: string): void {
+    const barWidth = 140;
+    const barHeight = 14;
+    const percentage = current / max;
+    
+    // Label
+    this.add.text(x - 70, y - 10, label, {
+      fontSize: '12px',
+      color: '#888888',
+      fontFamily: 'Courier New, monospace'
+    });
+    
+    // Background
+    this.add.rectangle(x, y + 7, barWidth, barHeight, 0x2a2a2a)
+      .setStrokeStyle(1, 0x4a8bd9);
+    
+    // Fill
+    this.add.rectangle(
+      x - barWidth/2 + (percentage * barWidth)/2,
+      y + 7,
+      percentage * barWidth,
+      barHeight - 2,
+      0x4a8bd9
+    ).setName('staFill');
+    
+    // Value text
+    this.add.text(x, y + 7, `${current}/${max}`, {
+      fontSize: '10px',
+      color: '#ffffff',
+      fontFamily: 'Courier New, monospace'
+    }).setOrigin(0.5).setName('staText');
+  }
+
+  private getDinosaurEmoji(id: string): string {
+    const emojiMap: Record<string, string> = {
+      deinonychus: '🦖',
+      ankylosaurus: '🦕',
+      pteranodon: '🦅',
+      tyrannosaurus: '🦖'
+    };
+    return emojiMap[id] || '🦴';
   }
 
   private generateMap(): void {
-    console.log('🗺 Generating map...');
     
     const COLUMNS = 5; // 5 depths (columns)
     const NODES_PER_COLUMN = [1, 3, 3, 3, 1]; // Start->Middle->Boss
@@ -358,19 +478,108 @@ export class MapScene extends Phaser.Scene {
   }
   
   private showNodeTooltip(node: MapNodeUI): void {
-    const tooltip = this.add.container(node.x, node.y - 60);
-    tooltip.setName('tooltip');
+    // Remove existing tooltip
+    this.hideNodeTooltip();
     
-    const bg = this.add.rectangle(0, 0, 120, 40, 0x1a1a1a, 0.9);
+    const tooltipInfo = this.getNodeTooltipInfo(node.type);
+    const tooltip = this.add.container(node.x, node.y - 70);
+    tooltip.setName('tooltip');
+    tooltip.setDepth(50);
+    
+    // Calculate tooltip size
+    const padding = 12;
+    const width = 200;
+    const hasWarning = !!tooltipInfo.warning;
+    const height = hasWarning ? 90 : 70;
+    
+    // Background
+    const bg = this.add.rectangle(0, 0, width, height, 0x1a1a1a, 0.95);
     bg.setStrokeStyle(2, this.getNodeColor(node.type));
     
-    const text = this.add.text(0, 0, this.getNodeName(node.type), {
-      fontSize: '14px',
-      color: '#ffffff',
-      fontFamily: 'Courier New, monospace'
+    // Title
+    const title = this.add.text(0, -height/2 + padding + 8, tooltipInfo.title, {
+      fontSize: '16px',
+      color: '#' + this.getNodeColor(node.type).toString(16).padStart(6, '0'),
+      fontFamily: 'Courier New, monospace',
+      fontStyle: 'bold'
     }).setOrigin(0.5);
     
-    tooltip.add([bg, text]);
+    // Description
+    const desc = this.add.text(0, 5, tooltipInfo.description, {
+      fontSize: '12px',
+      color: '#cccccc',
+      fontFamily: 'Courier New, monospace',
+      wordWrap: { width: width - padding * 2 },
+      align: 'center'
+    }).setOrigin(0.5);
+    
+    tooltip.add([bg, title, desc]);
+    
+    // Warning for elite/boss nodes
+    if (tooltipInfo.warning) {
+      const warning = this.add.text(0, height/2 - padding - 8, `⚠ ${tooltipInfo.warning}`, {
+        fontSize: '11px',
+        color: '#e8a735',
+        fontFamily: 'Courier New, monospace'
+      }).setOrigin(0.5);
+      tooltip.add(warning);
+    }
+    
+    // Constrain tooltip to screen
+    if (tooltip.x - width/2 < 10) tooltip.x = width/2 + 10;
+    if (tooltip.x + width/2 > GAME_CONFIG.WIDTH - 10) tooltip.x = GAME_CONFIG.WIDTH - width/2 - 10;
+    if (tooltip.y - height/2 < 10) tooltip.y = node.y + 70; // Show below instead
+    
+    // Fade in
+    tooltip.setAlpha(0);
+    this.tweens.add({
+      targets: tooltip,
+      alpha: 1,
+      duration: 100,
+      ease: 'Power2'
+    });
+  }
+  
+  private getNodeTooltipInfo(type: NodeType): { title: string; description: string; warning?: string } {
+    switch (type) {
+      case NodeType.COMBAT:
+        return {
+          title: 'Combat Encounter',
+          description: 'Face a dinosaur in battle to earn fossils.'
+        };
+      case NodeType.RESOURCE:
+        return {
+          title: 'Resource Site',
+          description: 'Gather fossil fragments and supplies.'
+        };
+      case NodeType.EVENT:
+        return {
+          title: 'Random Event',
+          description: 'Unpredictable outcomes await...'
+        };
+      case NodeType.ELITE:
+        return {
+          title: 'Elite Enemy',
+          description: 'A powerful foe with greater rewards.',
+          warning: 'Dangerous!'
+        };
+      case NodeType.REST:
+        return {
+          title: 'Rest Site',
+          description: 'Recover HP and restore stamina.'
+        };
+      case NodeType.BOSS:
+        return {
+          title: 'Boss Encounter',
+          description: 'Defeat to advance to the next biome.',
+          warning: 'Point of no return'
+        };
+      default:
+        return {
+          title: 'Unknown',
+          description: 'Mysterious location.'
+        };
+    }
   }
   
   private hideNodeTooltip(): void {
@@ -564,14 +773,52 @@ export class MapScene extends Phaser.Scene {
   }
   
   private updateStatsPanel(): void {
-    const statsText = this.children.getByName('statsText') as Phaser.GameObjects.Text;
-    if (statsText) {
-      statsText.setText(
-        `HP: ${this.playerHealth}/${this.playerMaxHealth}\n` +
-        `STA: ${this.playerStamina}/${this.playerMaxStamina}\n\n` +
-        `Depth: ${this.currentColumn + 1}/5\n` +
-        `Fossils: ${this.fossils}`
-      );
+    const x = GAME_CONFIG.WIDTH - 200;
+    const barWidth = 140;
+    
+    // Update HP bar
+    const hpFill = this.children.getByName('hpFill') as Phaser.GameObjects.Rectangle;
+    const hpText = this.children.getByName('hpText') as Phaser.GameObjects.Text;
+    if (hpFill && hpText) {
+      const hpPercent = this.playerHealth / this.playerMaxHealth;
+      const newWidth = hpPercent * barWidth;
+      hpFill.setSize(newWidth, 14);
+      hpFill.x = x - barWidth/2 + newWidth/2;
+      
+      // Change color based on HP level
+      if (hpPercent < 0.3) hpFill.setFillStyle(0xd94a3d);
+      else if (hpPercent < 0.6) hpFill.setFillStyle(0xe8a735);
+      else hpFill.setFillStyle(0x4a9d5f);
+      
+      hpText.setText(`${this.playerHealth}/${this.playerMaxHealth}`);
+    }
+    
+    // Update Stamina bar
+    const staFill = this.children.getByName('staFill') as Phaser.GameObjects.Rectangle;
+    const staText = this.children.getByName('staText') as Phaser.GameObjects.Text;
+    if (staFill && staText) {
+      const staPercent = this.playerStamina / this.playerMaxStamina;
+      const newWidth = staPercent * barWidth;
+      staFill.setSize(newWidth, 12);
+      staFill.x = x - barWidth/2 + newWidth/2;
+      staText.setText(`${this.playerStamina}/${this.playerMaxStamina}`);
+    }
+    
+    // Update depth
+    const depthFill = this.children.getByName('depthFill') as Phaser.GameObjects.Rectangle;
+    const depthText = this.children.getByName('depthText') as Phaser.GameObjects.Text;
+    if (depthFill && depthText) {
+      const depthPercent = (this.currentColumn + 1) / 5;
+      const newWidth = depthPercent * barWidth;
+      depthFill.setSize(newWidth, 6);
+      depthFill.x = x - barWidth/2 + newWidth/2;
+      depthText.setText(`Depth ${this.currentColumn + 1}/5`);
+    }
+    
+    // Update fossils
+    const fossilText = this.children.getByName('fossilText') as Phaser.GameObjects.Text;
+    if (fossilText) {
+      fossilText.setText(`🦴 ${this.fossils} Fossils`);
     }
   }
 
