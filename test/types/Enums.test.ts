@@ -13,9 +13,9 @@ describe('Type Enums', () => {
       expect(DinosaurType.COMPSOGNATHUS).toBe('compsognathus');
     });
 
-    it('should have 6 dinosaur types', () => {
+    it('should have 16 dinosaur types', () => {
       const count = Object.keys(DinosaurType).length;
-      expect(count).toBe(6);
+      expect(count).toBe(16);
     });
   });
 
