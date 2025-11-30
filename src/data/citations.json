@@ -623,5 +623,35 @@
     "abstract": "Clumped isotope thermometry reveals dinosaur body temperatures between 36-38°C.",
     "topics": ["body_temperature", "isotopes", "physiology"],
     "lastVerified": "2024-01-15"
+  },
+  {
+    "id": "bates2012estimating_bite_force",
+    "type": "journal_article",
+    "author": "Bates, K.T., Falkingham, P.L.",
+    "year": 2012,
+    "title": "Estimating maximum bite performance in Tyrannosaurus rex using multi-body dynamics",
+    "journal": "Biology Letters",
+    "volume": "8",
+    "pages": "660-664",
+    "doi": "10.1098/rsbl.2012.0056",
+    "url": "https://doi.org/10.1098/rsbl.2012.0056",
+    "abstract": "Multi-body dynamics simulation estimates T. rex bite force at 35,000-57,000 Newtons, the highest of any terrestrial animal.",
+    "topics": ["tyrannosaurs", "bite_force", "biomechanics"],
+    "lastVerified": "2024-01-15"
+  },
+  {
+    "id": "erickson2017feeding_biomechanics",
+    "type": "journal_article",
+    "author": "Erickson, G.M., Gignac, P.M., Steppan, S.J., Lappin, A.K., Vliet, K.A., Brueggen, J.D., Inouye, B.D., Kledzik, D., Webb, G.J.W.",
+    "year": 2012,
+    "title": "Insights into the ecology and evolutionary success of crocodilians revealed through bite-force and tooth-pressure experimentation",
+    "journal": "PLOS ONE",
+    "volume": "7",
+    "pages": "e31781",
+    "doi": "10.1371/journal.pone.0031781",
+    "url": "https://doi.org/10.1371/journal.pone.0031781",
+    "abstract": "Comparative analysis of bite forces in extant crocodilians provides context for understanding dinosaur bite force evolution.",
+    "topics": ["bite_force", "crocodilians", "feeding_ecology"],
+    "lastVerified": "2024-01-15"
   }
 ]
