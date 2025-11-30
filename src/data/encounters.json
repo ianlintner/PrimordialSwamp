@@ -1,0 +1,1016 @@
+[
+  {
+    "id": "volcanic_eruption",
+    "name": "Volcanic Eruption",
+    "type": "environmental",
+    "category": "disaster",
+    "rarity": "rare",
+    "biomes": ["volcanic_highlands", "all"],
+    "description": "The ground trembles as a nearby volcano erupts, spewing ash and lava into the sky.",
+    "choices": [
+      {
+        "id": "flee_eruption",
+        "text": "Run for cover immediately",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "damage",
+            "value": 15,
+            "chance": 0.3,
+            "description": "You escape but suffer minor burns from falling ash."
+          },
+          {
+            "type": "status",
+            "value": "exhausted",
+            "chance": 0.7,
+            "description": "You escape unharmed but are exhausted from the sprint."
+          }
+        ],
+        "scientificContext": "Volcanic eruptions were common throughout the Mesozoic Era, particularly during the Deccan Traps eruptions that contributed to the K-Pg extinction."
+      },
+      {
+        "id": "find_shelter",
+        "text": "Search for a cave or overhang",
+        "requirements": [
+          { "type": "stat", "target": "speed", "value": 5, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "heal",
+            "value": 10,
+            "chance": 0.5,
+            "description": "You find shelter and rest safely while the eruption subsides."
+          },
+          {
+            "type": "trait",
+            "value": "heat_resistant",
+            "chance": 0.2,
+            "description": "Your survival in extreme heat has toughened you."
+          },
+          {
+            "type": "damage",
+            "value": 25,
+            "chance": 0.3,
+            "description": "The cave you found offers poor protection from toxic gases."
+          }
+        ],
+        "scientificContext": "Animals during volcanic events would seek shelter from pyroclastic flows and toxic gases like sulfur dioxide."
+      }
+    ],
+    "scientificFacts": [
+      "The Deccan Traps in India erupted around the same time as the K-Pg extinction event.",
+      "Volcanic winters caused by ash blocking sunlight could last for years.",
+      "Some dinosaurs may have survived initial eruptions only to starve as plant life died."
+    ]
+  },
+  {
+    "id": "flash_flood",
+    "name": "Flash Flood",
+    "type": "environmental",
+    "category": "weather",
+    "rarity": "uncommon",
+    "biomes": ["coastal_wetlands", "fern_prairies"],
+    "description": "Heavy monsoon rains have caused the river to overflow. Water rushes toward you!",
+    "choices": [
+      {
+        "id": "climb_high",
+        "text": "Climb to higher ground",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "reward",
+            "value": { "fossils": 5 },
+            "chance": 0.4,
+            "description": "The floodwaters expose ancient fossils in the eroding bank."
+          },
+          {
+            "type": "heal",
+            "value": 15,
+            "chance": 0.6,
+            "description": "You wait safely until the waters recede."
+          }
+        ],
+        "scientificContext": "Many dinosaur fossils were preserved precisely because of flood events that rapidly buried carcasses."
+      },
+      {
+        "id": "swim_across",
+        "text": "Try to swim to safety",
+        "requirements": [
+          { "type": "trait", "target": "semi_aquatic", "value": "true" }
+        ],
+        "outcomes": [
+          {
+            "type": "reward",
+            "value": { "fossils": 10, "item": "rare_amber" },
+            "chance": 0.6,
+            "description": "You navigate the waters expertly and find treasures washed downstream."
+          },
+          {
+            "type": "damage",
+            "value": 20,
+            "chance": 0.4,
+            "description": "The current is stronger than expected."
+          }
+        ],
+        "scientificContext": "Semi-aquatic dinosaurs like Spinosaurus would have thrived in flood conditions."
+      }
+    ],
+    "scientificFacts": [
+      "Seasonal flooding was common in Mesozoic river systems.",
+      "Flash floods were a major cause of dinosaur mass mortality events.",
+      "The famous Ghost Ranch Coelophysis quarry may represent a flash flood burial."
+    ]
+  },
+  {
+    "id": "tar_pit_trap",
+    "name": "Tar Pit",
+    "type": "environmental",
+    "category": "hazard",
+    "rarity": "uncommon",
+    "biomes": ["tar_pits"],
+    "description": "You come across a bubbling tar pit. Something struggles within - prey or trap?",
+    "choices": [
+      {
+        "id": "avoid_tar",
+        "text": "Circle around carefully",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "codex",
+            "value": "tar_pit_preservation",
+            "chance": 1.0,
+            "description": "You observe bones preserved in the tar and learn about this natural trap."
+          }
+        ],
+        "scientificContext": "Tar pits like La Brea have preserved countless prehistoric animals, including mammals, birds, and insects."
+      },
+      {
+        "id": "hunt_trapped",
+        "text": "Attack the trapped creature",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "combat",
+            "value": "trapped_herbivore",
+            "chance": 0.6,
+            "description": "An easy meal awaits!"
+          },
+          {
+            "type": "damage",
+            "value": 30,
+            "chance": 0.4,
+            "description": "You get too close and become partially stuck yourself!"
+          }
+        ],
+        "scientificContext": "Predators often became trapped when attempting to prey on stuck animals."
+      },
+      {
+        "id": "help_trapped",
+        "text": "Try to help the struggling creature",
+        "requirements": [
+          { "type": "stat", "target": "attack", "value": 10, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "trait",
+            "value": "tar_resistant",
+            "chance": 0.3,
+            "description": "Your efforts coat you in tar, providing unexpected protection."
+          },
+          {
+            "type": "reward",
+            "value": { "experience": 25, "ally_buff": "grateful" },
+            "chance": 0.5,
+            "description": "The creature escapes and may remember your kindness."
+          },
+          {
+            "type": "damage",
+            "value": 20,
+            "chance": 0.2,
+            "description": "Despite your strength, the tar nearly claims you too."
+          }
+        ],
+        "scientificContext": "The ratio of predators to prey in tar pit fossils is unnaturally high, showing predators frequently became victims."
+      }
+    ],
+    "scientificFacts": [
+      "Tar pits formed from crude oil seeping to the surface.",
+      "Animals stuck in tar attracted predators who also became trapped.",
+      "La Brea Tar Pits preserved over 3.5 million specimens."
+    ]
+  },
+  {
+    "id": "meteor_shower",
+    "name": "Meteor Shower",
+    "type": "environmental",
+    "category": "celestial",
+    "rarity": "legendary",
+    "biomes": ["all"],
+    "description": "The night sky lights up with streaking meteors. Some seem dangerously close...",
+    "choices": [
+      {
+        "id": "watch_sky",
+        "text": "Watch in awe from a safe distance",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "codex",
+            "value": "k_pg_extinction",
+            "chance": 1.0,
+            "description": "You learn about the asteroid that ended the age of dinosaurs."
+          },
+          {
+            "type": "trait",
+            "value": "celestial_awareness",
+            "chance": 0.3,
+            "description": "Your awareness of cosmic threats is heightened."
+          }
+        ],
+        "scientificContext": "The Chicxulub impactor that ended the dinosaurs was about 10-15 km in diameter."
+      },
+      {
+        "id": "investigate_crater",
+        "text": "Search for fallen meteorites",
+        "requirements": [
+          { "type": "stat", "target": "courage", "value": 7, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "reward",
+            "value": { "fossils": 25, "item": "meteorite_fragment" },
+            "chance": 0.5,
+            "description": "You find a rare space rock still warm from its journey!"
+          },
+          {
+            "type": "damage",
+            "value": 35,
+            "chance": 0.3,
+            "description": "A nearby impact injures you with debris."
+          },
+          {
+            "type": "trait",
+            "value": "cosmic_touched",
+            "chance": 0.2,
+            "description": "Exposure to extraterrestrial minerals grants strange properties."
+          }
+        ],
+        "scientificContext": "Iridium from the K-Pg boundary layer is evidence of the asteroid impact."
+      }
+    ],
+    "scientificFacts": [
+      "The Chicxulub asteroid released energy equivalent to 100 trillion tons of TNT.",
+      "The impact winter that followed blocked sunlight for years.",
+      "About 75% of all species went extinct in the aftermath."
+    ]
+  },
+  {
+    "id": "drought",
+    "name": "Severe Drought",
+    "type": "environmental",
+    "category": "weather",
+    "rarity": "uncommon",
+    "biomes": ["fern_prairies", "volcanic_highlands"],
+    "description": "The water hole is almost dry. Several dinosaurs gather at the shrinking pool, tension in the air.",
+    "choices": [
+      {
+        "id": "wait_turn",
+        "text": "Wait your turn patiently",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "heal",
+            "value": 10,
+            "chance": 0.6,
+            "description": "You drink your fill after the larger dinosaurs leave."
+          },
+          {
+            "type": "status",
+            "value": "dehydrated",
+            "chance": 0.4,
+            "description": "The water runs out before you can drink enough."
+          }
+        ],
+        "scientificContext": "Drought conditions forced even competing species to share water sources."
+      },
+      {
+        "id": "assert_dominance",
+        "text": "Challenge for water rights",
+        "requirements": [
+          { "type": "stat", "target": "attack", "value": 8, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "combat",
+            "value": "thirsty_herbivore",
+            "chance": 0.5,
+            "description": "A desperate herbivore challenges you!"
+          },
+          {
+            "type": "heal",
+            "value": 30,
+            "chance": 0.3,
+            "description": "Your display of strength grants you first access."
+          },
+          {
+            "type": "trait",
+            "value": "water_rights",
+            "chance": 0.2,
+            "description": "Others remember your dominance at this water hole."
+          }
+        ],
+        "scientificContext": "Competition for water during droughts led to unusual predator-prey interactions."
+      },
+      {
+        "id": "dig_for_water",
+        "text": "Dig for underground water",
+        "requirements": [
+          { "type": "dinosaur", "target": "role", "value": "tank" }
+        ],
+        "outcomes": [
+          {
+            "type": "heal",
+            "value": 40,
+            "chance": 0.7,
+            "description": "Your powerful legs unearth a fresh spring!"
+          },
+          {
+            "type": "status",
+            "value": "exhausted",
+            "chance": 0.3,
+            "description": "The digging exhausts you without finding water."
+          }
+        ],
+        "scientificContext": "Modern elephants dig for water during droughts - dinosaurs may have done the same."
+      }
+    ],
+    "scientificFacts": [
+      "Bone beds often represent drought-related mass mortality events.",
+      "Seasonal droughts were common in the Mesozoic interior.",
+      "Dinosaurs may have migrated to follow water sources."
+    ]
+  },
+  {
+    "id": "herd_migration",
+    "name": "Great Migration",
+    "type": "wildlife",
+    "category": "event",
+    "rarity": "uncommon",
+    "biomes": ["fern_prairies", "coastal_wetlands"],
+    "description": "A massive herd of hadrosaurs thunders across the landscape in their annual migration.",
+    "choices": [
+      {
+        "id": "follow_herd",
+        "text": "Follow the migrating herd",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "reward",
+            "value": { "experience": 20, "codex": "migration_patterns" },
+            "chance": 0.7,
+            "description": "You travel safely among the herd and learn their routes."
+          },
+          {
+            "type": "damage",
+            "value": 15,
+            "chance": 0.3,
+            "description": "A territorial bull charges you for getting too close."
+          }
+        ],
+        "scientificContext": "Evidence suggests some dinosaurs migrated seasonally, similar to modern wildebeest."
+      },
+      {
+        "id": "hunt_stragglers",
+        "text": "Pick off weak stragglers",
+        "requirements": [
+          { "type": "trait", "target": "diet", "value": "carnivore" }
+        ],
+        "outcomes": [
+          {
+            "type": "reward",
+            "value": { "heal": 40, "experience": 15 },
+            "chance": 0.6,
+            "description": "An easy meal from an exhausted juvenile."
+          },
+          {
+            "type": "combat",
+            "value": "protective_adult",
+            "chance": 0.4,
+            "description": "A protective adult notices your approach!"
+          }
+        ],
+        "scientificContext": "Predators commonly targeted young, old, or sick individuals during migrations."
+      },
+      {
+        "id": "avoid_stampede",
+        "text": "Stay clear of the stampede",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "heal",
+            "value": 5,
+            "chance": 1.0,
+            "description": "You rest and observe from a safe distance."
+          }
+        ],
+        "scientificContext": "A stampeding hadrosaur herd would have been extremely dangerous to anything in their path."
+      }
+    ],
+    "scientificFacts": [
+      "Hadrosaur trackways suggest herds of thousands of individuals.",
+      "Migration routes may have spanned hundreds of kilometers.",
+      "Nesting grounds were often distant from feeding areas."
+    ]
+  },
+  {
+    "id": "nesting_ground",
+    "name": "Nesting Ground Discovery",
+    "type": "resource",
+    "category": "discovery",
+    "rarity": "uncommon",
+    "biomes": ["all"],
+    "description": "You stumble upon a dinosaur nesting ground with eggs partially buried in vegetation.",
+    "choices": [
+      {
+        "id": "eat_eggs",
+        "text": "Eat the nutritious eggs",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "heal",
+            "value": 35,
+            "chance": 0.5,
+            "description": "A protein-rich meal restores your strength."
+          },
+          {
+            "type": "combat",
+            "value": "angry_parent",
+            "chance": 0.5,
+            "description": "The parent returns and attacks!"
+          }
+        ],
+        "scientificContext": "Many dinosaurs were opportunistic egg-eaters, including Oviraptor (though its name is a misnomer)."
+      },
+      {
+        "id": "study_nests",
+        "text": "Study the nesting behavior",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "codex",
+            "value": "dinosaur_parenting",
+            "chance": 1.0,
+            "description": "You learn about dinosaur reproductive behavior."
+          },
+          {
+            "type": "trait",
+            "value": "nest_knowledge",
+            "chance": 0.3,
+            "description": "Understanding nesting helps you find more resources."
+          }
+        ],
+        "scientificContext": "Maiasaura fossils showed evidence of parental care, changing our view of dinosaur behavior."
+      },
+      {
+        "id": "protect_nest",
+        "text": "Guard the nest from other predators",
+        "requirements": [
+          { "type": "stat", "target": "defense", "value": 6, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "trait",
+            "value": "guardian_reputation",
+            "chance": 0.5,
+            "description": "The returning parent sees you as an ally."
+          },
+          {
+            "type": "combat",
+            "value": "egg_thief",
+            "chance": 0.3,
+            "description": "You must fight off an egg-stealing predator."
+          },
+          {
+            "type": "reward",
+            "value": { "experience": 30 },
+            "chance": 0.2,
+            "description": "Your vigilance is rewarded when the grateful parent shares food."
+          }
+        ],
+        "scientificContext": "Some dinosaurs may have formed symbiotic relationships for nest protection."
+      }
+    ],
+    "scientificFacts": [
+      "Dinosaur eggs were typically laid in clutches of 10-40 eggs.",
+      "Some nests show evidence of multiple layers from returning parents.",
+      "Eggshell fragments help identify dinosaur species at fossil sites."
+    ]
+  },
+  {
+    "id": "insect_swarm",
+    "name": "Prehistoric Insect Swarm",
+    "type": "wildlife",
+    "category": "hazard",
+    "rarity": "common",
+    "biomes": ["coastal_wetlands", "fern_prairies"],
+    "description": "A massive swarm of prehistoric insects descends upon the area.",
+    "choices": [
+      {
+        "id": "endure_swarm",
+        "text": "Endure the biting swarm",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "damage",
+            "value": 10,
+            "chance": 0.7,
+            "description": "The insects bite and sting but eventually move on."
+          },
+          {
+            "type": "status",
+            "value": "infected",
+            "chance": 0.3,
+            "description": "Some bites become infected."
+          }
+        ],
+        "scientificContext": "Mesozoic insects were vectors for diseases and parasites affecting dinosaurs."
+      },
+      {
+        "id": "mud_bath",
+        "text": "Roll in mud for protection",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "status",
+            "value": "muddy",
+            "chance": 1.0,
+            "description": "The mud coating protects you from bites."
+          },
+          {
+            "type": "trait",
+            "value": "mud_armor",
+            "chance": 0.2,
+            "description": "You learn the value of mud as natural protection."
+          }
+        ],
+        "scientificContext": "Modern animals like elephants and rhinos use mud baths for insect protection."
+      },
+      {
+        "id": "eat_insects",
+        "text": "Feast on the abundant prey",
+        "requirements": [
+          { "type": "stat", "target": "speed", "value": 8, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "heal",
+            "value": 25,
+            "chance": 0.8,
+            "description": "You catch and eat hundreds of nutritious insects."
+          },
+          {
+            "type": "trait",
+            "value": "insectivore_bonus",
+            "chance": 0.2,
+            "description": "You develop a taste for this easy prey."
+          }
+        ],
+        "scientificContext": "Many small dinosaurs and pterosaurs were insectivores."
+      }
+    ],
+    "scientificFacts": [
+      "Mesozoic insects included giant dragonflies with 70cm wingspans.",
+      "Mosquito-like insects may have plagued dinosaurs.",
+      "Insect fossils in amber preserve amazing details of prehistoric life."
+    ]
+  },
+  {
+    "id": "amber_discovery",
+    "name": "Amber Deposit",
+    "type": "discovery",
+    "category": "resource",
+    "rarity": "rare",
+    "biomes": ["forest"],
+    "description": "Golden resin oozes from ancient conifers, trapping small creatures forever.",
+    "choices": [
+      {
+        "id": "collect_amber",
+        "text": "Carefully collect amber pieces",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "reward",
+            "value": { "fossils": 15, "item": "amber_specimen" },
+            "chance": 0.8,
+            "description": "You find several beautiful amber pieces with preserved insects."
+          },
+          {
+            "type": "status",
+            "value": "sticky",
+            "chance": 0.2,
+            "description": "Fresh resin gets stuck to you."
+          }
+        ],
+        "scientificContext": "Amber has preserved prehistoric life in incredible detail, including feathers and blood cells."
+      },
+      {
+        "id": "study_inclusions",
+        "text": "Study the creatures trapped within",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "codex",
+            "value": "amber_preservation",
+            "chance": 1.0,
+            "description": "You learn about this unique form of fossilization."
+          },
+          {
+            "type": "reward",
+            "value": { "experience": 20 },
+            "chance": 0.5,
+            "description": "Your observation skills improve."
+          }
+        ],
+        "scientificContext": "Amber from Myanmar has preserved feathered dinosaur tails and ancient birds."
+      }
+    ],
+    "scientificFacts": [
+      "Amber is fossilized tree resin, not sap.",
+      "The oldest amber with inclusions is about 230 million years old.",
+      "Amber can preserve soft tissues, DNA is too degraded to extract."
+    ]
+  },
+  {
+    "id": "predator_territory",
+    "name": "Apex Predator Territory",
+    "type": "wildlife",
+    "category": "danger",
+    "rarity": "uncommon",
+    "biomes": ["all"],
+    "description": "Fresh kills and territorial markings indicate you've entered a large predator's territory.",
+    "choices": [
+      {
+        "id": "sneak_through",
+        "text": "Move through quietly",
+        "requirements": [
+          { "type": "stat", "target": "speed", "value": 7, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "reward",
+            "value": { "experience": 15 },
+            "chance": 0.6,
+            "description": "You pass through undetected."
+          },
+          {
+            "type": "combat",
+            "value": "apex_predator",
+            "chance": 0.4,
+            "description": "The territory owner finds you!"
+          }
+        ],
+        "scientificContext": "Predators like T. rex likely had territories spanning many square kilometers."
+      },
+      {
+        "id": "scavenge_kills",
+        "text": "Scavenge from the predator's kills",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "heal",
+            "value": 30,
+            "chance": 0.4,
+            "description": "You find fresh meat and eat quickly."
+          },
+          {
+            "type": "combat",
+            "value": "returning_predator",
+            "chance": 0.6,
+            "description": "The predator returns to its kill!"
+          }
+        ],
+        "scientificContext": "Scavenging was common behavior - even T. rex likely scavenged when possible."
+      },
+      {
+        "id": "mark_own_territory",
+        "text": "Challenge for territory",
+        "requirements": [
+          { "type": "stat", "target": "attack", "value": 12, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "combat",
+            "value": "territory_battle",
+            "chance": 0.8,
+            "description": "The apex predator accepts your challenge!"
+          },
+          {
+            "type": "trait",
+            "value": "territory_claimed",
+            "chance": 0.2,
+            "description": "The predator retreats, recognizing your dominance."
+          }
+        ],
+        "scientificContext": "Territorial disputes likely resulted in many dinosaur injuries seen in fossils."
+      }
+    ],
+    "scientificFacts": [
+      "Bite marks on dinosaur bones show intraspecific combat was common.",
+      "Apex predators needed large territories to find enough food.",
+      "Territorial behavior is seen in most modern large predators."
+    ]
+  },
+  {
+    "id": "ancient_forest",
+    "name": "Ancient Forest",
+    "type": "resource",
+    "category": "exploration",
+    "rarity": "common",
+    "biomes": ["forest"],
+    "description": "Towering conifers and ginkgoes create a primeval forest teeming with life.",
+    "choices": [
+      {
+        "id": "forage_plants",
+        "text": "Forage for edible plants",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "heal",
+            "value": 20,
+            "chance": 0.7,
+            "description": "You find nutritious ferns and seeds."
+          },
+          {
+            "type": "status",
+            "value": "poisoned",
+            "chance": 0.3,
+            "description": "Some plants prove toxic!"
+          }
+        ],
+        "scientificContext": "Mesozoic forests were dominated by conifers, ferns, and ginkgoes - flowering plants were just emerging."
+      },
+      {
+        "id": "hunt_small_prey",
+        "text": "Hunt small creatures in the undergrowth",
+        "requirements": [
+          { "type": "trait", "target": "diet", "value": "carnivore" }
+        ],
+        "outcomes": [
+          {
+            "type": "heal",
+            "value": 25,
+            "chance": 0.8,
+            "description": "You catch small mammals and lizards."
+          },
+          {
+            "type": "codex",
+            "value": "mesozoic_mammals",
+            "chance": 0.2,
+            "description": "You learn about the small mammals that lived alongside dinosaurs."
+          }
+        ],
+        "scientificContext": "Small mammals thrived in the shadow of dinosaurs, mostly nocturnal to avoid predators."
+      },
+      {
+        "id": "climb_canopy",
+        "text": "Explore the forest canopy",
+        "requirements": [
+          { "type": "stat", "target": "speed", "value": 8, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "reward",
+            "value": { "fossils": 8, "experience": 15 },
+            "chance": 0.6,
+            "description": "You find bird nests and unique vantage points."
+          },
+          {
+            "type": "damage",
+            "value": 15,
+            "chance": 0.4,
+            "description": "A branch breaks under your weight."
+          }
+        ],
+        "scientificContext": "Arboreal dinosaurs like Microraptor hunted in forest canopies."
+      }
+    ],
+    "scientificFacts": [
+      "Flowering plants only became dominant late in the Cretaceous.",
+      "Ginkgoes are living fossils, largely unchanged since the Mesozoic.",
+      "Forest fires were common and helped shape dinosaur ecosystems."
+    ]
+  },
+  {
+    "id": "disease_outbreak",
+    "name": "Mysterious Illness",
+    "type": "environmental",
+    "category": "hazard",
+    "rarity": "rare",
+    "biomes": ["all"],
+    "description": "Dead and dying dinosaurs litter the landscape. A disease sweeps through the population.",
+    "choices": [
+      {
+        "id": "avoid_sick",
+        "text": "Avoid all contact with the sick",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "status",
+            "value": "healthy",
+            "chance": 0.8,
+            "description": "Your caution keeps you safe."
+          },
+          {
+            "type": "status",
+            "value": "infected",
+            "chance": 0.2,
+            "description": "Despite your efforts, you contract the illness."
+          }
+        ],
+        "scientificContext": "Dinosaur bones show evidence of infections, tumors, and other diseases."
+      },
+      {
+        "id": "scavenge_dead",
+        "text": "Scavenge from the fallen",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "heal",
+            "value": 40,
+            "chance": 0.4,
+            "description": "Easy meals from the victims."
+          },
+          {
+            "type": "status",
+            "value": "infected",
+            "chance": 0.6,
+            "description": "Eating diseased flesh was unwise."
+          }
+        ],
+        "scientificContext": "Disease transmission through scavenging affected predator populations."
+      },
+      {
+        "id": "find_medicine",
+        "text": "Search for medicinal plants",
+        "requirements": [
+          { "type": "stat", "target": "intelligence", "value": 6, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "trait",
+            "value": "disease_resistant",
+            "chance": 0.5,
+            "description": "You find plants that boost your immunity."
+          },
+          {
+            "type": "heal",
+            "value": 20,
+            "chance": 0.5,
+            "description": "The plants have general healing properties."
+          }
+        ],
+        "scientificContext": "Modern animals practice self-medication - dinosaurs may have done the same."
+      }
+    ],
+    "scientificFacts": [
+      "Dinosaur fossils show evidence of bone infections and cancers.",
+      "Parasites including intestinal worms have been found in dinosaur coprolites.",
+      "Disease may have contributed to some local extinctions before the K-Pg event."
+    ]
+  },
+  {
+    "id": "ancient_ruins",
+    "name": "Petrified Forest",
+    "type": "discovery",
+    "category": "exploration",
+    "rarity": "rare",
+    "biomes": ["volcanic_highlands"],
+    "description": "An ancient forest turned to stone. Massive petrified logs stretch across the landscape.",
+    "choices": [
+      {
+        "id": "study_petrification",
+        "text": "Study the fossilization process",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "codex",
+            "value": "petrification",
+            "chance": 1.0,
+            "description": "You learn how wood becomes stone over millions of years."
+          },
+          {
+            "type": "trait",
+            "value": "geological_insight",
+            "chance": 0.3,
+            "description": "Your understanding of deep time expands."
+          }
+        ],
+        "scientificContext": "Petrified forests form when volcanic ash buries trees and silica replaces organic material."
+      },
+      {
+        "id": "search_fossils",
+        "text": "Search between the logs for fossils",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "reward",
+            "value": { "fossils": 20, "item": "rare_fossil" },
+            "chance": 0.6,
+            "description": "The preserved forest contains many trapped creatures."
+          },
+          {
+            "type": "damage",
+            "value": 10,
+            "chance": 0.4,
+            "description": "Sharp petrified wood cuts you."
+          }
+        ],
+        "scientificContext": "Petrified forests often preserve entire ecosystems including animals."
+      }
+    ],
+    "scientificFacts": [
+      "The Petrified Forest in Arizona is about 225 million years old.",
+      "Petrified wood can contain agate, jasper, and other minerals.",
+      "Some petrified logs are over 200 feet long."
+    ]
+  },
+  {
+    "id": "pack_encounter",
+    "name": "Rival Pack",
+    "type": "wildlife",
+    "category": "social",
+    "rarity": "uncommon",
+    "biomes": ["all"],
+    "description": "You encounter a pack of your own species. Will they accept you or see you as a rival?",
+    "choices": [
+      {
+        "id": "display_submission",
+        "text": "Show submissive behavior",
+        "requirements": [],
+        "outcomes": [
+          {
+            "type": "trait",
+            "value": "pack_member",
+            "chance": 0.6,
+            "description": "The pack accepts you as a subordinate member."
+          },
+          {
+            "type": "damage",
+            "value": 10,
+            "chance": 0.4,
+            "description": "You receive a warning bite but are tolerated."
+          }
+        ],
+        "scientificContext": "Pack dynamics in dromaeosaurids likely involved complex social hierarchies."
+      },
+      {
+        "id": "challenge_alpha",
+        "text": "Challenge for leadership",
+        "requirements": [
+          { "type": "stat", "target": "attack", "value": 10, "comparison": "greater" }
+        ],
+        "outcomes": [
+          {
+            "type": "combat",
+            "value": "pack_alpha",
+            "chance": 0.7,
+            "description": "The alpha accepts your challenge!"
+          },
+          {
+            "type": "trait",
+            "value": "alpha_status",
+            "chance": 0.3,
+            "description": "Your display of strength makes the alpha back down."
+          }
+        ],
+        "scientificContext": "Leadership challenges in predator packs often involved ritualized combat."
+      },
+      {
+        "id": "hunt_together",
+        "text": "Propose a cooperative hunt",
+        "requirements": [
+          { "type": "trait", "target": "social_behavior", "value": "pack_hunter" }
+        ],
+        "outcomes": [
+          {
+            "type": "combat",
+            "value": "large_prey",
+            "chance": 0.8,
+            "description": "Together you take down impressive prey!"
+          },
+          {
+            "type": "trait",
+            "value": "pack_ally",
+            "chance": 0.2,
+            "description": "The successful hunt bonds you to this pack."
+          }
+        ],
+        "scientificContext": "Fossil evidence suggests dromaeosaurids hunted in coordinated groups."
+      }
+    ],
+    "scientificFacts": [
+      "Multiple Deinonychus fossils found with Tenontosaurus suggest pack hunting.",
+      "Pack size may have varied seasonally with prey availability.",
+      "Social hunting allowed taking prey much larger than individual hunters."
+    ]
+  }
+]

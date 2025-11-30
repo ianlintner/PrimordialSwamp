@@ -3,6 +3,13 @@
     "id": "deinonychus",
     "name": "Deinonychus",
     "species": "Deinonychus antirrhopus",
+    "taxonomy": {
+      "clade": "Theropoda",
+      "family": "Dromaeosauridae",
+      "genus": "Deinonychus",
+      "species": "antirrhopus",
+      "commonName": "Terrible Claw"
+    },
     "period": {
       "era": "Mesozoic",
       "period": "Early Cretaceous",
@@ -11,9 +18,39 @@
     "size": {
       "length": 3.4,
       "height": 1.0,
-      "weight": 73
+      "weight": 73,
+      "sizeCategory": "medium"
     },
     "role": "hunter",
+    "diet": "carnivore",
+    "socialBehavior": "pack_hunter",
+    "activityPattern": "diurnal",
+    "locomotion": "bipedal",
+    "physicalTraits": {
+      "hasFeathers": true,
+      "hasArmor": false,
+      "hasHorns": false,
+      "hasClaws": true,
+      "hasTailWeapon": false,
+      "hasCrest": false,
+      "hasSail": false,
+      "teethType": "serrated",
+      "skinType": "feathers"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["forest", "plains"],
+      "preferredClimate": "temperate",
+      "aquaticCapability": "wading",
+      "altitudeRange": "lowland"
+    },
+    "behavioralTraits": {
+      "aggression": 8,
+      "intelligence": 8,
+      "courage": 7,
+      "sociability": 9,
+      "patience": 6,
+      "curiosity": 7
+    },
     "baseStats": {
       "health": 60,
       "attack": 8,
@@ -28,24 +65,42 @@
       "speed": 0.8,
       "stamina": 10
     },
-    "abilities": ["sickle_claw", "pack_coordination"],
-    "passives": ["feathered_agility"],
+    "abilities": ["sickle_claw", "pack_coordination", "leaping_strike", "coordinated_assault"],
+    "passives": ["feathered_agility", "pack_tactics"],
+    "synergyAbilities": ["raptor_frenzy"],
+    "weaknesses": ["underbelly", "crushing"],
+    "resistances": ["slashing"],
     "unlockCondition": {
       "type": "always"
     },
     "description": "An agile pack hunter with deadly sickle claws on its hind feet. Excels at dealing critical damage and coordinated attacks.",
     "scientificFacts": [
       "Deinonychus means 'terrible claw', named after its distinctive enlarged claw on each foot.",
-      "Discovery of Deinonychus in the 1960s revolutionized how scientists viewed dinosaurs, suggesting they were active and agile rather than slow and sluggish.",
+      "Discovery of Deinonychus in the 1960s by John Ostrom revolutionized how scientists viewed dinosaurs, suggesting they were active and agile rather than slow and sluggish.",
       "Evidence suggests Deinonychus had feathers, used for display and possibly insulation.",
-      "The enlarged claw on each foot could slice with tremendous force, potentially held retracted while running like modern birds of prey.",
-      "Fossil evidence suggests they hunted in coordinated packs, similar to modern wolves."
-    ]
+      "The enlarged sickle claw on each foot was about 12 cm long and was held retracted while running.",
+      "Fossil evidence from the Cloverly Formation suggests they hunted in coordinated packs.",
+      "CT scans of the brain cavity suggest high intelligence comparable to modern birds of prey."
+    ],
+    "funFact": "Deinonychus was the inspiration for the 'Velociraptors' in Jurassic Park - real Velociraptors were much smaller!",
+    "discoveryHistory": {
+      "discoveredBy": "John Ostrom",
+      "year": 1969,
+      "location": "Montana, USA"
+    },
+    "relatedSpecies": ["velociraptor", "utahraptor", "dromaeosaurus"]
   },
   {
     "id": "ankylosaurus",
     "name": "Ankylosaurus",
     "species": "Ankylosaurus magniventris",
+    "taxonomy": {
+      "clade": "Thyreophora",
+      "family": "Ankylosauridae",
+      "genus": "Ankylosaurus",
+      "species": "magniventris",
+      "commonName": "Fused Lizard"
+    },
     "period": {
       "era": "Mesozoic",
       "period": "Late Cretaceous",
@@ -54,9 +109,39 @@
     "size": {
       "length": 6.25,
       "height": 1.7,
-      "weight": 4800
+      "weight": 4800,
+      "sizeCategory": "large"
     },
     "role": "tank",
+    "diet": "herbivore",
+    "socialBehavior": "solitary",
+    "activityPattern": "diurnal",
+    "locomotion": "quadrupedal",
+    "physicalTraits": {
+      "hasFeathers": false,
+      "hasArmor": true,
+      "hasHorns": true,
+      "hasClaws": false,
+      "hasTailWeapon": true,
+      "hasCrest": false,
+      "hasSail": false,
+      "teethType": "peg-shaped",
+      "skinType": "armored"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["forest", "plains"],
+      "preferredClimate": "temperate",
+      "aquaticCapability": "none",
+      "altitudeRange": "lowland"
+    },
+    "behavioralTraits": {
+      "aggression": 3,
+      "intelligence": 4,
+      "courage": 9,
+      "sociability": 2,
+      "patience": 10,
+      "curiosity": 3
+    },
     "baseStats": {
       "health": 120,
       "attack": 5,
@@ -71,8 +156,11 @@
       "speed": 0.2,
       "stamina": 12
     },
-    "abilities": ["tail_club", "fortify"],
-    "passives": ["armored_hide", "immovable"],
+    "abilities": ["tail_club", "fortify", "ground_pound", "armored_charge"],
+    "passives": ["armored_hide", "immovable", "osteoderm_defense"],
+    "synergyAbilities": ["fortress_stance"],
+    "weaknesses": ["underbelly"],
+    "resistances": ["slashing", "piercing", "physical"],
     "unlockCondition": {
       "type": "always"
     },
@@ -80,15 +168,30 @@
     "scientificFacts": [
       "Ankylosaurus had a tail club that could swing with enough force to break bones, generating approximately 14,000 Newtons of force.",
       "Its body was covered in osteoderms - bony deposits forming plates and spikes embedded in the skin.",
-      "Even its eyelids had armored shutters to protect against attacks.",
-      "Despite its heavy armor, recent studies suggest Ankylosaurus could move at speeds up to 6 mph when needed.",
-      "It was one of the last dinosaurs before the K-Pg extinction event 66 million years ago."
-    ]
+      "Even its eyelids had armored shutters to protect against attacks from predators like T. rex.",
+      "The tail club was formed from fused vertebrae and could weigh over 5 kg.",
+      "Despite its heavy armor, Ankylosaurus could move at speeds up to 6 mph when threatened.",
+      "It was one of the last non-avian dinosaurs, living right up until the K-Pg extinction event."
+    ],
+    "funFact": "Ankylosaurus was so heavily armored that even T. rex would struggle to bite through its defenses!",
+    "discoveryHistory": {
+      "discoveredBy": "Barnum Brown",
+      "year": 1908,
+      "location": "Montana, USA"
+    },
+    "relatedSpecies": ["euoplocephalus", "nodosaurus", "polacanthus"]
   },
   {
     "id": "pteranodon",
     "name": "Pteranodon",
     "species": "Pteranodon longiceps",
+    "taxonomy": {
+      "clade": "Pterosauria",
+      "family": "Pteranodontidae",
+      "genus": "Pteranodon",
+      "species": "longiceps",
+      "commonName": "Toothless Wing"
+    },
     "period": {
       "era": "Mesozoic",
       "period": "Late Cretaceous",
@@ -97,9 +200,39 @@
     "size": {
       "length": 1.8,
       "height": 0.9,
-      "weight": 25
+      "weight": 25,
+      "sizeCategory": "medium"
     },
     "role": "scout",
+    "diet": "piscivore",
+    "socialBehavior": "colonial",
+    "activityPattern": "diurnal",
+    "locomotion": "flying",
+    "physicalTraits": {
+      "hasFeathers": false,
+      "hasArmor": false,
+      "hasHorns": false,
+      "hasClaws": true,
+      "hasTailWeapon": false,
+      "hasCrest": true,
+      "hasSail": false,
+      "teethType": "none",
+      "skinType": "leathery"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["coastal", "cliffs", "ocean"],
+      "preferredClimate": "coastal",
+      "aquaticCapability": "diving",
+      "altitudeRange": "varied"
+    },
+    "behavioralTraits": {
+      "aggression": 4,
+      "intelligence": 6,
+      "courage": 5,
+      "sociability": 7,
+      "patience": 8,
+      "curiosity": 9
+    },
     "baseStats": {
       "health": 40,
       "attack": 6,
@@ -114,8 +247,11 @@
       "speed": 1.0,
       "stamina": 8
     },
-    "abilities": ["aerial_scout", "dive_attack", "escape_flight"],
-    "passives": ["first_strike", "evasive"],
+    "abilities": ["aerial_scout", "dive_attack", "escape_flight", "thermal_soaring", "fish_snatch"],
+    "passives": ["first_strike", "evasive", "hollow_bones"],
+    "synergyAbilities": ["death_from_above"],
+    "weaknesses": ["body", "sonic"],
+    "resistances": [],
     "unlockCondition": {
       "type": "always"
     },
@@ -123,15 +259,30 @@
     "scientificFacts": [
       "Pteranodon was not actually a dinosaur, but a pterosaur - a flying reptile that lived alongside dinosaurs.",
       "With a wingspan of up to 7 meters (23 feet), it was one of the largest flying animals of all time.",
-      "The distinctive head crest may have been used for steering during flight or for display.",
-      "Pteranodon was likely a piscivore, feeding primarily on fish by skimming the ocean surface.",
-      "Despite its large size, it was very lightweight - hollow bones kept its weight to about 25 kg."
-    ]
+      "The distinctive head crest was likely used for sexual display and may have aided in flight steering.",
+      "Pteranodon was toothless (its name means 'toothless wing') and caught fish with its long beak.",
+      "Hollow, thin-walled bones kept its weight to about 25 kg despite its enormous wingspan.",
+      "Fossils are found in the Niobrara Chalk, indicating it lived near ancient shallow seas."
+    ],
+    "funFact": "Male Pteranodons had crests up to 1 meter long, likely used to attract mates!",
+    "discoveryHistory": {
+      "discoveredBy": "Othniel Charles Marsh",
+      "year": 1876,
+      "location": "Kansas, USA"
+    },
+    "relatedSpecies": ["quetzalcoatlus", "pterodactylus", "nyctosaurus"]
   },
   {
     "id": "tyrannosaurus",
     "name": "Tyrannosaurus Rex",
     "species": "Tyrannosaurus rex",
+    "taxonomy": {
+      "clade": "Theropoda",
+      "family": "Tyrannosauridae",
+      "genus": "Tyrannosaurus",
+      "species": "rex",
+      "commonName": "Tyrant Lizard King"
+    },
     "period": {
       "era": "Mesozoic",
       "period": "Late Cretaceous",
@@ -140,9 +291,39 @@
     "size": {
       "length": 12.3,
       "height": 4.0,
-      "weight": 8400
+      "weight": 8400,
+      "sizeCategory": "huge"
     },
     "role": "powerhouse",
+    "diet": "carnivore",
+    "socialBehavior": "territorial",
+    "activityPattern": "cathemeral",
+    "locomotion": "bipedal",
+    "physicalTraits": {
+      "hasFeathers": true,
+      "hasArmor": false,
+      "hasHorns": false,
+      "hasClaws": true,
+      "hasTailWeapon": false,
+      "hasCrest": false,
+      "hasSail": false,
+      "teethType": "serrated",
+      "skinType": "proto-feathers"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["forest", "plains"],
+      "preferredClimate": "temperate",
+      "aquaticCapability": "wading",
+      "altitudeRange": "lowland"
+    },
+    "behavioralTraits": {
+      "aggression": 10,
+      "intelligence": 7,
+      "courage": 10,
+      "sociability": 3,
+      "patience": 6,
+      "curiosity": 5
+    },
     "baseStats": {
       "health": 150,
       "attack": 15,
@@ -157,19 +338,868 @@
       "speed": 0.4,
       "stamina": 15
     },
-    "abilities": ["crushing_bite", "terrifying_roar", "apex_strike"],
-    "passives": ["apex_predator", "intimidating"],
+    "abilities": ["crushing_bite", "terrifying_roar", "apex_strike", "bone_crusher", "pursuit"],
+    "passives": ["apex_predator", "intimidating", "binocular_vision", "keen_smell"],
+    "synergyAbilities": ["extinction_event"],
+    "weaknesses": ["legs"],
+    "resistances": ["physical", "sonic"],
     "unlockCondition": {
       "type": "depth",
-      "value": 5
+      "value": 5,
+      "description": "Reach swamp depth 5 to unlock the ultimate predator"
     },
     "description": "The ultimate apex predator. Devastating damage output but slow and resource-intensive. Unlocked by reaching depth 5.",
     "scientificFacts": [
       "T. rex had the strongest bite force of any land animal, estimated at 12,800 pounds (57,000 Newtons).",
-      "Recent discoveries suggest T. rex may have been partially covered in feathers, at least as juveniles.",
-      "Its tiny arms were actually incredibly strong, capable of lifting 400 pounds each.",
-      "T. rex had binocular vision and an excellent sense of smell, making it a formidable hunter.",
-      "It lived exclusively in what is now western North America, in forests and open plains."
-    ]
+      "Recent discoveries suggest juveniles had proto-feathers for insulation, which may have been lost in adulthood.",
+      "Its tiny arms were actually incredibly strong, capable of lifting 400 pounds each, and may have been used to grip prey.",
+      "T. rex had binocular vision better than a hawk's and an excellent sense of smell rivaling modern vultures.",
+      "Studies suggest T. rex could run at speeds of 12-25 mph, though this remains debated.",
+      "The largest known specimen, 'Scotty', was 13 meters long and may have weighed over 9,000 kg."
+    ],
+    "funFact": "T. rex teeth could be up to 30 cm long including the root - the largest teeth of any carnivorous dinosaur!",
+    "discoveryHistory": {
+      "discoveredBy": "Barnum Brown",
+      "year": 1902,
+      "location": "Montana, USA"
+    },
+    "relatedSpecies": ["tarbosaurus", "albertosaurus", "gorgosaurus"]
+  },
+  {
+    "id": "spinosaurus",
+    "name": "Spinosaurus",
+    "species": "Spinosaurus aegyptiacus",
+    "taxonomy": {
+      "clade": "Theropoda",
+      "family": "Spinosauridae",
+      "genus": "Spinosaurus",
+      "species": "aegyptiacus",
+      "commonName": "Spine Lizard"
+    },
+    "period": {
+      "era": "Mesozoic",
+      "period": "Middle Cretaceous",
+      "mya": [99, 93.5]
+    },
+    "size": {
+      "length": 15.0,
+      "height": 5.0,
+      "weight": 7400,
+      "sizeCategory": "colossal"
+    },
+    "role": "aquatic_hunter",
+    "diet": "piscivore",
+    "socialBehavior": "solitary",
+    "activityPattern": "cathemeral",
+    "locomotion": "semi_aquatic",
+    "physicalTraits": {
+      "hasFeathers": false,
+      "hasArmor": false,
+      "hasHorns": false,
+      "hasClaws": true,
+      "hasTailWeapon": true,
+      "hasCrest": false,
+      "hasSail": true,
+      "teethType": "serrated",
+      "skinType": "scales"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["swamp", "river", "coastal"],
+      "preferredClimate": "tropical",
+      "aquaticCapability": "swimming",
+      "altitudeRange": "lowland"
+    },
+    "behavioralTraits": {
+      "aggression": 9,
+      "intelligence": 6,
+      "courage": 8,
+      "sociability": 2,
+      "patience": 9,
+      "curiosity": 5
+    },
+    "baseStats": {
+      "health": 140,
+      "attack": 14,
+      "defense": 5,
+      "speed": 7,
+      "stamina": 90
+    },
+    "growthRates": {
+      "health": 18,
+      "attack": 1.8,
+      "defense": 0.7,
+      "speed": 0.6,
+      "stamina": 12
+    },
+    "abilities": ["aquatic_ambush", "sail_intimidation", "crocodilian_snap", "tail_propulsion", "fish_hook"],
+    "passives": ["semi_aquatic", "pressure_sensors", "conical_teeth"],
+    "synergyAbilities": ["river_terror"],
+    "weaknesses": ["sail"],
+    "resistances": ["cold"],
+    "unlockCondition": {
+      "type": "depth",
+      "value": 3,
+      "description": "Navigate 3 swamp biomes to unlock the river titan"
+    },
+    "description": "The largest known carnivorous dinosaur, specialized for aquatic hunting. Dominates water encounters with devastating ambush attacks.",
+    "scientificFacts": [
+      "Spinosaurus was the largest known carnivorous dinosaur, reaching lengths of 15+ meters.",
+      "Recent studies (2020) revealed it had a paddle-like tail for swimming, confirming aquatic lifestyle.",
+      "The sail on its back could reach 1.8 meters tall, possibly used for display or thermoregulation.",
+      "Its conical teeth and long snout were perfectly adapted for catching fish, similar to modern gharials.",
+      "Dense bones helped it sink and hunt underwater, unlike other theropods.",
+      "Pressure sensors in its snout could detect prey movement in murky water."
+    ],
+    "funFact": "Spinosaurus is the only known dinosaur adapted for a semi-aquatic lifestyle, spending much of its time in water!",
+    "discoveryHistory": {
+      "discoveredBy": "Ernst Stromer",
+      "year": 1912,
+      "location": "Egypt"
+    },
+    "relatedSpecies": ["baryonyx", "suchomimus", "irritator"]
+  },
+  {
+    "id": "pachycephalosaurus",
+    "name": "Pachycephalosaurus",
+    "species": "Pachycephalosaurus wyomingensis",
+    "taxonomy": {
+      "clade": "Marginocephalia",
+      "family": "Pachycephalosauridae",
+      "genus": "Pachycephalosaurus",
+      "species": "wyomingensis",
+      "commonName": "Thick-Headed Lizard"
+    },
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "mya": [70, 66]
+    },
+    "size": {
+      "length": 4.5,
+      "height": 1.8,
+      "weight": 450,
+      "sizeCategory": "medium"
+    },
+    "role": "specialist",
+    "diet": "omnivore",
+    "socialBehavior": "herd_member",
+    "activityPattern": "diurnal",
+    "locomotion": "bipedal",
+    "physicalTraits": {
+      "hasFeathers": false,
+      "hasArmor": true,
+      "hasHorns": true,
+      "hasClaws": false,
+      "hasTailWeapon": false,
+      "hasCrest": false,
+      "hasSail": false,
+      "teethType": "mixed",
+      "skinType": "scales"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["forest", "plains", "hills"],
+      "preferredClimate": "temperate",
+      "aquaticCapability": "wading",
+      "altitudeRange": "highland"
+    },
+    "behavioralTraits": {
+      "aggression": 6,
+      "intelligence": 5,
+      "courage": 8,
+      "sociability": 6,
+      "patience": 4,
+      "curiosity": 5
+    },
+    "baseStats": {
+      "health": 80,
+      "attack": 9,
+      "defense": 6,
+      "speed": 7,
+      "stamina": 75
+    },
+    "growthRates": {
+      "health": 10,
+      "attack": 1.4,
+      "defense": 0.8,
+      "speed": 0.6,
+      "stamina": 10
+    },
+    "abilities": ["skull_bash", "charging_headbutt", "stunning_ram", "defensive_crouch"],
+    "passives": ["thick_skull", "hard_headed", "concussion_proof"],
+    "synergyAbilities": ["battering_ram"],
+    "weaknesses": ["body", "legs"],
+    "resistances": ["crushing", "sonic"],
+    "unlockCondition": {
+      "type": "wins",
+      "value": 10,
+      "description": "Win 10 encounters using defensive strategies"
+    },
+    "description": "A headbutting specialist with a dome-shaped skull up to 25 cm thick. Excels at stunning enemies and breaking through defenses.",
+    "scientificFacts": [
+      "Pachycephalosaurus had a skull dome up to 25 cm (10 inches) thick.",
+      "The dome was surrounded by bony knobs and spikes for additional protection.",
+      "Recent studies debate whether they actually headbutted - the dome shape may not have aligned properly.",
+      "Some scientists believe the dome was primarily for species recognition and display.",
+      "They lived alongside T. rex and Triceratops in the Hell Creek Formation.",
+      "Juvenile specimens were once thought to be different species (Stygimoloch, Dracorex)."
+    ],
+    "funFact": "The skulls of Dracorex and Stygimoloch are now believed to be juvenile Pachycephalosaurus specimens!",
+    "discoveryHistory": {
+      "discoveredBy": "Donald Baird",
+      "year": 1943,
+      "location": "Montana, USA"
+    },
+    "relatedSpecies": ["stegoceras", "homalocephale", "prenocephale"]
+  },
+  {
+    "id": "utahraptor",
+    "name": "Utahraptor",
+    "species": "Utahraptor ostrommaysi",
+    "taxonomy": {
+      "clade": "Theropoda",
+      "family": "Dromaeosauridae",
+      "genus": "Utahraptor",
+      "species": "ostrommaysi",
+      "commonName": "Utah's Thief"
+    },
+    "period": {
+      "era": "Mesozoic",
+      "period": "Early Cretaceous",
+      "mya": [126, 121]
+    },
+    "size": {
+      "length": 7.0,
+      "height": 2.0,
+      "weight": 500,
+      "sizeCategory": "large"
+    },
+    "role": "pack_leader",
+    "diet": "carnivore",
+    "socialBehavior": "pack_hunter",
+    "activityPattern": "crepuscular",
+    "locomotion": "bipedal",
+    "physicalTraits": {
+      "hasFeathers": true,
+      "hasArmor": false,
+      "hasHorns": false,
+      "hasClaws": true,
+      "hasTailWeapon": false,
+      "hasCrest": false,
+      "hasSail": false,
+      "teethType": "serrated",
+      "skinType": "feathers"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["forest", "plains"],
+      "preferredClimate": "arid",
+      "aquaticCapability": "wading",
+      "altitudeRange": "varied"
+    },
+    "behavioralTraits": {
+      "aggression": 9,
+      "intelligence": 8,
+      "courage": 8,
+      "sociability": 8,
+      "patience": 7,
+      "curiosity": 6
+    },
+    "baseStats": {
+      "health": 90,
+      "attack": 12,
+      "defense": 4,
+      "speed": 8,
+      "stamina": 80
+    },
+    "growthRates": {
+      "health": 12,
+      "attack": 1.6,
+      "defense": 0.6,
+      "speed": 0.7,
+      "stamina": 11
+    },
+    "abilities": ["giant_sickle_claw", "alpha_strike", "pack_rally", "disemboweling_kick", "coordinated_takedown"],
+    "passives": ["pack_leader", "feathered_predator", "enhanced_vision"],
+    "synergyAbilities": ["raptor_supremacy"],
+    "weaknesses": ["underbelly"],
+    "resistances": ["cold"],
+    "unlockCondition": {
+      "type": "fossil_count",
+      "value": 100,
+      "description": "Collect 100 fossil fragments to unlock the apex raptor"
+    },
+    "description": "The largest known dromaeosaurid with sickle claws up to 24 cm long. A devastating pack hunter that can lead coordinated assaults.",
+    "scientificFacts": [
+      "Utahraptor was the largest known dromaeosaurid, at about 7 meters long.",
+      "Its sickle claw was up to 24 cm (9.5 inches) long - much larger than Deinonychus.",
+      "Named in honor of John Ostrom, who described Deinonychus and revolutionized dinosaur science.",
+      "Discovery in 1991 was remarkable timing - just before Jurassic Park released.",
+      "Recent discoveries in the Stikes Quarry found multiple individuals, suggesting pack behavior.",
+      "It lived about 50 million years before Velociraptor, showing raptors were successful for a long time."
+    ],
+    "funFact": "Utahraptor was discovered just before Jurassic Park released, almost as if nature was correcting the film's oversized 'Velociraptors'!",
+    "discoveryHistory": {
+      "discoveredBy": "James Kirkland",
+      "year": 1993,
+      "location": "Utah, USA"
+    },
+    "relatedSpecies": ["deinonychus", "achillobator", "dakotaraptor"]
+  },
+  {
+    "id": "therizinosaurus",
+    "name": "Therizinosaurus",
+    "species": "Therizinosaurus cheloniformis",
+    "taxonomy": {
+      "clade": "Theropoda",
+      "family": "Therizinosauridae",
+      "genus": "Therizinosaurus",
+      "species": "cheloniformis",
+      "commonName": "Scythe Lizard"
+    },
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "mya": [70, 66]
+    },
+    "size": {
+      "length": 10.0,
+      "height": 5.0,
+      "weight": 5000,
+      "sizeCategory": "huge"
+    },
+    "role": "bruiser",
+    "diet": "herbivore",
+    "socialBehavior": "solitary",
+    "activityPattern": "diurnal",
+    "locomotion": "bipedal",
+    "physicalTraits": {
+      "hasFeathers": true,
+      "hasArmor": false,
+      "hasHorns": false,
+      "hasClaws": true,
+      "hasTailWeapon": false,
+      "hasCrest": false,
+      "hasSail": false,
+      "teethType": "peg-shaped",
+      "skinType": "feathers"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["forest"],
+      "preferredClimate": "temperate",
+      "aquaticCapability": "none",
+      "altitudeRange": "lowland"
+    },
+    "behavioralTraits": {
+      "aggression": 4,
+      "intelligence": 5,
+      "courage": 7,
+      "sociability": 3,
+      "patience": 8,
+      "curiosity": 4
+    },
+    "baseStats": {
+      "health": 130,
+      "attack": 11,
+      "defense": 7,
+      "speed": 4,
+      "stamina": 85
+    },
+    "growthRates": {
+      "health": 16,
+      "attack": 1.5,
+      "defense": 1.0,
+      "speed": 0.3,
+      "stamina": 11
+    },
+    "abilities": ["scythe_slash", "defensive_sweep", "branch_pull", "intimidating_display", "claw_fury"],
+    "passives": ["longest_claws", "feathered_giant", "herbivore_strength"],
+    "synergyAbilities": ["reaping_storm"],
+    "weaknesses": ["neck", "body"],
+    "resistances": ["slashing"],
+    "unlockCondition": {
+      "type": "achievement",
+      "value": 0,
+      "description": "Defeat Therizinosaurus as a boss to unlock"
+    },
+    "description": "A bizarre theropod with the longest claws of any known animal - up to 1 meter long! Despite being an herbivore, those claws make it extremely dangerous.",
+    "scientificFacts": [
+      "Therizinosaurus had the longest claws of any known animal - up to 1 meter (3.3 feet) long.",
+      "Despite being a theropod (a group that includes T. rex), it was an herbivore.",
+      "The enormous claws were likely used to pull down tree branches and for defense.",
+      "Its strange proportions puzzled scientists for decades after its discovery.",
+      "Recent evidence suggests it was covered in primitive feathers like many other theropods.",
+      "It lived alongside Tarbosaurus and had to defend itself against large predators."
+    ],
+    "funFact": "When first discovered, scientists thought Therizinosaurus was a giant turtle because of its unusual claws!",
+    "discoveryHistory": {
+      "discoveredBy": "Evgeny Maleev",
+      "year": 1954,
+      "location": "Mongolia"
+    },
+    "relatedSpecies": ["nothronychus", "erlikosaurus", "beipiaosaurus"]
+  },
+  {
+    "id": "carnotaurus",
+    "name": "Carnotaurus",
+    "species": "Carnotaurus sastrei",
+    "taxonomy": {
+      "clade": "Theropoda",
+      "family": "Abelisauridae",
+      "genus": "Carnotaurus",
+      "species": "sastrei",
+      "commonName": "Meat-Eating Bull"
+    },
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "mya": [72, 69]
+    },
+    "size": {
+      "length": 8.0,
+      "height": 3.0,
+      "weight": 1500,
+      "sizeCategory": "large"
+    },
+    "role": "ambusher",
+    "diet": "carnivore",
+    "socialBehavior": "solitary",
+    "activityPattern": "crepuscular",
+    "locomotion": "bipedal",
+    "physicalTraits": {
+      "hasFeathers": false,
+      "hasArmor": false,
+      "hasHorns": true,
+      "hasClaws": true,
+      "hasTailWeapon": false,
+      "hasCrest": false,
+      "hasSail": false,
+      "teethType": "serrated",
+      "skinType": "scales"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["plains", "forest"],
+      "preferredClimate": "arid",
+      "aquaticCapability": "wading",
+      "altitudeRange": "varied"
+    },
+    "behavioralTraits": {
+      "aggression": 9,
+      "intelligence": 5,
+      "courage": 7,
+      "sociability": 2,
+      "patience": 5,
+      "curiosity": 4
+    },
+    "baseStats": {
+      "health": 100,
+      "attack": 13,
+      "defense": 4,
+      "speed": 9,
+      "stamina": 70
+    },
+    "growthRates": {
+      "health": 12,
+      "attack": 1.7,
+      "defense": 0.5,
+      "speed": 0.9,
+      "stamina": 9
+    },
+    "abilities": ["bull_rush", "horn_gore", "rapid_strikes", "blitz_attack", "intimidating_horns"],
+    "passives": ["speed_demon", "vestigial_arms", "ambush_predator"],
+    "synergyAbilities": ["unstoppable_charge"],
+    "weaknesses": ["legs", "neck"],
+    "resistances": ["piercing"],
+    "unlockCondition": {
+      "type": "wins",
+      "value": 5,
+      "description": "Win 5 encounters with a speed advantage"
+    },
+    "description": "The fastest large theropod with distinctive horns. Excels at blitz attacks and overwhelming enemies before they can react.",
+    "scientificFacts": [
+      "Carnotaurus means 'meat-eating bull', named for its distinctive horns above the eyes.",
+      "It had the shortest arms of any large theropod - even smaller relative to body size than T. rex.",
+      "Recent studies suggest it could run at speeds up to 48 km/h (30 mph), among the fastest theropods.",
+      "Its skull was unusually short and deep, with a powerful bite adapted for quick strikes.",
+      "Skin impressions show it was covered in large, bumpy scales rather than feathers.",
+      "It was the apex predator of Late Cretaceous South America."
+    ],
+    "funFact": "Carnotaurus arms were so small and vestigial they couldn't even bend at the elbow!",
+    "discoveryHistory": {
+      "discoveredBy": "José Bonaparte",
+      "year": 1984,
+      "location": "Argentina"
+    },
+    "relatedSpecies": ["abelisaurus", "majungasaurus", "rajasaurus"]
+  },
+  {
+    "id": "parasaurolophus",
+    "name": "Parasaurolophus",
+    "species": "Parasaurolophus walkeri",
+    "taxonomy": {
+      "clade": "Ornithopoda",
+      "family": "Hadrosauridae",
+      "genus": "Parasaurolophus",
+      "species": "walkeri",
+      "commonName": "Near Crested Lizard"
+    },
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "mya": [76.5, 73]
+    },
+    "size": {
+      "length": 10.0,
+      "height": 4.9,
+      "weight": 2500,
+      "sizeCategory": "large"
+    },
+    "role": "support",
+    "diet": "herbivore",
+    "socialBehavior": "herd_member",
+    "activityPattern": "diurnal",
+    "locomotion": "facultative_biped",
+    "physicalTraits": {
+      "hasFeathers": false,
+      "hasArmor": false,
+      "hasHorns": false,
+      "hasClaws": false,
+      "hasTailWeapon": false,
+      "hasCrest": true,
+      "hasSail": false,
+      "teethType": "beak",
+      "skinType": "scales"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["forest", "plains", "swamp"],
+      "preferredClimate": "temperate",
+      "aquaticCapability": "wading",
+      "altitudeRange": "lowland"
+    },
+    "behavioralTraits": {
+      "aggression": 2,
+      "intelligence": 6,
+      "courage": 5,
+      "sociability": 10,
+      "patience": 7,
+      "curiosity": 6
+    },
+    "baseStats": {
+      "health": 110,
+      "attack": 6,
+      "defense": 5,
+      "speed": 6,
+      "stamina": 100
+    },
+    "growthRates": {
+      "health": 14,
+      "attack": 0.8,
+      "defense": 0.7,
+      "speed": 0.5,
+      "stamina": 14
+    },
+    "abilities": ["resonating_call", "herd_warning", "tail_strike", "stampede", "defensive_formation"],
+    "passives": ["acute_hearing", "herd_mentality", "endurance_runner"],
+    "synergyAbilities": ["trumpeting_rally"],
+    "weaknesses": ["neck", "legs"],
+    "resistances": ["sonic"],
+    "unlockCondition": {
+      "type": "discoveries",
+      "value": 15,
+      "description": "Discover 15 scientific facts to unlock"
+    },
+    "description": "A hadrosaur with a distinctive tubular crest used for communication. Excels at supporting allies with warning calls and herd coordination.",
+    "scientificFacts": [
+      "The hollow crest could produce low-frequency sounds that traveled long distances.",
+      "Studies suggest the crest functioned like a resonating chamber, similar to a trombone.",
+      "Different species had different crest shapes, possibly for species recognition.",
+      "Parasaurolophus could walk on two or four legs depending on its activity.",
+      "Their teeth formed a 'dental battery' with hundreds of teeth for grinding tough plants.",
+      "Fossils show they lived in large herds for protection against predators."
+    ],
+    "funFact": "The sound produced by Parasaurolophus' crest would have been a deep, resonant tone like a foghorn!",
+    "discoveryHistory": {
+      "discoveredBy": "William Parks",
+      "year": 1922,
+      "location": "Alberta, Canada"
+    },
+    "relatedSpecies": ["corythosaurus", "lambeosaurus", "edmontosaurus"]
+  },
+  {
+    "id": "troodon",
+    "name": "Troodon",
+    "species": "Troodon formosus",
+    "taxonomy": {
+      "clade": "Theropoda",
+      "family": "Troodontidae",
+      "genus": "Troodon",
+      "species": "formosus",
+      "commonName": "Wounding Tooth"
+    },
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "mya": [77, 66]
+    },
+    "size": {
+      "length": 2.4,
+      "height": 0.9,
+      "weight": 50,
+      "sizeCategory": "small"
+    },
+    "role": "controller",
+    "diet": "omnivore",
+    "socialBehavior": "pack_hunter",
+    "activityPattern": "nocturnal",
+    "locomotion": "bipedal",
+    "physicalTraits": {
+      "hasFeathers": true,
+      "hasArmor": false,
+      "hasHorns": false,
+      "hasClaws": true,
+      "hasTailWeapon": false,
+      "hasCrest": false,
+      "hasSail": false,
+      "teethType": "serrated",
+      "skinType": "feathers"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["forest", "plains"],
+      "preferredClimate": "temperate",
+      "aquaticCapability": "wading",
+      "altitudeRange": "varied"
+    },
+    "behavioralTraits": {
+      "aggression": 5,
+      "intelligence": 10,
+      "courage": 6,
+      "sociability": 7,
+      "patience": 8,
+      "curiosity": 10
+    },
+    "baseStats": {
+      "health": 45,
+      "attack": 7,
+      "defense": 2,
+      "speed": 10,
+      "stamina": 65
+    },
+    "growthRates": {
+      "health": 6,
+      "attack": 1.0,
+      "defense": 0.3,
+      "speed": 1.0,
+      "stamina": 9
+    },
+    "abilities": ["precision_strike", "night_vision_hunt", "cunning_trap", "feint_attack", "pack_coordination"],
+    "passives": ["genius_dinosaur", "night_hunter", "enhanced_senses"],
+    "synergyAbilities": ["calculated_assault"],
+    "weaknesses": ["body"],
+    "resistances": [],
+    "unlockCondition": {
+      "type": "discoveries",
+      "value": 30,
+      "description": "Discover 30 scientific facts to unlock the smartest dinosaur"
+    },
+    "description": "The most intelligent dinosaur known, with large eyes for night hunting. Excels at tactical combat and exploiting enemy weaknesses.",
+    "scientificFacts": [
+      "Troodon had one of the largest brain-to-body ratios of any dinosaur, suggesting high intelligence.",
+      "Its large, forward-facing eyes provided excellent binocular vision for night hunting.",
+      "The name means 'wounding tooth' due to its distinctive serrated teeth.",
+      "Studies of its brain case suggest it may have been as intelligent as modern birds.",
+      "It had partially opposable fingers, allowing it to grasp objects.",
+      "Troodon nested in groups and may have brooded its eggs like modern birds."
+    ],
+    "funFact": "Some scientists have speculated what Troodon might have evolved into if dinosaurs hadn't gone extinct - the 'dinosauroid' thought experiment!",
+    "discoveryHistory": {
+      "discoveredBy": "Joseph Leidy",
+      "year": 1856,
+      "location": "Montana, USA"
+    },
+    "relatedSpecies": ["stenonychosaurus", "saurornithoides", "zanabazar"]
+  },
+  {
+    "id": "baryonyx",
+    "name": "Baryonyx",
+    "species": "Baryonyx walkeri",
+    "taxonomy": {
+      "clade": "Theropoda",
+      "family": "Spinosauridae",
+      "genus": "Baryonyx",
+      "species": "walkeri",
+      "commonName": "Heavy Claw"
+    },
+    "period": {
+      "era": "Mesozoic",
+      "period": "Early Cretaceous",
+      "mya": [130, 125]
+    },
+    "size": {
+      "length": 10.0,
+      "height": 2.5,
+      "weight": 1700,
+      "sizeCategory": "large"
+    },
+    "role": "aquatic_hunter",
+    "diet": "piscivore",
+    "socialBehavior": "solitary",
+    "activityPattern": "diurnal",
+    "locomotion": "semi_aquatic",
+    "physicalTraits": {
+      "hasFeathers": false,
+      "hasArmor": false,
+      "hasHorns": false,
+      "hasClaws": true,
+      "hasTailWeapon": false,
+      "hasCrest": false,
+      "hasSail": false,
+      "teethType": "serrated",
+      "skinType": "scales"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["swamp", "river", "coastal"],
+      "preferredClimate": "temperate",
+      "aquaticCapability": "wading",
+      "altitudeRange": "lowland"
+    },
+    "behavioralTraits": {
+      "aggression": 7,
+      "intelligence": 6,
+      "courage": 6,
+      "sociability": 2,
+      "patience": 9,
+      "curiosity": 5
+    },
+    "baseStats": {
+      "health": 95,
+      "attack": 11,
+      "defense": 5,
+      "speed": 6,
+      "stamina": 80
+    },
+    "growthRates": {
+      "health": 12,
+      "attack": 1.4,
+      "defense": 0.6,
+      "speed": 0.5,
+      "stamina": 11
+    },
+    "abilities": ["heavy_claw_swipe", "fish_hook_grab", "aquatic_ambush", "crocodilian_snap", "water_lunge"],
+    "passives": ["semi_aquatic", "patience_predator", "conical_teeth"],
+    "synergyAbilities": ["riverbank_terror"],
+    "weaknesses": ["body"],
+    "resistances": ["cold"],
+    "unlockCondition": {
+      "type": "wins",
+      "value": 8,
+      "description": "Win 8 encounters in swamp biomes"
+    },
+    "description": "A spinosaurid with an enormous thumb claw up to 31 cm long. Specialized for hunting fish and ambushing prey near water.",
+    "scientificFacts": [
+      "Baryonyx means 'heavy claw', referring to its massive 31 cm thumb claw.",
+      "It was the first dinosaur found with fish scales preserved in its stomach.",
+      "Its long, narrow snout was adapted for catching fish like a modern gharial.",
+      "The thumb claw was likely used to hook fish from the water.",
+      "It was discovered by amateur fossil hunter William Walker in a Surrey clay pit.",
+      "Unlike its larger relative Spinosaurus, Baryonyx was primarily a wading hunter."
+    ],
+    "funFact": "Baryonyx was discovered when William Walker found a giant claw sticking out of a clay pit in England!",
+    "discoveryHistory": {
+      "discoveredBy": "William Walker",
+      "year": 1983,
+      "location": "Surrey, England"
+    },
+    "relatedSpecies": ["spinosaurus", "suchomimus", "irritator"]
+  },
+  {
+    "id": "compsognathus",
+    "name": "Compsognathus",
+    "species": "Compsognathus longipes",
+    "taxonomy": {
+      "clade": "Theropoda",
+      "family": "Compsognathidae",
+      "genus": "Compsognathus",
+      "species": "longipes",
+      "commonName": "Elegant Jaw"
+    },
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Jurassic",
+      "mya": [150, 145]
+    },
+    "size": {
+      "length": 1.0,
+      "height": 0.3,
+      "weight": 3,
+      "sizeCategory": "tiny"
+    },
+    "role": "swarm",
+    "diet": "carnivore",
+    "socialBehavior": "pack_hunter",
+    "activityPattern": "diurnal",
+    "locomotion": "bipedal",
+    "physicalTraits": {
+      "hasFeathers": true,
+      "hasArmor": false,
+      "hasHorns": false,
+      "hasClaws": true,
+      "hasTailWeapon": false,
+      "hasCrest": false,
+      "hasSail": false,
+      "teethType": "serrated",
+      "skinType": "proto-feathers"
+    },
+    "environmentalPreferences": {
+      "preferredTerrain": ["forest", "plains"],
+      "preferredClimate": "tropical",
+      "aquaticCapability": "none",
+      "altitudeRange": "lowland"
+    },
+    "behavioralTraits": {
+      "aggression": 7,
+      "intelligence": 6,
+      "courage": 5,
+      "sociability": 9,
+      "patience": 3,
+      "curiosity": 8
+    },
+    "baseStats": {
+      "health": 25,
+      "attack": 4,
+      "defense": 1,
+      "speed": 10,
+      "stamina": 60
+    },
+    "growthRates": {
+      "health": 3,
+      "attack": 0.6,
+      "defense": 0.2,
+      "speed": 1.2,
+      "stamina": 8
+    },
+    "abilities": ["swarm_attack", "quick_bite", "evasive_dash", "call_swarm", "overwhelming_numbers"],
+    "passives": ["tiny_target", "pack_swarm", "quick_metabolism"],
+    "synergyAbilities": ["death_by_thousand_cuts"],
+    "weaknesses": ["body"],
+    "resistances": [],
+    "unlockCondition": {
+      "type": "discoveries",
+      "value": 20,
+      "description": "Discover 20 educational facts"
+    },
+    "description": "One of the smallest known dinosaurs, about the size of a chicken. Controls a swarm of tiny predators for overwhelming numbers tactics.",
+    "scientificFacts": [
+      "Compsognathus was one of the smallest known non-avian dinosaurs at about 1 meter long.",
+      "For over 100 years, it was THE smallest known dinosaur until smaller species were found.",
+      "Fossils show preserved stomach contents with lizards, proving its carnivorous diet.",
+      "It lived on islands in the ancient Tethys Sea, explaining its small size (island dwarfism).",
+      "The first specimen was found in Germany in 1859, just two years after Darwin's Origin of Species.",
+      "Its name means 'elegant jaw', referring to its delicate skull structure."
+    ],
+    "funFact": "Compsognathus was about the size of a chicken and probably hunted lizards and insects!",
+    "discoveryHistory": {
+      "discoveredBy": "Joseph Oberndorfer",
+      "year": 1859,
+      "location": "Bavaria, Germany"
+    },
+    "relatedSpecies": ["sinosauropteryx", "scipionyx", "juravenator"]
   }
 ]

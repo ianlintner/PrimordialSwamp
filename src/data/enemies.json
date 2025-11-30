@@ -1,28 +1,30 @@
 [
   {
-    "id": "compsognathus",
-    "name": "Compsognathus",
+    "id": "compsognathus_pack",
+    "name": "Compsognathus Pack",
     "tier": "basic",
-    "biome": "swamp",
+    "biome": "forest",
     "emoji": "🦎",
     "stats": {
-      "hp": 25,
-      "attack": 4,
+      "hp": 35,
+      "attack": 6,
       "defense": 1,
-      "speed": 8
+      "speed": 9
     },
-    "abilities": ["quick_bite"],
-    "behavior": "aggressive",
+    "abilities": ["swarm_attack", "quick_bite"],
+    "behavior": "swarm",
     "rewards": {
-      "fossils": 3,
-      "experience": 10
+      "fossils": 4,
+      "experience": 12
     },
     "scientificInfo": {
       "period": "Late Jurassic",
-      "mya": "150",
-      "size": "1m long",
-      "weight": "3 kg",
-      "fact": "One of the smallest known dinosaurs, about the size of a chicken!"
+      "mya": "150-145",
+      "size": "1m long each",
+      "weight": "3 kg each",
+      "fact": "One of the smallest known dinosaurs, they likely hunted in groups to take down larger prey!",
+      "diet": "carnivore",
+      "locomotion": "bipedal"
     }
   },
   {
@@ -37,7 +39,7 @@
       "defense": 2,
       "speed": 9
     },
-    "abilities": ["sickle_claw", "pack_tactics"],
+    "abilities": ["sickle_claw", "pack_tactics", "feint_attack"],
     "behavior": "tactical",
     "rewards": {
       "fossils": 5,
@@ -48,7 +50,65 @@
       "mya": "75-71",
       "size": "2m long",
       "weight": "15 kg",
-      "fact": "Much smaller than depicted in movies - about turkey-sized with feathers!"
+      "fact": "Much smaller than depicted in movies - about turkey-sized with feathers! Found primarily in Mongolia.",
+      "diet": "carnivore",
+      "locomotion": "bipedal"
+    }
+  },
+  {
+    "id": "oviraptor",
+    "name": "Oviraptor",
+    "tier": "basic",
+    "biome": "plains",
+    "emoji": "🥚",
+    "stats": {
+      "hp": 35,
+      "attack": 5,
+      "defense": 3,
+      "speed": 8
+    },
+    "abilities": ["beak_strike", "nest_defense", "evasive_dash"],
+    "behavior": "defensive",
+    "rewards": {
+      "fossils": 4,
+      "experience": 12
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "75-71",
+      "size": "2m long",
+      "weight": "35 kg",
+      "fact": "Its name means 'egg thief' but this was a mistake - it was actually found protecting its OWN eggs!",
+      "diet": "omnivore",
+      "locomotion": "bipedal"
+    }
+  },
+  {
+    "id": "dilophosaurus",
+    "name": "Dilophosaurus",
+    "tier": "basic",
+    "biome": "forest",
+    "emoji": "🦖",
+    "stats": {
+      "hp": 55,
+      "attack": 8,
+      "defense": 3,
+      "speed": 7
+    },
+    "abilities": ["double_crest_display", "slashing_bite", "ambush_pounce"],
+    "behavior": "aggressive",
+    "rewards": {
+      "fossils": 6,
+      "experience": 18
+    },
+    "scientificInfo": {
+      "period": "Early Jurassic",
+      "mya": "193",
+      "size": "6m long",
+      "weight": "400 kg",
+      "fact": "Had two distinctive crests on its head. No evidence of venom or frill - those were movie inventions!",
+      "diet": "carnivore",
+      "locomotion": "bipedal"
     }
   },
   {
@@ -63,7 +123,7 @@
       "defense": 7,
       "speed": 3
     },
-    "abilities": ["tail_spike", "armored_plates"],
+    "abilities": ["tail_spike", "plate_display", "thagomizer"],
     "behavior": "defensive",
     "rewards": {
       "fossils": 7,
@@ -74,7 +134,65 @@
       "mya": "155-150",
       "size": "9m long",
       "weight": "5 tons",
-      "fact": "Had a brain the size of a walnut despite being as big as a bus!"
+      "fact": "The spiked tail is called a 'thagomizer' - a term coined by a Far Side comic that scientists adopted!",
+      "diet": "herbivore",
+      "locomotion": "quadrupedal"
+    }
+  },
+  {
+    "id": "coelophysis",
+    "name": "Coelophysis",
+    "tier": "basic",
+    "biome": "plains",
+    "emoji": "🦴",
+    "stats": {
+      "hp": 30,
+      "attack": 6,
+      "defense": 2,
+      "speed": 10
+    },
+    "abilities": ["rapid_strike", "pack_hunt", "nimble_dodge"],
+    "behavior": "pack_hunter",
+    "rewards": {
+      "fossils": 4,
+      "experience": 12
+    },
+    "scientificInfo": {
+      "period": "Late Triassic",
+      "mya": "221-196",
+      "size": "3m long",
+      "weight": "20 kg",
+      "fact": "One of the earliest known dinosaurs! Ghost Ranch in New Mexico has thousands of fossils.",
+      "diet": "carnivore",
+      "locomotion": "bipedal"
+    }
+  },
+  {
+    "id": "iguanodon",
+    "name": "Iguanodon",
+    "tier": "advanced",
+    "biome": "forest",
+    "emoji": "🌿",
+    "stats": {
+      "hp": 90,
+      "attack": 8,
+      "defense": 6,
+      "speed": 5
+    },
+    "abilities": ["thumb_spike", "herd_call", "rearing_stomp"],
+    "behavior": "territorial",
+    "rewards": {
+      "fossils": 9,
+      "experience": 28
+    },
+    "scientificInfo": {
+      "period": "Early Cretaceous",
+      "mya": "126-122",
+      "size": "10m long",
+      "weight": "3.5 tons",
+      "fact": "Second dinosaur ever named! Its thumb spike was first thought to be a horn on its nose.",
+      "diet": "herbivore",
+      "locomotion": "facultative_biped"
     }
   },
   {
@@ -89,7 +207,7 @@
       "defense": 8,
       "speed": 4
     },
-    "abilities": ["horn_charge", "shield_stance"],
+    "abilities": ["horn_charge", "shield_stance", "frill_display", "gore"],
     "behavior": "territorial",
     "rewards": {
       "fossils": 10,
@@ -100,11 +218,69 @@
       "mya": "68-66",
       "size": "9m long",
       "weight": "6-12 tons",
-      "fact": "Its frill was likely used for display and thermoregulation, not just defense!"
+      "fact": "Its frill was likely used for display and thermoregulation, not just defense! Bite marks from T. rex are common on fossils.",
+      "diet": "herbivore",
+      "locomotion": "quadrupedal"
     }
   },
   {
-    "id": "pteranodon",
+    "id": "pachyrhinosaurus",
+    "name": "Pachyrhinosaurus",
+    "tier": "advanced",
+    "biome": "plains",
+    "emoji": "🦏",
+    "stats": {
+      "hp": 95,
+      "attack": 9,
+      "defense": 9,
+      "speed": 4
+    },
+    "abilities": ["boss_ram", "herd_defense", "nasal_boss_strike"],
+    "behavior": "defensive",
+    "rewards": {
+      "fossils": 10,
+      "experience": 28
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "73-69",
+      "size": "8m long",
+      "weight": "4 tons",
+      "fact": "Instead of a nose horn, it had a massive bony boss - a flat, roughened pad used for head-butting!",
+      "diet": "herbivore",
+      "locomotion": "quadrupedal"
+    }
+  },
+  {
+    "id": "dimetrodon",
+    "name": "Dimetrodon",
+    "tier": "advanced",
+    "biome": "swamp",
+    "emoji": "🦎",
+    "stats": {
+      "hp": 70,
+      "attack": 11,
+      "defense": 4,
+      "speed": 6
+    },
+    "abilities": ["sail_thermoregulation", "powerful_bite", "ambush"],
+    "behavior": "ambush",
+    "rewards": {
+      "fossils": 8,
+      "experience": 25
+    },
+    "scientificInfo": {
+      "period": "Early Permian",
+      "mya": "295-272",
+      "size": "3.5m long",
+      "weight": "250 kg",
+      "fact": "NOT a dinosaur! Dimetrodon was a synapsid, more closely related to mammals than to dinosaurs.",
+      "diet": "carnivore",
+      "locomotion": "quadrupedal"
+    }
+  },
+  {
+    "id": "pteranodon_enemy",
     "name": "Pteranodon",
     "tier": "advanced",
     "biome": "cliffs",
@@ -115,7 +291,7 @@
       "defense": 3,
       "speed": 10
     },
-    "abilities": ["dive_bomb", "evasive_flight"],
+    "abilities": ["dive_bomb", "evasive_flight", "fish_snatch"],
     "behavior": "hit_and_run",
     "rewards": {
       "fossils": 8,
@@ -126,7 +302,37 @@
       "mya": "86-84",
       "size": "7m wingspan",
       "weight": "20-30 kg",
-      "fact": "Not a dinosaur but a flying reptile! Could soar for hours without flapping."
+      "fact": "Not a dinosaur but a flying reptile! Could soar for hours without flapping using thermal currents.",
+      "diet": "piscivore",
+      "locomotion": "flying"
+    }
+  },
+  {
+    "id": "quetzalcoatlus",
+    "name": "Quetzalcoatlus",
+    "tier": "elite",
+    "biome": "cliffs",
+    "emoji": "🦅",
+    "stats": {
+      "hp": 80,
+      "attack": 12,
+      "defense": 4,
+      "speed": 9
+    },
+    "abilities": ["giant_dive", "ground_stalk", "intimidating_size", "beak_spear"],
+    "behavior": "predator",
+    "rewards": {
+      "fossils": 15,
+      "experience": 45
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "68-66",
+      "size": "10-11m wingspan",
+      "weight": "200-250 kg",
+      "fact": "The largest flying animal ever! As tall as a giraffe when standing, it may have hunted on the ground like a stork.",
+      "diet": "carnivore",
+      "locomotion": "flying"
     }
   },
   {
@@ -141,7 +347,7 @@
       "defense": 9,
       "speed": 5
     },
-    "abilities": ["death_roll", "ambush"],
+    "abilities": ["death_roll", "ambush", "crushing_jaws", "tail_sweep"],
     "behavior": "ambush",
     "rewards": {
       "fossils": 12,
@@ -150,9 +356,95 @@
     "scientificInfo": {
       "period": "Early Cretaceous",
       "mya": "112",
-      "size": "12m long",
+      "size": "11-12m long",
       "weight": "8 tons",
-      "fact": "SuperCroc! Twice as long as modern crocodiles and could prey on dinosaurs!"
+      "fact": "SuperCroc! Twice as long as modern crocodiles with 132 teeth and could prey on dinosaurs!",
+      "diet": "carnivore",
+      "locomotion": "semi_aquatic"
+    }
+  },
+  {
+    "id": "deinosuchus",
+    "name": "Deinosuchus",
+    "tier": "elite",
+    "biome": "swamp",
+    "emoji": "🐊",
+    "stats": {
+      "hp": 130,
+      "attack": 16,
+      "defense": 10,
+      "speed": 4
+    },
+    "abilities": ["death_roll", "ambush_lunge", "bone_crushing_bite", "water_drag"],
+    "behavior": "apex_ambush",
+    "rewards": {
+      "fossils": 18,
+      "experience": 55
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "82-73",
+      "size": "10-12m long",
+      "weight": "8.5 tons",
+      "fact": "Terror Croc! Bite marks found on dinosaur bones prove it hunted them. Its bite force rivaled T. rex!",
+      "diet": "carnivore",
+      "locomotion": "semi_aquatic"
+    }
+  },
+  {
+    "id": "mosasaurus",
+    "name": "Mosasaurus",
+    "tier": "elite",
+    "biome": "coastal",
+    "emoji": "🐋",
+    "stats": {
+      "hp": 140,
+      "attack": 18,
+      "defense": 7,
+      "speed": 8
+    },
+    "abilities": ["ocean_lunge", "crushing_bite", "tail_propulsion", "drag_under"],
+    "behavior": "apex_predator",
+    "rewards": {
+      "fossils": 20,
+      "experience": 60
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "82-66",
+      "size": "13-17m long",
+      "weight": "15 tons",
+      "fact": "Apex predator of the ancient seas! A marine reptile related to modern monitor lizards, not dinosaurs.",
+      "diet": "carnivore",
+      "locomotion": "swimming"
+    }
+  },
+  {
+    "id": "kronosaurus",
+    "name": "Kronosaurus",
+    "tier": "elite",
+    "biome": "coastal",
+    "emoji": "🦈",
+    "stats": {
+      "hp": 120,
+      "attack": 17,
+      "defense": 8,
+      "speed": 7
+    },
+    "abilities": ["crushing_jaws", "flipper_dash", "ambush_strike"],
+    "behavior": "apex_predator",
+    "rewards": {
+      "fossils": 18,
+      "experience": 55
+    },
+    "scientificInfo": {
+      "period": "Early Cretaceous",
+      "mya": "125-99",
+      "size": "9-10m long",
+      "weight": "11 tons",
+      "fact": "A pliosaur with the largest known marine reptile skull - up to 2.7 meters long!",
+      "diet": "carnivore",
+      "locomotion": "swimming"
     }
   },
   {
@@ -167,7 +459,7 @@
       "defense": 6,
       "speed": 7
     },
-    "abilities": ["savage_bite", "hatchet_attack", "predator_instinct"],
+    "abilities": ["savage_bite", "hatchet_attack", "predator_instinct", "pack_alpha"],
     "behavior": "aggressive",
     "rewards": {
       "fossils": 15,
@@ -178,11 +470,13 @@
       "mya": "155-145",
       "size": "9-10m long",
       "weight": "2-3 tons",
-      "fact": "Top predator of its time! Used its powerful neck to deliver hatchet-like bites."
+      "fact": "Top predator of its time! Used its powerful neck to deliver hatchet-like downward bites.",
+      "diet": "carnivore",
+      "locomotion": "bipedal"
     }
   },
   {
-    "id": "spinosaurus",
+    "id": "spinosaurus_enemy",
     "name": "Spinosaurus",
     "tier": "elite",
     "biome": "swamp",
@@ -193,7 +487,7 @@
       "defense": 7,
       "speed": 6
     },
-    "abilities": ["aquatic_hunter", "sail_intimidation", "crushing_jaws"],
+    "abilities": ["aquatic_hunter", "sail_intimidation", "crushing_jaws", "tail_sweep"],
     "behavior": "territorial",
     "rewards": {
       "fossils": 20,
@@ -204,11 +498,13 @@
       "mya": "112-97",
       "size": "15m long",
       "weight": "7-9 tons",
-      "fact": "Largest known carnivorous dinosaur! Semi-aquatic with a massive sail on its back."
+      "fact": "Largest known carnivorous dinosaur! Semi-aquatic with a paddle tail for swimming.",
+      "diet": "piscivore",
+      "locomotion": "semi_aquatic"
     }
   },
   {
-    "id": "carnotaurus",
+    "id": "carnotaurus_enemy",
     "name": "Carnotaurus",
     "tier": "elite",
     "biome": "plains",
@@ -219,7 +515,7 @@
       "defense": 5,
       "speed": 9
     },
-    "abilities": ["bull_rush", "intimidating_horns", "rapid_strikes"],
+    "abilities": ["bull_rush", "intimidating_horns", "rapid_strikes", "blitz_attack"],
     "behavior": "aggressive",
     "rewards": {
       "fossils": 18,
@@ -230,33 +526,37 @@
       "mya": "72-69",
       "size": "7-8m long",
       "weight": "1.5 tons",
-      "fact": "Had the shortest arms of any large carnivore and could run extremely fast!"
+      "fact": "Had the shortest arms of any large carnivore - even tinier than T. rex relative to size!",
+      "diet": "carnivore",
+      "locomotion": "bipedal"
     }
   },
   {
-    "id": "tyrannosaurus",
-    "name": "Tyrannosaurus Rex",
-    "tier": "boss",
-    "biome": "all",
+    "id": "acrocanthosaurus",
+    "name": "Acrocanthosaurus",
+    "tier": "elite",
+    "biome": "forest",
     "emoji": "🦖",
     "stats": {
-      "hp": 200,
-      "attack": 20,
-      "defense": 10,
+      "hp": 135,
+      "attack": 15,
+      "defense": 6,
       "speed": 6
     },
-    "abilities": ["bone_crushing_bite", "apex_roar", "relentless_pursuit", "tyrant_rage"],
-    "behavior": "boss",
+    "abilities": ["high_spined_attack", "grasping_claws", "pursuit_predator"],
+    "behavior": "persistent_hunter",
     "rewards": {
-      "fossils": 50,
-      "experience": 100
+      "fossils": 17,
+      "experience": 52
     },
     "scientificInfo": {
-      "period": "Late Cretaceous",
-      "mya": "68-66",
-      "size": "12-13m long",
-      "weight": "8-14 tons",
-      "fact": "Most powerful bite of any land animal ever - 12,800 pounds of force!"
+      "period": "Early Cretaceous",
+      "mya": "116-110",
+      "size": "11m long",
+      "weight": "6 tons",
+      "fact": "Its name means 'high-spined lizard' due to the tall spines along its back. Top predator of North America before T. rex!",
+      "diet": "carnivore",
+      "locomotion": "bipedal"
     }
   },
   {
@@ -282,11 +582,13 @@
       "mya": "99-95",
       "size": "12-13m long",
       "weight": "6-8 tons",
-      "fact": "Slightly larger than T. rex! Had a massive skull with serrated teeth for slicing."
+      "fact": "Slightly larger than T. rex but with a weaker bite. Had serrated teeth for slicing rather than crushing.",
+      "diet": "carnivore",
+      "locomotion": "bipedal"
     }
   },
   {
-    "id": "therizinosaurus",
+    "id": "therizinosaurus_enemy",
     "name": "Therizinosaurus",
     "tier": "boss",
     "biome": "forest",
@@ -306,9 +608,319 @@
     "scientificInfo": {
       "period": "Late Cretaceous",
       "mya": "70",
-      "size": "5m long",
+      "size": "10m long",
       "weight": "5 tons",
-      "fact": "Herbivore with the longest claws ever - 1 meter long scythes for defense!"
+      "fact": "Herbivore with the longest claws ever known - 1 meter long scythes used for defense and pulling down branches!",
+      "diet": "herbivore",
+      "locomotion": "bipedal"
+    }
+  },
+  {
+    "id": "tyrannosaurus_boss",
+    "name": "Tyrannosaurus Rex",
+    "tier": "boss",
+    "biome": "all",
+    "emoji": "🦖",
+    "stats": {
+      "hp": 200,
+      "attack": 20,
+      "defense": 10,
+      "speed": 6
+    },
+    "abilities": ["bone_crushing_bite", "apex_roar", "relentless_pursuit", "tyrant_rage"],
+    "behavior": "boss",
+    "rewards": {
+      "fossils": 50,
+      "experience": 100
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "68-66",
+      "size": "12-13m long",
+      "weight": "8-14 tons",
+      "fact": "Most powerful bite of any land animal ever - 12,800 pounds of force! Could crush bone like tissue paper.",
+      "diet": "carnivore",
+      "locomotion": "bipedal"
+    }
+  },
+  {
+    "id": "megalodon",
+    "name": "Megalodon",
+    "tier": "boss",
+    "biome": "coastal",
+    "emoji": "🦈",
+    "stats": {
+      "hp": 220,
+      "attack": 25,
+      "defense": 8,
+      "speed": 8
+    },
+    "abilities": ["mega_bite", "ocean_terror", "blood_frenzy", "ramming_attack"],
+    "behavior": "boss",
+    "rewards": {
+      "fossils": 70,
+      "experience": 140
+    },
+    "scientificInfo": {
+      "period": "Miocene-Pliocene",
+      "mya": "23-3.6",
+      "size": "15-18m long",
+      "weight": "50-70 tons",
+      "fact": "The largest shark to ever live! Though not from the dinosaur era, it was an apex ocean predator for millions of years.",
+      "diet": "carnivore",
+      "locomotion": "swimming"
+    }
+  },
+  {
+    "id": "didelphodon",
+    "name": "Didelphodon",
+    "tier": "basic",
+    "biome": "forest",
+    "emoji": "🐀",
+    "stats": {
+      "hp": 25,
+      "attack": 5,
+      "defense": 2,
+      "speed": 7
+    },
+    "abilities": ["crushing_bite", "burrow_escape", "nocturnal_attack"],
+    "behavior": "opportunistic",
+    "rewards": {
+      "fossils": 3,
+      "experience": 10
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "70-66",
+      "size": "40cm long",
+      "weight": "2 kg",
+      "fact": "One of the largest Mesozoic mammals! Had an incredibly powerful bite for its size - stronger than any living mammal relative to body mass.",
+      "diet": "omnivore",
+      "locomotion": "quadrupedal"
+    }
+  },
+  {
+    "id": "repenomamus",
+    "name": "Repenomamus",
+    "tier": "basic",
+    "biome": "forest",
+    "emoji": "🦡",
+    "stats": {
+      "hp": 35,
+      "attack": 6,
+      "defense": 3,
+      "speed": 6
+    },
+    "abilities": ["powerful_bite", "grapple", "den_ambush"],
+    "behavior": "aggressive",
+    "rewards": {
+      "fossils": 4,
+      "experience": 13
+    },
+    "scientificInfo": {
+      "period": "Early Cretaceous",
+      "mya": "130-125",
+      "size": "1m long",
+      "weight": "12-14 kg",
+      "fact": "The largest known Mesozoic mammal! One fossil was found with baby dinosaur bones in its stomach!",
+      "diet": "carnivore",
+      "locomotion": "quadrupedal"
+    }
+  },
+  {
+    "id": "titanomyrma",
+    "name": "Titanomyrma Swarm",
+    "tier": "basic",
+    "biome": "forest",
+    "emoji": "🐜",
+    "stats": {
+      "hp": 20,
+      "attack": 4,
+      "defense": 1,
+      "speed": 5
+    },
+    "abilities": ["swarm_attack", "venomous_bite", "overwhelming_numbers"],
+    "behavior": "swarm",
+    "rewards": {
+      "fossils": 2,
+      "experience": 8
+    },
+    "scientificInfo": {
+      "period": "Eocene",
+      "mya": "50",
+      "size": "5cm long",
+      "weight": "Few grams",
+      "fact": "Giant ants the size of hummingbirds! Related to modern driver ants and likely had similar swarming behavior.",
+      "diet": "omnivore",
+      "locomotion": "hexapod"
+    }
+  },
+  {
+    "id": "meganeuropsis",
+    "name": "Meganeuropsis",
+    "tier": "basic",
+    "biome": "swamp",
+    "emoji": "🪰",
+    "stats": {
+      "hp": 30,
+      "attack": 5,
+      "defense": 2,
+      "speed": 10
+    },
+    "abilities": ["dive_attack", "aerial_harassment", "mandible_strike"],
+    "behavior": "hit_and_run",
+    "rewards": {
+      "fossils": 3,
+      "experience": 10
+    },
+    "scientificInfo": {
+      "period": "Late Carboniferous",
+      "mya": "300",
+      "size": "71cm wingspan",
+      "weight": "150g",
+      "fact": "The largest insect ever! Higher oxygen levels in the Carboniferous allowed insects to grow to incredible sizes.",
+      "diet": "carnivore",
+      "locomotion": "flying"
+    }
+  },
+  {
+    "id": "arthropleura",
+    "name": "Arthropleura",
+    "tier": "advanced",
+    "biome": "swamp",
+    "emoji": "🪱",
+    "stats": {
+      "hp": 75,
+      "attack": 8,
+      "defense": 8,
+      "speed": 4
+    },
+    "abilities": ["armored_segments", "coiling_crush", "toxic_secretion"],
+    "behavior": "defensive",
+    "rewards": {
+      "fossils": 9,
+      "experience": 28
+    },
+    "scientificInfo": {
+      "period": "Late Carboniferous",
+      "mya": "315-299",
+      "size": "2.5m long",
+      "weight": "50 kg",
+      "fact": "The largest known land invertebrate ever! A giant millipede that lived in coal swamp forests.",
+      "diet": "herbivore",
+      "locomotion": "myriapod"
+    }
+  },
+  {
+    "id": "archelon",
+    "name": "Archelon",
+    "tier": "advanced",
+    "biome": "coastal",
+    "emoji": "🐢",
+    "stats": {
+      "hp": 100,
+      "attack": 7,
+      "defense": 11,
+      "speed": 4
+    },
+    "abilities": ["shell_retreat", "flipper_strike", "crushing_beak"],
+    "behavior": "defensive",
+    "rewards": {
+      "fossils": 10,
+      "experience": 30
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "80-74",
+      "size": "4.6m long",
+      "weight": "2.2 tons",
+      "fact": "The largest sea turtle ever! Its shell was leathery rather than hard like modern sea turtles.",
+      "diet": "omnivore",
+      "locomotion": "swimming"
+    }
+  },
+  {
+    "id": "liopleurodon",
+    "name": "Liopleurodon",
+    "tier": "elite",
+    "biome": "coastal",
+    "emoji": "🦎",
+    "stats": {
+      "hp": 110,
+      "attack": 16,
+      "defense": 7,
+      "speed": 7
+    },
+    "abilities": ["ambush_lunge", "death_roll", "crushing_jaws"],
+    "behavior": "apex_predator",
+    "rewards": {
+      "fossils": 16,
+      "experience": 50
+    },
+    "scientificInfo": {
+      "period": "Middle Jurassic",
+      "mya": "166-155",
+      "size": "6-7m long",
+      "weight": "1.5 tons",
+      "fact": "A pliosaur apex predator of Jurassic seas. Despite BBC's Walking with Dinosaurs showing it at 25m, it was actually much smaller!",
+      "diet": "carnivore",
+      "locomotion": "swimming"
+    }
+  },
+  {
+    "id": "terror_bird",
+    "name": "Phorusrhacos",
+    "tier": "advanced",
+    "biome": "plains",
+    "emoji": "🦅",
+    "stats": {
+      "hp": 65,
+      "attack": 11,
+      "defense": 4,
+      "speed": 9
+    },
+    "abilities": ["beak_strike", "pursuit", "kick_attack"],
+    "behavior": "aggressive",
+    "rewards": {
+      "fossils": 9,
+      "experience": 28
+    },
+    "scientificInfo": {
+      "period": "Miocene",
+      "mya": "20-13",
+      "size": "2.5m tall",
+      "weight": "130 kg",
+      "fact": "Terror Bird! A flightless predatory bird that was the apex predator of South America after the dinosaurs went extinct.",
+      "diet": "carnivore",
+      "locomotion": "bipedal"
+    }
+  },
+  {
+    "id": "kaprosuchus",
+    "name": "Kaprosuchus",
+    "tier": "advanced",
+    "biome": "swamp",
+    "emoji": "🐗",
+    "stats": {
+      "hp": 80,
+      "attack": 12,
+      "defense": 6,
+      "speed": 7
+    },
+    "abilities": ["boar_croc_charge", "tusk_gore", "galloping_pursuit"],
+    "behavior": "aggressive",
+    "rewards": {
+      "fossils": 11,
+      "experience": 32
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "95",
+      "size": "6m long",
+      "weight": "1 ton",
+      "fact": "BoarCroc! Unlike modern crocodiles, its legs were positioned under its body, allowing it to gallop on land!",
+      "diet": "carnivore",
+      "locomotion": "semi_aquatic"
     }
   }
 ]

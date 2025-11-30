@@ -6,6 +6,8 @@
     "staminaCost": 30,
     "cooldown": 2,
     "damageMultiplier": 1.0,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
     "effects": [
       {
         "type": "damage",
@@ -15,7 +17,7 @@
         "modifier": "critical"
       }
     ],
-    "scientificNote": "Deinonychus' sickle claw was held off the ground while running and deployed during attacks."
+    "scientificNote": "Deinonychus' sickle claw was held off the ground while running and deployed during attacks, similar to modern secretary birds."
   },
   {
     "id": "pack_coordination",
@@ -26,7 +28,7 @@
     "damageMultiplier": 0,
     "effects": [],
     "passive": true,
-    "scientificNote": "Fossil evidence suggests Deinonychus hunted in coordinated groups."
+    "scientificNote": "Fossil evidence from the Cloverly Formation suggests Deinonychus hunted in coordinated groups, targeting larger prey."
   },
   {
     "id": "feathered_agility",
@@ -37,7 +39,48 @@
     "damageMultiplier": 0,
     "effects": [],
     "passive": true,
-    "scientificNote": "Feathers provided insulation and may have aided in balance during quick movements."
+    "scientificNote": "Feathers provided insulation and may have aided in balance during quick movements and leaps."
+  },
+  {
+    "id": "leaping_strike",
+    "name": "Leaping Strike",
+    "description": "Leap at your target, dealing 150% damage. Ignores terrain penalties.",
+    "staminaCost": 35,
+    "cooldown": 3,
+    "damageMultiplier": 1.5,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "ignore_terrain"
+      }
+    ],
+    "scientificNote": "Dromaeosaurids likely used their strong legs to leap onto prey, using their claws to hold on while attacking."
+  },
+  {
+    "id": "coordinated_assault",
+    "name": "Coordinated Assault",
+    "description": "Strike in concert with pack members. Deals bonus damage for each ally in combat.",
+    "staminaCost": 40,
+    "cooldown": 4,
+    "damageMultiplier": 1.2,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 5,
+        "duration": 0,
+        "chance": 1.0,
+        "stat": "attack",
+        "modifier": "per_ally"
+      }
+    ],
+    "scientificNote": "Pack hunting allowed dromaeosaurids to take down prey many times their own size."
   },
   {
     "id": "tail_club",
@@ -46,6 +89,7 @@
     "staminaCost": 40,
     "cooldown": 3,
     "damageMultiplier": 0,
+    "damageType": "crushing",
     "effects": [
       {
         "type": "buff",
@@ -55,7 +99,7 @@
         "modifier": "reflect"
       }
     ],
-    "scientificNote": "Ankylosaurus' tail club could swing with approximately 14,000 Newtons of force."
+    "scientificNote": "Ankylosaurus' tail club could swing with approximately 14,000 Newtons of force, enough to break the leg bones of a T. rex."
   },
   {
     "id": "fortify",
@@ -73,7 +117,7 @@
         "stat": "defense"
       }
     ],
-    "scientificNote": "Ankylosaurus could hunker down, presenting only armor to attackers."
+    "scientificNote": "Ankylosaurus could hunker down, presenting only its armored dorsal surface to attackers."
   },
   {
     "id": "armored_hide",
@@ -84,18 +128,49 @@
     "damageMultiplier": 0,
     "effects": [],
     "passive": true,
-    "scientificNote": "Bony osteoderms covered most of Ankylosaurus' body."
+    "scientificNote": "Bony osteoderms covered most of Ankylosaurus' body, embedded in the skin like natural chain mail."
   },
   {
     "id": "immovable",
     "name": "Immovable",
-    "description": "Passive: Cannot be flanked or surprised.",
+    "description": "Passive: Cannot be flanked or surprised. Immune to knockback.",
     "staminaCost": 0,
     "cooldown": 0,
     "damageMultiplier": 0,
     "effects": [],
     "passive": true,
-    "scientificNote": "With its low center of gravity and armor, Ankylosaurus was extremely difficult to overturn."
+    "scientificNote": "With its low center of gravity, wide stance, and heavy armor, Ankylosaurus was extremely difficult to overturn."
+  },
+  {
+    "id": "ground_pound",
+    "name": "Ground Pound",
+    "description": "Slam the ground, stunning nearby enemies for 1 turn.",
+    "staminaCost": 35,
+    "cooldown": 4,
+    "damageMultiplier": 0.8,
+    "damageType": "crushing",
+    "targetType": "all_enemies",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "stunned",
+        "value": 0,
+        "duration": 1,
+        "chance": 0.7
+      }
+    ],
+    "scientificNote": "The massive weight of ankylosaurs could create significant ground vibrations when they moved."
+  },
+  {
+    "id": "osteoderm_defense",
+    "name": "Osteoderm Defense",
+    "description": "Passive: 20% chance to completely negate physical attacks.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Osteoderms are bony deposits that form scales, plates, or other structures in the dermal layers of the skin."
   },
   {
     "id": "aerial_scout",
@@ -114,15 +189,17 @@
       }
     ],
     "nonCombat": true,
-    "scientificNote": "Pteranodon's excellent vision allowed it to spot prey from great heights."
+    "scientificNote": "Pteranodon's excellent vision and high-altitude flight allowed it to spot prey and threats from great distances."
   },
   {
     "id": "dive_attack",
     "name": "Dive Attack",
-    "description": "Strike from above. Always goes first in combat turn.",
+    "description": "Strike from above. Always goes first in combat turn. Deals 150% damage.",
     "staminaCost": 35,
     "cooldown": 2,
     "damageMultiplier": 1.5,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
     "effects": [
       {
         "type": "damage",
@@ -132,7 +209,7 @@
         "modifier": "priority"
       }
     ],
-    "scientificNote": "Pteranodon could build tremendous speed in a dive."
+    "scientificNote": "Pteranodon could build tremendous speed in a dive, using gravity to accelerate toward fish near the surface."
   },
   {
     "id": "escape_flight",
@@ -150,7 +227,38 @@
         "modifier": "guaranteed_flee"
       }
     ],
-    "scientificNote": "Flight gave pterosaurs unmatched mobility and escape options."
+    "scientificNote": "Flight gave pterosaurs unmatched mobility and escape options unavailable to ground-bound dinosaurs."
+  },
+  {
+    "id": "thermal_soaring",
+    "name": "Thermal Soaring",
+    "description": "Passive: Regenerate 5 stamina per turn while above 50% health.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Large pterosaurs like Pteranodon could soar on thermal updrafts for hours with minimal energy expenditure."
+  },
+  {
+    "id": "fish_snatch",
+    "name": "Fish Snatch",
+    "description": "Quick attack that heals for 50% of damage dealt against aquatic targets.",
+    "staminaCost": 25,
+    "cooldown": 2,
+    "damageMultiplier": 1.0,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "drain",
+        "value": 0.5,
+        "duration": 0,
+        "chance": 1.0,
+        "condition": "aquatic_target"
+      }
+    ],
+    "scientificNote": "Pteranodon was a piscivore, skimming the surface of the Western Interior Seaway to catch fish."
   },
   {
     "id": "first_strike",
@@ -161,7 +269,7 @@
     "damageMultiplier": 0,
     "effects": [],
     "passive": true,
-    "scientificNote": "Aerial predators rely on surprise and speed."
+    "scientificNote": "Aerial predators rely on surprise and speed to catch prey before it can react."
   },
   {
     "id": "evasive",
@@ -172,7 +280,18 @@
     "damageMultiplier": 0,
     "effects": [],
     "passive": true,
-    "scientificNote": "Pteranodon's maneuverability in flight made it difficult to catch."
+    "scientificNote": "Pteranodon's maneuverability in flight, controlled by its head crest and wing membrane, made it difficult to catch."
+  },
+  {
+    "id": "hollow_bones",
+    "name": "Hollow Bones",
+    "description": "Passive: +2 speed but -5 max health.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Pterosaur bones were hollow and thin-walled, reducing weight for flight but making them more fragile."
   },
   {
     "id": "crushing_bite",
@@ -181,6 +300,8 @@
     "staminaCost": 50,
     "cooldown": 3,
     "damageMultiplier": 2.0,
+    "damageType": "crushing",
+    "targetType": "single_enemy",
     "effects": [
       {
         "type": "damage",
@@ -189,15 +310,17 @@
         "chance": 1.0
       }
     ],
-    "scientificNote": "T. rex's bite force was the strongest of any land animal, capable of crushing bone."
+    "scientificNote": "T. rex's bite force of 12,800 pounds was the strongest of any land animal, capable of crushing solid bone."
   },
   {
     "id": "terrifying_roar",
     "name": "Terrifying Roar",
-    "description": "Reduce enemy attack by 3 for 3 turns.",
+    "description": "Reduce enemy attack by 3 for 3 turns. May cause fear.",
     "staminaCost": 30,
     "cooldown": 4,
     "damageMultiplier": 0,
+    "damageType": "sonic",
+    "targetType": "all_enemies",
     "effects": [
       {
         "type": "debuff",
@@ -205,9 +328,16 @@
         "duration": 3,
         "chance": 1.0,
         "stat": "attack"
+      },
+      {
+        "type": "status",
+        "statusEffect": "feared",
+        "value": 0,
+        "duration": 1,
+        "chance": 0.3
       }
     ],
-    "scientificNote": "As an apex predator, T. rex's presence alone would intimidate most creatures."
+    "scientificNote": "As an apex predator, T. rex's presence alone would intimidate most creatures in its ecosystem."
   },
   {
     "id": "apex_strike",
@@ -216,7 +346,787 @@
     "staminaCost": 70,
     "cooldown": 5,
     "damageMultiplier": 2.5,
+    "damageType": "crushing",
+    "targetType": "single_enemy",
     "effects": [],
-    "scientificNote": "T. rex could deliver devastating attacks with its massive jaws and teeth."
+    "scientificNote": "T. rex could deliver devastating attacks with its massive jaws, lined with serrated teeth up to 30cm long."
+  },
+  {
+    "id": "bone_crusher",
+    "name": "Bone Crusher",
+    "description": "Target's defense is permanently reduced by 2 for this combat.",
+    "staminaCost": 45,
+    "cooldown": 4,
+    "damageMultiplier": 1.5,
+    "damageType": "crushing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "debuff",
+        "value": -2,
+        "duration": 999,
+        "chance": 1.0,
+        "stat": "defense"
+      }
+    ],
+    "scientificNote": "T. rex coprolites (fossilized feces) contain pulverized bone, showing they crushed and digested bone matter."
+  },
+  {
+    "id": "pursuit",
+    "name": "Relentless Pursuit",
+    "description": "Cannot be escaped from. Deals bonus damage to fleeing targets.",
+    "staminaCost": 35,
+    "cooldown": 3,
+    "damageMultiplier": 1.3,
+    "damageType": "physical",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 0,
+        "duration": 2,
+        "chance": 1.0,
+        "modifier": "prevent_flee"
+      }
+    ],
+    "scientificNote": "T. rex's binocular vision and keen sense of smell made it excellent at tracking prey over long distances."
+  },
+  {
+    "id": "binocular_vision",
+    "name": "Binocular Vision",
+    "description": "Passive: +10% accuracy and +10% critical chance.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "T. rex had forward-facing eyes with overlapping fields of view, providing depth perception better than a hawk's."
+  },
+  {
+    "id": "keen_smell",
+    "name": "Keen Smell",
+    "description": "Passive: Detect hidden enemies. Bonus damage against bleeding targets.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "T. rex's olfactory bulbs were enormous, giving it a sense of smell rivaling modern vultures."
+  },
+  {
+    "id": "aquatic_ambush",
+    "name": "Aquatic Ambush",
+    "description": "From water: Deal 180% damage and apply bleeding. Must be in water terrain.",
+    "staminaCost": 40,
+    "cooldown": 3,
+    "damageMultiplier": 1.8,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "terrainRequired": "water",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "bleeding",
+        "value": 5,
+        "duration": 3,
+        "chance": 0.8
+      }
+    ],
+    "scientificNote": "Spinosaurus was adapted for aquatic hunting, with dense bones for buoyancy control and a crocodile-like snout."
+  },
+  {
+    "id": "sail_intimidation",
+    "name": "Sail Display",
+    "description": "Display your massive sail to intimidate. Reduces enemy attack and defense by 2.",
+    "staminaCost": 25,
+    "cooldown": 4,
+    "damageMultiplier": 0,
+    "targetType": "all_enemies",
+    "effects": [
+      {
+        "type": "debuff",
+        "value": -2,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "attack"
+      },
+      {
+        "type": "debuff",
+        "value": -2,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "defense"
+      }
+    ],
+    "scientificNote": "Spinosaurus' sail could reach 1.8 meters tall and may have been used for display, thermoregulation, or fat storage."
+  },
+  {
+    "id": "crocodilian_snap",
+    "name": "Crocodilian Snap",
+    "description": "Quick bite attack with high accuracy. 20% chance to stun.",
+    "staminaCost": 25,
+    "cooldown": 2,
+    "damageMultiplier": 1.2,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "stunned",
+        "value": 0,
+        "duration": 1,
+        "chance": 0.2
+      }
+    ],
+    "scientificNote": "Spinosaurus' long, narrow snout was similar to modern gharials, ideal for catching slippery fish."
+  },
+  {
+    "id": "tail_propulsion",
+    "name": "Tail Propulsion",
+    "description": "Use your paddle tail to quickly reposition. Gain +3 speed for 2 turns.",
+    "staminaCost": 20,
+    "cooldown": 3,
+    "damageMultiplier": 0,
+    "effects": [
+      {
+        "type": "buff",
+        "value": 3,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "speed"
+      }
+    ],
+    "scientificNote": "2020 research revealed Spinosaurus had a paddle-like tail adapted for swimming, confirming its aquatic lifestyle."
+  },
+  {
+    "id": "semi_aquatic",
+    "name": "Semi-Aquatic",
+    "description": "Passive: +50% damage and +3 defense in water terrain. Can breathe underwater.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Spinosaurus is the only known dinosaur adapted for a primarily aquatic lifestyle."
+  },
+  {
+    "id": "pressure_sensors",
+    "name": "Pressure Sensors",
+    "description": "Passive: Detect movement in water. Cannot be surprised in water terrain.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Spinosaurus' snout had small pits that may have detected pressure waves, similar to crocodilian integumentary sensors."
+  },
+  {
+    "id": "skull_bash",
+    "name": "Skull Bash",
+    "description": "Headbutt dealing 130% damage with high stun chance.",
+    "staminaCost": 35,
+    "cooldown": 2,
+    "damageMultiplier": 1.3,
+    "damageType": "crushing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "stunned",
+        "value": 0,
+        "duration": 1,
+        "chance": 0.5
+      }
+    ],
+    "scientificNote": "Pachycephalosaurus' dome skull was up to 25cm thick, though debate continues whether it was used for head-butting."
+  },
+  {
+    "id": "charging_headbutt",
+    "name": "Charging Headbutt",
+    "description": "Charge at enemy dealing 160% damage. Self-damage: 5.",
+    "staminaCost": 40,
+    "cooldown": 3,
+    "damageMultiplier": 1.6,
+    "damageType": "crushing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 5,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "self_damage"
+      }
+    ],
+    "scientificNote": "The skull dome was surrounded by bony knobs and short spikes that may have absorbed impact shock."
+  },
+  {
+    "id": "thick_skull",
+    "name": "Thick Skull",
+    "description": "Passive: Immune to stun effects. +5% damage reduction from head attacks.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "The pachycephalosaur skull dome was solid bone, unlike most dinosaur skulls which had air spaces."
+  },
+  {
+    "id": "giant_sickle_claw",
+    "name": "Giant Sickle Claw",
+    "description": "Strike with your massive toe claw. 40% critical chance, 200% critical damage.",
+    "staminaCost": 35,
+    "cooldown": 2,
+    "damageMultiplier": 1.2,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 0.4,
+        "modifier": "critical"
+      }
+    ],
+    "scientificNote": "Utahraptor's sickle claw was 24cm long - twice the size of Deinonychus' and capable of devastating wounds."
+  },
+  {
+    "id": "alpha_strike",
+    "name": "Alpha Strike",
+    "description": "Lead your pack in a devastating coordinated attack. All allies attack the same target.",
+    "staminaCost": 50,
+    "cooldown": 5,
+    "damageMultiplier": 1.5,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "ally_attack"
+      }
+    ],
+    "scientificNote": "The Stikes Quarry in Utah preserved multiple Utahraptor specimens together, suggesting pack behavior."
+  },
+  {
+    "id": "pack_rally",
+    "name": "Pack Rally",
+    "description": "Boost all allies' attack and speed by 3 for 2 turns.",
+    "staminaCost": 30,
+    "cooldown": 4,
+    "damageMultiplier": 0,
+    "targetType": "all_allies",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 3,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "attack"
+      },
+      {
+        "type": "buff",
+        "value": 3,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "speed"
+      }
+    ],
+    "scientificNote": "Pack coordination allows predators to take down prey much larger than any individual could manage."
+  },
+  {
+    "id": "scythe_slash",
+    "name": "Scythe Slash",
+    "description": "Sweep with your meter-long claws dealing 140% damage to all enemies.",
+    "staminaCost": 45,
+    "cooldown": 3,
+    "damageMultiplier": 1.4,
+    "damageType": "slashing",
+    "targetType": "all_enemies",
+    "effects": [],
+    "scientificNote": "Therizinosaurus had the longest claws of any known animal - up to 1 meter (3.3 feet) long."
+  },
+  {
+    "id": "defensive_sweep",
+    "name": "Defensive Sweep",
+    "description": "Sweep claws to create distance. Pushes enemies back and prevents approach for 1 turn.",
+    "staminaCost": 30,
+    "cooldown": 3,
+    "damageMultiplier": 0.8,
+    "damageType": "slashing",
+    "targetType": "all_enemies",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 0,
+        "duration": 1,
+        "chance": 1.0,
+        "modifier": "zone_control"
+      }
+    ],
+    "scientificNote": "Despite being an herbivore, Therizinosaurus' claws made it extremely dangerous to predators."
+  },
+  {
+    "id": "longest_claws",
+    "name": "Longest Claws",
+    "description": "Passive: +3 attack. Attacks have extended range.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "The elongated claws were likely used to pull down tree branches and for defense against predators like Tarbosaurus."
+  },
+  {
+    "id": "bull_rush",
+    "name": "Bull Rush",
+    "description": "Charge at full speed. Deals 170% damage, ignores defense.",
+    "staminaCost": 40,
+    "cooldown": 3,
+    "damageMultiplier": 1.7,
+    "damageType": "crushing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "armor_piercing"
+      }
+    ],
+    "scientificNote": "Carnotaurus was one of the fastest large theropods, possibly reaching 48 km/h (30 mph)."
+  },
+  {
+    "id": "horn_gore",
+    "name": "Horn Gore",
+    "description": "Gore with your distinctive horns. Causes bleeding for 3 turns.",
+    "staminaCost": 30,
+    "cooldown": 2,
+    "damageMultiplier": 1.2,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "bleeding",
+        "value": 5,
+        "duration": 3,
+        "chance": 0.8
+      }
+    ],
+    "scientificNote": "Carnotaurus means 'meat-eating bull', named for its distinctive horns above the eyes."
+  },
+  {
+    "id": "rapid_strikes",
+    "name": "Rapid Strikes",
+    "description": "Attack 3 times in quick succession. Each hit deals 50% damage.",
+    "staminaCost": 35,
+    "cooldown": 2,
+    "damageMultiplier": 0.5,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "multi_hit",
+        "hitCount": 3
+      }
+    ],
+    "scientificNote": "Carnotaurus' lightweight build and strong legs allowed for quick, agile movements."
+  },
+  {
+    "id": "speed_demon",
+    "name": "Speed Demon",
+    "description": "Passive: Always act first. +2 speed.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Studies of Carnotaurus leg bones suggest it was optimized for speed over power."
+  },
+  {
+    "id": "resonating_call",
+    "name": "Resonating Call",
+    "description": "Use your crest to produce a booming call. Buffs allies and debuffs enemies for 2 turns.",
+    "staminaCost": 35,
+    "cooldown": 4,
+    "damageMultiplier": 0,
+    "damageType": "sonic",
+    "targetType": "all_allies",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 2,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "attack"
+      },
+      {
+        "type": "buff",
+        "value": 2,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "defense"
+      }
+    ],
+    "scientificNote": "Parasaurolophus' hollow crest could produce low-frequency sounds that traveled long distances."
+  },
+  {
+    "id": "herd_warning",
+    "name": "Herd Warning",
+    "description": "Sound an alarm call. All allies gain +50% damage on next attack.",
+    "staminaCost": 25,
+    "cooldown": 3,
+    "damageMultiplier": 0,
+    "damageType": "sonic",
+    "targetType": "all_allies",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 0.5,
+        "duration": 1,
+        "chance": 1.0,
+        "modifier": "next_attack_bonus"
+      }
+    ],
+    "scientificNote": "Living in herds for protection, hadrosaurs likely had complex vocal communication."
+  },
+  {
+    "id": "stampede",
+    "name": "Stampede",
+    "description": "Lead a charge! Deal 120% damage and knock back enemies.",
+    "staminaCost": 40,
+    "cooldown": 4,
+    "damageMultiplier": 1.2,
+    "damageType": "crushing",
+    "targetType": "all_enemies",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "stunned",
+        "value": 0,
+        "duration": 1,
+        "chance": 0.4
+      }
+    ],
+    "scientificNote": "A stampeding hadrosaur herd would have been extremely dangerous to anything in their path."
+  },
+  {
+    "id": "acute_hearing",
+    "name": "Acute Hearing",
+    "description": "Passive: Cannot be surprised. Detect hidden enemies.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "The hollow crest also enhanced hearing, allowing hadrosaurs to detect predators from greater distances."
+  },
+  {
+    "id": "precision_strike",
+    "name": "Precision Strike",
+    "description": "Target a weak point. 50% critical chance, ignores 50% armor.",
+    "staminaCost": 30,
+    "cooldown": 2,
+    "damageMultiplier": 1.1,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 0.5,
+        "modifier": "critical"
+      }
+    ],
+    "scientificNote": "Troodon had one of the highest brain-to-body ratios of any dinosaur, suggesting advanced problem-solving."
+  },
+  {
+    "id": "night_vision_hunt",
+    "name": "Night Vision Hunt",
+    "description": "Hunt under cover of darkness. +50% damage at night or in caves.",
+    "staminaCost": 25,
+    "cooldown": 2,
+    "damageMultiplier": 1.0,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0.5,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "night_bonus"
+      }
+    ],
+    "scientificNote": "Troodon's large, forward-facing eyes suggest it was adapted for hunting in low light conditions."
+  },
+  {
+    "id": "cunning_trap",
+    "name": "Cunning Trap",
+    "description": "Set a trap that triggers when enemy attacks. Counter with 150% damage.",
+    "staminaCost": 30,
+    "cooldown": 4,
+    "damageMultiplier": 1.5,
+    "damageType": "slashing",
+    "targetType": "self",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 0,
+        "duration": 2,
+        "chance": 1.0,
+        "modifier": "counter_trap"
+      }
+    ],
+    "scientificNote": "High intelligence would have allowed Troodon to employ more sophisticated hunting strategies."
+  },
+  {
+    "id": "genius_dinosaur",
+    "name": "Genius Dinosaur",
+    "description": "Passive: Learn enemy patterns. +10% damage per turn in combat (max 50%).",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Troodon's brain case suggests intelligence comparable to modern ratites like ostriches."
+  },
+  {
+    "id": "heavy_claw_swipe",
+    "name": "Heavy Claw Swipe",
+    "description": "Swipe with your massive thumb claw. High damage with bleeding chance.",
+    "staminaCost": 35,
+    "cooldown": 2,
+    "damageMultiplier": 1.4,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "bleeding",
+        "value": 6,
+        "duration": 3,
+        "chance": 0.6
+      }
+    ],
+    "scientificNote": "Baryonyx means 'heavy claw', referring to its massive 31cm thumb claw used to hook fish."
+  },
+  {
+    "id": "fish_hook_grab",
+    "name": "Fish Hook Grab",
+    "description": "Hook and pull an enemy closer. +30% damage on next attack against this target.",
+    "staminaCost": 25,
+    "cooldown": 3,
+    "damageMultiplier": 0.8,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "debuff",
+        "value": 0.3,
+        "duration": 1,
+        "chance": 1.0,
+        "modifier": "vulnerable"
+      }
+    ],
+    "scientificNote": "The thumb claw was likely used to hook fish from the water, similar to how bears fish."
+  },
+  {
+    "id": "swarm_attack",
+    "name": "Swarm Attack",
+    "description": "Attack as a swarm. Deals damage based on how many swarm members remain.",
+    "staminaCost": 20,
+    "cooldown": 1,
+    "damageMultiplier": 1.0,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "swarm_scaling"
+      }
+    ],
+    "scientificNote": "Small theropods like Compsognathus likely hunted in groups to take down larger prey."
+  },
+  {
+    "id": "quick_bite",
+    "name": "Quick Bite",
+    "description": "Fast attack that always goes first. Low damage but reliable.",
+    "staminaCost": 15,
+    "cooldown": 1,
+    "damageMultiplier": 0.8,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "priority"
+      }
+    ],
+    "scientificNote": "Small size and agility allowed for quick, darting attacks before prey could react."
+  },
+  {
+    "id": "call_swarm",
+    "name": "Call Swarm",
+    "description": "Call for reinforcements. Summon 2 additional swarm members.",
+    "staminaCost": 40,
+    "cooldown": 5,
+    "damageMultiplier": 0,
+    "targetType": "self",
+    "effects": [
+      {
+        "type": "summon",
+        "value": 2,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "swarm_member"
+      }
+    ],
+    "scientificNote": "Colonial nesting and pack behavior would have allowed quick coordination of multiple individuals."
+  },
+  {
+    "id": "tiny_target",
+    "name": "Tiny Target",
+    "description": "Passive: +5 evasion. Large enemies have -20% accuracy against you.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "At just 1 meter long, Compsognathus was one of the smallest known non-avian dinosaurs."
+  },
+  {
+    "id": "death_roll",
+    "name": "Death Roll",
+    "description": "Grab and spin your prey. Deals 180% damage and causes disorientation.",
+    "staminaCost": 45,
+    "cooldown": 4,
+    "damageMultiplier": 1.8,
+    "damageType": "crushing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "confused",
+        "value": 0,
+        "duration": 2,
+        "chance": 0.7
+      }
+    ],
+    "scientificNote": "Modern crocodilians use the death roll to tear chunks from prey - ancient crocodilians likely did the same."
+  },
+  {
+    "id": "ambush",
+    "name": "Ambush",
+    "description": "Strike from hiding. 200% damage if target hasn't acted this combat.",
+    "staminaCost": 35,
+    "cooldown": 0,
+    "damageMultiplier": 2.0,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "ambush_bonus"
+      }
+    ],
+    "scientificNote": "Crocodilians are ambush predators, waiting motionless for prey to approach before striking."
+  },
+  {
+    "id": "horn_charge",
+    "name": "Horn Charge",
+    "description": "Lower your horns and charge. Deals 150% damage with knockback.",
+    "staminaCost": 35,
+    "cooldown": 3,
+    "damageMultiplier": 1.5,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "stunned",
+        "value": 0,
+        "duration": 1,
+        "chance": 0.3
+      }
+    ],
+    "scientificNote": "Triceratops' three horns could reach 1 meter in length and were used for defense and possibly combat with rivals."
+  },
+  {
+    "id": "shield_stance",
+    "name": "Shield Stance",
+    "description": "Raise your frill as a shield. +5 defense for 2 turns.",
+    "staminaCost": 25,
+    "cooldown": 3,
+    "damageMultiplier": 0,
+    "targetType": "self",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 5,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "defense"
+      }
+    ],
+    "scientificNote": "Triceratops' frill was made of solid bone and could serve as protection for the vulnerable neck."
+  },
+  {
+    "id": "thagomizer",
+    "name": "Thagomizer",
+    "description": "Swing your spiked tail. High damage with bleeding chance.",
+    "staminaCost": 35,
+    "cooldown": 3,
+    "damageMultiplier": 1.4,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "bleeding",
+        "value": 8,
+        "duration": 3,
+        "chance": 0.7
+      }
+    ],
+    "scientificNote": "The term 'thagomizer' was coined by cartoonist Gary Larson and adopted by paleontologists for Stegosaurus' tail spikes."
+  },
+  {
+    "id": "plate_display",
+    "name": "Plate Display",
+    "description": "Flush blood to your plates to intimidate. Enemies have -2 attack for 2 turns.",
+    "staminaCost": 20,
+    "cooldown": 3,
+    "damageMultiplier": 0,
+    "targetType": "all_enemies",
+    "effects": [
+      {
+        "type": "debuff",
+        "value": -2,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "attack"
+      }
+    ],
+    "scientificNote": "Stegosaurus plates were rich in blood vessels and may have flushed red for display or thermoregulation."
   }
 ]
