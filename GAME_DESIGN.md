@@ -271,9 +271,10 @@ A scientifically accurate dinosaur roguelite inspired by Odell Lake, featuring 2
 ### 2. Node Types (Encounter System)
 
 #### Combat Encounters (50%)
-- **Predator**: Aggressive dinosaurs (Allosaurus, Utahraptor)
-- **Territory**: Defending herbivores (Triceratops, Stegosaurus)
-- **Ambush**: Hidden threats (Dromaeosaurs in undergrowth)
+- **Predator**: Aggressive dinosaurs (Allosaurus, Spinosaurus, Carnotaurus)
+- **Territory**: Defending herbivores (Triceratops, Stegosaurus, Therizinosaurus)
+- **Ambush**: Hidden threats (Dromaeosaurids, Dilophosaurus)
+- **Pack**: Swarm encounters (Compsognathus packs, Coelophysis groups)
 
 #### Resource Encounters (25%)
 - **Feeding Ground**: Restore 30 HP, random food type teaches fact
@@ -281,45 +282,81 @@ A scientifically accurate dinosaur roguelite inspired by Odell Lake, featuring 2
 - **Nesting Site**: Find eggs (currency) or adopt buff
 
 #### Event Encounters (15%)
-- **Environmental**: Meteor shower, volcanic eruption, flood
+- **Environmental**: Volcanic eruption, meteor shower, flash flood
+- **Discovery**: Amber deposits, fossil sites, nesting grounds
 - **Wildlife**: Pterosaur flock, insect swarm, mammal pack
-- **Discovery**: Fossil, amber, archaeological site (educational)
 
 #### Special Encounters (10%)
 - **Merchant**: Trade eggs for upgrades (ancient crocodile NPC)
 - **Shrine**: Sacrifice HP for permanent buffs
 - **Mystery**: Random high-risk/high-reward scenarios
 
-### 3. Combat System (Turn-Based)
+### 3. Random Encounter Events
+
+#### Environmental Events
+- **Volcanic Eruption**: Dodge falling debris, find shelter, or flee
+  - Scientific Note: Volcanic activity was common during the Mesozoic Era
+- **Meteor Shower**: Risk-reward opportunity for rare minerals
+  - Scientific Note: Small meteor impacts occurred throughout Earth's history
+- **Flash Flood**: Swimming skill test, rescue opportunities
+  - Scientific Note: Seasonal flooding was common in prehistoric river valleys
+
+#### Discovery Events
+- **Amber Deposit**: Ancient insects preserved in tree resin
+  - Choices: Extract carefully for bonus, rush for partial reward, ignore
+  - Scientific Note: Amber preserves organisms for millions of years
+- **Fossil Site**: Uncover ancient bones for research
+  - Choices: Excavate (takes time), quick dig (risky), mark for later
+  - Scientific Note: Fossilization requires specific conditions
+- **Nesting Ground**: Observe dinosaur parenting behavior
+  - Choices: Help defend, steal eggs, study peacefully
+  - Scientific Note: Many dinosaurs showed extensive parental care
+
+### 4. Combat System (Turn-Based)
 
 ```
 Turn Order: Determined by Speed stat
+↓
+Environmental Effects Applied
 ↓
 Player Action Phase
 ├─ Attack (Basic/Special)
 ├─ Defend (+5 DEF this turn)
 ├─ Use Item
+├─ Target Specific Body Zone
 └─ Attempt Flee (Speed check)
 ↓
 Enemy Action Phase
 ↓
 Status Effect Resolution
 ↓
+Environmental Hazard Resolution
+↓
 Check Victory/Defeat
 ```
 
 #### Action Types
 - **Basic Attack**: 100% ATK damage, 10 stamina
-- **Special Ability**: Species-specific, 30-50 stamina
+- **Special Ability**: Species-specific, 15-40 stamina
 - **Heavy Attack**: 150% ATK, -5 DEF, 25 stamina
 - **Defend**: +5 DEF, prepare counter
 - **Item**: Consume foraged resources
+
+#### Body Target Zones
+- **Head**: High damage, hard to hit, can cause stun
+- **Body**: Standard damage, normal accuracy
+- **Limbs**: Reduce enemy attacks/movement
+- **Tail**: For creatures with tail weapons
+- **Wings**: Disable flight abilities
+- **Weak Spot**: Massive damage if identified
 
 #### Combat Modernizations
 - **Weak Points**: Target specific body parts for bonuses
 - **Combo System**: Chaining abilities builds "Evolution" meter
 - **Environmental Hazards**: Use terrain (cliffs, water, vegetation)
 - **Adaptive AI**: Enemies learn from repeated strategies
+- **Weather Impact**: Rain, storms, heat affect combat
+- **Pack Tactics**: Allied dinosaurs provide flanking bonuses
 
 ### 4. Progression Systems
 
