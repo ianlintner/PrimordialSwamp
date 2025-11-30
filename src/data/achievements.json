@@ -1,0 +1,205 @@
+[
+  {
+    "id": "first_blood",
+    "name": "First Blood",
+    "description": "Win your first combat encounter",
+    "category": "combat",
+    "target": 1,
+    "icon": "⚔️"
+  },
+  {
+    "id": "extinction_event",
+    "name": "Extinction Event",
+    "description": "Defeat 100 enemies total",
+    "category": "combat",
+    "target": 100,
+    "icon": "💀",
+    "reward": { "type": "fossils", "value": 50 }
+  },
+  {
+    "id": "perfect_victory",
+    "name": "Perfect Victory",
+    "description": "Win combat without taking damage",
+    "category": "combat",
+    "icon": "✨"
+  },
+  {
+    "id": "comeback_kid",
+    "name": "Comeback Kid",
+    "description": "Win at less than 10% HP",
+    "category": "combat",
+    "icon": "💪"
+  },
+  {
+    "id": "speed_run",
+    "name": "Speed Run",
+    "description": "Complete encounter in under 5 turns",
+    "category": "combat",
+    "icon": "⚡"
+  },
+  {
+    "id": "overkill",
+    "name": "Overkill",
+    "description": "Deal 100+ damage in a single hit",
+    "category": "combat",
+    "icon": "💥"
+  },
+  {
+    "id": "survivor_combat",
+    "name": "Last Stand",
+    "description": "Win 5 consecutive combats without healing",
+    "category": "combat",
+    "target": 5,
+    "icon": "🛡️"
+  },
+  {
+    "id": "first_run",
+    "name": "First Steps",
+    "description": "Complete your first run (win or lose)",
+    "category": "progression",
+    "icon": "👣"
+  },
+  {
+    "id": "survivor",
+    "name": "Survivor",
+    "description": "Complete a run victoriously",
+    "category": "progression",
+    "icon": "🏆",
+    "reward": { "type": "trait", "value": "extinction_survivor" }
+  },
+  {
+    "id": "depth_explorer",
+    "name": "Depth Explorer",
+    "description": "Reach depth 5 in any biome",
+    "category": "progression",
+    "target": 5,
+    "icon": "🗺️"
+  },
+  {
+    "id": "biome_conqueror",
+    "name": "Biome Conqueror",
+    "description": "Complete all biomes",
+    "category": "progression",
+    "target": 4,
+    "icon": "🌍"
+  },
+  {
+    "id": "master_of_evolution",
+    "name": "Master of Evolution",
+    "description": "Unlock all dinosaurs",
+    "category": "progression",
+    "icon": "🦕",
+    "reward": { "type": "cosmetic", "value": "golden_skin" }
+  },
+  {
+    "id": "trait_hunter",
+    "name": "Trait Hunter",
+    "description": "Acquire 30 different traits across runs",
+    "category": "progression",
+    "target": 30,
+    "icon": "🧬"
+  },
+  {
+    "id": "fossil_collector",
+    "name": "Fossil Collector",
+    "description": "Collect 500 fossil fragments total",
+    "category": "progression",
+    "target": 500,
+    "icon": "🦴",
+    "reward": { "type": "fossils", "value": 100 }
+  },
+  {
+    "id": "veteran",
+    "name": "Veteran",
+    "description": "Complete 50 runs",
+    "category": "progression",
+    "target": 50,
+    "icon": "🎖️"
+  },
+  {
+    "id": "paleontologist",
+    "name": "Paleontologist",
+    "description": "Discover all codex entries",
+    "category": "discovery",
+    "icon": "📚",
+    "reward": { "type": "fossils", "value": 100 }
+  },
+  {
+    "id": "fact_finder",
+    "name": "Fact Finder",
+    "description": "Discover 50 scientific facts",
+    "category": "discovery",
+    "target": 50,
+    "icon": "🔬"
+  },
+  {
+    "id": "curious_mind",
+    "name": "Curious Mind",
+    "description": "Discover 10 scientific facts in one run",
+    "category": "discovery",
+    "target": 10,
+    "icon": "🤔"
+  },
+  {
+    "id": "egg_collector",
+    "name": "Egg Collector",
+    "description": "Find all egg types",
+    "category": "discovery",
+    "icon": "🥚",
+    "reward": { "type": "cosmetic", "value": "nest_background" }
+  },
+  {
+    "id": "darwin_award",
+    "name": "Darwin Award",
+    "description": "Die to the same species 3 times",
+    "category": "special",
+    "icon": "🤦"
+  },
+  {
+    "id": "against_all_odds",
+    "name": "Against All Odds",
+    "description": "Defeat a boss with starter dinosaur",
+    "category": "special",
+    "icon": "🎯"
+  },
+  {
+    "id": "speedster",
+    "name": "Speedster",
+    "description": "Complete a run in under 15 minutes",
+    "category": "special",
+    "icon": "🏃",
+    "reward": { "type": "dinosaur", "value": "velociraptor" }
+  },
+  {
+    "id": "pacifist_route",
+    "name": "Pacifist Route",
+    "description": "Avoid 5 combat encounters in one run",
+    "category": "special",
+    "target": 5,
+    "icon": "🕊️"
+  },
+  {
+    "id": "glass_cannon",
+    "name": "Glass Cannon",
+    "description": "Win a run without taking any defensive traits",
+    "category": "special",
+    "icon": "💣"
+  },
+  {
+    "id": "daily_champion",
+    "name": "Daily Champion",
+    "description": "Complete 7 daily challenges",
+    "category": "special",
+    "target": 7,
+    "icon": "📅"
+  },
+  {
+    "id": "boss_slayer",
+    "name": "Boss Slayer",
+    "description": "Defeat all boss types",
+    "category": "special",
+    "target": 4,
+    "icon": "👑",
+    "reward": { "type": "trait", "value": "apex_predator" }
+  }
+]
