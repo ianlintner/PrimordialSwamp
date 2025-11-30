@@ -17,7 +17,17 @@
         "modifier": "critical"
       }
     ],
-    "scientificNote": "Deinonychus' sickle claw was held off the ground while running and deployed during attacks, similar to modern secretary birds."
+    "scientificNote": "Deinonychus' sickle claw was held off the ground while running and deployed during attacks, similar to modern secretary birds.",
+    "scientificBasis": {
+      "anatomicalSource": "Deinonychus sickle claw measured approximately 12cm along the outer curve, hyperextensible at the second toe joint.",
+      "behavioralInterpretation": "Biomechanical studies suggest the claw was used for gripping and pinning prey rather than slashing, similar to accipitrid raptor predation.",
+      "gameTranslation": {
+        "damageMultiplier": "1.0x base reflects controlled precision strikes rather than wild slashing",
+        "criticalChance": "30% critical represents successful deployment of the hyperextended claw into vulnerable areas",
+        "staminaCost": "30 stamina reflects the muscular effort required to maintain grip during prey restraint"
+      },
+      "citations": ["fowler2011sickle_claw_function", "manning2006raptor_prey_restraint"]
+    }
   },
   {
     "id": "pack_coordination",
@@ -99,7 +109,17 @@
         "modifier": "reflect"
       }
     ],
-    "scientificNote": "Ankylosaurus' tail club could swing with approximately 14,000 Newtons of force, enough to break the leg bones of a T. rex."
+    "scientificNote": "Ankylosaurus' tail club could swing with approximately 14,000 Newtons of force, enough to break the leg bones of a T. rex.",
+    "scientificBasis": {
+      "anatomicalSource": "Tail club formed from fused osteoderms and enlarged caudal vertebrae, weighing approximately 5kg at the distal end.",
+      "behavioralInterpretation": "Biomechanical modeling estimates swing velocity of 60 km/h and impact force of 14,000+ Newtons, exceeding bone fracture thresholds for tyrannosaur tibiae.",
+      "gameTranslation": {
+        "counterMechanic": "40% reflect represents the devastating defensive weapon - attackers risk serious injury",
+        "damageType": "Crushing damage reflects blunt force trauma from solid bone club",
+        "staminaCost": "40 stamina reflects the muscular effort of swinging 5kg of fused bone"
+      },
+      "citations": ["arbour2009ankylosaurid_tail_club", "carpenter2004ankylosaurid_weapons"]
+    }
   },
   {
     "id": "fortify",
@@ -310,7 +330,17 @@
         "chance": 1.0
       }
     ],
-    "scientificNote": "T. rex's bite force of 12,800 pounds was the strongest of any land animal, capable of crushing solid bone."
+    "scientificNote": "T. rex's bite force of 12,800 pounds was the strongest of any land animal, capable of crushing solid bone.",
+    "scientificBasis": {
+      "anatomicalSource": "Bite force estimated at 12,800 pounds (57,000 Newtons) based on skull biomechanics and muscle reconstruction.",
+      "behavioralInterpretation": "Coprolite evidence shows T. rex crushed and digested bone. Bite marks on Triceratops and Edmontosaurus bones confirm bone-crushing feeding behavior.",
+      "gameTranslation": {
+        "damageMultiplier": "2.0x damage represents the most powerful bite of any land animal in Earth's history",
+        "staminaCost": "50 stamina reflects enormous muscular effort - bite muscles comprised 8% of body mass",
+        "cooldown": "3-turn cooldown represents the recovery time between maximum-force bites"
+      },
+      "citations": ["bates2012estimating_bite_force", "erickson2017feeding_biomechanics"]
+    }
   },
   {
     "id": "terrifying_roar",
@@ -432,7 +462,17 @@
         "chance": 0.8
       }
     ],
-    "scientificNote": "Spinosaurus was adapted for aquatic hunting, with dense bones for buoyancy control and a crocodile-like snout."
+    "scientificNote": "Spinosaurus was adapted for aquatic hunting, with dense bones for buoyancy control and a crocodile-like snout.",
+    "scientificBasis": {
+      "anatomicalSource": "2020 research revealed paddle-like tail with tall neural spines, dense pachyostotic bones for buoyancy control, and pressure-sensing neurovascular foramina on the snout.",
+      "behavioralInterpretation": "Spinosaurus likely hunted from the water using ambush tactics, similar to modern crocodilians. Conical teeth optimized for gripping slippery prey.",
+      "gameTranslation": {
+        "damageMultiplier": "1.8x reflects the devastating surprise advantage of aquatic ambush predation",
+        "bleedingEffect": "80% bleed chance represents the tearing damage from conical teeth designed for grip not cutting",
+        "terrainRequired": "Water terrain requirement reflects Spinosaurus' specialized semi-aquatic hunting strategy"
+      },
+      "citations": ["ibrahim2020spinosaurus_aquatic", "ibrahim2014spinosaurus", "cuff2013spinosaurid_sensing"]
+    }
   },
   {
     "id": "sail_intimidation",
@@ -777,7 +817,17 @@
         "stat": "defense"
       }
     ],
-    "scientificNote": "Parasaurolophus' hollow crest could produce low-frequency sounds that traveled long distances."
+    "scientificNote": "Parasaurolophus' hollow crest could produce low-frequency sounds that traveled long distances.",
+    "scientificBasis": {
+      "anatomicalSource": "Hollow cranial crest contained convoluted nasal passages up to 1.8m in length, functioning as resonating chambers.",
+      "behavioralInterpretation": "Digital acoustic reconstruction produced sounds in the 30-240 Hz range. Low frequencies travel kilometers and could coordinate herd movements or warn of predators.",
+      "gameTranslation": {
+        "allyBuffs": "+2 attack/defense represents improved herd coordination from clear communication",
+        "damageType": "Sonic damage reflects the disorienting effect of powerful low-frequency sound on enemies",
+        "cooldown": "4-turn cooldown represents the time needed to build breath pressure for another resonating call"
+      },
+      "citations": ["weishampel1981lambeosaurine_crests", "diegert1998parasaurolophus_acoustics"]
+    }
   },
   {
     "id": "herd_warning",
