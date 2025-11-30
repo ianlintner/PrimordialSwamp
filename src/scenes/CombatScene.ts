@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { SCENE_KEYS, GAME_CONFIG } from '../utils/Constants';
+import { SCENE_KEYS, GAME_CONFIG, SPACING } from '../utils/Constants';
 import { DinosaurType } from '../types/Dinosaur.types';
 import { NodeType } from '../types/Encounter.types';
 import { StatusEffect, StatusEffectType } from '../types/Combat.types';
@@ -305,15 +305,15 @@ export class CombatScene extends Phaser.Scene {
       color: '#4a9d5f',
       fontFamily: 'Courier New, monospace',
       backgroundColor: '#2a2a2a',
-      padding: { x: 15, y: 10 }
+      padding: { x: SPACING.BUTTON_PADDING_X - 5, y: SPACING.BUTTON_PADDING_Y }
     }).setInteractive({ useHandCursor: true });
     
     // Cost indicator below button
     let costIndicator: Phaser.GameObjects.Text | null = null;
     if (costText) {
       costIndicator = this.add.text(
-        button.width / 2 + 15, 
-        button.height + 18, 
+        button.width / 2 + SPACING.BUTTON_PADDING_X - 5, 
+        button.height + SPACING.MD + 2, 
         costText, 
         {
           fontSize: '12px',

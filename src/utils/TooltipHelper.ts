@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { GAME_CONFIG, TYPOGRAPHY, TOOLTIP_CONFIG } from './Constants';
+import { GAME_CONFIG, TYPOGRAPHY, TOOLTIP_CONFIG, hexToColorString } from './Constants';
 
 /**
  * TooltipHelper provides consistent tooltip functionality across scenes
@@ -37,7 +37,7 @@ export class TooltipHelper {
     // Title text
     const titleText = this.scene.add.text(padding, padding, title, {
       fontSize: TYPOGRAPHY.SIZE_MD,
-      color: `#${GAME_CONFIG.COLORS.PRIMARY.toString(16).padStart(6, '0')}`,
+      color: hexToColorString(GAME_CONFIG.COLORS.PRIMARY),
       fontFamily: TYPOGRAPHY.FONT_FAMILY,
       fontStyle: 'bold'
     });
@@ -45,7 +45,7 @@ export class TooltipHelper {
     // Description text
     const descText = this.scene.add.text(padding, padding + 24, description, {
       fontSize: TYPOGRAPHY.SIZE_SM,
-      color: `#${GAME_CONFIG.COLORS.TEXT_SECONDARY.toString(16).padStart(6, '0')}`,
+      color: hexToColorString(GAME_CONFIG.COLORS.TEXT_SECONDARY),
       fontFamily: TYPOGRAPHY.FONT_FAMILY,
       wordWrap: { width: maxWidth - padding * 2 }
     });
@@ -57,7 +57,7 @@ export class TooltipHelper {
     if (extra?.cost) {
       costText = this.scene.add.text(padding, currentY, `Cost: ${extra.cost}`, {
         fontSize: TYPOGRAPHY.SIZE_SM,
-        color: `#${GAME_CONFIG.COLORS.INFO.toString(16).padStart(6, '0')}`,
+        color: hexToColorString(GAME_CONFIG.COLORS.INFO),
         fontFamily: TYPOGRAPHY.FONT_FAMILY
       });
       currentY += 20;
@@ -68,7 +68,7 @@ export class TooltipHelper {
     if (extra?.warning) {
       warningText = this.scene.add.text(padding, currentY, `⚠ ${extra.warning}`, {
         fontSize: TYPOGRAPHY.SIZE_SM,
-        color: `#${GAME_CONFIG.COLORS.WARNING.toString(16).padStart(6, '0')}`,
+        color: hexToColorString(GAME_CONFIG.COLORS.WARNING),
         fontFamily: TYPOGRAPHY.FONT_FAMILY
       });
       currentY += 20;
@@ -79,7 +79,7 @@ export class TooltipHelper {
     if (extra?.shortcut) {
       shortcutText = this.scene.add.text(padding, currentY, extra.shortcut, {
         fontSize: TYPOGRAPHY.SIZE_XS,
-        color: `#${GAME_CONFIG.COLORS.TEXT_MUTED.toString(16).padStart(6, '0')}`,
+        color: hexToColorString(GAME_CONFIG.COLORS.TEXT_MUTED),
         fontFamily: TYPOGRAPHY.FONT_FAMILY
       });
       currentY += 18;

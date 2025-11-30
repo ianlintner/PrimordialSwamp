@@ -232,6 +232,15 @@ export const KEY_BINDINGS = {
   }
 } as const;
 
+/**
+ * Convert a hex color number to CSS color string
+ * @param hexColor - Color as hex number (e.g., 0x4a9d5f)
+ * @returns CSS color string (e.g., '#4a9d5f')
+ */
+export function hexToColorString(hexColor: number): string {
+  return `#${hexColor.toString(16).padStart(6, '0')}`;
+}
+
 export const SCENE_KEYS = {
   BOOT: 'BootScene',
   MENU: 'MenuScene',
