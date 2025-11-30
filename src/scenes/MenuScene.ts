@@ -128,7 +128,7 @@ export class MenuScene extends Phaser.Scene {
 
   private openSettings(): void {
     console.log('⚙ Opening settings...');
-    // TODO: Implement settings scene
+    this.scene.start(SCENE_KEYS.SETTINGS);
   }
 
   private displayRandomFact(): void {

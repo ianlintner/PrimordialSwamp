@@ -23,10 +23,11 @@ export class BootScene extends Phaser.Scene {
 
   create(): void {
     // Create pixel texture for particles
-    const graphics = this.make.graphics({ x: 0, y: 0, add: false });
+    const graphics = this.add.graphics();
     graphics.fillStyle(0xffffff);
     graphics.fillRect(0, 0, 4, 4);
     graphics.generateTexture('pixel', 4, 4);
+    graphics.destroy();
     
     // Initialize game systems
     console.log('🦕 Primordial Swamp - Boot Complete');

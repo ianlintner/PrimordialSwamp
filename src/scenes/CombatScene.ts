@@ -10,6 +10,7 @@ import traitsData from '../data/traits.json';
 import { GameStateManager } from '../managers/GameStateManager';
 
 interface Combatant {
+  id?: string;
   name: string;
   hp: number;
   maxHp: number;
@@ -85,6 +86,7 @@ export class CombatScene extends Phaser.Scene {
     
     if (enemyData) {
       this.enemy = {
+        id: enemyData.id,
         name: enemyData.name,
         hp: enemyData.stats.hp,
         maxHp: enemyData.stats.hp,
@@ -750,22 +752,47 @@ export class CombatScene extends Phaser.Scene {
     if (this.enemy && this.enemy.id) {
       GameStateManager.getInstance().unlockCodexEntry(this.enemy.id);
     }
+
+    // Calculate rewards
+    const fossilsEarned = 5 + Math.floor(Math.random() * 10);
+    const experienceGained = 10 + (this.nodeType === 'elite' ? 15 : 0) + (this.nodeType === 'boss' ? 30 : 0);
     
-    this.time.delayedCall(2000, () => {
-      // TODO: Show rewards screen
-      this.scene.start(SCENE_KEYS.MAP, { dinosaur: this.playerDinosaur });
+    // Add fossils to run
+    GameStateManager.getInstance().updateResources(fossilsEarned);
+    
+    this.time.delayedCall(1500, () => {
+      this.scene.start(SCENE_KEYS.REWARDS, {
+        dinosaur: this.playerDinosaur,
+        enemyName: this.enemy.name,
+        fossilsEarned: fossilsEarned,
+        experienceGained: experienceGained,
+        combatTurns: this.turn
+      });
     });
   }
 
   private defeat(): void {
     this.addLog('💀 You have been defeated...');
     
+    // Get run stats before clearing
+    const run = GameStateManager.getInstance().getCurrentRun();
+    const depth = run?.depth || 0;
+    const combatsWon = run?.combatsWon || 0;
+    const fossilsCollected = run?.fossilsCollected || 0;
+    const runDuration = run ? Date.now() - run.startTime : 0;
+    
     // Clear current run
     GameStateManager.getInstance().clearCurrentRun();
     
-    this.time.delayedCall(2000, () => {
-      // TODO: Show game over screen with stats
-      this.scene.start(SCENE_KEYS.MENU);
+    this.time.delayedCall(1500, () => {
+      this.scene.start(SCENE_KEYS.GAME_OVER, {
+        enemyName: this.enemy.name,
+        depth: depth,
+        combatsWon: combatsWon,
+        fossilsCollected: fossilsCollected,
+        turnsInCombat: this.turn,
+        runDuration: runDuration
+      });
     });
   }
 

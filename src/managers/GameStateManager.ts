@@ -260,8 +260,8 @@ export class GameStateManager {
     this.saveState();
   }
 
-  public toggleAccessibility(key: keyof SettingsState['accessibility'], value: boolean): void {
-    this.state.settings.accessibility[key] = value as any;
+  public toggleAccessibility(key: 'highContrast' | 'screenReader' | 'reducedMotion' | 'autoAdvanceText', value: boolean): void {
+    this.state.settings.accessibility[key] = value;
     this.saveState();
   }
 }

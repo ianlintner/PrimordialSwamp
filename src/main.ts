@@ -5,6 +5,9 @@ import { CharacterSelectScene } from './scenes/CharacterSelectScene';
 import { MapScene } from './scenes/MapScene';
 import { CombatScene } from './scenes/CombatScene';
 import { CodexScene } from './scenes/CodexScene';
+import { RewardsScene } from './scenes/RewardsScene';
+import { GameOverScene } from './scenes/GameOverScene';
+import { SettingsScene } from './scenes/SettingsScene';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -30,7 +33,10 @@ const config: Phaser.Types.Core.GameConfig = {
     CharacterSelectScene,
     MapScene,
     CombatScene,
-    CodexScene
+    CodexScene,
+    RewardsScene,
+    GameOverScene,
+    SettingsScene
   ]
 };
 
