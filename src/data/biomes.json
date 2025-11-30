@@ -152,7 +152,7 @@
       "type": "varied",
       "temperature": { "min": 10, "max": 40, "unit": "celsius" },
       "humidity": { "min": 30, "max": 60, "unit": "percent" },
-      "precipitation": "variable"
+      "precipitation": "moderate"
     },
     "atmosphere": {
       "co2_level": 1500,

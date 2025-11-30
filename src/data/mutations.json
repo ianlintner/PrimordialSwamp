@@ -8,12 +8,12 @@
     "description": "Develop more elaborate feathers for insulation and display.",
     "effects": [
       { "stat": "defense", "value": 2, "type": "flat" },
-      { "stat": "evasion", "value": 1, "type": "flat" }
+      { "special": "evasion_bonus", "value": 1, "type": "flat" }
     ],
     "prerequisites": {
       "physicalTraits": ["hasFeathers"]
     },
-    "incompatible": ["armored_scales"],
+    "incompatible": ["osteoderm_armor"],
     "evolutionPoints": 15,
     "scientificBasis": {
       "description": "Feather evolution occurred gradually from simple filaments to complex pennaceous feathers used for thermoregulation, display, and eventually flight.",
@@ -74,7 +74,7 @@
     "tier": "common",
     "description": "Develop enlarged olfactory bulbs for enhanced scent detection.",
     "effects": [
-      { "stat": "accuracy", "value": 5, "type": "percent" },
+      { "special": "accuracy_bonus", "value": 5, "type": "percent" },
       { "special": "detect_hidden_enemies", "value": true, "type": "boolean" },
       { "special": "bonus_vs_bleeding", "value": 15, "type": "percent" }
     ],
@@ -96,8 +96,8 @@
     "tier": "rare",
     "description": "Develop forward-facing eyes with overlapping visual fields for depth perception.",
     "effects": [
-      { "stat": "accuracy", "value": 10, "type": "percent" },
-      { "stat": "criticalChance", "value": 8, "type": "percent" }
+      { "special": "accuracy_bonus", "value": 10, "type": "percent" },
+      { "special": "critical_chance_bonus", "value": 8, "type": "percent" }
     ],
     "prerequisites": {
       "role": ["hunter", "powerhouse", "ambusher"]
@@ -107,7 +107,7 @@
     "scientificBasis": {
       "description": "Predatory theropods evolved forward-facing eyes with significant binocular overlap, enabling precise distance judgment essential for hunting.",
       "evidence": "Skull morphology of T. rex shows 55° binocular overlap, exceeding modern hawks.",
-      "citations": ["stevens2006trex_vision", "kawabe2017theropod_vision"]
+      "citations": ["stevens2006trex_vision", "kawabe2021theropod_vision"]
     },
     "gameplayNote": "Critical for precision-based combat builds."
   },
@@ -119,7 +119,7 @@
     "tier": "common",
     "description": "Develop laterally-placed eyes for nearly 360° field of view.",
     "effects": [
-      { "stat": "evasion", "value": 3, "type": "flat" },
+      { "special": "evasion_bonus", "value": 3, "type": "flat" },
       { "special": "cannot_be_surprised", "value": true, "type": "boolean" }
     ],
     "prerequisites": {
@@ -130,7 +130,7 @@
     "scientificBasis": {
       "description": "Herbivorous dinosaurs typically had laterally-placed eyes providing wide visual coverage to detect approaching predators.",
       "evidence": "Skull anatomy of hadrosaurs and ceratopsians shows eye sockets positioned for maximum peripheral vision.",
-      "citations": ["motani2008visual_adaptations", "sampson2010ceratopsian_evolution"]
+      "citations": ["motani1999visual_adaptations", "sampson2010ceratopsian_evolution"]
     },
     "gameplayNote": "Essential defensive adaptation for herbivores."
   },
@@ -143,7 +143,7 @@
     "description": "Develop specialized sensory pits on the snout for detecting prey movement in water.",
     "effects": [
       { "special": "detect_in_water", "value": true, "type": "boolean" },
-      { "stat": "accuracy", "value": 20, "type": "percent", "condition": "water_terrain" }
+      { "special": "accuracy_bonus", "value": 20, "type": "percent", "condition": "water_terrain" }
     ],
     "prerequisites": {
       "locomotion": ["semi_aquatic", "swimming"]
@@ -254,7 +254,7 @@
     "effects": [
       { "stat": "attack", "value": 4, "type": "flat" },
       { "special": "bleed_on_crit", "value": true, "type": "boolean" },
-      { "stat": "criticalDamage", "value": 25, "type": "percent" }
+      { "special": "critical_damage_bonus", "value": 25, "type": "percent" }
     ],
     "prerequisites": {
       "locomotion": ["bipedal"],
@@ -302,8 +302,7 @@
     "description": "Develop a massively thickened skull dome for head-butting combat.",
     "effects": [
       { "special": "stun_immunity", "value": true, "type": "boolean" },
-      { "stat": "headbutt_damage", "value": 35, "type": "percent" },
-      { "stat": "intelligence", "value": -1, "type": "flat" }
+      { "special": "headbutt_damage_bonus", "value": 35, "type": "percent" }
     ],
     "prerequisites": {},
     "incompatible": ["crest_resonator"],
@@ -373,14 +372,14 @@
       { "special": "ally_defense_bonus", "value": 10, "type": "percent" }
     ],
     "prerequisites": {
-      "socialBehavior": ["pack_hunter", "herd_member", "colonial"]
+      "socialBehavior": ["pack", "herd", "colony"]
     },
     "incompatible": ["solitary_hunter"],
     "evolutionPoints": 20,
     "scientificBasis": {
       "description": "Evidence for coordinated pack hunting in dromaeosaurids suggests complex social cognition and communication.",
       "evidence": "The Deinonychus-Tenontosaurus association at various sites suggests coordinated attacks on large prey.",
-      "citations": ["maxwell2001pack_hunting", "roach2007pack_hunting_evidence"]
+      "citations": ["maxwell1995pack_hunting", "roach2007pack_hunting_evidence"]
     },
     "gameplayNote": "Essential for pack-based strategies."
   },
@@ -396,7 +395,7 @@
       { "special": "bonus_vs_elite", "value": 25, "type": "percent" }
     ],
     "prerequisites": {
-      "socialBehavior": ["solitary", "territorial"]
+      "socialBehavior": ["solitary"]
     },
     "incompatible": ["pack_mentality"],
     "evolutionPoints": 30,
@@ -415,7 +414,7 @@
     "tier": "common",
     "description": "Develop enlarged eyes with enhanced rod photoreceptors for night hunting.",
     "effects": [
-      { "stat": "accuracy", "value": 25, "type": "percent", "condition": "night_time" },
+      { "special": "accuracy_bonus", "value": 25, "type": "percent", "condition": "night_time" },
       { "stat": "attack", "value": 15, "type": "percent", "condition": "night_time" }
     ],
     "prerequisites": {},
@@ -437,7 +436,7 @@
     "description": "Develop a higher metabolic rate for increased activity levels.",
     "effects": [
       { "stat": "speed", "value": 2, "type": "flat" },
-      { "stat": "stamina_regen", "value": 25, "type": "percent" },
+      { "special": "stamina_regen_bonus", "value": 25, "type": "percent" },
       { "special": "food_requirement", "value": 50, "type": "percent" }
     ],
     "prerequisites": {},
@@ -459,7 +458,7 @@
     "description": "Maintain stable body temperature through sheer mass rather than metabolic heat.",
     "effects": [
       { "special": "temperature_immunity", "value": true, "type": "boolean" },
-      { "stat": "stamina_regen", "value": 10, "type": "percent" }
+      { "special": "stamina_regen_bonus", "value": 10, "type": "percent" }
     ],
     "prerequisites": {
       "sizeCategory": ["large", "huge", "colossal"]
