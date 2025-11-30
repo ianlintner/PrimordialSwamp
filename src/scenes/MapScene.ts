@@ -399,6 +399,11 @@ export class MapScene extends Phaser.Scene {
     node.visited = true;
     node.available = false;
     
+    // Disable interaction on the current node
+    const currentCircle = node.visual.getAt(0) as Phaser.GameObjects.Arc;
+    currentCircle.disableInteractive();
+    currentCircle.setFillStyle(0x1a1a1a); // Darken visited node
+    
     // Update GameStateManager
     GameStateManager.getInstance().visitNode(node.id);
     
@@ -408,8 +413,6 @@ export class MapScene extends Phaser.Scene {
     
     // Make next column available
     if (col + 1 < this.nodes.length) {
-      const nextColumn = this.nodes[col + 1];
-      
       // Only make connected nodes available
       for (const connectionId of node.connections) {
         const [nextCol, nextRow] = connectionId.split('-').map(Number);
@@ -439,8 +442,22 @@ export class MapScene extends Phaser.Scene {
       }
     }
     
+    // Save updated map state to GameStateManager
+    this.saveMapState();
+    
     // Handle node type
     this.handleNodeEncounter(node);
+  }
+  
+  private saveMapState(): void {
+    // Serialize and save current node states
+    const serializableNodes = this.nodes.map(col => 
+      col.map(node => {
+        const { visual, ...serializableNode } = node;
+        return serializableNode;
+      })
+    );
+    GameStateManager.getInstance().setMapNodes(serializableNodes);
   }
   
   private handleNodeEncounter(node: MapNodeUI): void {
@@ -597,8 +614,14 @@ export class MapScene extends Phaser.Scene {
           visual: this.add.container(0, 0) // Recreate container
         };
         
-        this.createNodeVisual(node);
         this.nodes[col].push(node);
+      }
+    }
+    
+    // Now create visuals with proper interactivity
+    for (const column of this.nodes) {
+      for (const node of column) {
+        this.createNodeVisualWithState(node);
       }
     }
     
@@ -609,6 +632,51 @@ export class MapScene extends Phaser.Scene {
     if (run && run.currentNodeId) {
         const [col] = run.currentNodeId.split('-').map(Number);
         this.currentColumn = col;
+    }
+  }
+  
+  private createNodeVisualWithState(node: MapNodeUI): void {
+    const container = node.visual;
+    container.setPosition(node.x, node.y);
+    
+    // Node circle background
+    const circle = this.add.circle(0, 0, 25, node.visited ? 0x1a1a1a : 0x2a2a2a, 1);
+    circle.setStrokeStyle(3, this.getNodeColor(node.type));
+    
+    // Node icon
+    const icon = this.add.text(0, 0, this.getNodeIcon(node.type), {
+      fontSize: '24px'
+    }).setOrigin(0.5);
+    
+    container.add([circle, icon]);
+    container.setName(node.id);
+    
+    // Set alpha based on availability
+    if (node.visited) {
+      container.setAlpha(0.6);
+    } else if (!node.available) {
+      container.setAlpha(0.5);
+    }
+    
+    // Make interactive if available and not visited
+    if (node.available && !node.visited) {
+      circle.setInteractive({ useHandCursor: true });
+      
+      circle.on('pointerover', () => {
+        circle.setFillStyle(0x3a3a3a);
+        circle.setScale(1.1);
+        this.showNodeTooltip(node);
+      });
+      
+      circle.on('pointerout', () => {
+        circle.setFillStyle(0x2a2a2a);
+        circle.setScale(1.0);
+        this.hideNodeTooltip();
+      });
+      
+      circle.on('pointerdown', () => {
+        this.selectNode(node);
+      });
     }
   }
 }
