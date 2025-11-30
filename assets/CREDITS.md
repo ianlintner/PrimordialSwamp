@@ -4,6 +4,18 @@ This file tracks all external assets used in Primordial Swamp and their respecti
 
 ---
 
+## Current Implementation
+
+The game uses a **placeholder generation system** that creates styled graphics at runtime when actual assets are not available. This allows development to proceed while art assets are being created.
+
+### Generated Placeholders Include:
+- Dinosaur sprites with basic animation frames
+- Biome backgrounds with appropriate color gradients
+- UI elements (health bars, buttons, panels, icons)
+- Status effect indicators
+
+---
+
 ## Template for New Entries
 
 Use this format when adding new asset credits:
@@ -22,12 +34,16 @@ Use this format when adding new asset credits:
 
 ## Graphics
 
-### Placeholder Sprites
-- **Source**: Original creation for development
-- **Creator/Author**: Primordial Swamp Development Team
+### Runtime Placeholder System
+- **Source**: Original creation - `src/utils/AssetLoader.ts`
+- **Creator/Author**: Primordial Swamp Development Team  
 - **License**: MIT (project license)
-- **Used For**: Development placeholders
-- **Notes**: To be replaced with final art assets
+- **Used For**: Development placeholders generated at runtime
+- **Features**:
+  - Color-coded dinosaur silhouettes by type (player/enemy/boss)
+  - Biome-appropriate background gradients
+  - Styled UI elements with proper dimensions
+  - Animated sprite frames with subtle variation
 
 <!-- Add your graphic asset credits here -->
 
