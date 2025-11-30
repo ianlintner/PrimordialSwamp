@@ -1,0 +1,222 @@
+[
+  {
+    "id": "sickle_claw",
+    "name": "Sickle Claw",
+    "description": "Strike with your enlarged toe claw. 30% chance for double damage.",
+    "staminaCost": 30,
+    "cooldown": 2,
+    "damageMultiplier": 1.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 0.3,
+        "modifier": "critical"
+      }
+    ],
+    "scientificNote": "Deinonychus' sickle claw was held off the ground while running and deployed during attacks."
+  },
+  {
+    "id": "pack_coordination",
+    "name": "Pack Coordination",
+    "description": "Passive: Deal 20% bonus damage when above 80% health.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Fossil evidence suggests Deinonychus hunted in coordinated groups."
+  },
+  {
+    "id": "feathered_agility",
+    "name": "Feathered Agility",
+    "description": "Passive: +2 evasion chance.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Feathers provided insulation and may have aided in balance during quick movements."
+  },
+  {
+    "id": "tail_club",
+    "name": "Tail Club Counter",
+    "description": "Counter 40% of incoming melee damage back to attacker.",
+    "staminaCost": 40,
+    "cooldown": 3,
+    "damageMultiplier": 0,
+    "effects": [
+      {
+        "type": "buff",
+        "value": 0.4,
+        "duration": 1,
+        "chance": 1.0,
+        "modifier": "reflect"
+      }
+    ],
+    "scientificNote": "Ankylosaurus' tail club could swing with approximately 14,000 Newtons of force."
+  },
+  {
+    "id": "fortify",
+    "name": "Fortify",
+    "description": "Increase defense by 5 for 2 turns.",
+    "staminaCost": 25,
+    "cooldown": 3,
+    "damageMultiplier": 0,
+    "effects": [
+      {
+        "type": "buff",
+        "value": 5,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "defense"
+      }
+    ],
+    "scientificNote": "Ankylosaurus could hunker down, presenting only armor to attackers."
+  },
+  {
+    "id": "armored_hide",
+    "name": "Armored Hide",
+    "description": "Passive: Reduce all incoming damage by 3.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Bony osteoderms covered most of Ankylosaurus' body."
+  },
+  {
+    "id": "immovable",
+    "name": "Immovable",
+    "description": "Passive: Cannot be flanked or surprised.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "With its low center of gravity and armor, Ankylosaurus was extremely difficult to overturn."
+  },
+  {
+    "id": "aerial_scout",
+    "name": "Aerial Scout",
+    "description": "Reveal the next 2 encounters on the map. Can only be used outside combat.",
+    "staminaCost": 20,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [
+      {
+        "type": "buff",
+        "value": 2,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "reveal_nodes"
+      }
+    ],
+    "nonCombat": true,
+    "scientificNote": "Pteranodon's excellent vision allowed it to spot prey from great heights."
+  },
+  {
+    "id": "dive_attack",
+    "name": "Dive Attack",
+    "description": "Strike from above. Always goes first in combat turn.",
+    "staminaCost": 35,
+    "cooldown": 2,
+    "damageMultiplier": 1.5,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "priority"
+      }
+    ],
+    "scientificNote": "Pteranodon could build tremendous speed in a dive."
+  },
+  {
+    "id": "escape_flight",
+    "name": "Escape Flight",
+    "description": "Flee from combat without penalty. Always succeeds.",
+    "staminaCost": 30,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [
+      {
+        "type": "buff",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "guaranteed_flee"
+      }
+    ],
+    "scientificNote": "Flight gave pterosaurs unmatched mobility and escape options."
+  },
+  {
+    "id": "first_strike",
+    "name": "First Strike",
+    "description": "Passive: Always act first on turn 1 of combat.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Aerial predators rely on surprise and speed."
+  },
+  {
+    "id": "evasive",
+    "name": "Evasive",
+    "description": "Passive: +3 evasion chance.",
+    "staminaCost": 0,
+    "cooldown": 0,
+    "damageMultiplier": 0,
+    "effects": [],
+    "passive": true,
+    "scientificNote": "Pteranodon's maneuverability in flight made it difficult to catch."
+  },
+  {
+    "id": "crushing_bite",
+    "name": "Crushing Bite",
+    "description": "Devastating bite attack. 200% damage but costs 50 stamina.",
+    "staminaCost": 50,
+    "cooldown": 3,
+    "damageMultiplier": 2.0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0
+      }
+    ],
+    "scientificNote": "T. rex's bite force was the strongest of any land animal, capable of crushing bone."
+  },
+  {
+    "id": "terrifying_roar",
+    "name": "Terrifying Roar",
+    "description": "Reduce enemy attack by 3 for 3 turns.",
+    "staminaCost": 30,
+    "cooldown": 4,
+    "damageMultiplier": 0,
+    "effects": [
+      {
+        "type": "debuff",
+        "value": -3,
+        "duration": 3,
+        "chance": 1.0,
+        "stat": "attack"
+      }
+    ],
+    "scientificNote": "As an apex predator, T. rex's presence alone would intimidate most creatures."
+  },
+  {
+    "id": "apex_strike",
+    "name": "Apex Strike",
+    "description": "Massive attack dealing 250% damage. 5 turn cooldown.",
+    "staminaCost": 70,
+    "cooldown": 5,
+    "damageMultiplier": 2.5,
+    "effects": [],
+    "scientificNote": "T. rex could deliver devastating attacks with its massive jaws and teeth."
+  }
+]

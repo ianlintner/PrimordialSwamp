@@ -1,0 +1,175 @@
+[
+  {
+    "id": "deinonychus",
+    "name": "Deinonychus",
+    "species": "Deinonychus antirrhopus",
+    "period": {
+      "era": "Mesozoic",
+      "period": "Early Cretaceous",
+      "mya": [115, 108]
+    },
+    "size": {
+      "length": 3.4,
+      "height": 1.0,
+      "weight": 73
+    },
+    "role": "hunter",
+    "baseStats": {
+      "health": 60,
+      "attack": 8,
+      "defense": 3,
+      "speed": 9,
+      "stamina": 70
+    },
+    "growthRates": {
+      "health": 8,
+      "attack": 1.2,
+      "defense": 0.5,
+      "speed": 0.8,
+      "stamina": 10
+    },
+    "abilities": ["sickle_claw", "pack_coordination"],
+    "passives": ["feathered_agility"],
+    "unlockCondition": {
+      "type": "always"
+    },
+    "description": "An agile pack hunter with deadly sickle claws on its hind feet. Excels at dealing critical damage and coordinated attacks.",
+    "scientificFacts": [
+      "Deinonychus means 'terrible claw', named after its distinctive enlarged claw on each foot.",
+      "Discovery of Deinonychus in the 1960s revolutionized how scientists viewed dinosaurs, suggesting they were active and agile rather than slow and sluggish.",
+      "Evidence suggests Deinonychus had feathers, used for display and possibly insulation.",
+      "The enlarged claw on each foot could slice with tremendous force, potentially held retracted while running like modern birds of prey.",
+      "Fossil evidence suggests they hunted in coordinated packs, similar to modern wolves."
+    ]
+  },
+  {
+    "id": "ankylosaurus",
+    "name": "Ankylosaurus",
+    "species": "Ankylosaurus magniventris",
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "mya": [68, 66]
+    },
+    "size": {
+      "length": 6.25,
+      "height": 1.7,
+      "weight": 4800
+    },
+    "role": "tank",
+    "baseStats": {
+      "health": 120,
+      "attack": 5,
+      "defense": 10,
+      "speed": 3,
+      "stamina": 90
+    },
+    "growthRates": {
+      "health": 15,
+      "attack": 0.6,
+      "defense": 1.5,
+      "speed": 0.2,
+      "stamina": 12
+    },
+    "abilities": ["tail_club", "fortify"],
+    "passives": ["armored_hide", "immovable"],
+    "unlockCondition": {
+      "type": "always"
+    },
+    "description": "A heavily armored tank covered in bony plates with a devastating tail club. High defense and counter-attack specialist.",
+    "scientificFacts": [
+      "Ankylosaurus had a tail club that could swing with enough force to break bones, generating approximately 14,000 Newtons of force.",
+      "Its body was covered in osteoderms - bony deposits forming plates and spikes embedded in the skin.",
+      "Even its eyelids had armored shutters to protect against attacks.",
+      "Despite its heavy armor, recent studies suggest Ankylosaurus could move at speeds up to 6 mph when needed.",
+      "It was one of the last dinosaurs before the K-Pg extinction event 66 million years ago."
+    ]
+  },
+  {
+    "id": "pteranodon",
+    "name": "Pteranodon",
+    "species": "Pteranodon longiceps",
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "mya": [86, 84.5]
+    },
+    "size": {
+      "length": 1.8,
+      "height": 0.9,
+      "weight": 25
+    },
+    "role": "scout",
+    "baseStats": {
+      "health": 40,
+      "attack": 6,
+      "defense": 2,
+      "speed": 10,
+      "stamina": 50
+    },
+    "growthRates": {
+      "health": 5,
+      "attack": 0.9,
+      "defense": 0.3,
+      "speed": 1.0,
+      "stamina": 8
+    },
+    "abilities": ["aerial_scout", "dive_attack", "escape_flight"],
+    "passives": ["first_strike", "evasive"],
+    "unlockCondition": {
+      "type": "always"
+    },
+    "description": "A flying reptile (not technically a dinosaur!) that serves as scout and hit-and-run specialist. Can reveal upcoming encounters and escape danger.",
+    "scientificFacts": [
+      "Pteranodon was not actually a dinosaur, but a pterosaur - a flying reptile that lived alongside dinosaurs.",
+      "With a wingspan of up to 7 meters (23 feet), it was one of the largest flying animals of all time.",
+      "The distinctive head crest may have been used for steering during flight or for display.",
+      "Pteranodon was likely a piscivore, feeding primarily on fish by skimming the ocean surface.",
+      "Despite its large size, it was very lightweight - hollow bones kept its weight to about 25 kg."
+    ]
+  },
+  {
+    "id": "tyrannosaurus",
+    "name": "Tyrannosaurus Rex",
+    "species": "Tyrannosaurus rex",
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "mya": [68, 66]
+    },
+    "size": {
+      "length": 12.3,
+      "height": 4.0,
+      "weight": 8400
+    },
+    "role": "powerhouse",
+    "baseStats": {
+      "health": 150,
+      "attack": 15,
+      "defense": 6,
+      "speed": 5,
+      "stamina": 100
+    },
+    "growthRates": {
+      "health": 20,
+      "attack": 2.0,
+      "defense": 0.8,
+      "speed": 0.4,
+      "stamina": 15
+    },
+    "abilities": ["crushing_bite", "terrifying_roar", "apex_strike"],
+    "passives": ["apex_predator", "intimidating"],
+    "unlockCondition": {
+      "type": "depth",
+      "value": 5
+    },
+    "description": "The ultimate apex predator. Devastating damage output but slow and resource-intensive. Unlocked by reaching depth 5.",
+    "scientificFacts": [
+      "T. rex had the strongest bite force of any land animal, estimated at 12,800 pounds (57,000 Newtons).",
+      "Recent discoveries suggest T. rex may have been partially covered in feathers, at least as juveniles.",
+      "Its tiny arms were actually incredibly strong, capable of lifting 400 pounds each.",
+      "T. rex had binocular vision and an excellent sense of smell, making it a formidable hunter.",
+      "It lived exclusively in what is now western North America, in forests and open plains."
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+node_modules
+dist
+.DS_Store
+*.log
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.env
+.env.local
+coverage
+.vitest
+playwright-report
+test-results

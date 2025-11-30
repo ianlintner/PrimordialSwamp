@@ -1,0 +1,314 @@
+[
+  {
+    "id": "compsognathus",
+    "name": "Compsognathus",
+    "tier": "basic",
+    "biome": "swamp",
+    "emoji": "🦎",
+    "stats": {
+      "hp": 25,
+      "attack": 4,
+      "defense": 1,
+      "speed": 8
+    },
+    "abilities": ["quick_bite"],
+    "behavior": "aggressive",
+    "rewards": {
+      "fossils": 3,
+      "experience": 10
+    },
+    "scientificInfo": {
+      "period": "Late Jurassic",
+      "mya": "150",
+      "size": "1m long",
+      "weight": "3 kg",
+      "fact": "One of the smallest known dinosaurs, about the size of a chicken!"
+    }
+  },
+  {
+    "id": "velociraptor",
+    "name": "Velociraptor",
+    "tier": "basic",
+    "biome": "plains",
+    "emoji": "🦖",
+    "stats": {
+      "hp": 40,
+      "attack": 7,
+      "defense": 2,
+      "speed": 9
+    },
+    "abilities": ["sickle_claw", "pack_tactics"],
+    "behavior": "tactical",
+    "rewards": {
+      "fossils": 5,
+      "experience": 15
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "75-71",
+      "size": "2m long",
+      "weight": "15 kg",
+      "fact": "Much smaller than depicted in movies - about turkey-sized with feathers!"
+    }
+  },
+  {
+    "id": "stegosaurus",
+    "name": "Stegosaurus",
+    "tier": "basic",
+    "biome": "forest",
+    "emoji": "🦕",
+    "stats": {
+      "hp": 80,
+      "attack": 6,
+      "defense": 7,
+      "speed": 3
+    },
+    "abilities": ["tail_spike", "armored_plates"],
+    "behavior": "defensive",
+    "rewards": {
+      "fossils": 7,
+      "experience": 20
+    },
+    "scientificInfo": {
+      "period": "Late Jurassic",
+      "mya": "155-150",
+      "size": "9m long",
+      "weight": "5 tons",
+      "fact": "Had a brain the size of a walnut despite being as big as a bus!"
+    }
+  },
+  {
+    "id": "triceratops",
+    "name": "Triceratops",
+    "tier": "advanced",
+    "biome": "plains",
+    "emoji": "🦏",
+    "stats": {
+      "hp": 100,
+      "attack": 10,
+      "defense": 8,
+      "speed": 4
+    },
+    "abilities": ["horn_charge", "shield_stance"],
+    "behavior": "territorial",
+    "rewards": {
+      "fossils": 10,
+      "experience": 30
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "68-66",
+      "size": "9m long",
+      "weight": "6-12 tons",
+      "fact": "Its frill was likely used for display and thermoregulation, not just defense!"
+    }
+  },
+  {
+    "id": "pteranodon",
+    "name": "Pteranodon",
+    "tier": "advanced",
+    "biome": "cliffs",
+    "emoji": "🦅",
+    "stats": {
+      "hp": 50,
+      "attack": 8,
+      "defense": 3,
+      "speed": 10
+    },
+    "abilities": ["dive_bomb", "evasive_flight"],
+    "behavior": "hit_and_run",
+    "rewards": {
+      "fossils": 8,
+      "experience": 25
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "86-84",
+      "size": "7m wingspan",
+      "weight": "20-30 kg",
+      "fact": "Not a dinosaur but a flying reptile! Could soar for hours without flapping."
+    }
+  },
+  {
+    "id": "sarcosuchus",
+    "name": "Sarcosuchus",
+    "tier": "advanced",
+    "biome": "swamp",
+    "emoji": "🐊",
+    "stats": {
+      "hp": 90,
+      "attack": 12,
+      "defense": 9,
+      "speed": 5
+    },
+    "abilities": ["death_roll", "ambush"],
+    "behavior": "ambush",
+    "rewards": {
+      "fossils": 12,
+      "experience": 35
+    },
+    "scientificInfo": {
+      "period": "Early Cretaceous",
+      "mya": "112",
+      "size": "12m long",
+      "weight": "8 tons",
+      "fact": "SuperCroc! Twice as long as modern crocodiles and could prey on dinosaurs!"
+    }
+  },
+  {
+    "id": "allosaurus",
+    "name": "Allosaurus",
+    "tier": "elite",
+    "biome": "forest",
+    "emoji": "🦖",
+    "stats": {
+      "hp": 120,
+      "attack": 14,
+      "defense": 6,
+      "speed": 7
+    },
+    "abilities": ["savage_bite", "hatchet_attack", "predator_instinct"],
+    "behavior": "aggressive",
+    "rewards": {
+      "fossils": 15,
+      "experience": 50
+    },
+    "scientificInfo": {
+      "period": "Late Jurassic",
+      "mya": "155-145",
+      "size": "9-10m long",
+      "weight": "2-3 tons",
+      "fact": "Top predator of its time! Used its powerful neck to deliver hatchet-like bites."
+    }
+  },
+  {
+    "id": "spinosaurus",
+    "name": "Spinosaurus",
+    "tier": "elite",
+    "biome": "swamp",
+    "emoji": "🦖",
+    "stats": {
+      "hp": 150,
+      "attack": 16,
+      "defense": 7,
+      "speed": 6
+    },
+    "abilities": ["aquatic_hunter", "sail_intimidation", "crushing_jaws"],
+    "behavior": "territorial",
+    "rewards": {
+      "fossils": 20,
+      "experience": 60
+    },
+    "scientificInfo": {
+      "period": "Middle Cretaceous",
+      "mya": "112-97",
+      "size": "15m long",
+      "weight": "7-9 tons",
+      "fact": "Largest known carnivorous dinosaur! Semi-aquatic with a massive sail on its back."
+    }
+  },
+  {
+    "id": "carnotaurus",
+    "name": "Carnotaurus",
+    "tier": "elite",
+    "biome": "plains",
+    "emoji": "🐂",
+    "stats": {
+      "hp": 110,
+      "attack": 15,
+      "defense": 5,
+      "speed": 9
+    },
+    "abilities": ["bull_rush", "intimidating_horns", "rapid_strikes"],
+    "behavior": "aggressive",
+    "rewards": {
+      "fossils": 18,
+      "experience": 55
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "72-69",
+      "size": "7-8m long",
+      "weight": "1.5 tons",
+      "fact": "Had the shortest arms of any large carnivore and could run extremely fast!"
+    }
+  },
+  {
+    "id": "tyrannosaurus",
+    "name": "Tyrannosaurus Rex",
+    "tier": "boss",
+    "biome": "all",
+    "emoji": "🦖",
+    "stats": {
+      "hp": 200,
+      "attack": 20,
+      "defense": 10,
+      "speed": 6
+    },
+    "abilities": ["bone_crushing_bite", "apex_roar", "relentless_pursuit", "tyrant_rage"],
+    "behavior": "boss",
+    "rewards": {
+      "fossils": 50,
+      "experience": 100
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "68-66",
+      "size": "12-13m long",
+      "weight": "8-14 tons",
+      "fact": "Most powerful bite of any land animal ever - 12,800 pounds of force!"
+    }
+  },
+  {
+    "id": "giganotosaurus",
+    "name": "Giganotosaurus",
+    "tier": "boss",
+    "biome": "forest",
+    "emoji": "🦖",
+    "stats": {
+      "hp": 180,
+      "attack": 22,
+      "defense": 8,
+      "speed": 7
+    },
+    "abilities": ["slice_and_dice", "pack_hunter_alpha", "bloodlust", "giant_stomp"],
+    "behavior": "boss",
+    "rewards": {
+      "fossils": 55,
+      "experience": 110
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "99-95",
+      "size": "12-13m long",
+      "weight": "6-8 tons",
+      "fact": "Slightly larger than T. rex! Had a massive skull with serrated teeth for slicing."
+    }
+  },
+  {
+    "id": "therizinosaurus",
+    "name": "Therizinosaurus",
+    "tier": "boss",
+    "biome": "forest",
+    "emoji": "🦥",
+    "stats": {
+      "hp": 160,
+      "attack": 18,
+      "defense": 12,
+      "speed": 4
+    },
+    "abilities": ["scythe_claws", "defensive_sweep", "herbivore_fury", "claw_fury"],
+    "behavior": "boss",
+    "rewards": {
+      "fossils": 60,
+      "experience": 120
+    },
+    "scientificInfo": {
+      "period": "Late Cretaceous",
+      "mya": "70",
+      "size": "5m long",
+      "weight": "5 tons",
+      "fact": "Herbivore with the longest claws ever - 1 meter long scythes for defense!"
+    }
+  }
+]
