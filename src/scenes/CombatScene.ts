@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { SCENE_KEYS, GAME_CONFIG } from '../utils/Constants';
+import { SCENE_KEYS, GAME_CONFIG, SPACING, hexToColorString } from '../utils/Constants';
 import { DinosaurType } from '../types/Dinosaur.types';
 import { NodeType } from '../types/Encounter.types';
 import { StatusEffect, StatusEffectType } from '../types/Combat.types';
@@ -8,6 +8,7 @@ import dinosaursData from '../data/dinosaurs.json';
 import enemiesData from '../data/enemies.json';
 import traitsData from '../data/traits.json';
 import { GameStateManager } from '../managers/GameStateManager';
+import { COMBAT_TOOLTIPS } from '../utils/TooltipHelper';
 
 interface Combatant {
   id?: string;
@@ -272,39 +273,157 @@ export class CombatScene extends Phaser.Scene {
     const buttonSpacing = 160;
     const startX = 200;
     
-    // Attack button
-    this.createButton(startX, buttonY, '⚔ ATTACK', () => this.playerAttack());
+    // Attack button with stamina cost display
+    this.createActionButton(startX, buttonY, '⚔ ATTACK', '10 STA', 'attack', () => this.playerAttack());
     
-    // Defend button
-    this.createButton(startX + buttonSpacing, buttonY, '🛡 DEFEND', () => this.playerDefend());
+    // Defend button with effect display
+    this.createActionButton(startX + buttonSpacing, buttonY, '🛡 DEFEND', '+15 STA', 'defend', () => this.playerDefend());
     
-    // Ability button
-    this.createButton(startX + buttonSpacing * 2, buttonY, '✨ ABILITY', () => this.playerAbility());
+    // Ability button with stamina cost display
+    this.createActionButton(startX + buttonSpacing * 2, buttonY, '✨ ABILITY', '30 STA', 'ability', () => this.playerAbility());
     
     // Flee button
-    this.createButton(startX + buttonSpacing * 3, buttonY, '🏃 FLEE', () => this.playerFlee());
+    this.createActionButton(startX + buttonSpacing * 3, buttonY, '🏃 FLEE', '', 'flee', () => this.playerFlee());
+    
+    // Add keyboard shortcut hints below buttons
+    this.addKeyboardHints(startX, buttonY + 50, buttonSpacing);
   }
 
-  private createButton(x: number, y: number, text: string, callback: () => void): void {
-    const button = this.add.text(x, y, text, {
+  private createActionButton(
+    x: number, 
+    y: number, 
+    text: string, 
+    costText: string,
+    actionType: string,
+    callback: () => void
+  ): void {
+    const container = this.add.container(x, y);
+    container.setName(`btn_${actionType}`);
+    
+    // Main button text
+    const button = this.add.text(0, 0, text, {
       fontSize: '20px',
       color: '#4a9d5f',
       fontFamily: 'Courier New, monospace',
       backgroundColor: '#2a2a2a',
-      padding: { x: 15, y: 10 }
+      padding: { x: SPACING.BUTTON_PADDING_X - 5, y: SPACING.BUTTON_PADDING_Y }
     }).setInteractive({ useHandCursor: true });
     
+    // Cost indicator below button
+    let costIndicator: Phaser.GameObjects.Text | null = null;
+    if (costText) {
+      costIndicator = this.add.text(
+        button.width / 2 + SPACING.BUTTON_PADDING_X - 5, 
+        button.height + SPACING.MD + 2, 
+        costText, 
+        {
+          fontSize: '12px',
+          color: hexToColorString(GAME_CONFIG.COLORS.TEXT_MUTED),
+          fontFamily: 'Courier New, monospace'
+        }
+      ).setOrigin(0.5);
+    }
+    
+    container.add(button);
+    if (costIndicator) container.add(costIndicator);
+    
+    // Hover effects with tooltip
     button.on('pointerover', () => {
       button.setColor('#ffffff');
       button.setBackgroundColor('#4a9d5f');
+      this.showActionTooltip(x, y - 80, actionType);
     });
     
     button.on('pointerout', () => {
       button.setColor('#4a9d5f');
       button.setBackgroundColor('#2a2a2a');
+      this.hideActionTooltip();
     });
     
     button.on('pointerdown', callback);
+  }
+
+  private addKeyboardHints(startX: number, y: number, spacing: number): void {
+    const hints = ['[1]', '[2]', '[3]', '[4]'];
+    hints.forEach((hint, index) => {
+      this.add.text(startX + (spacing * index), y, hint, {
+        fontSize: '12px',
+        color: hexToColorString(GAME_CONFIG.COLORS.TEXT_DISABLED),
+        fontFamily: 'Courier New, monospace'
+      }).setOrigin(0, 0.5);
+    });
+  }
+
+  private showActionTooltip(x: number, y: number, actionType: string): void {
+    // Remove existing tooltip
+    this.hideActionTooltip();
+    
+    // Use centralized tooltip definitions from TooltipHelper
+    const tooltipData = COMBAT_TOOLTIPS[actionType as keyof typeof COMBAT_TOOLTIPS];
+    if (!tooltipData) return;
+    
+    const container = this.add.container(x, y);
+    container.setName('actionTooltip');
+    container.setDepth(100);
+    
+    // Background
+    const bg = this.add.rectangle(0, 0, 220, 80, GAME_CONFIG.COLORS.BACKGROUND, 0.95);
+    bg.setStrokeStyle(2, GAME_CONFIG.COLORS.PRIMARY);
+    
+    // Title
+    const title = this.add.text(-100, -30, tooltipData.title, {
+      fontSize: '16px',
+      color: hexToColorString(GAME_CONFIG.COLORS.PRIMARY),
+      fontFamily: 'Courier New, monospace',
+      fontStyle: 'bold'
+    });
+    
+    // Description (shortened for in-game display)
+    const shortDesc = tooltipData.description.split('.')[0] + '.';
+    const desc = this.add.text(-100, -8, shortDesc, {
+      fontSize: '12px',
+      color: hexToColorString(GAME_CONFIG.COLORS.TEXT_SECONDARY),
+      fontFamily: 'Courier New, monospace',
+      wordWrap: { width: 200 }
+    });
+    
+    // Extra info (cost/warning) - use type assertion to handle optional properties
+    const tipWithOptional = tooltipData as { 
+      warning?: string; 
+      cost?: string; 
+      title: string; 
+      description: string; 
+      shortcut: string; 
+    };
+    const extraInfo = tipWithOptional.warning 
+      ? `⚠ ${tipWithOptional.warning}` 
+      : (tipWithOptional.cost ? `Cost: ${tipWithOptional.cost}` : '');
+    const extraText = extraInfo ? this.add.text(-100, 18, extraInfo, {
+      fontSize: '11px',
+      color: tipWithOptional.warning 
+        ? hexToColorString(GAME_CONFIG.COLORS.WARNING) 
+        : hexToColorString(GAME_CONFIG.COLORS.INFO),
+      fontFamily: 'Courier New, monospace'
+    }) : null;
+    
+    container.add([bg, title, desc]);
+    if (extraText) container.add(extraText);
+    
+    // Fade in
+    container.setAlpha(0);
+    this.tweens.add({
+      targets: container,
+      alpha: 1,
+      duration: 100,
+      ease: 'Power2'
+    });
+  }
+
+  private hideActionTooltip(): void {
+    const tooltip = this.children.getByName('actionTooltip');
+    if (tooltip) {
+      tooltip.destroy();
+    }
   }
 
   private createCombatLog(): void {
