@@ -14,81 +14,156 @@ A scientifically accurate dinosaur roguelite inspired by Odell Lake, featuring 2
 
 ## MVP Features
 
-### 1. Playable Dinosaurs (3 Starting Options)
+### 1. Playable Dinosaurs (7 Total)
 
 #### **Deinonychus** (Agile Hunter)
 - **Period**: Early Cretaceous (115-108 MYA)
 - **Size**: Medium (3.4m length, 73kg)
-- **Role**: Fast, pack tactics, high critical chance
+- **Role**: hunter, ambusher
+- **Diet**: Carnivore
+- **Social**: Pack Hunter
 - **Stats**:
-  - Health: 60
-  - Attack: 8
-  - Defense: 3
+  - Health: 65
+  - Attack: 12
+  - Defense: 4
   - Speed: 9
   - Stamina: 70
 - **Abilities**:
-  - **Sickle Claw**: 30% chance for double damage
-  - **Pack Coordination**: +20% damage when at full health
-  - **Feathered Agility**: +2 evasion
+  - **Sickle Slash**: Devastating claw attack with bleeding (15 stamina, 1.4x damage)
+  - **Pack Coordination**: Bonus damage when fighting with allies
+  - **Pounce**: Leap attack that stuns (25 stamina)
 - **Scientific Facts**: 
-  - Had large curved claws on hind feet
-  - Likely had feathers for display and insulation
-  - Hunted in coordinated packs
+  - Had 12cm curved toe claws for gripping and slashing prey
+  - Likely had feathers for display, insulation, and brooding
+  - Name means "terrible claw"
 
 #### **Ankylosaurus** (Armored Tank)
 - **Period**: Late Cretaceous (68-66 MYA)
 - **Size**: Large (6.25m length, 4,800kg)
-- **Role**: High defense, counter-attacks, sustain
+- **Role**: tank
+- **Diet**: Herbivore
+- **Social**: Solitary
 - **Stats**:
-  - Health: 120
-  - Attack: 5
-  - Defense: 10
+  - Health: 130
+  - Attack: 6
+  - Defense: 12
   - Speed: 3
-  - Stamina: 90
+  - Stamina: 80
 - **Abilities**:
-  - **Tail Club**: Counter 40% of melee damage
-  - **Armored Hide**: Reduce all damage by 3
-  - **Immovable**: Cannot be flanked or surprised
+  - **Tail Club Strike**: Devastating counter (20 stamina, 1.8x damage, stun)
+  - **Armored Crouch**: +50% defense, immune to criticals (15 stamina)
+  - **Shell Shock**: Damage reflect (30 stamina)
 - **Scientific Facts**:
-  - Tail club could break bones with 14,000N force
-  - Osteoderms provided near-complete body armor
-  - Low center of gravity made it difficult to flip
+  - Tail club could swing with force exceeding 14,000 Newtons
+  - Osteoderms were fused to skin, not bones
+  - Brain was tiny relative to body size
 
 #### **Pteranodon** (Scout/Support)
 - **Period**: Late Cretaceous (86-84.5 MYA)
-- **Size**: Medium-Large (7m wingspan, 25kg)
-- **Role**: Reconnaissance, encounter avoidance, hit-and-run
+- **Size**: Large wingspan (7m wingspan, 25kg)
+- **Role**: scout, support
+- **Diet**: Piscivore
+- **Social**: Colonial
 - **Stats**:
-  - Health: 40
-  - Attack: 6
+  - Health: 45
+  - Attack: 7
   - Defense: 2
-  - Speed: 10
-  - Stamina: 50
+  - Speed: 11
+  - Stamina: 60
 - **Abilities**:
-  - **Aerial Scout**: Reveal next 2 encounters
-  - **Dive Attack**: First strike in combat
-  - **Escape Flight**: Can flee combat without penalty
+  - **Dive Bomb**: Aerial strike with first-turn bonus (18 stamina, 1.5x damage)
+  - **Aerial Scout**: Reveal upcoming encounters (10 stamina)
+  - **Wind Gust**: Reduce enemy accuracy (22 stamina)
 - **Scientific Facts**:
-  - Not technically a dinosaur (flying reptile)
-  - Massive wingspan for soaring over oceans
-  - Fed primarily on fish
-
-### 2. Unlockable Dinosaurs (3 Additional)
+  - Not a dinosaur - a pterosaur (flying reptile)
+  - Toothless beak for catching fish
+  - Cranial crest used for display and aerodynamic stability
 
 #### **Tyrannosaurus Rex** (Ultimate Predator)
-- **Unlock**: Reach Swamp Depth 5
 - **Period**: Late Cretaceous (68-66 MYA)
-- High risk/reward, massive damage, low speed
+- **Unlock**: Reach Swamp Depth 5
+- **Size**: Massive (12m length, 8,400kg)
+- **Role**: powerhouse
+- **Diet**: Carnivore (hypercarnivore)
+- **Social**: Solitary
+- **Stats**:
+  - Health: 150
+  - Attack: 18
+  - Defense: 8
+  - Speed: 5
+  - Stamina: 90
+- **Abilities**:
+  - **Crushing Bite**: Most powerful bite in history (30 stamina, 2.0x damage)
+  - **Apex Roar**: Terrify all enemies (25 stamina)
+  - **Pursuit Predator**: Speed boost when enemy is wounded (passive)
+- **Scientific Facts**:
+  - Bite force of 12,800 pounds - strongest of any terrestrial animal
+  - Forward-facing eyes gave binocular vision for depth perception
+  - Could eat 500 pounds of meat in one bite
 
-#### **Pachycephalosaurus** (Headbutter)
-- **Unlock**: Win 10 encounters via defensive strategy
+#### **Pachycephalosaurus** (Dome-Headed Bruiser)
 - **Period**: Late Cretaceous (70-66 MYA)
-- Stun specialist, charge attacks
+- **Unlock**: Win 10 encounters via defensive strategy
+- **Size**: Medium (4.5m length, 450kg)
+- **Role**: specialist, bruiser
+- **Diet**: Omnivore
+- **Social**: Herd
+- **Stats**:
+  - Health: 85
+  - Attack: 10
+  - Defense: 7
+  - Speed: 6
+  - Stamina: 75
+- **Abilities**:
+  - **Skull Bash**: Devastating headbutt with stun chance (20 stamina, 1.6x damage)
+  - **Thick Skull**: Immune to stun, bonus defense (passive)
+  - **Charging Ram**: Multi-hit charge attack (35 stamina)
+- **Scientific Facts**:
+  - Skull dome was up to 25cm (10 inches) thick
+  - Dome may have been used for flank-butting rather than head-on collisions
+  - One of the last non-avian dinosaurs to exist
 
-#### **Compsognathus** (Swarm)
-- **Unlock**: Discover 20 educational facts
-- **Period**: Late Jurassic (150 MYA)
-- Controls 3 tiny dinosaurs, overwhelming tactics
+#### **Therizinosaurus** (Claw Defense Specialist)
+- **Period**: Late Cretaceous (70 MYA)
+- **Size**: Large (10m length, 5,000kg)
+- **Role**: tank, controller
+- **Diet**: Herbivore
+- **Social**: Solitary
+- **Stats**:
+  - Health: 110
+  - Attack: 11
+  - Defense: 6
+  - Speed: 4
+  - Stamina: 85
+- **Abilities**:
+  - **Scything Claws**: Wide slash with bleeding (22 stamina, 1.5x damage)
+  - **Defensive Stance**: Counter with claw swipe (18 stamina)
+  - **Intimidating Display**: Reduce enemy attack (15 stamina)
+- **Scientific Facts**:
+  - Possessed the longest claws of any known animal - up to 1 meter long
+  - Despite fearsome claws, was an herbivore that ate plants
+  - Related to carnivorous theropods but evolved plant-eating habits
+
+#### **Parasaurolophus** (Communication Support)
+- **Period**: Late Cretaceous (76.5-73 MYA)
+- **Size**: Large (9.5m length, 2,500kg)
+- **Role**: support
+- **Diet**: Herbivore
+- **Social**: Large herds
+- **Stats**:
+  - Health: 95
+  - Attack: 6
+  - Defense: 5
+  - Speed: 7
+  - Stamina: 100
+- **Abilities**:
+  - **Resonating Call**: Buff allies with morale boost (20 stamina)
+  - **Warning Cry**: Reduce enemy damage for 2 turns (15 stamina)
+  - **Herd Coordination**: All allies gain speed boost (25 stamina)
+- **Scientific Facts**:
+  - Hollow cranial crest could produce sounds traveling for kilometers
+  - Crest functioned like a resonating chamber for communication
+  - Traveled in large herds for protection
 
 ---
 
@@ -98,6 +173,67 @@ A scientifically accurate dinosaur roguelite inspired by Odell Lake, featuring 2
 - **Health (HP)**: Damage capacity before death
 - **Attack (ATK)**: Base damage output
 - **Defense (DEF)**: Damage reduction
+- **Speed (SPD)**: Turn order, evasion chance
+- **Stamina (STA)**: Special ability usage
+
+### Derived Stats
+- **Critical Chance**: Base 5% + species modifiers
+- **Evasion**: (Speed - 5) * 2%
+- **Stamina Regen**: 10 per turn
+- **Accuracy**: Base 90% + modifiers
+
+### Status Effects (Expanded System)
+- **Bleeding**: 5 damage/turn, reduced by 1 each turn
+- **Stunned**: Skip next turn
+- **Poisoned**: 3 damage/turn, reduces healing by 50%
+- **Exhausted**: -50% speed, -3 attack, cannot use special abilities
+- **Fortified**: +5 defense for 2 turns
+- **Enraged**: +30% damage, -20% defense
+- **Hidden**: Cannot be targeted, +50% damage on first attack
+- **Burned**: 4 damage/turn, -2 defense
+- **Frozen**: Skip turn, take 50% more damage from physical
+- **Shocked**: 25% chance to fail actions
+- **Terrified**: 40% chance to flee, -4 attack
+- **Confused**: 30% chance to hit self or allies
+- **Weakened**: -25% all stats
+- **Empowered**: +25% all stats
+- **Regenerating**: Heal 5 HP per turn
+- **Berserk**: Double damage, cannot defend, attacks random targets
+- **Camouflaged**: Enemies have -50% accuracy against you
+
+### Damage Types
+- **Physical**: Standard melee damage
+- **Crushing**: High impact damage, effective vs armor
+- **Slashing**: Cutting damage, causes bleeding
+- **Piercing**: Armor-penetrating damage
+- **Poison**: Damage over time, bypasses some defenses
+- **Sonic**: Sound-based attacks, can disorient
+- **Blunt**: Concussive damage, can stun
+
+### Environmental Modifiers
+- **Weather Effects**:
+  - Clear: No modifiers
+  - Rainy: -10% accuracy, fire resistance
+  - Stormy: -20% accuracy, +20% sonic damage
+  - Foggy: -30% visibility, stealth bonus
+  - Scorching: Fire vulnerability, stamina drain
+  - Frigid: Cold damage, reduced speed
+  
+- **Terrain Effects**:
+  - Plains: Open combat, no cover
+  - Forest: Stealth bonus, fire vulnerability
+  - Swamp: Movement penalty, poison resistance
+  - Volcanic: Fire damage, heat exhaustion
+  - Coastal: Aquatic advantage, tidal hazards
+  - Desert: Stamina drain, heat effects
+  - Tundra: Cold damage, reduced speed
+  - Cave: Darkness penalties, sonic amplification
+
+- **Time of Day**:
+  - Dawn: Balanced combat
+  - Day: Normal visibility
+  - Dusk: Stealth bonus
+  - Night: Darkness penalties, nocturnal bonuses
 - **Speed (SPD)**: Turn order, evasion chance
 - **Stamina (STA)**: Special ability usage
 

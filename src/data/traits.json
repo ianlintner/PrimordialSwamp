@@ -5,13 +5,11 @@
     "description": "Increases Defense by 5.",
     "type": "passive_stat",
     "rarity": "common",
-    "effects": [
-      {
-        "stat": "defense",
-        "value": 5
-      }
-    ],
-    "icon": "🛡️"
+    "category": "physical",
+    "effects": [{ "stat": "defense", "value": 5 }],
+    "icon": "🛡️",
+    "roles": ["tank", "bruiser"],
+    "scientificFact": "Large dinosaurs had thick skin that provided protection from minor injuries and biting insects."
   },
   {
     "id": "sharp_claws",
@@ -19,13 +17,11 @@
     "description": "Increases Attack by 5.",
     "type": "passive_stat",
     "rarity": "common",
-    "effects": [
-      {
-        "stat": "attack",
-        "value": 5
-      }
-    ],
-    "icon": "🗡️"
+    "category": "physical",
+    "effects": [{ "stat": "attack", "value": 5 }],
+    "icon": "🗡️",
+    "roles": ["hunter", "ambusher"],
+    "scientificFact": "Dromaeosaurid claws were curved and sharp, perfect for gripping and slashing prey."
   },
   {
     "id": "endurance",
@@ -33,13 +29,11 @@
     "description": "Increases Max Stamina by 20.",
     "type": "passive_stat",
     "rarity": "common",
-    "effects": [
-      {
-        "stat": "maxStamina",
-        "value": 20
-      }
-    ],
-    "icon": "🏃"
+    "category": "physical",
+    "effects": [{ "stat": "maxStamina", "value": 20 }],
+    "icon": "🏃",
+    "roles": ["hunter", "support"],
+    "scientificFact": "Ornithomimids were built for sustained running rather than short sprints."
   },
   {
     "id": "vitality",
@@ -47,13 +41,11 @@
     "description": "Increases Max HP by 20.",
     "type": "passive_stat",
     "rarity": "common",
-    "effects": [
-      {
-        "stat": "maxHp",
-        "value": 20
-      }
-    ],
-    "icon": "❤️"
+    "category": "physical",
+    "effects": [{ "stat": "maxHp", "value": 20 }],
+    "icon": "❤️",
+    "roles": ["tank", "bruiser"],
+    "scientificFact": "Larger dinosaurs had greater vitality and could survive serious injuries."
   },
   {
     "id": "swift_reflexes",
@@ -61,13 +53,11 @@
     "description": "Increases Speed by 5.",
     "type": "passive_stat",
     "rarity": "common",
-    "effects": [
-      {
-        "stat": "speed",
-        "value": 5
-      }
-    ],
-    "icon": "⚡"
+    "category": "behavioral",
+    "effects": [{ "stat": "speed", "value": 5 }],
+    "icon": "⚡",
+    "roles": ["hunter", "scout"],
+    "scientificFact": "Smaller theropods had quick reflexes to catch agile prey."
   },
   {
     "id": "ambush_predator",
@@ -75,14 +65,11 @@
     "description": "Start combat with +10 Attack for the first turn.",
     "type": "combat_start",
     "rarity": "rare",
-    "effects": [
-      {
-        "stat": "attack",
-        "value": 10,
-        "condition": "first_turn"
-      }
-    ],
-    "icon": "🌿"
+    "category": "behavioral",
+    "effects": [{ "stat": "attack", "value": 10, "condition": "first_turn" }],
+    "icon": "🌿",
+    "roles": ["ambusher", "hunter"],
+    "scientificFact": "Many predators relied on ambush tactics to catch faster prey unaware."
   },
   {
     "id": "regeneration",
@@ -90,13 +77,11 @@
     "description": "Heal 5 HP at the start of each turn.",
     "type": "turn_start",
     "rarity": "rare",
-    "effects": [
-      {
-        "stat": "hp",
-        "value": 5
-      }
-    ],
-    "icon": "🦎"
+    "category": "physical",
+    "effects": [{ "stat": "hp", "value": 5 }],
+    "icon": "🦎",
+    "roles": ["tank", "bruiser"],
+    "scientificFact": "Dinosaur bones show evidence of healed injuries, indicating robust regenerative abilities."
   },
   {
     "id": "vampiric_bite",
@@ -104,13 +89,11 @@
     "description": "Heal for 20% of damage dealt.",
     "type": "on_attack",
     "rarity": "legendary",
-    "effects": [
-      {
-        "stat": "hp",
-        "multiplier": 0.2
-      }
-    ],
-    "icon": "🧛"
+    "category": "behavioral",
+    "effects": [{ "stat": "hp", "multiplier": 0.2 }],
+    "icon": "🧛",
+    "roles": ["hunter", "bruiser"],
+    "scientificFact": "Predators gained energy and nutrition from consuming prey during and after hunts."
   },
   {
     "id": "thorned_skin",
@@ -118,14 +101,11 @@
     "description": "Reflect 5 damage back to attacker when hit.",
     "type": "on_hit",
     "rarity": "rare",
-    "effects": [
-      {
-        "stat": "hp",
-        "value": -5,
-        "condition": "attacker"
-      }
-    ],
-    "icon": "🌵"
+    "category": "physical",
+    "effects": [{ "stat": "hp", "value": -5, "condition": "attacker" }],
+    "icon": "🌵",
+    "roles": ["tank"],
+    "scientificFact": "Ankylosaurs had osteoderms with keeled ridges that could injure attackers."
   },
   {
     "id": "stunning_roar",
@@ -133,13 +113,11 @@
     "description": "10% chance to stun enemy on attack.",
     "type": "on_attack",
     "rarity": "rare",
-    "effects": [
-      {
-        "statusEffect": "stunned",
-        "chance": 0.1
-      }
-    ],
-    "icon": "📢"
+    "category": "behavioral",
+    "effects": [{ "statusEffect": "stunned", "chance": 0.1 }],
+    "icon": "📢",
+    "roles": ["powerhouse", "controller"],
+    "scientificFact": "Large theropods likely produced deep, resonating vocalizations that could startle prey."
   },
   {
     "id": "serrated_teeth",
@@ -147,13 +125,11 @@
     "description": "20% chance to cause bleeding on attack.",
     "type": "on_attack",
     "rarity": "common",
-    "effects": [
-      {
-        "statusEffect": "bleeding",
-        "chance": 0.2
-      }
-    ],
-    "icon": "🦷"
+    "category": "physical",
+    "effects": [{ "statusEffect": "bleeding", "chance": 0.2 }],
+    "icon": "🦷",
+    "roles": ["hunter", "ambusher"],
+    "scientificFact": "Theropod teeth were often serrated like steak knives for slicing through flesh."
   },
   {
     "id": "scavenger",
@@ -161,13 +137,11 @@
     "description": "Heal 20 HP when defeating an enemy.",
     "type": "on_kill",
     "rarity": "common",
-    "effects": [
-      {
-        "stat": "hp",
-        "value": 20
-      }
-    ],
-    "icon": "🍖"
+    "category": "behavioral",
+    "effects": [{ "stat": "hp", "value": 20 }],
+    "icon": "🍖",
+    "roles": ["bruiser", "hunter"],
+    "scientificFact": "Even apex predators like T. rex would scavenge when the opportunity arose."
   },
   {
     "id": "adrenaline",
@@ -175,14 +149,11 @@
     "description": "Gain +10 Attack when below 30% HP.",
     "type": "passive_stat",
     "rarity": "rare",
-    "effects": [
-      {
-        "stat": "attack",
-        "value": 10,
-        "condition": "low_hp"
-      }
-    ],
-    "icon": "💉"
+    "category": "behavioral",
+    "effects": [{ "stat": "attack", "value": 10, "condition": "low_hp" }],
+    "icon": "💉",
+    "roles": ["hunter", "bruiser"],
+    "scientificFact": "Fight-or-flight responses in dinosaurs likely triggered hormone surges similar to modern reptiles."
   },
   {
     "id": "iron_scales",
@@ -190,14 +161,11 @@
     "description": "Reduce incoming damage by 3.",
     "type": "on_hit",
     "rarity": "rare",
-    "effects": [
-      {
-        "stat": "hp",
-        "value": 3,
-        "condition": "reduce_damage"
-      }
-    ],
-    "icon": "🛡️"
+    "category": "physical",
+    "effects": [{ "stat": "hp", "value": 3, "condition": "reduce_damage" }],
+    "icon": "🛡️",
+    "roles": ["tank"],
+    "scientificFact": "Crocodilian-like scales provided additional armor for some dinosaurs and their relatives."
   },
   {
     "id": "apex_predator",
@@ -205,13 +173,490 @@
     "description": "Deal 20% more damage to Elite and Boss enemies.",
     "type": "passive_stat",
     "rarity": "legendary",
-    "effects": [
-      {
-        "stat": "attack",
-        "multiplier": 1.2,
-        "condition": "elite_or_boss"
-      }
-    ],
-    "icon": "👑"
+    "category": "behavioral",
+    "effects": [{ "stat": "attack", "multiplier": 1.2, "condition": "elite_or_boss" }],
+    "icon": "👑",
+    "roles": ["powerhouse"],
+    "scientificFact": "Apex predators like T. rex had no natural predators when fully grown."
+  },
+  {
+    "id": "pack_tactics",
+    "name": "Pack Tactics",
+    "description": "+15% damage when you have allies in combat.",
+    "type": "conditional_bonus",
+    "rarity": "common",
+    "category": "behavioral",
+    "effects": [{ "stat": "attack", "multiplier": 1.15, "condition": "has_allies" }],
+    "icon": "🐺",
+    "roles": ["hunter", "pack_leader"],
+    "scientificFact": "Dromaeosaurids likely hunted in groups to take down prey larger than themselves."
+  },
+  {
+    "id": "intimidating_presence",
+    "name": "Intimidating Presence",
+    "description": "20% chance enemies skip their turn in fear.",
+    "type": "turn_start",
+    "rarity": "rare",
+    "category": "behavioral",
+    "effects": [{ "chance": 0.2, "effect": "enemy_skip" }],
+    "icon": "😨",
+    "roles": ["powerhouse", "tank"],
+    "scientificFact": "Large predators often relied on intimidation to avoid unnecessary combat."
+  },
+  {
+    "id": "herbivore_strength",
+    "name": "Herbivore's Strength",
+    "description": "+20% health from healing effects.",
+    "type": "passive_modifier",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "type": "healing_modifier", "value": 0.2 }],
+    "icon": "🌿",
+    "roles": ["tank", "support"],
+    "scientificFact": "Herbivorous dinosaurs often had robust digestive systems that processed tough plant matter efficiently."
+  },
+  {
+    "id": "predator_instinct",
+    "name": "Predator's Instinct",
+    "description": "+30% critical hit chance against targets below 30% health.",
+    "type": "conditional_bonus",
+    "rarity": "rare",
+    "category": "behavioral",
+    "effects": [{ "stat": "critChance", "value": 0.3, "condition": "target_low_health", "threshold": 0.3 }],
+    "icon": "🎯",
+    "roles": ["hunter", "ambusher"],
+    "scientificFact": "Predators target weakened or injured prey to minimize risk of injury to themselves."
+  },
+  {
+    "id": "armored_body",
+    "name": "Armored Body",
+    "description": "Reduce all incoming physical damage by 15%.",
+    "type": "damage_reduction",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "type": "damage_reduction", "damageTypes": ["physical", "crushing", "slashing"], "value": 0.15 }],
+    "icon": "🛡️",
+    "roles": ["tank"],
+    "scientificFact": "Thyreophoran dinosaurs developed extensive body armor as defense against predators."
+  },
+  {
+    "id": "feathered_coat",
+    "name": "Feathered Coat",
+    "description": "Immune to cold environmental effects. +1 evasion.",
+    "type": "passive_stat",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "immunity": "cold_weather" }, { "stat": "evasion", "value": 1 }],
+    "icon": "🪶",
+    "roles": ["hunter", "scout"],
+    "scientificFact": "Feathers evolved for insulation before they were adapted for flight."
+  },
+  {
+    "id": "hollow_bones",
+    "name": "Hollow Bones",
+    "description": "+3 speed but -10 max health.",
+    "type": "passive_stat",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "stat": "speed", "value": 3 }, { "stat": "maxHp", "value": -10 }],
+    "icon": "🦴",
+    "roles": ["scout"],
+    "scientificFact": "Pterosaurs and birds have hollow, pneumatic bones that reduce weight for flight."
+  },
+  {
+    "id": "alpha_status",
+    "name": "Alpha Status",
+    "description": "Allies deal +10% damage and gain +1 defense while you're alive.",
+    "type": "ally_buff",
+    "rarity": "rare",
+    "category": "behavioral",
+    "effects": [{ "stat": "attack", "multiplier": 1.1, "target": "allies" }, { "stat": "defense", "value": 1, "target": "allies" }],
+    "icon": "🦁",
+    "roles": ["pack_leader"],
+    "scientificFact": "Social dinosaurs likely had hierarchy systems similar to modern wolves and lions."
+  },
+  {
+    "id": "nocturnal_hunter",
+    "name": "Nocturnal Hunter",
+    "description": "+25% damage during night encounters.",
+    "type": "conditional_bonus",
+    "rarity": "uncommon",
+    "category": "behavioral",
+    "effects": [{ "stat": "attack", "multiplier": 1.25, "condition": "night_time" }],
+    "icon": "🌙",
+    "roles": ["hunter", "controller"],
+    "scientificFact": "Some dinosaurs like Troodon had large eyes adapted for hunting in low light conditions."
+  },
+  {
+    "id": "dense_bones",
+    "name": "Dense Bones",
+    "description": "+3 defense but -1 speed. Resistant to bone-breaking attacks.",
+    "type": "passive_stat",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "stat": "defense", "value": 3 }, { "stat": "speed", "value": -1 }, { "resistance": "crushing" }],
+    "icon": "🦴",
+    "roles": ["tank", "bruiser"],
+    "scientificFact": "Spinosaurus had unusually dense bones to help it sink and hunt underwater."
+  },
+  {
+    "id": "conical_teeth",
+    "name": "Conical Teeth",
+    "description": "+20% damage against aquatic enemies.",
+    "type": "conditional_bonus",
+    "rarity": "common",
+    "category": "physical",
+    "effects": [{ "stat": "attack", "multiplier": 1.2, "condition": "aquatic_target" }],
+    "icon": "🐟",
+    "roles": ["aquatic_hunter"],
+    "scientificFact": "Spinosaurids had conical teeth perfect for gripping slippery fish."
+  },
+  {
+    "id": "horn_display",
+    "name": "Impressive Horns",
+    "description": "Charge attacks deal +25% damage.",
+    "type": "ability_modifier",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "abilityType": "charge", "stat": "damage", "multiplier": 1.25 }],
+    "icon": "🦬",
+    "roles": ["tank", "bruiser", "specialist"],
+    "scientificFact": "Ceratopsian horns were used for both defense and intraspecific combat."
+  },
+  {
+    "id": "sail_backed",
+    "name": "Sail-Backed",
+    "description": "Immune to temperature extremes. Can intimidate smaller enemies automatically.",
+    "type": "passive_modifier",
+    "rarity": "rare",
+    "category": "physical",
+    "effects": [{ "immunity": "temperature_effects" }, { "effect": "auto_intimidate", "condition": "smaller_enemy" }],
+    "icon": "⛵",
+    "roles": ["aquatic_hunter", "bruiser"],
+    "scientificFact": "Spinosaurus' sail may have been used for thermoregulation, display, or fat storage."
+  },
+  {
+    "id": "club_tail",
+    "name": "Club Tail",
+    "description": "Counter attacks deal 50% more damage. Can stun attackers.",
+    "type": "counter_modifier",
+    "rarity": "rare",
+    "category": "physical",
+    "effects": [{ "type": "counter_damage", "multiplier": 1.5 }, { "chance": 0.2, "statusEffect": "stunned" }],
+    "icon": "🏏",
+    "roles": ["tank"],
+    "scientificFact": "Ankylosaurus' tail club could swing with tremendous force, capable of breaking predator bones."
+  },
+  {
+    "id": "dome_skull",
+    "name": "Dome Skull",
+    "description": "Immune to stun effects. Headbutt attacks deal +30% damage.",
+    "type": "passive_modifier",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "immunity": "stunned" }, { "abilityType": "headbutt", "stat": "damage", "multiplier": 1.3 }],
+    "icon": "💀",
+    "roles": ["specialist", "bruiser"],
+    "scientificFact": "Pachycephalosaurus had a skull dome up to 25cm thick of solid bone."
+  },
+  {
+    "id": "crest_resonator",
+    "name": "Resonating Crest",
+    "description": "Sonic abilities have +25% effectiveness.",
+    "type": "ability_modifier",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "damageType": "sonic", "stat": "effectiveness", "multiplier": 1.25 }],
+    "icon": "📯",
+    "roles": ["support"],
+    "scientificFact": "Parasaurolophus' hollow crest could produce sounds that traveled for kilometers."
+  },
+  {
+    "id": "heightened_senses",
+    "name": "Heightened Senses",
+    "description": "Cannot be surprised. Detect hidden enemies and traps.",
+    "type": "passive_modifier",
+    "rarity": "common",
+    "category": "behavioral",
+    "effects": [{ "immunity": "surprise" }, { "detection": ["hidden", "traps"] }],
+    "icon": "👁️",
+    "roles": ["hunter", "scout", "controller"],
+    "scientificFact": "Predatory dinosaurs had keen senses of smell, sight, and hearing."
+  },
+  {
+    "id": "binocular_vision",
+    "name": "Binocular Vision",
+    "description": "+15% accuracy and +10% critical hit chance.",
+    "type": "passive_stat",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "stat": "accuracy", "value": 0.15 }, { "stat": "critChance", "value": 0.1 }],
+    "icon": "👀",
+    "roles": ["hunter", "powerhouse"],
+    "scientificFact": "T. rex had forward-facing eyes with overlapping fields of view for depth perception."
+  },
+  {
+    "id": "keen_smell",
+    "name": "Keen Smell",
+    "description": "Detect wounded enemies. +15% damage against bleeding targets.",
+    "type": "conditional_bonus",
+    "rarity": "common",
+    "category": "physical",
+    "effects": [{ "detection": ["wounded"] }, { "stat": "attack", "multiplier": 1.15, "condition": "target_bleeding" }],
+    "icon": "👃",
+    "roles": ["hunter", "powerhouse"],
+    "scientificFact": "T. rex's olfactory bulbs were enormous, giving it a sense of smell comparable to vultures."
+  },
+  {
+    "id": "endurance_runner",
+    "name": "Endurance Runner",
+    "description": "Stamina costs reduced by 15%. Regenerate 5 stamina per turn.",
+    "type": "passive_modifier",
+    "rarity": "common",
+    "category": "physical",
+    "effects": [{ "type": "cost_reduction", "resource": "stamina", "value": 0.15 }, { "type": "regeneration", "stat": "stamina", "value": 5 }],
+    "icon": "🏃",
+    "roles": ["hunter", "support"],
+    "scientificFact": "Ornithomimids were built for sustained running rather than short sprints."
+  },
+  {
+    "id": "vestigial_arms",
+    "name": "Vestigial Arms",
+    "description": "+10% bite damage but cannot use grappling abilities.",
+    "type": "passive_modifier",
+    "rarity": "common",
+    "category": "physical",
+    "effects": [{ "abilityType": "bite", "stat": "damage", "multiplier": 1.1 }, { "restriction": "grapple" }],
+    "icon": "💪",
+    "roles": ["ambusher", "powerhouse"],
+    "scientificFact": "Carnotaurus had the shortest arms of any large theropod relative to body size."
+  },
+  {
+    "id": "gigantothermy",
+    "name": "Gigantothermy",
+    "description": "Immune to temperature effects. Maintain constant body temperature.",
+    "type": "passive_modifier",
+    "rarity": "rare",
+    "category": "physical",
+    "effects": [{ "immunity": "temperature_effects" }],
+    "icon": "🌡️",
+    "roles": ["powerhouse", "tank", "bruiser"],
+    "scientificFact": "Large dinosaurs maintained stable body temperatures through their mass alone."
+  },
+  {
+    "id": "herd_instinct",
+    "name": "Herd Instinct",
+    "description": "+2 defense when you have allies.",
+    "type": "conditional_bonus",
+    "rarity": "common",
+    "category": "behavioral",
+    "effects": [{ "stat": "defense", "value": 2, "condition": "has_allies" }],
+    "icon": "🦕",
+    "roles": ["support", "tank"],
+    "scientificFact": "Herding behavior provided protection from predators through safety in numbers."
+  },
+  {
+    "id": "venomous",
+    "name": "Venomous",
+    "description": "Attacks have 20% chance to poison (3 damage per turn for 4 turns).",
+    "type": "on_attack",
+    "rarity": "rare",
+    "category": "physical",
+    "effects": [{ "statusEffect": "poisoned", "chance": 0.2, "value": 3, "duration": 4 }],
+    "icon": "🐍",
+    "roles": ["hunter", "controller"],
+    "scientificFact": "Some theropods like Sinornithosaurus may have had venomous bites, though this is debated."
+  },
+  {
+    "id": "territorial",
+    "name": "Territorial",
+    "description": "+20% damage when defending your territory (home biome).",
+    "type": "conditional_bonus",
+    "rarity": "common",
+    "category": "behavioral",
+    "effects": [{ "stat": "attack", "multiplier": 1.2, "condition": "home_biome" }],
+    "icon": "🏠",
+    "roles": ["tank", "powerhouse"],
+    "scientificFact": "Many dinosaurs were highly territorial, as evidenced by combat injuries between members of the same species."
+  },
+  {
+    "id": "aquatic_adaptation",
+    "name": "Aquatic Adaptation",
+    "description": "+30% all stats in water terrain.",
+    "type": "terrain_bonus",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "terrain": "water", "allStats": 0.3 }],
+    "icon": "🌊",
+    "roles": ["aquatic_hunter"],
+    "scientificFact": "Spinosaurus had dense bones and a paddle tail for swimming."
+  },
+  {
+    "id": "opportunistic_feeder",
+    "name": "Opportunistic Feeder",
+    "description": "Heal 10% of damage dealt.",
+    "type": "on_attack",
+    "rarity": "common",
+    "category": "behavioral",
+    "effects": [{ "type": "lifesteal", "value": 0.1 }],
+    "icon": "🍗",
+    "roles": ["hunter", "bruiser"],
+    "scientificFact": "Most carnivorous dinosaurs were opportunistic, eating whatever was available."
+  },
+  {
+    "id": "brood_parent",
+    "name": "Brood Parent",
+    "description": "Allies gain +15% max health.",
+    "type": "ally_buff",
+    "rarity": "uncommon",
+    "category": "behavioral",
+    "effects": [{ "stat": "maxHp", "multiplier": 1.15, "target": "allies" }],
+    "icon": "🥚",
+    "roles": ["support", "tank"],
+    "scientificFact": "Many dinosaurs including Maiasaura showed extensive parental care of their young."
+  },
+  {
+    "id": "migratory",
+    "name": "Migratory",
+    "description": "Reduced stamina cost for travel. Bonus to exploration rewards.",
+    "type": "passive_modifier",
+    "rarity": "common",
+    "category": "behavioral",
+    "effects": [{ "type": "travel_cost", "value": -0.2 }, { "type": "exploration_bonus", "value": 0.15 }],
+    "icon": "🧭",
+    "roles": ["support", "scout"],
+    "scientificFact": "Evidence suggests some dinosaurs migrated seasonally to follow food sources."
+  },
+  {
+    "id": "colonial_nester",
+    "name": "Colonial Nester",
+    "description": "Bonus to rest healing when near other dinosaurs.",
+    "type": "conditional_bonus",
+    "rarity": "common",
+    "category": "behavioral",
+    "effects": [{ "type": "rest_healing", "value": 0.25, "condition": "has_allies" }],
+    "icon": "🪹",
+    "roles": ["support", "swarm"],
+    "scientificFact": "Many dinosaurs nested in colonies for protection, like modern seabirds."
+  },
+  {
+    "id": "rapid_growth",
+    "name": "Rapid Growth",
+    "description": "+25% experience gain.",
+    "type": "passive_modifier",
+    "rarity": "rare",
+    "category": "physical",
+    "effects": [{ "type": "experience_modifier", "value": 0.25 }],
+    "icon": "📈",
+    "roles": ["hunter", "ambusher"],
+    "scientificFact": "Many dinosaurs grew rapidly during adolescence, reaching adult size quickly."
+  },
+  {
+    "id": "primitive_feathers",
+    "name": "Primitive Feathers",
+    "description": "Resist cold damage. Better camouflage in forested areas.",
+    "type": "passive_modifier",
+    "rarity": "common",
+    "category": "physical",
+    "effects": [{ "resistance": "cold" }, { "stealth_bonus": 0.2, "terrain": "forest" }],
+    "icon": "🪶",
+    "roles": ["hunter", "scout"],
+    "scientificFact": "Proto-feathers evolved before true flight feathers, providing insulation."
+  },
+  {
+    "id": "bone_breaking_bite",
+    "name": "Bone-Breaking Bite",
+    "description": "Critical hits permanently reduce target's max health by 5.",
+    "type": "on_crit",
+    "rarity": "legendary",
+    "category": "physical",
+    "effects": [{ "effect": "reduce_max_health", "value": 5 }],
+    "icon": "💥",
+    "roles": ["powerhouse"],
+    "scientificFact": "T. rex could bite with 12,800 pounds of force, crushing bone into splinters."
+  },
+  {
+    "id": "living_fossil",
+    "name": "Living Fossil",
+    "description": "Ancient lineage grants wisdom. +10% to all stats.",
+    "type": "passive_stat",
+    "rarity": "legendary",
+    "category": "special",
+    "effects": [{ "allStats": 0.1 }],
+    "icon": "🦴",
+    "roles": ["tank", "powerhouse"],
+    "scientificFact": "Some lineages persisted for tens of millions of years, well-adapted to their niches."
+  },
+  {
+    "id": "extinction_survivor",
+    "name": "Extinction Survivor",
+    "description": "Survive fatal damage once per run with 1 HP. Immune to instant-death effects.",
+    "type": "special",
+    "rarity": "legendary",
+    "category": "special",
+    "effects": [{ "type": "cheat_death", "uses": 1 }, { "immunity": "instant_death" }],
+    "icon": "☄️",
+    "roles": ["tank", "bruiser"],
+    "scientificFact": "Some dinosaur lineages survived multiple extinction events before the final K-Pg catastrophe."
+  },
+  {
+    "id": "sickle_claw",
+    "name": "Sickle Claw",
+    "description": "Critical hits cause bleeding. +20% crit damage.",
+    "type": "on_crit",
+    "rarity": "rare",
+    "category": "physical",
+    "effects": [{ "statusEffect": "bleeding", "chance": 1.0 }, { "stat": "critDamage", "multiplier": 1.2 }],
+    "icon": "⚔️",
+    "roles": ["hunter", "ambusher"],
+    "scientificFact": "Dromaeosaurids' enlarged toe claws were used for slashing and gripping prey."
+  },
+  {
+    "id": "camouflage",
+    "name": "Natural Camouflage",
+    "description": "25% chance to avoid being targeted in multi-enemy encounters.",
+    "type": "passive_modifier",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "chance": 0.25, "effect": "avoid_targeting" }],
+    "icon": "🌿",
+    "roles": ["scout", "ambusher"],
+    "scientificFact": "Many dinosaurs likely had countershading or disruptive coloration for camouflage."
+  },
+  {
+    "id": "thermoregulation",
+    "name": "Thermoregulation",
+    "description": "Bonus stats in hot environments. Penalty in cold.",
+    "type": "conditional_bonus",
+    "rarity": "uncommon",
+    "category": "physical",
+    "effects": [{ "stat": "speed", "value": 2, "condition": "hot" }, { "stat": "speed", "value": -2, "condition": "cold" }],
+    "icon": "☀️",
+    "roles": ["hunter"],
+    "scientificFact": "Reptiles require external heat sources to maintain optimal body temperature."
+  },
+  {
+    "id": "battle_scarred",
+    "name": "Battle Scarred",
+    "description": "+3 defense permanently but -5 max HP. Intimidates enemies.",
+    "type": "passive_stat",
+    "rarity": "uncommon",
+    "category": "behavioral",
+    "effects": [{ "stat": "defense", "value": 3 }, { "stat": "maxHp", "value": -5 }, { "effect": "intimidate_bonus", "value": 0.1 }],
+    "icon": "⚔️",
+    "roles": ["bruiser", "tank"],
+    "scientificFact": "Fossil evidence shows many dinosaurs survived serious combat injuries, indicating fierce battles."
+  },
+  {
+    "id": "ancient_wisdom",
+    "name": "Ancient Wisdom",
+    "description": "Learn from encounters: gain +1% stats after each combat (stacks 10 times).",
+    "type": "on_combat_end",
+    "rarity": "epic",
+    "category": "special",
+    "effects": [{ "type": "stacking_buff", "stat": "allStats", "value": 0.01, "maxStacks": 10 }],
+    "icon": "🧠",
+    "roles": ["support", "controller"],
+    "scientificFact": "Dinosaurs that lived longer likely learned to navigate threats more effectively."
   }
 ]
