@@ -1128,5 +1128,348 @@
       }
     ],
     "scientificNote": "Stegosaurus plates were rich in blood vessels and may have flushed red for display or thermoregulation."
+  },
+  {
+    "id": "armored_charge",
+    "name": "Armored Charge",
+    "description": "Charge forward with your armored body, dealing 140% damage and gaining +2 defense for 1 turn.",
+    "staminaCost": 35,
+    "cooldown": 3,
+    "damageMultiplier": 1.4,
+    "damageType": "crushing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 2,
+        "duration": 1,
+        "chance": 1.0,
+        "stat": "defense"
+      }
+    ],
+    "scientificNote": "Ankylosaurus could use its heavy body armor offensively, making a charging attack quite formidable."
+  },
+  {
+    "id": "blitz_attack",
+    "name": "Blitz Attack",
+    "description": "Lightning-fast strike that always goes first and deals 130% damage.",
+    "staminaCost": 30,
+    "cooldown": 2,
+    "damageMultiplier": 1.3,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "priority"
+      }
+    ],
+    "scientificNote": "Carnotaurus was built for speed, able to deliver devastating first strikes before prey could react."
+  },
+  {
+    "id": "branch_pull",
+    "name": "Branch Pull",
+    "description": "Use your long claws to pull and strike. Deals 110% damage and reduces enemy speed by 2 for 2 turns.",
+    "staminaCost": 30,
+    "cooldown": 3,
+    "damageMultiplier": 1.1,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "debuff",
+        "value": -2,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "speed"
+      }
+    ],
+    "scientificNote": "Therizinosaurus' enormous claws were likely used to pull down tree branches for feeding."
+  },
+  {
+    "id": "claw_fury",
+    "name": "Claw Fury",
+    "description": "Unleash a flurry of claw attacks. Deals 50% damage 4 times.",
+    "staminaCost": 40,
+    "cooldown": 4,
+    "damageMultiplier": 0.5,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "multi_hit",
+        "hitCount": 4
+      }
+    ],
+    "scientificNote": "With meter-long claws, Therizinosaurus could deliver devastating slashing attacks in rapid succession."
+  },
+  {
+    "id": "coordinated_takedown",
+    "name": "Coordinated Takedown",
+    "description": "Work with pack members to bring down large prey. Deals 180% damage if you have allies in combat.",
+    "staminaCost": 45,
+    "cooldown": 4,
+    "damageMultiplier": 1.8,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "requires_ally"
+      }
+    ],
+    "scientificNote": "Utahraptor likely hunted in coordinated packs, allowing them to take down prey much larger than themselves."
+  },
+  {
+    "id": "defensive_crouch",
+    "name": "Defensive Crouch",
+    "description": "Lower your body and raise your dome. +4 defense for 2 turns but -1 speed.",
+    "staminaCost": 20,
+    "cooldown": 3,
+    "damageMultiplier": 0,
+    "targetType": "self",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 4,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "defense"
+      },
+      {
+        "type": "debuff",
+        "value": -1,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "speed"
+      }
+    ],
+    "scientificNote": "Pachycephalosaurus could present its thick skull dome as a shield against predator attacks."
+  },
+  {
+    "id": "defensive_formation",
+    "name": "Defensive Formation",
+    "description": "Form a defensive line with allies. All allies gain +3 defense for 2 turns.",
+    "staminaCost": 30,
+    "cooldown": 4,
+    "damageMultiplier": 0,
+    "targetType": "all_allies",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 3,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "defense"
+      }
+    ],
+    "scientificNote": "Hadrosaurs like Parasaurolophus lived in herds and likely used group defense strategies."
+  },
+  {
+    "id": "disemboweling_kick",
+    "name": "Disemboweling Kick",
+    "description": "Deliver a devastating kick with your sickle claw. Deals 160% damage with 30% chance to cause severe bleeding.",
+    "staminaCost": 40,
+    "cooldown": 3,
+    "damageMultiplier": 1.6,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "bleeding",
+        "value": 8,
+        "duration": 3,
+        "chance": 0.3
+      }
+    ],
+    "scientificNote": "Dromaeosaurid sickle claws were likely used to slash and disembowel prey rather than for pinning."
+  },
+  {
+    "id": "evasive_dash",
+    "name": "Evasive Dash",
+    "description": "Quickly dash away from danger. +4 evasion for 2 turns.",
+    "staminaCost": 20,
+    "cooldown": 2,
+    "damageMultiplier": 0,
+    "targetType": "self",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 4,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "evasion"
+      }
+    ],
+    "scientificNote": "Small, agile dinosaurs like Compsognathus relied on speed and evasion for survival."
+  },
+  {
+    "id": "feint_attack",
+    "name": "Feint Attack",
+    "description": "Fake an attack to create an opening. Next attack deals +40% damage.",
+    "staminaCost": 15,
+    "cooldown": 2,
+    "damageMultiplier": 0,
+    "targetType": "self",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 0.4,
+        "duration": 1,
+        "chance": 1.0,
+        "modifier": "next_attack_bonus"
+      }
+    ],
+    "scientificNote": "Intelligent hunters like Troodon may have used feints and misdirection in their hunting strategies."
+  },
+  {
+    "id": "fish_hook",
+    "name": "Fish Hook",
+    "description": "Hook your target with conical teeth. Deals 120% damage and prevents escape for 1 turn.",
+    "staminaCost": 25,
+    "cooldown": 2,
+    "damageMultiplier": 1.2,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "buff",
+        "value": 0,
+        "duration": 1,
+        "chance": 1.0,
+        "modifier": "prevent_flee"
+      }
+    ],
+    "scientificNote": "Spinosaurus' conical teeth were ideal for gripping slippery fish, preventing them from escaping."
+  },
+  {
+    "id": "intimidating_display",
+    "name": "Intimidating Display",
+    "description": "Spread your arms to appear larger. Enemies have -2 attack for 2 turns.",
+    "staminaCost": 25,
+    "cooldown": 3,
+    "damageMultiplier": 0,
+    "targetType": "all_enemies",
+    "effects": [
+      {
+        "type": "debuff",
+        "value": -2,
+        "duration": 2,
+        "chance": 1.0,
+        "stat": "attack"
+      }
+    ],
+    "scientificNote": "Therizinosaurus' bizarre proportions and enormous claws would have made for an intimidating display."
+  },
+  {
+    "id": "intimidating_horns",
+    "name": "Intimidating Horns",
+    "description": "Display your horns to frighten enemies. 30% chance to cause fear for 1 turn.",
+    "staminaCost": 20,
+    "cooldown": 3,
+    "damageMultiplier": 0,
+    "targetType": "all_enemies",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "feared",
+        "value": 0,
+        "duration": 1,
+        "chance": 0.3
+      }
+    ],
+    "scientificNote": "Carnotaurus' distinctive horns may have been used for display and intimidation."
+  },
+  {
+    "id": "overwhelming_numbers",
+    "name": "Overwhelming Numbers",
+    "description": "Swarm the enemy from all directions. Deals 150% damage if you have 3+ swarm members.",
+    "staminaCost": 30,
+    "cooldown": 3,
+    "damageMultiplier": 1.5,
+    "damageType": "slashing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "swarm_bonus"
+      }
+    ],
+    "scientificNote": "Small pack-hunting theropods could overwhelm larger prey through sheer numbers."
+  },
+  {
+    "id": "stunning_ram",
+    "name": "Stunning Ram",
+    "description": "Ram into your target head-first. Deals 120% damage with 60% stun chance.",
+    "staminaCost": 35,
+    "cooldown": 3,
+    "damageMultiplier": 1.2,
+    "damageType": "crushing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "stunned",
+        "value": 0,
+        "duration": 1,
+        "chance": 0.6
+      }
+    ],
+    "scientificNote": "Pachycephalosaurus' thick skull dome could deliver stunning blows to predators or rivals."
+  },
+  {
+    "id": "tail_strike",
+    "name": "Tail Strike",
+    "description": "Swing your powerful tail. Deals 110% damage with 20% chance to stun.",
+    "staminaCost": 25,
+    "cooldown": 2,
+    "damageMultiplier": 1.1,
+    "damageType": "crushing",
+    "targetType": "single_enemy",
+    "effects": [
+      {
+        "type": "status",
+        "statusEffect": "stunned",
+        "value": 0,
+        "duration": 1,
+        "chance": 0.2
+      }
+    ],
+    "scientificNote": "Many dinosaurs used their tails as weapons, from the club of Ankylosaurus to the whip-like tails of sauropods."
+  },
+  {
+    "id": "water_lunge",
+    "name": "Water Lunge",
+    "description": "Lunge from the water to strike prey on land. Deals 150% damage from water terrain.",
+    "staminaCost": 35,
+    "cooldown": 3,
+    "damageMultiplier": 1.5,
+    "damageType": "piercing",
+    "targetType": "single_enemy",
+    "terrainRequired": "water",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 0,
+        "duration": 0,
+        "chance": 1.0,
+        "modifier": "terrain_bonus"
+      }
+    ],
+    "scientificNote": "Semi-aquatic predators like Baryonyx could launch surprise attacks from the water's edge."
   }
 ]
