@@ -417,6 +417,46 @@ Check Victory/Defeat
 - **Bruiser**: Balanced offense and defense
 - **Aquatic Hunter**: Water terrain bonuses
 
+## Enemy System
+
+### Enemy Tiers
+
+#### Basic Enemies
+- **Compsognathus Pack**: Swarm tactics, 3-5 small dinosaurs attacking together
+- **Dilophosaurus**: Early Jurassic predator with crests, possible venom
+- **Coelophysis**: Pack hunter from Triassic, swarm attacks
+- **Dimetrodon**: Pre-dinosaur synapsid with sail (not actually a dinosaur)
+
+#### Advanced Enemies
+- **Allosaurus**: Large Jurassic predator, powerful bite
+- **Sarcosuchus**: Giant crocodilian "SuperCroc," ambush from water
+- **Velociraptor**: Pack hunter, intelligent tactics (smaller than movies)
+- **Kentrosaurus**: Spiked stegosaur cousin, dangerous tail
+
+#### Elite Enemies
+- **Spinosaurus**: Semi-aquatic apex predator with sail
+- **Carnotaurus**: Fast predator with horns and tiny arms
+- **Therizinosaurus**: Giant claws, surprisingly herbivorous
+
+#### Boss Enemies
+- **Mosasaurus**: Giant marine reptile, water-based boss fight
+- **Giganotosaurus**: One of the largest land predators, rival to T. rex
+- **Tyrannosaurus Rex**: The ultimate apex predator
+
+### Enemy Abilities
+
+**Predator Abilities**:
+- **Ambush**: First strike from hiding
+- **Pack Coordination**: Multiple enemies attack together
+- **Pursuit Predator**: Bonus damage vs fleeing targets
+- **Crushing Bite**: High damage, can break bones
+
+**Defensive Abilities**:
+- **Armored Hide**: Damage reduction
+- **Tail Swipe**: Counter attacks
+- **Threatening Display**: Reduce player attack
+- **Retreat**: Flee when wounded
+
 ---
 
 ## Educational Integration
@@ -425,16 +465,18 @@ Check Victory/Defeat
 Every action teaches paleontology:
 
 1. **Combat Lessons**
-   - "Deinonychus likely used pack tactics, similar to modern wolves"
-   - "Ankylosaurus club tail could swing at 70mph"
+   - "Deinonychus' sickle claw was 12cm long, used for gripping prey"
+   - "Ankylosaurus tail club could swing with force exceeding 14,000 Newtons"
+   - "T. rex had binocular vision with forward-facing eyes for depth perception"
 
 2. **Environmental Facts**
-   - "Cretaceous CO2 levels were 6x higher than today"
-   - "This fern species existed 150 million years ago"
+   - "Cretaceous CO2 levels were 4-6x higher than today"
+   - "Volcanic activity was common during the Mesozoic Era"
+   - "Amber preserves organisms for millions of years"
 
 3. **Discovery Codex**
    - Unlock entries for each dinosaur encountered
-   - Period, diet, size comparison, recent discoveries
+   - Taxonomy, diet, size comparison, recent discoveries
    - Citation system with real paleontology sources
 
 4. **Quiz Encounters** (Optional)
@@ -446,6 +488,7 @@ Every action teaches paleontology:
 - **Size/Behavior**: Based on latest paleontology research (2020+)
 - **Ecosystem Dynamics**: Accurate predator/prey relationships
 - **Extinction Events**: Teach about K-Pg boundary, climate change
+- **Taxonomy Notes**: Clarify what is/isn't actually a dinosaur
 
 ---
 
