@@ -3,6 +3,7 @@ import { SCENE_KEYS, GAME_CONFIG } from '../utils/Constants';
 import { DinosaurType } from '../types/Dinosaur.types';
 import { NodeType } from '../types/Encounter.types';
 import { GameStateManager } from '../managers/GameStateManager';
+import dinosaursData from '../data/dinosaurs.json';
 
 interface MapNodeUI {
   id: string;
@@ -44,9 +45,15 @@ export class MapScene extends Phaser.Scene {
       this.fossils = run.fossilsCollected;
       this.playerTraits = run.traits;
       
-      // TODO: Load max stats from dino data or traits
-      this.playerMaxHealth = 100; // Placeholder
-      this.playerMaxStamina = 70; // Placeholder
+      // Load max stats from dino data
+      const dinoData = dinosaursData.find(d => d.id === this.selectedDinosaur);
+      if (dinoData) {
+        this.playerMaxHealth = dinoData.baseStats.health;
+        this.playerMaxStamina = dinoData.baseStats.stamina;
+      } else {
+        this.playerMaxHealth = 100;
+        this.playerMaxStamina = 70;
+      }
     } else if (data.dinosaur) {
       // Fallback if starting fresh (should have been created in CharSelect)
       this.selectedDinosaur = data.dinosaur;

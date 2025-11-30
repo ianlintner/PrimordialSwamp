@@ -4,6 +4,7 @@ import { MenuScene } from './scenes/MenuScene';
 import { CharacterSelectScene } from './scenes/CharacterSelectScene';
 import { MapScene } from './scenes/MapScene';
 import { CombatScene } from './scenes/CombatScene';
+import { CodexScene } from './scenes/CodexScene';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -28,7 +29,8 @@ const config: Phaser.Types.Core.GameConfig = {
     MenuScene,
     CharacterSelectScene,
     MapScene,
-    CombatScene
+    CombatScene,
+    CodexScene
   ]
 };
 

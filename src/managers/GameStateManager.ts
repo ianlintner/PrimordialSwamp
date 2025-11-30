@@ -6,7 +6,7 @@ const STORAGE_KEY = 'primordial_swamp_save_v1';
 
 const DEFAULT_META_PROGRESS: MetaProgressState = {
   fossilFragments: 0,
-  unlockedDinosaurs: ['deinonychus'], // Starter dino
+  unlockedDinosaurs: [DinosaurType.DEINONYCHUS], // Starter dino
   unlockedTraits: [],
   codexEntries: [],
   achievements: [],
@@ -156,6 +156,25 @@ export class GameStateManager {
     }
   }
 
+  public updatePlayerStats(hp: number, stamina: number): void {
+    if (this.state.currentRun) {
+      this.state.currentRun.health = hp;
+      this.state.currentRun.stamina = stamina;
+      this.saveState();
+    }
+  }
+
+  public updateResources(amount: number): void {
+    if (this.state.currentRun) {
+      this.state.currentRun.fossilsCollected += amount;
+      this.saveState();
+    }
+  }
+
+  public clearCurrentRun(): void {
+    this.endRun(false);
+  }
+
   public addFossils(amount: number): void {
     if (this.state.currentRun) {
       this.state.currentRun.fossilsCollected += amount;
@@ -213,5 +232,36 @@ export class GameStateManager {
         this.saveState();
       }
     }
+  }
+
+  // --- Settings ---
+
+  public getSettings(): SettingsState {
+    return this.state.settings;
+  }
+
+  public updateSettings(settings: Partial<SettingsState>): void {
+    this.state.settings = { ...this.state.settings, ...settings };
+    this.saveState();
+  }
+
+  public updateMasterVolume(volume: number): void {
+    this.state.settings.masterVolume = volume;
+    this.saveState();
+  }
+
+  public updateMusicVolume(volume: number): void {
+    this.state.settings.musicVolume = volume;
+    this.saveState();
+  }
+
+  public updateSfxVolume(volume: number): void {
+    this.state.settings.sfxVolume = volume;
+    this.saveState();
+  }
+
+  public toggleAccessibility(key: keyof SettingsState['accessibility'], value: boolean): void {
+    this.state.settings.accessibility[key] = value as any;
+    this.saveState();
   }
 }

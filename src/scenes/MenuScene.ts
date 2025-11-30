@@ -123,11 +123,7 @@ export class MenuScene extends Phaser.Scene {
 
   private openCodex(): void {
     console.log('📚 Opening codex...');
-    // TODO: Implement codex scene
-    this.add.text(GAME_CONFIG.WIDTH / 2, GAME_CONFIG.HEIGHT / 2, 'CODEX COMING SOON', {
-      fontSize: '48px',
-      color: '#4a9d5f'
-    }).setOrigin(0.5);
+    this.scene.start(SCENE_KEYS.CODEX);
   }
 
   private openSettings(): void {

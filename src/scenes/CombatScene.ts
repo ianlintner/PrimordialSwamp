@@ -461,6 +461,14 @@ export class CombatScene extends Phaser.Scene {
   }
 
   private playerAttack(): void {
+    const staminaCost = 10;
+    if (this.player.stamina < staminaCost) {
+      this.addLog('Not enough stamina!');
+      return;
+    }
+
+    this.playAttackAnimation('player');
+    
     // Calculate damage: Attack * (100 / (100 + Defense))
     const defense = this.enemyDefending ? this.enemy.defense * 1.5 : this.enemy.defense;
     const damageMultiplier = 100 / (100 + defense);
@@ -490,14 +498,12 @@ export class CombatScene extends Phaser.Scene {
     const damage = Math.max(1, Math.floor(baseDamage * damageMultiplier * Phaser.Math.FloatBetween(0.9, 1.1)));
     
     this.enemy.hp = Math.max(0, this.enemy.hp - damage);
-    this.player.stamina = Math.max(0, this.player.stamina - 10);
+    this.player.stamina -= staminaCost;
     
     this.addLog(`You attack for ${damage} damage!`);
+    this.playHitEffect('enemy');
     
-    // Trigger On Attack Traits (e.g. Vampiric Bite, Stunning Roar)
-    this.checkTraitTrigger(this.player, TraitType.ON_ATTACK, { target: this.enemy, damageDealt: damage });
-    
-    // Trigger On Hit Traits for Enemy (e.g. Thorned Skin)
+    // Trigger On Hit Traits
     this.checkTraitTrigger(this.enemy, TraitType.ON_HIT, { attacker: this.player, damageTaken: damage });
     
     this.updateCombatUI();
@@ -542,11 +548,14 @@ export class CombatScene extends Phaser.Scene {
     const baseDamage = this.player.attack * 1.5;
     const damage = Math.max(1, Math.floor(baseDamage * damageMultiplier));
     
+    this.playAttackAnimation('player');
+    
     this.enemy.hp = Math.max(0, this.enemy.hp - damage);
     this.player.stamina -= staminaCost;
     this.player.abilityCooldown = 3; // 3 turn cooldown
     
     this.addLog(`You use a special ability for ${damage} damage!`);
+    this.playHitEffect('enemy');
     
     // Chance to apply Bleed
     if (Math.random() < 0.5) {
@@ -648,6 +657,8 @@ export class CombatScene extends Phaser.Scene {
       } else {
         this.enemyDefending = false;
         
+        this.playAttackAnimation('enemy');
+        
         // Calculate damage
         const defense = this.playerDefending ? this.player.defense * 1.5 : this.player.defense;
         const damageMultiplier = 100 / (100 + defense);
@@ -656,6 +667,7 @@ export class CombatScene extends Phaser.Scene {
         
         this.player.hp = Math.max(0, this.player.hp - damage);
         this.addLog(`${this.enemy.name} attacks for ${damage} damage!`);
+        this.playHitEffect('player');
       }
       
       // Reset player defending status for next turn
@@ -755,5 +767,56 @@ export class CombatScene extends Phaser.Scene {
       // TODO: Show game over screen with stats
       this.scene.start(SCENE_KEYS.MENU);
     });
+  }
+
+  private playHitEffect(target: 'player' | 'enemy'): void {
+    // Screen shake
+    this.cameras.main.shake(200, 0.01);
+    
+    // Flash target
+    const sprite = target === 'player' 
+      ? this.children.getByName('playerSprite') as Phaser.GameObjects.Sprite
+      : this.children.getByName('enemySprite') as Phaser.GameObjects.Sprite;
+      
+    if (sprite) {
+      this.tweens.add({
+        targets: sprite,
+        alpha: 0,
+        duration: 50,
+        yoyo: true,
+        repeat: 3
+      });
+      
+      // Damage particles
+      const particles = this.add.particles(sprite.x, sprite.y, 'pixel', {
+        speed: { min: 50, max: 150 },
+        angle: { min: 0, max: 360 },
+        scale: { start: 1, end: 0 },
+        lifespan: 500,
+        quantity: 10,
+        tint: 0xff0000
+      });
+      
+      this.time.delayedCall(500, () => particles.destroy());
+    }
+  }
+
+  private playAttackAnimation(attacker: 'player' | 'enemy'): void {
+    const sprite = attacker === 'player'
+      ? this.children.getByName('playerSprite') as Phaser.GameObjects.Sprite
+      : this.children.getByName('enemySprite') as Phaser.GameObjects.Sprite;
+      
+    if (sprite) {
+      const originalX = sprite.x;
+      const forwardX = attacker === 'player' ? originalX + 50 : originalX - 50;
+      
+      this.tweens.add({
+        targets: sprite,
+        x: forwardX,
+        duration: 100,
+        yoyo: true,
+        ease: 'Power1'
+      });
+    }
   }
 }
