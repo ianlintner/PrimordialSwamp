@@ -102,7 +102,7 @@
       },
       {
         "name": "Araucaria",
-        "type": "conifer",
+        "type": "gymnosperm",
         "abundance": "scattered",
         "note": "Monkey puzzle trees provided shelter and food"
       },
@@ -290,7 +290,7 @@
     "flora": [
       {
         "name": "Araucaria",
-        "type": "conifer",
+        "type": "gymnosperm",
         "abundance": "dominant",
         "note": "Massive monkey puzzle trees dominated the canopy"
       },

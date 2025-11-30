@@ -26,7 +26,7 @@
         "criticalChance": "30% critical represents successful deployment of the hyperextended claw into vulnerable areas",
         "staminaCost": "30 stamina reflects the muscular effort required to maintain grip during prey restraint"
       },
-      "citations": ["fowler2011sickle_claw_function", "manning2009raptor_prey_restraint"]
+      "citations": ["fowler2011sickle_claw_function", "manning2006raptor_prey_restraint"]
     }
   },
   {
@@ -471,7 +471,7 @@
         "bleedingEffect": "80% bleed chance represents the tearing damage from conical teeth designed for grip not cutting",
         "terrainRequired": "Water terrain requirement reflects Spinosaurus' specialized semi-aquatic hunting strategy"
       },
-      "citations": ["ibrahim2020spinosaurus_aquatic", "ibrahim2014spinosaurus", "cuff2014spinosaurid_sensing"]
+      "citations": ["ibrahim2020spinosaurus_aquatic", "ibrahim2014spinosaurus", "cuff2013spinosaurid_sensing"]
     }
   },
   {

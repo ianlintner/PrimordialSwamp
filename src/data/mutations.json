@@ -18,7 +18,7 @@
     "scientificBasis": {
       "description": "Feather evolution occurred gradually from simple filaments to complex pennaceous feathers used for thermoregulation, display, and eventually flight.",
       "evidence": "Fossil evidence from the Jehol Biota shows progressive feather complexity in theropods from Sinosauropteryx to Microraptor.",
-      "citations": ["xu2014feather_evolution", "prum2015evolution_feathers"]
+      "citations": ["xu2014feather_evolution", "prum2002evolution_feathers"]
     },
     "gameplayNote": "Recommended for cold biomes and social encounters."
   },
@@ -40,7 +40,7 @@
     "scientificBasis": {
       "description": "Pachyostosis (bone thickening) evolved independently in various lineages, particularly in aquatic or semi-aquatic species for buoyancy control.",
       "evidence": "Spinosaurus displays pachyostotic bones, interpreted as adaptation for swimming and diving.",
-      "citations": ["ibrahim2020spinosaurus_aquatic", "houssaye2018pachyostosis"]
+      "citations": ["ibrahim2020spinosaurus_aquatic", "houssaye2014pachyostosis"]
     },
     "gameplayNote": "Trade-off between durability and mobility."
   },
@@ -153,7 +153,7 @@
     "scientificBasis": {
       "description": "Spinosaurids possessed neurovascular foramina on their snouts similar to crocodilians, suggesting pressure-sensing capability for aquatic hunting.",
       "evidence": "High-resolution CT scans of Spinosaurus snout reveal extensive neurovascular channels consistent with integumentary sensory organs.",
-      "citations": ["ibrahim2014spinosaurus", "cuff2014spinosaurid_sensing"]
+      "citations": ["ibrahim2014spinosaurus", "cuff2013spinosaurid_sensing"]
     },
     "gameplayNote": "Specialized for semi-aquatic builds."
   },
@@ -265,7 +265,7 @@
     "scientificBasis": {
       "description": "Dromaeosaurid sickle claws were hyperextensible, held off the ground during locomotion and deployed during attacks.",
       "evidence": "Biomechanical studies suggest the claw was used for slashing and gripping rather than climbing or disemboweling.",
-      "citations": ["fowler2011sickle_claw_function", "manning2009raptor_prey_restraint"]
+      "citations": ["fowler2011sickle_claw_function", "manning2006raptor_prey_restraint"]
     },
     "gameplayNote": "Defines the raptor hunting style."
   },
@@ -311,7 +311,7 @@
     "scientificBasis": {
       "description": "Pachycephalosaur skull domes could exceed 25cm thickness of solid bone, though the biomechanics of head-butting remain debated.",
       "evidence": "Histological analysis shows the dome is composed of dense, structurally reinforced bone unsuitable for head-on impacts, suggesting flank-butting.",
-      "citations": ["snively2011pachycephalosaurid_combat", "peterson2013dome_skull_function"]
+      "citations": ["snively2008pachycephalosaurid_combat", "peterson2012dome_skull_function"]
     },
     "gameplayNote": "Specialized combat adaptation with intelligence trade-off."
   },
@@ -380,7 +380,7 @@
     "scientificBasis": {
       "description": "Evidence for coordinated pack hunting in dromaeosaurids suggests complex social cognition and communication.",
       "evidence": "The Deinonychus-Tenontosaurus association at various sites suggests coordinated attacks on large prey.",
-      "citations": ["maxwell2001pack_hunting", "roach2008pack_hunting_evidence"]
+      "citations": ["maxwell2001pack_hunting", "roach2007pack_hunting_evidence"]
     },
     "gameplayNote": "Essential for pack-based strategies."
   },
