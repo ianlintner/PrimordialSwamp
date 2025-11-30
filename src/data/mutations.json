@@ -1,0 +1,476 @@
+[
+  {
+    "id": "enhanced_plumage",
+    "name": "Enhanced Plumage",
+    "category": "physical",
+    "subcategory": "integumentary",
+    "tier": "common",
+    "description": "Develop more elaborate feathers for insulation and display.",
+    "effects": [
+      { "stat": "defense", "value": 2, "type": "flat" },
+      { "stat": "evasion", "value": 1, "type": "flat" }
+    ],
+    "prerequisites": {
+      "physicalTraits": ["hasFeathers"]
+    },
+    "incompatible": ["armored_scales"],
+    "evolutionPoints": 15,
+    "scientificBasis": {
+      "description": "Feather evolution occurred gradually from simple filaments to complex pennaceous feathers used for thermoregulation, display, and eventually flight.",
+      "evidence": "Fossil evidence from the Jehol Biota shows progressive feather complexity in theropods from Sinosauropteryx to Microraptor.",
+      "citations": ["xu2014feather_evolution", "prum2015evolution_feathers"]
+    },
+    "gameplayNote": "Recommended for cold biomes and social encounters."
+  },
+  {
+    "id": "bone_density_increase",
+    "name": "Dense Ossification",
+    "category": "physical",
+    "subcategory": "skeletal",
+    "tier": "common",
+    "description": "Develop denser, more robust bones for improved durability.",
+    "effects": [
+      { "stat": "defense", "value": 3, "type": "flat" },
+      { "stat": "maxHealth", "value": 10, "type": "flat" },
+      { "stat": "speed", "value": -1, "type": "flat" }
+    ],
+    "prerequisites": {},
+    "incompatible": ["hollow_bones_adaptation", "pneumatic_skeleton"],
+    "evolutionPoints": 20,
+    "scientificBasis": {
+      "description": "Pachyostosis (bone thickening) evolved independently in various lineages, particularly in aquatic or semi-aquatic species for buoyancy control.",
+      "evidence": "Spinosaurus displays pachyostotic bones, interpreted as adaptation for swimming and diving.",
+      "citations": ["ibrahim2020spinosaurus_aquatic", "houssaye2018pachyostosis"]
+    },
+    "gameplayNote": "Trade-off between durability and mobility."
+  },
+  {
+    "id": "hollow_bones_adaptation",
+    "name": "Pneumatic Skeleton",
+    "category": "physical",
+    "subcategory": "skeletal",
+    "tier": "common",
+    "description": "Develop air-filled hollow bones for reduced weight and improved agility.",
+    "effects": [
+      { "stat": "speed", "value": 3, "type": "flat" },
+      { "stat": "maxHealth", "value": -5, "type": "flat" },
+      { "stat": "stamina", "value": 10, "type": "flat" }
+    ],
+    "prerequisites": {},
+    "incompatible": ["bone_density_increase"],
+    "evolutionPoints": 20,
+    "scientificBasis": {
+      "description": "Pneumatization of the skeleton is a key theropod adaptation that reduced body mass while maintaining structural integrity, eventually enabling flight in birds.",
+      "evidence": "CT scans of theropod fossils reveal extensive pneumatic cavities connected to the respiratory system.",
+      "citations": ["wedel2003pneumaticity", "benson2012theropod_mass"]
+    },
+    "gameplayNote": "Ideal for scout and flying roles."
+  },
+  {
+    "id": "enhanced_olfaction",
+    "name": "Acute Olfaction",
+    "category": "sensory",
+    "subcategory": "chemoreception",
+    "tier": "common",
+    "description": "Develop enlarged olfactory bulbs for enhanced scent detection.",
+    "effects": [
+      { "stat": "accuracy", "value": 5, "type": "percent" },
+      { "special": "detect_hidden_enemies", "value": true, "type": "boolean" },
+      { "special": "bonus_vs_bleeding", "value": 15, "type": "percent" }
+    ],
+    "prerequisites": {},
+    "incompatible": [],
+    "evolutionPoints": 15,
+    "scientificBasis": {
+      "description": "Tyrannosaurs and other theropods possessed enormous olfactory bulbs, suggesting a highly developed sense of smell comparable to modern vultures.",
+      "evidence": "Endocast studies of T. rex skulls show olfactory bulbs proportionally larger than any living terrestrial vertebrate.",
+      "citations": ["witmer2009trex_senses", "zelenitsky2009olfaction"]
+    },
+    "gameplayNote": "Excellent for tracking wounded prey."
+  },
+  {
+    "id": "binocular_enhancement",
+    "name": "Stereo Vision",
+    "category": "sensory",
+    "subcategory": "vision",
+    "tier": "rare",
+    "description": "Develop forward-facing eyes with overlapping visual fields for depth perception.",
+    "effects": [
+      { "stat": "accuracy", "value": 10, "type": "percent" },
+      { "stat": "criticalChance", "value": 8, "type": "percent" }
+    ],
+    "prerequisites": {
+      "role": ["hunter", "powerhouse", "ambusher"]
+    },
+    "incompatible": ["panoramic_vision"],
+    "evolutionPoints": 25,
+    "scientificBasis": {
+      "description": "Predatory theropods evolved forward-facing eyes with significant binocular overlap, enabling precise distance judgment essential for hunting.",
+      "evidence": "Skull morphology of T. rex shows 55° binocular overlap, exceeding modern hawks.",
+      "citations": ["stevens2006trex_vision", "kawabe2017theropod_vision"]
+    },
+    "gameplayNote": "Critical for precision-based combat builds."
+  },
+  {
+    "id": "panoramic_vision",
+    "name": "Lateral Vision",
+    "category": "sensory",
+    "subcategory": "vision",
+    "tier": "common",
+    "description": "Develop laterally-placed eyes for nearly 360° field of view.",
+    "effects": [
+      { "stat": "evasion", "value": 3, "type": "flat" },
+      { "special": "cannot_be_surprised", "value": true, "type": "boolean" }
+    ],
+    "prerequisites": {
+      "diet": ["herbivore"]
+    },
+    "incompatible": ["binocular_enhancement"],
+    "evolutionPoints": 15,
+    "scientificBasis": {
+      "description": "Herbivorous dinosaurs typically had laterally-placed eyes providing wide visual coverage to detect approaching predators.",
+      "evidence": "Skull anatomy of hadrosaurs and ceratopsians shows eye sockets positioned for maximum peripheral vision.",
+      "citations": ["motani2008visual_adaptations", "sampson2010ceratopsian_evolution"]
+    },
+    "gameplayNote": "Essential defensive adaptation for herbivores."
+  },
+  {
+    "id": "electroreception",
+    "name": "Aquatic Sensory Pits",
+    "category": "sensory",
+    "subcategory": "mechanoreception",
+    "tier": "rare",
+    "description": "Develop specialized sensory pits on the snout for detecting prey movement in water.",
+    "effects": [
+      { "special": "detect_in_water", "value": true, "type": "boolean" },
+      { "stat": "accuracy", "value": 20, "type": "percent", "condition": "water_terrain" }
+    ],
+    "prerequisites": {
+      "locomotion": ["semi_aquatic", "swimming"]
+    },
+    "incompatible": [],
+    "evolutionPoints": 30,
+    "scientificBasis": {
+      "description": "Spinosaurids possessed neurovascular foramina on their snouts similar to crocodilians, suggesting pressure-sensing capability for aquatic hunting.",
+      "evidence": "High-resolution CT scans of Spinosaurus snout reveal extensive neurovascular channels consistent with integumentary sensory organs.",
+      "citations": ["ibrahim2014spinosaurus", "cuff2014spinosaurid_sensing"]
+    },
+    "gameplayNote": "Specialized for semi-aquatic builds."
+  },
+  {
+    "id": "venom_glands",
+    "name": "Venom Production",
+    "category": "offensive",
+    "subcategory": "biochemical",
+    "tier": "rare",
+    "description": "Develop modified salivary glands capable of producing toxic compounds.",
+    "effects": [
+      { "special": "poison_on_attack", "value": 25, "type": "percent", "damage": 3, "duration": 3 }
+    ],
+    "prerequisites": {
+      "diet": ["carnivore", "omnivore"]
+    },
+    "incompatible": [],
+    "evolutionPoints": 35,
+    "scientificBasis": {
+      "description": "While controversial, some theropods may have possessed venom-delivering capabilities. Sinornithosaurus had grooved teeth suggesting venom delivery.",
+      "evidence": "Sinornithosaurus skull analysis revealed grooved teeth and a potential venom gland space, though interpretation remains debated.",
+      "citations": ["gong2010sinornithosaurus_venom", "gianechini2011venom_debate"]
+    },
+    "gameplayNote": "Adds damage-over-time potential to attacks."
+  },
+  {
+    "id": "crest_resonator",
+    "name": "Resonating Crest",
+    "category": "communication",
+    "subcategory": "vocalization",
+    "tier": "rare",
+    "description": "Develop a hollow cranial crest for producing low-frequency sounds.",
+    "effects": [
+      { "special": "sonic_ability_boost", "value": 30, "type": "percent" },
+      { "special": "ally_buff_range", "value": 50, "type": "percent" }
+    ],
+    "prerequisites": {},
+    "incompatible": [],
+    "evolutionPoints": 25,
+    "scientificBasis": {
+      "description": "Lambeosaurine hadrosaurs possessed elaborate hollow crests that functioned as resonating chambers for producing distinctive calls.",
+      "evidence": "Digital reconstruction of Parasaurolophus crest produced low-frequency sounds in the 30-240 Hz range, traveling kilometers.",
+      "citations": ["weishampel1981lambeosaurine_crests", "diegert1998parasaurolophus_acoustics"]
+    },
+    "gameplayNote": "Enhances support abilities and team coordination."
+  },
+  {
+    "id": "thermoregulation_sail",
+    "name": "Dorsal Sail",
+    "category": "physical",
+    "subcategory": "integumentary",
+    "tier": "legendary",
+    "description": "Develop elongated neural spines forming a prominent sail for thermoregulation and display.",
+    "effects": [
+      { "special": "temperature_immunity", "value": true, "type": "boolean" },
+      { "stat": "defense", "value": -2, "type": "flat", "condition": "sail_targeted" },
+      { "special": "intimidation_bonus", "value": 25, "type": "percent" }
+    ],
+    "prerequisites": {},
+    "incompatible": [],
+    "evolutionPoints": 50,
+    "scientificBasis": {
+      "description": "Sails evolved independently in Spinosaurus, Dimetrodon, and other taxa. Functions include thermoregulation, display, and fat storage.",
+      "evidence": "Bone histology and blood vessel traces in Spinosaurus neural spines indicate high vascularization consistent with thermoregulation.",
+      "citations": ["bailey1997sail_thermoregulation", "ibrahim2020spinosaurus_sail"]
+    },
+    "gameplayNote": "Major structural change with trade-offs."
+  },
+  {
+    "id": "osteoderm_armor",
+    "name": "Dermal Ossification",
+    "category": "physical",
+    "subcategory": "integumentary",
+    "tier": "rare",
+    "description": "Develop bony deposits in the skin forming protective armor plates.",
+    "effects": [
+      { "stat": "defense", "value": 5, "type": "flat" },
+      { "special": "physical_damage_reduction", "value": 15, "type": "percent" },
+      { "stat": "speed", "value": -2, "type": "flat" }
+    ],
+    "prerequisites": {},
+    "incompatible": ["enhanced_plumage"],
+    "evolutionPoints": 40,
+    "scientificBasis": {
+      "description": "Osteoderms (dermal armor) evolved in multiple dinosaur lineages including ankylosaurs, titanosaurs, and some theropods.",
+      "evidence": "Ankylosaurid osteoderms were fused to the dermis, forming a continuous armor layer with over 1000 individual elements.",
+      "citations": ["vickaryous2004osteoderms", "arbour2016ankylosaurid_armor"]
+    },
+    "gameplayNote": "Significant defensive upgrade with mobility cost."
+  },
+  {
+    "id": "sickle_claw_enlargement",
+    "name": "Hyperextended Claw",
+    "category": "offensive",
+    "subcategory": "morphological",
+    "tier": "rare",
+    "description": "Develop an enlarged, curved claw on the second toe for slashing attacks.",
+    "effects": [
+      { "stat": "attack", "value": 4, "type": "flat" },
+      { "special": "bleed_on_crit", "value": true, "type": "boolean" },
+      { "stat": "criticalDamage", "value": 25, "type": "percent" }
+    ],
+    "prerequisites": {
+      "locomotion": ["bipedal"],
+      "physicalTraits": ["hasClaws"]
+    },
+    "incompatible": [],
+    "evolutionPoints": 35,
+    "scientificBasis": {
+      "description": "Dromaeosaurid sickle claws were hyperextensible, held off the ground during locomotion and deployed during attacks.",
+      "evidence": "Biomechanical studies suggest the claw was used for slashing and gripping rather than climbing or disemboweling.",
+      "citations": ["fowler2011sickle_claw_function", "manning2009raptor_prey_restraint"]
+    },
+    "gameplayNote": "Defines the raptor hunting style."
+  },
+  {
+    "id": "tail_club_development",
+    "name": "Caudal Osteoderm Fusion",
+    "category": "offensive",
+    "subcategory": "morphological",
+    "tier": "legendary",
+    "description": "Develop fused osteoderms at the tail tip forming a bony club.",
+    "effects": [
+      { "stat": "attack", "value": 3, "type": "flat" },
+      { "special": "counter_attack", "value": 40, "type": "percent" },
+      { "special": "stun_on_counter", "value": 30, "type": "percent" }
+    ],
+    "prerequisites": {
+      "physicalTraits": ["hasArmor"]
+    },
+    "incompatible": [],
+    "evolutionPoints": 45,
+    "scientificBasis": {
+      "description": "Ankylosaurid tail clubs are composed of fused osteoderms and enlarged caudal vertebrae, forming an effective defensive weapon.",
+      "evidence": "Impact simulations estimate ankylosaurid tail clubs could generate 14,000+ Newtons of force, sufficient to fracture bone.",
+      "citations": ["arbour2009ankylosaurid_tail_club", "carpenter2004ankylosaurid_weapons"]
+    },
+    "gameplayNote": "Powerful counter-attack capability."
+  },
+  {
+    "id": "dome_skull",
+    "name": "Cranial Thickening",
+    "category": "physical",
+    "subcategory": "skeletal",
+    "tier": "rare",
+    "description": "Develop a massively thickened skull dome for head-butting combat.",
+    "effects": [
+      { "special": "stun_immunity", "value": true, "type": "boolean" },
+      { "stat": "headbutt_damage", "value": 35, "type": "percent" },
+      { "stat": "intelligence", "value": -1, "type": "flat" }
+    ],
+    "prerequisites": {},
+    "incompatible": ["crest_resonator"],
+    "evolutionPoints": 30,
+    "scientificBasis": {
+      "description": "Pachycephalosaur skull domes could exceed 25cm thickness of solid bone, though the biomechanics of head-butting remain debated.",
+      "evidence": "Histological analysis shows the dome is composed of dense, structurally reinforced bone unsuitable for head-on impacts, suggesting flank-butting.",
+      "citations": ["snively2011pachycephalosaurid_combat", "peterson2013dome_skull_function"]
+    },
+    "gameplayNote": "Specialized combat adaptation with intelligence trade-off."
+  },
+  {
+    "id": "gigantism",
+    "name": "Ontogenetic Gigantism",
+    "category": "physical",
+    "subcategory": "growth",
+    "tier": "legendary",
+    "description": "Undergo accelerated growth to reach massive adult size.",
+    "effects": [
+      { "stat": "maxHealth", "value": 25, "type": "percent" },
+      { "stat": "attack", "value": 20, "type": "percent" },
+      { "stat": "speed", "value": -15, "type": "percent" },
+      { "stat": "stamina", "value": 20, "type": "percent" }
+    ],
+    "prerequisites": {},
+    "incompatible": ["miniaturization"],
+    "evolutionPoints": 60,
+    "scientificBasis": {
+      "description": "Dinosaur gigantism evolved through rapid growth rates, with some species gaining over 2kg per day during adolescence.",
+      "evidence": "Bone histology of T. rex shows growth rates of 2.1 kg/day during the teenage growth spurt, reaching adult size by ~20 years.",
+      "citations": ["erickson2004trex_growth", "sander2008dinosaur_gigantism"]
+    },
+    "gameplayNote": "Major stat overhaul for powerhouse builds."
+  },
+  {
+    "id": "miniaturization",
+    "name": "Insular Dwarfism",
+    "category": "physical",
+    "subcategory": "growth",
+    "tier": "rare",
+    "description": "Evolve smaller body size for resource-limited environments.",
+    "effects": [
+      { "stat": "maxHealth", "value": -20, "type": "percent" },
+      { "stat": "speed", "value": 25, "type": "percent" },
+      { "stat": "evasion", "value": 4, "type": "flat" },
+      { "stat": "stamina", "value": -10, "type": "percent" }
+    ],
+    "prerequisites": {},
+    "incompatible": ["gigantism"],
+    "evolutionPoints": 30,
+    "scientificBasis": {
+      "description": "Island dwarfism occurred in several dinosaur lineages, with isolated populations evolving smaller body sizes due to limited resources.",
+      "evidence": "Magyarosaurus, a Romanian titanosaur, was only 6m long compared to 20m+ mainland relatives, representing island dwarfism.",
+      "citations": ["benton2010transylvanian_dinosaurs", "sander2006island_dwarfism"]
+    },
+    "gameplayNote": "Emphasizes agility over raw power."
+  },
+  {
+    "id": "pack_mentality",
+    "name": "Social Intelligence",
+    "category": "behavioral",
+    "subcategory": "cognition",
+    "tier": "common",
+    "description": "Develop enhanced social cognition for coordinated group behavior.",
+    "effects": [
+      { "special": "ally_damage_bonus", "value": 15, "type": "percent" },
+      { "special": "ally_defense_bonus", "value": 10, "type": "percent" }
+    ],
+    "prerequisites": {
+      "socialBehavior": ["pack_hunter", "herd_member", "colonial"]
+    },
+    "incompatible": ["solitary_hunter"],
+    "evolutionPoints": 20,
+    "scientificBasis": {
+      "description": "Evidence for coordinated pack hunting in dromaeosaurids suggests complex social cognition and communication.",
+      "evidence": "The Deinonychus-Tenontosaurus association at various sites suggests coordinated attacks on large prey.",
+      "citations": ["maxwell2001pack_hunting", "roach2008pack_hunting_evidence"]
+    },
+    "gameplayNote": "Essential for pack-based strategies."
+  },
+  {
+    "id": "solitary_hunter",
+    "name": "Apex Predator Instincts",
+    "category": "behavioral",
+    "subcategory": "cognition",
+    "tier": "rare",
+    "description": "Develop enhanced individual hunting capabilities for solitary apex predation.",
+    "effects": [
+      { "stat": "attack", "value": 20, "type": "percent", "condition": "no_allies" },
+      { "special": "bonus_vs_elite", "value": 25, "type": "percent" }
+    ],
+    "prerequisites": {
+      "socialBehavior": ["solitary", "territorial"]
+    },
+    "incompatible": ["pack_mentality"],
+    "evolutionPoints": 30,
+    "scientificBasis": {
+      "description": "Adult tyrannosaurs likely transitioned to solitary hunting as they reached apex predator status in their ecosystems.",
+      "evidence": "Size disparity between juvenile and adult tyrannosaurs suggests ontogenetic niche partitioning and solitary adult behavior.",
+      "citations": ["holtz2008trex_ecology", "thomas2021tyrannosaur_ontogeny"]
+    },
+    "gameplayNote": "Optimizes solo combat effectiveness."
+  },
+  {
+    "id": "nocturnal_adaptation",
+    "name": "Scotopic Vision",
+    "category": "behavioral",
+    "subcategory": "activity",
+    "tier": "common",
+    "description": "Develop enlarged eyes with enhanced rod photoreceptors for night hunting.",
+    "effects": [
+      { "stat": "accuracy", "value": 25, "type": "percent", "condition": "night_time" },
+      { "stat": "attack", "value": 15, "type": "percent", "condition": "night_time" }
+    ],
+    "prerequisites": {},
+    "incompatible": [],
+    "evolutionPoints": 20,
+    "scientificBasis": {
+      "description": "Some theropods possessed enlarged scleral rings indicating large eyes adapted for low-light conditions.",
+      "evidence": "Troodon's large orbits and sclerotic ring proportions suggest adaptation for nocturnal or crepuscular activity.",
+      "citations": ["schmitz2011dinosaur_activity_patterns", "choiniere2021nocturnal_dinosaurs"]
+    },
+    "gameplayNote": "Enables effective night hunting."
+  },
+  {
+    "id": "metabolic_enhancement",
+    "name": "Elevated Metabolism",
+    "category": "physiological",
+    "subcategory": "metabolism",
+    "tier": "rare",
+    "description": "Develop a higher metabolic rate for increased activity levels.",
+    "effects": [
+      { "stat": "speed", "value": 2, "type": "flat" },
+      { "stat": "stamina_regen", "value": 25, "type": "percent" },
+      { "special": "food_requirement", "value": 50, "type": "percent" }
+    ],
+    "prerequisites": {},
+    "incompatible": ["gigantothermy"],
+    "evolutionPoints": 25,
+    "scientificBasis": {
+      "description": "Growing evidence suggests dinosaurs had metabolic rates intermediate between modern reptiles and birds, enabling sustained activity.",
+      "evidence": "Bone histology showing rapid growth rates and LAGs (lines of arrested growth) indicates endothermic or mesothermic physiology.",
+      "citations": ["grady2014dinosaur_metabolism", "legendre2016dinosaur_growth_rates"]
+    },
+    "gameplayNote": "Higher performance with increased resource needs."
+  },
+  {
+    "id": "gigantothermy",
+    "name": "Inertial Homeothermy",
+    "category": "physiological",
+    "subcategory": "thermoregulation",
+    "tier": "uncommon",
+    "description": "Maintain stable body temperature through sheer mass rather than metabolic heat.",
+    "effects": [
+      { "special": "temperature_immunity", "value": true, "type": "boolean" },
+      { "stat": "stamina_regen", "value": 10, "type": "percent" }
+    ],
+    "prerequisites": {
+      "sizeCategory": ["large", "huge", "colossal"]
+    },
+    "incompatible": ["metabolic_enhancement"],
+    "evolutionPoints": 20,
+    "scientificBasis": {
+      "description": "Large dinosaurs could maintain stable internal temperatures through thermal inertia, independent of environmental fluctuations.",
+      "evidence": "Isotopic analysis of dinosaur teeth shows stable body temperatures across different latitudes and seasons.",
+      "citations": ["seymour2013dinosaur_homeothermy", "eagle2011dinosaur_body_temps"]
+    },
+    "gameplayNote": "Passive temperature regulation for large creatures."
+  }
+]

@@ -1,0 +1,414 @@
+[
+  {
+    "id": "coastal_wetlands",
+    "name": "Coastal Wetlands",
+    "description": "Tidal marshes and estuaries rich in fish and small prey, with dense vegetation providing cover.",
+    "terrain": "swamp",
+    "climate": {
+      "type": "tropical",
+      "temperature": { "min": 25, "max": 35, "unit": "celsius" },
+      "humidity": { "min": 80, "max": 95, "unit": "percent" },
+      "precipitation": "high"
+    },
+    "atmosphere": {
+      "co2_level": 1200,
+      "o2_level": 21,
+      "notes": "Cretaceous CO2 levels were approximately 4-6 times modern levels, with oxygen levels similar to today."
+    },
+    "flora": [
+      {
+        "name": "Ferns",
+        "type": "pteridophyte",
+        "abundance": "dominant",
+        "note": "Tree ferns and ground ferns dominated wetland ecosystems"
+      },
+      {
+        "name": "Cycads",
+        "type": "gymnosperm",
+        "abundance": "common",
+        "note": "Palm-like plants that provided food for herbivores"
+      },
+      {
+        "name": "Horsetails",
+        "type": "pteridophyte",
+        "abundance": "common",
+        "note": "Giant Equisetum species lined waterways"
+      },
+      {
+        "name": "Early Angiosperms",
+        "type": "angiosperm",
+        "abundance": "rare",
+        "note": "Flowering plants were just beginning to diversify in the Late Cretaceous"
+      }
+    ],
+    "fauna": {
+      "primary": ["pteranodon", "spinosaurus", "baryonyx"],
+      "secondary": ["compsognathus_pack", "deinonychus", "dilophosaurus"],
+      "rare": ["mosasaurus", "sarcosuchus"]
+    },
+    "hazards": [
+      { "type": "flash_flood", "probability": 0.15, "description": "Sudden flooding from tidal changes or storms" },
+      { "type": "tar_pit", "probability": 0.05, "description": "Natural asphalt seeps creating deadly traps" }
+    ],
+    "resources": {
+      "food_abundance": "high",
+      "water_abundance": "very_high",
+      "shelter_availability": "moderate"
+    },
+    "playerModifiers": {
+      "aquatic_dinosaurs": { "attack": 1.2, "defense": 1.1, "stamina_regen": 1.3 },
+      "flying_dinosaurs": { "attack": 0.9, "speed": 0.8 },
+      "armored_dinosaurs": { "speed": 0.8, "stamina_cost": 1.2 }
+    },
+    "scientificFacts": [
+      "Coastal wetlands supported rich biodiversity with fish, invertebrates, and small vertebrates providing abundant prey.",
+      "The Western Interior Seaway divided North America, creating extensive coastal environments.",
+      "Many dinosaur species were adapted to semi-aquatic lifestyles in these environments."
+    ],
+    "period": {
+      "era": "Mesozoic",
+      "period": "Cretaceous",
+      "approximate_mya": 80
+    }
+  },
+  {
+    "id": "fern_prairies",
+    "name": "Fern Prairies",
+    "description": "Open expanses of low-growing ferns and cycads with scattered conifer stands, home to great herds.",
+    "terrain": "plains",
+    "climate": {
+      "type": "temperate",
+      "temperature": { "min": 15, "max": 30, "unit": "celsius" },
+      "humidity": { "min": 50, "max": 70, "unit": "percent" },
+      "precipitation": "moderate"
+    },
+    "atmosphere": {
+      "co2_level": 1000,
+      "o2_level": 23,
+      "notes": "Slightly elevated oxygen in some Mesozoic periods may have supported larger insect sizes."
+    },
+    "flora": [
+      {
+        "name": "Ground Ferns",
+        "type": "pteridophyte",
+        "abundance": "dominant",
+        "note": "Low-growing fern species covered open ground"
+      },
+      {
+        "name": "Bennettitales",
+        "type": "bennettitalean",
+        "abundance": "common",
+        "note": "Cycad-like plants with flower-like reproductive structures"
+      },
+      {
+        "name": "Araucaria",
+        "type": "conifer",
+        "abundance": "scattered",
+        "note": "Monkey puzzle trees provided shelter and food"
+      },
+      {
+        "name": "Early Grasses",
+        "type": "angiosperm",
+        "abundance": "rare",
+        "note": "Primitive grasses were just evolving in the Late Cretaceous"
+      }
+    ],
+    "fauna": {
+      "primary": ["triceratops", "parasaurolophus", "pachycephalosaurus"],
+      "secondary": ["velociraptor", "deinonychus", "coelophysis"],
+      "rare": ["tyrannosaurus_boss", "carnotaurus_enemy"]
+    },
+    "hazards": [
+      { "type": "drought", "probability": 0.12, "description": "Extended dry periods stress herbivore populations" },
+      { "type": "herd_migration", "probability": 0.18, "description": "Large herds passing through can trample smaller creatures" }
+    ],
+    "resources": {
+      "food_abundance": "high",
+      "water_abundance": "moderate",
+      "shelter_availability": "low"
+    },
+    "playerModifiers": {
+      "pack_hunters": { "attack": 1.15, "coordination": 1.2 },
+      "herbivores": { "stamina_regen": 1.2, "healing": 1.1 },
+      "solitary_predators": { "attack": 1.1, "stealth": 0.9 }
+    },
+    "scientificFacts": [
+      "Before the evolution of grasses, ferns and cycads dominated open environments.",
+      "Large herbivore herds migrated seasonally following vegetation patterns.",
+      "Pack hunting theropods may have targeted the edges of migrating herds."
+    ],
+    "period": {
+      "era": "Mesozoic",
+      "period": "Cretaceous",
+      "approximate_mya": 70
+    }
+  },
+  {
+    "id": "volcanic_highlands",
+    "name": "Volcanic Highlands",
+    "description": "Elevated terrain shaped by volcanic activity, with ash-enriched soil supporting unique flora.",
+    "terrain": "volcanic",
+    "climate": {
+      "type": "varied",
+      "temperature": { "min": 10, "max": 40, "unit": "celsius" },
+      "humidity": { "min": 30, "max": 60, "unit": "percent" },
+      "precipitation": "variable"
+    },
+    "atmosphere": {
+      "co2_level": 1500,
+      "o2_level": 20,
+      "notes": "Volcanic emissions increased local CO2 and sulfur compounds, affecting local climate."
+    },
+    "flora": [
+      {
+        "name": "Pioneer Ferns",
+        "type": "pteridophyte",
+        "abundance": "moderate",
+        "note": "Hardy ferns colonized volcanic soils first"
+      },
+      {
+        "name": "Ginkgoes",
+        "type": "gymnosperm",
+        "abundance": "common",
+        "note": "Living fossils that tolerated harsh conditions"
+      },
+      {
+        "name": "Conifers",
+        "type": "gymnosperm",
+        "abundance": "scattered",
+        "note": "Adapted to nutrient-poor volcanic soils"
+      }
+    ],
+    "fauna": {
+      "primary": ["allosaurus", "therizinosaurus_enemy", "acrocanthosaurus"],
+      "secondary": ["utahraptor", "pachyrhinosaurus", "iguanodon"],
+      "rare": ["giganotosaurus", "quetzalcoatlus"]
+    },
+    "hazards": [
+      { "type": "volcanic_eruption", "probability": 0.08, "description": "Explosive volcanic activity threatens all life" },
+      { "type": "toxic_gases", "probability": 0.10, "description": "Volcanic vents release poisonous gases" },
+      { "type": "lava_flow", "probability": 0.05, "description": "Slow-moving but unstoppable molten rock" }
+    ],
+    "resources": {
+      "food_abundance": "low",
+      "water_abundance": "low",
+      "shelter_availability": "moderate"
+    },
+    "playerModifiers": {
+      "all": { "stamina_cost": 1.15, "visibility": 0.9 },
+      "heat_resistant": { "stamina_cost": 0.9, "defense": 1.1 },
+      "flying_dinosaurs": { "speed": 1.2, "visibility": 1.1 }
+    },
+    "scientificFacts": [
+      "Volcanic activity was common throughout the Mesozoic, with the Deccan Traps erupting near the K-Pg extinction.",
+      "Volcanic soils are rich in nutrients once weathered, supporting unique plant communities.",
+      "Some dinosaurs may have exploited volcanic thermal areas for nesting, similar to modern megapodes."
+    ],
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "approximate_mya": 67
+    }
+  },
+  {
+    "id": "tar_pits",
+    "name": "Tar Pits",
+    "description": "Deadly pools of natural asphalt that trap the unwary, creating fossil bonanzas for future scientists.",
+    "terrain": "hazard",
+    "climate": {
+      "type": "arid",
+      "temperature": { "min": 20, "max": 38, "unit": "celsius" },
+      "humidity": { "min": 20, "max": 40, "unit": "percent" },
+      "precipitation": "low"
+    },
+    "atmosphere": {
+      "co2_level": 900,
+      "o2_level": 21,
+      "notes": "Methane and petroleum vapors rise from tar seeps, creating localized atmospheric anomalies."
+    },
+    "flora": [
+      {
+        "name": "Drought-resistant Ferns",
+        "type": "pteridophyte",
+        "abundance": "rare",
+        "note": "Only the hardiest plants survive near tar seeps"
+      },
+      {
+        "name": "Scrub Conifers",
+        "type": "gymnosperm",
+        "abundance": "sparse",
+        "note": "Stunted trees growing away from tar deposits"
+      }
+    ],
+    "fauna": {
+      "primary": [],
+      "secondary": ["scavengers"],
+      "rare": ["trapped_prey", "predator_victims"]
+    },
+    "hazards": [
+      { "type": "tar_pit_trap", "probability": 0.25, "description": "Viscous tar can trap any creature that steps in it" },
+      { "type": "predator_trap", "probability": 0.15, "description": "Predators become trapped trying to reach stuck prey" },
+      { "type": "fume_exposure", "probability": 0.12, "description": "Petroleum fumes cause disorientation" }
+    ],
+    "resources": {
+      "food_abundance": "very_low",
+      "water_abundance": "very_low",
+      "shelter_availability": "low"
+    },
+    "playerModifiers": {
+      "all": { "speed": 0.7, "stamina_cost": 1.3, "escape_chance": 0.6 },
+      "flying_dinosaurs": { "speed": 1.0, "escape_chance": 1.0 },
+      "light_weight": { "speed": 0.85, "escape_chance": 0.8 }
+    },
+    "scientificFacts": [
+      "Tar pits like La Brea preserve exceptional fossils because trapped animals attracted predators who also became stuck.",
+      "The predator-to-prey ratio in tar pit fossils is abnormally high, reflecting this trap dynamic.",
+      "Asphalt preserves bone exceptionally well, providing detailed anatomical information."
+    ],
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "approximate_mya": 68
+    }
+  },
+  {
+    "id": "ancient_forest",
+    "name": "Conifer Forest",
+    "description": "Towering Araucaria and redwood-like conifers create a shadowy understory rich with prey.",
+    "terrain": "forest",
+    "climate": {
+      "type": "temperate",
+      "temperature": { "min": 12, "max": 28, "unit": "celsius" },
+      "humidity": { "min": 60, "max": 85, "unit": "percent" },
+      "precipitation": "high"
+    },
+    "atmosphere": {
+      "co2_level": 1100,
+      "o2_level": 22,
+      "notes": "Dense vegetation created localized oxygen-rich microclimates."
+    },
+    "flora": [
+      {
+        "name": "Araucaria",
+        "type": "conifer",
+        "abundance": "dominant",
+        "note": "Massive monkey puzzle trees dominated the canopy"
+      },
+      {
+        "name": "Tree Ferns",
+        "type": "pteridophyte",
+        "abundance": "common",
+        "note": "Tall ferns filled the middle story"
+      },
+      {
+        "name": "Cycads",
+        "type": "gymnosperm",
+        "abundance": "common",
+        "note": "Understory cycads provided herbivore food"
+      },
+      {
+        "name": "Mosses",
+        "type": "bryophyte",
+        "abundance": "abundant",
+        "note": "Ground cover and epiphytes on tree trunks"
+      }
+    ],
+    "fauna": {
+      "primary": ["stegosaurus", "therizinosaurus", "dilophosaurus"],
+      "secondary": ["compsognathus_pack", "oviraptor", "repenomamus"],
+      "rare": ["allosaurus", "spinosaurus_enemy"]
+    },
+    "hazards": [
+      { "type": "fallen_tree", "probability": 0.08, "description": "Falling timber can crush the unwary" },
+      { "type": "forest_fire", "probability": 0.06, "description": "Lightning strikes can ignite devastating fires" },
+      { "type": "ambush", "probability": 0.18, "description": "Dense vegetation provides cover for predators" }
+    ],
+    "resources": {
+      "food_abundance": "high",
+      "water_abundance": "high",
+      "shelter_availability": "very_high"
+    },
+    "playerModifiers": {
+      "ambush_predators": { "attack": 1.25, "first_strike": true },
+      "large_dinosaurs": { "speed": 0.85, "maneuverability": 0.8 },
+      "small_dinosaurs": { "evasion": 1.2, "stealth": 1.3 }
+    },
+    "scientificFacts": [
+      "Mesozoic forests were dominated by conifers and ferns, with flowering plants rare until the Late Cretaceous.",
+      "Forest fires were common and may have driven evolution of fire-resistant plant adaptations.",
+      "Many small mammals and early birds lived in forest canopies, mostly out of reach of large dinosaurs."
+    ],
+    "period": {
+      "era": "Mesozoic",
+      "period": "Jurassic-Cretaceous",
+      "approximate_mya": 150
+    }
+  },
+  {
+    "id": "inland_sea",
+    "name": "Western Interior Seaway",
+    "description": "The shallow warm sea that divided North America, home to marine reptiles and pterosaurs.",
+    "terrain": "coastal",
+    "climate": {
+      "type": "coastal",
+      "temperature": { "min": 20, "max": 32, "unit": "celsius" },
+      "humidity": { "min": 70, "max": 90, "unit": "percent" },
+      "precipitation": "moderate"
+    },
+    "atmosphere": {
+      "co2_level": 1300,
+      "o2_level": 21,
+      "notes": "Ocean currents and sea spray influenced local atmospheric conditions."
+    },
+    "flora": [
+      {
+        "name": "Coastal Ferns",
+        "type": "pteridophyte",
+        "abundance": "common",
+        "note": "Salt-tolerant ferns lined the shoreline"
+      },
+      {
+        "name": "Mangrove-like Plants",
+        "type": "gymnosperm",
+        "abundance": "common",
+        "note": "Ancient equivalents of mangroves stabilized coasts"
+      },
+      {
+        "name": "Seaweed",
+        "type": "algae",
+        "abundance": "abundant",
+        "note": "Massive kelp-like forests in shallow waters"
+      }
+    ],
+    "fauna": {
+      "primary": ["mosasaurus", "pteranodon_enemy", "kronosaurus"],
+      "secondary": ["archelon", "liopleurodon", "quetzalcoatlus"],
+      "rare": ["megalodon"]
+    },
+    "hazards": [
+      { "type": "storm_surge", "probability": 0.10, "description": "Powerful storms create dangerous waves" },
+      { "type": "riptide", "probability": 0.08, "description": "Strong currents pull swimmers into deep water" },
+      { "type": "marine_predator", "probability": 0.20, "description": "Apex marine predators patrol the waters" }
+    ],
+    "resources": {
+      "food_abundance": "very_high",
+      "water_abundance": "not_applicable",
+      "shelter_availability": "low"
+    },
+    "playerModifiers": {
+      "aquatic_dinosaurs": { "attack": 1.3, "speed": 1.4, "stamina_regen": 1.5 },
+      "flying_dinosaurs": { "speed": 1.2, "food_find": 1.3 },
+      "terrestrial_dinosaurs": { "attack": 0.5, "defense": 0.5, "speed": 0.4 }
+    },
+    "scientificFacts": [
+      "The Western Interior Seaway covered much of central North America from the Gulf of Mexico to the Arctic Ocean.",
+      "Marine reptiles like mosasaurs were apex predators, occupying ecological niches similar to modern orcas.",
+      "The seaway supported rich ecosystems including ammonites, fish, and marine reptiles."
+    ],
+    "period": {
+      "era": "Mesozoic",
+      "period": "Late Cretaceous",
+      "approximate_mya": 75
+    }
+  }
+]

@@ -92,6 +92,86 @@ Learn about:
 - Paleontological discoveries
 - Extinction events
 
+## 🔬 Scientific Accuracy Framework
+
+Primordial Swamp is built on a foundation of real paleontological research. Every game mechanic has scientific backing.
+
+### Data Architecture
+
+Our scientific data is organized in structured JSON formats:
+
+| Data File | Purpose | Key Fields |
+|-----------|---------|------------|
+| `dinosaurs.json` | Organism stats and taxonomy | Species, period, morphology, behavior |
+| `mutations.json` | Evolutionary adaptations | Effects, prerequisites, citations |
+| `citations.json` | Academic references | DOI, author, journal, year |
+| `biomes.json` | Ecosystem definitions | Climate, flora, fauna, hazards |
+| `traits.json` | Acquired abilities | Stat modifiers, scientific basis |
+
+### Scientific Foundations
+
+**Physiology & Stats**: Character statistics are derived from paleontological evidence:
+- **Health/Defense**: Based on body mass, armor (osteoderms), and estimated resilience
+- **Attack**: Derived from bite force studies, claw measurements, and predatory adaptations
+- **Speed**: Calculated from limb proportions and biomechanical analyses
+- **Stamina**: Inferred from bone histology indicating metabolic rates
+
+**Evolutionary Mutations**: The mutation system reflects real evolutionary pathways:
+- Mutations require biological prerequisites (e.g., feather development requires theropod ancestry)
+- Incompatibilities prevent biologically impossible combinations
+- Each mutation cites peer-reviewed research
+
+**Ecosystem Dynamics**: Biomes are based on paleoenvironmental reconstructions:
+- Flora assemblages from paleobotanical fossil sites
+- Climate data from isotope analysis and climate modeling
+- Fauna distributions from fossil locality data
+
+### Example: Science-to-Code Translation
+
+```typescript
+/**
+ * Tail Club Strike ability for Ankylosaurus
+ *
+ * SCIENTIFIC BASIS:
+ * - Force calculation from Arbour 2009 biomechanical study
+ * - Tail club could generate ~14,000+ Newtons of impact force
+ * - Sufficient to fracture tyrannosaur leg bones
+ *
+ * GAME TRANSLATION:
+ * - High damage multiplier (1.4x) reflects devastating power
+ * - Counter-attack mechanic reflects defensive weapon use
+ * - Stun chance represents concussive impact
+ *
+ * @see Arbour, V.M. (2009). "Estimating impact forces of tail club
+ *      strikes by ankylosaurid dinosaurs" PLOS ONE 4:e6738
+ */
+interface TailClubAbility {
+  damageMultiplier: 1.4;      // Powerful but not instant-kill
+  counterChance: 0.4;         // Defensive weapon, triggers on attack
+  stunChance: 0.3;            // Concussive force
+  staminaCost: 40;            // Heavy weapon requires effort
+}
+```
+
+### Reference Sources
+
+Our scientific content draws from:
+- **Primary Literature**: Nature, Science, PLOS ONE, Journal of Vertebrate Paleontology
+- **Institutional Sources**: American Museum of Natural History, Smithsonian, Natural History Museum London
+- **Key References**: Paul (2016) "Princeton Field Guide to Dinosaurs", Holtz (2007) "Dinosaurs Encyclopedia"
+
+All citations are stored in `src/data/citations.json` with DOIs for verification.
+
+### Contributing Scientific Content
+
+When adding new scientific content:
+1. Cite at least one peer-reviewed source
+2. Use conservative interpretations for disputed topics
+3. Flag speculative content clearly
+4. Update `citations.json` with new references
+
+See [Scientific Accuracy Roadmap](docs/roadmap/02-scientific-accuracy.md) for detailed guidelines.
+
 ## 🎨 Art Style
 
 16-bit inspired pixel art with modern color palette and smooth animations.
