@@ -90,6 +90,7 @@ export interface CurrentRunState {
   dinosaur: DinosaurType;
   currentNodeId: string;
   nodesVisited: string[];
+  mapNodes: MapNode[][]; // Store the generated map
   health: number;
   stamina: number;
   traits: string[];

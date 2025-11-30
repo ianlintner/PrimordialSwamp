@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { SCENE_KEYS, GAME_CONFIG } from '../utils/Constants';
 import { DinosaurType } from '../types/Dinosaur.types';
+import { GameStateManager } from '../managers/GameStateManager';
 import dinosaursData from '../data/dinosaurs.json';
 
 export class CharacterSelectScene extends Phaser.Scene {
@@ -239,7 +240,10 @@ export class CharacterSelectScene extends Phaser.Scene {
     
     console.log(`🦕 Starting run with ${this.selectedDinosaur}`);
     
-    // TODO: Initialize game state with selected dinosaur
+    // Initialize game state
+    const seed = Math.random().toString(36).substring(7);
+    GameStateManager.getInstance().startNewRun(this.selectedDinosaur, seed);
+    
     this.scene.start(SCENE_KEYS.MAP, {
       dinosaur: this.selectedDinosaur
     });

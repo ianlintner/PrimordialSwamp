@@ -1,9 +1,16 @@
 import Phaser from 'phaser';
 import { SCENE_KEYS, GAME_CONFIG } from '../utils/Constants';
 import { DinosaurType } from '../types/Dinosaur.types';
-import { NodeType, MapNode } from '../types/Encounter.types';
+import { NodeType } from '../types/Encounter.types';
+import { GameStateManager } from '../managers/GameStateManager';
 
-interface MapNodeUI extends MapNode {
+interface MapNodeUI {
+  id: string;
+  type: NodeType;
+  x: number;
+  y: number;
+  connections: string[];
+  data: any;
   visual: Phaser.GameObjects.Container;
   visited: boolean;
   available: boolean;
@@ -14,18 +21,39 @@ export class MapScene extends Phaser.Scene {
   private currentDepth: number = 0;
   private currentColumn: number = 0;
   private nodes: MapNodeUI[][] = [];
+  
+  // State is now managed by GameStateManager, but we keep local copies for display
   private playerHealth: number = 100;
   private playerMaxHealth: number = 100;
   private playerStamina: number = 70;
   private playerMaxStamina: number = 70;
   private fossils: number = 0;
+  private playerTraits: string[] = [];
 
   constructor() {
     super({ key: SCENE_KEYS.MAP });
   }
 
   init(data: { dinosaur: DinosaurType }): void {
-    this.selectedDinosaur = data.dinosaur;
+    // If passed from char select, we might use it, but prefer GameState
+    const run = GameStateManager.getInstance().getCurrentRun();
+    if (run) {
+      this.selectedDinosaur = run.dinosaur;
+      this.playerHealth = run.health;
+      this.playerStamina = run.stamina;
+      this.fossils = run.fossilsCollected;
+      this.playerTraits = run.traits;
+      
+      // TODO: Load max stats from dino data or traits
+      this.playerMaxHealth = 100; // Placeholder
+      this.playerMaxStamina = 70; // Placeholder
+    } else if (data.dinosaur) {
+      // Fallback if starting fresh (should have been created in CharSelect)
+      this.selectedDinosaur = data.dinosaur;
+    } else {
+      // Error state, go back to menu
+      this.scene.start(SCENE_KEYS.MENU);
+    }
   }
 
   create(): void {
@@ -45,8 +73,13 @@ export class MapScene extends Phaser.Scene {
     // Stats panel
     this.createStatsPanel();
     
-    // Generate and display map
-    this.generateMap();
+    // Load or Generate map
+    const run = GameStateManager.getInstance().getCurrentRun();
+    if (run && run.mapNodes && run.mapNodes.length > 0) {
+      this.loadMap(run.mapNodes);
+    } else {
+      this.generateMap();
+    }
     
     // Back button
     this.createBackButton();
@@ -161,6 +194,16 @@ export class MapScene extends Phaser.Scene {
     // Draw all connection lines
     this.drawConnections();
     
+    // Save the generated map to GameStateManager
+    const serializableNodes = this.nodes.map(col => 
+      col.map(node => {
+        // Create a copy without the visual property which can't be serialized
+        const { visual, ...serializableNode } = node;
+        return serializableNode;
+      })
+    );
+    GameStateManager.getInstance().setMapNodes(serializableNodes);
+    
     console.log('🗺 Map generated with', COLUMNS, 'columns');
   }
   
@@ -187,7 +230,7 @@ export class MapScene extends Phaser.Scene {
       case NodeType.COMBAT:
         return { enemy: 'random' };
       case NodeType.ELITE:
-        return { enemy: 'elite' };
+        return { enemy: 'random' }; // CombatScene uses nodeType to determine tier
       case NodeType.BOSS:
         return { enemy: 'boss' };
       case NodeType.RESOURCE:
@@ -349,6 +392,9 @@ export class MapScene extends Phaser.Scene {
     node.visited = true;
     node.available = false;
     
+    // Update GameStateManager
+    GameStateManager.getInstance().visitNode(node.id);
+    
     // Update current column
     const [col] = node.id.split('-').map(Number);
     this.currentColumn = col;
@@ -398,7 +444,8 @@ export class MapScene extends Phaser.Scene {
         this.scene.start(SCENE_KEYS.COMBAT, {
           dinosaur: this.selectedDinosaur,
           enemy: node.data.enemy,
-          nodeType: node.type
+          nodeType: node.type,
+          traits: this.playerTraits
         });
         break;
         
@@ -421,6 +468,9 @@ export class MapScene extends Phaser.Scene {
     const fossilsGained = 5 + Math.floor(Math.random() * 5);
     this.fossils += fossilsGained;
     
+    // Update GameStateManager
+    GameStateManager.getInstance().updateResources(fossilsGained);
+    
     this.showMessage(`Found ${fossilsGained} fossil fragments!`, '#5f9d4a');
     this.updateStatsPanel();
   }
@@ -428,11 +478,27 @@ export class MapScene extends Phaser.Scene {
   private handleEventNode(node: MapNodeUI): void {
     // Random event (simplified for now)
     const events = [
-      { text: 'You find an ancient nest. Gain 10 fossils.', effect: () => this.fossils += 10 },
-      { text: 'A sudden storm! Lose 5 HP.', effect: () => this.playerHealth = Math.max(1, this.playerHealth - 5) },
-      { text: 'You discover medicinal plants. Heal 15 HP.', effect: () => {
-        this.playerHealth = Math.min(this.playerMaxHealth, this.playerHealth + 15);
-      }}
+      { 
+        text: 'You find an ancient nest. Gain 10 fossils.', 
+        effect: () => {
+          this.fossils += 10;
+          GameStateManager.getInstance().updateResources(10);
+        } 
+      },
+      { 
+        text: 'A sudden storm! Lose 5 HP.', 
+        effect: () => {
+          this.playerHealth = Math.max(1, this.playerHealth - 5);
+          GameStateManager.getInstance().updatePlayerStats(this.playerHealth, this.playerStamina);
+        } 
+      },
+      { 
+        text: 'You discover medicinal plants. Heal 15 HP.', 
+        effect: () => {
+          this.playerHealth = Math.min(this.playerMaxHealth, this.playerHealth + 15);
+          GameStateManager.getInstance().updatePlayerStats(this.playerHealth, this.playerStamina);
+        }
+      }
     ];
     
     const event = events[Math.floor(Math.random() * events.length)];
@@ -446,6 +512,9 @@ export class MapScene extends Phaser.Scene {
     const healAmount = 30;
     this.playerHealth = Math.min(this.playerMaxHealth, this.playerHealth + healAmount);
     this.playerStamina = this.playerMaxStamina;
+    
+    // Update GameStateManager
+    GameStateManager.getInstance().updatePlayerStats(this.playerHealth, this.playerStamina);
     
     this.showMessage(`Rested and recovered ${healAmount} HP!`, '#4a7a9d');
     this.updateStatsPanel();
@@ -504,5 +573,35 @@ export class MapScene extends Phaser.Scene {
     button.on('pointerdown', () => {
       this.scene.start(SCENE_KEYS.MENU);
     });
+  }
+
+  private loadMap(savedNodes: any[][]): void {
+    console.log('🗺 Loading map from save...');
+    
+    this.nodes = [];
+    
+    for (let col = 0; col < savedNodes.length; col++) {
+      this.nodes[col] = [];
+      for (let row = 0; row < savedNodes[col].length; row++) {
+        const savedNode = savedNodes[col][row];
+        
+        const node: MapNodeUI = {
+          ...savedNode,
+          visual: this.add.container(0, 0) // Recreate container
+        };
+        
+        this.createNodeVisual(node);
+        this.nodes[col].push(node);
+      }
+    }
+    
+    this.drawConnections();
+    
+    // Restore current column based on visited nodes
+    const run = GameStateManager.getInstance().getCurrentRun();
+    if (run && run.currentNodeId) {
+        const [col] = run.currentNodeId.split('-').map(Number);
+        this.currentColumn = col;
+    }
   }
 }

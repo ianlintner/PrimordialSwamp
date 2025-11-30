@@ -2,8 +2,12 @@ import Phaser from 'phaser';
 import { SCENE_KEYS, GAME_CONFIG } from '../utils/Constants';
 import { DinosaurType } from '../types/Dinosaur.types';
 import { NodeType } from '../types/Encounter.types';
+import { StatusEffect, StatusEffectType } from '../types/Combat.types';
+import { Trait, TraitType } from '../types/Trait.types';
 import dinosaursData from '../data/dinosaurs.json';
 import enemiesData from '../data/enemies.json';
+import traitsData from '../data/traits.json';
+import { GameStateManager } from '../managers/GameStateManager';
 
 interface Combatant {
   name: string;
@@ -15,6 +19,9 @@ interface Combatant {
   stamina: number;
   maxStamina: number;
   emoji: string;
+  statusEffects: StatusEffect[];
+  abilityCooldown: number;
+  traits: string[];
 }
 
 export class CombatScene extends Phaser.Scene {
@@ -34,7 +41,7 @@ export class CombatScene extends Phaser.Scene {
     super({ key: SCENE_KEYS.COMBAT });
   }
 
-  init(data: { dinosaur: DinosaurType; enemy: string; nodeType?: NodeType }): void {
+  init(data: { dinosaur: DinosaurType; enemy: string; nodeType?: NodeType; traits?: string[] }): void {
     this.playerDinosaur = data.dinosaur;
     this.enemyId = data.enemy || 'allosaurus';
     this.nodeType = data.nodeType || NodeType.COMBAT;
@@ -44,15 +51,21 @@ export class CombatScene extends Phaser.Scene {
     if (dinoData) {
       this.player = {
         name: dinoData.name,
-        hp: dinoData.baseStats.hp,
-        maxHp: dinoData.baseStats.hp,
+        hp: dinoData.baseStats.health,
+        maxHp: dinoData.baseStats.health,
         attack: dinoData.baseStats.attack,
         defense: dinoData.baseStats.defense,
         speed: dinoData.baseStats.speed,
         stamina: dinoData.baseStats.stamina,
         maxStamina: dinoData.baseStats.stamina,
-        emoji: this.getDinosaurEmoji(this.playerDinosaur)
+        emoji: this.getDinosaurEmoji(this.playerDinosaur),
+        statusEffects: [],
+        abilityCooldown: 0,
+        traits: data.traits || []
       };
+      
+      // Apply passive traits
+      this.applyPassiveTraits(this.player);
     }
     
     // Initialize enemy from enemies data
@@ -80,7 +93,10 @@ export class CombatScene extends Phaser.Scene {
         speed: enemyData.stats.speed,
         stamina: 50, // Enemies have fixed stamina for now
         maxStamina: 50,
-        emoji: enemyData.emoji
+        emoji: enemyData.emoji,
+        statusEffects: [],
+        abilityCooldown: 0,
+        traits: []
       };
     }
   }
@@ -113,8 +129,7 @@ export class CombatScene extends Phaser.Scene {
     this.createCombatant(
       250,
       HEIGHT / 2,
-      this.playerDinosaur,
-      this.playerHealth,
+      this.player,
       true
     );
     
@@ -122,8 +137,7 @@ export class CombatScene extends Phaser.Scene {
     this.createCombatant(
       WIDTH - 250,
       HEIGHT / 2,
-      this.enemyType,
-      this.enemyHealth,
+      this.enemy,
       false
     );
     
@@ -149,36 +163,45 @@ export class CombatScene extends Phaser.Scene {
     }).setOrigin(0.5).setName('turnText');
     
     // Add initial log entry
-    this.addLog(`Combat begins! ${this.playerDinosaur} vs ${this.enemyType}`);
+    this.addLog(`Combat begins! ${this.player.name} vs ${this.enemy.name}`);
+    
+    // Trigger Combat Start Traits
+    this.checkTraitTrigger(this.player, TraitType.COMBAT_START);
+    this.checkTraitTrigger(this.enemy, TraitType.COMBAT_START);
   }
 
   private createCombatant(
     x: number,
     y: number,
-    type: string,
-    health: number,
+    combatant: Combatant,
     isPlayer: boolean
   ): void {
     // Sprite placeholder (emoji)
-    const emoji = isPlayer ? '🦖' : '🦕';
-    this.add.text(x, y - 80, emoji, {
+    this.add.text(x, y - 80, combatant.emoji, {
       fontSize: '120px'
     }).setOrigin(0.5);
     
     // Name
-    this.add.text(x, y + 80, type.toUpperCase(), {
+    this.add.text(x, y + 80, combatant.name.toUpperCase(), {
       fontSize: '24px',
       color: isPlayer ? '#4a9d5f' : '#d94a3d',
       fontFamily: 'Courier New, monospace',
       fontStyle: 'bold'
     }).setOrigin(0.5);
     
+    // Status Effects Text
+    this.add.text(x, y + 105, '', {
+      fontSize: '14px',
+      color: '#ffff00',
+      fontFamily: 'Courier New, monospace'
+    }).setOrigin(0.5).setName(isPlayer ? 'playerStatusText' : 'enemyStatusText');
+    
     // Health bar
-    this.createHealthBar(x, y + 120, health, 100, isPlayer);
+    this.createHealthBar(x, y + 120, combatant.hp, combatant.maxHp, isPlayer);
     
     if (isPlayer) {
       // Stamina bar
-      this.createStaminaBar(x, y + 150, this.playerStamina, 70);
+      this.createStaminaBar(x, y + 150, combatant.stamina, combatant.maxStamina);
     }
   }
 
@@ -318,15 +341,170 @@ export class CombatScene extends Phaser.Scene {
     }
   }
 
+  private processStatusEffects(combatant: Combatant): void {
+    const activeEffects: StatusEffect[] = [];
+    
+    for (const effect of combatant.statusEffects) {
+      // Apply tick effects
+      if (effect.type === StatusEffectType.BLEEDING || effect.type === StatusEffectType.POISONED) {
+        const damage = effect.tickDamage || 5;
+        combatant.hp = Math.max(0, combatant.hp - damage);
+        this.addLog(`${combatant.name} takes ${damage} ${effect.name} damage!`);
+      } else if (effect.type === StatusEffectType.STUNNED) {
+        this.addLog(`${combatant.name} is stunned!`);
+      }
+      
+      // Decrement duration
+      effect.remainingDuration--;
+      
+      if (effect.remainingDuration > 0) {
+        activeEffects.push(effect);
+      } else {
+        this.addLog(`${combatant.name}'s ${effect.name} wore off.`);
+      }
+    }
+    
+    combatant.statusEffects = activeEffects;
+    this.updateCombatUI();
+  }
+
+  private applyStatusEffect(target: Combatant, type: StatusEffectType, duration: number): void {
+    // Check if already has effect
+    const existing = target.statusEffects.find(e => e.type === type);
+    if (existing) {
+      existing.remainingDuration = Math.max(existing.remainingDuration, duration);
+      this.addLog(`${target.name}'s ${type} extended!`);
+    } else {
+      const effect: StatusEffect = {
+        id: `${type}-${Date.now()}`,
+        type: type,
+        name: type.toUpperCase(),
+        duration: duration,
+        remainingDuration: duration,
+        tickDamage: type === StatusEffectType.BLEEDING ? 5 : (type === StatusEffectType.POISONED ? 3 : 0)
+      };
+      target.statusEffects.push(effect);
+      this.addLog(`${target.name} is now ${type}!`);
+    }
+    this.updateCombatUI();
+  }
+
+  private applyPassiveTraits(combatant: Combatant): void {
+    for (const traitId of combatant.traits) {
+      const trait = (traitsData as unknown as Trait[]).find(t => t.id === traitId);
+      if (!trait || trait.type !== TraitType.PASSIVE_STAT) continue;
+      
+      for (const effect of trait.effects) {
+        if ('stat' in effect && 'value' in effect && effect.stat && effect.value) {
+          // Apply flat bonus
+          (combatant as any)[effect.stat] += effect.value;
+          
+          // If max HP/Stamina increased, also increase current
+          if (effect.stat === 'maxHp') combatant.hp += effect.value;
+          if (effect.stat === 'maxStamina') combatant.stamina += effect.value;
+        }
+      }
+    }
+  }
+
+  private checkTraitTrigger(combatant: Combatant, type: TraitType, context: any = {}): void {
+    for (const traitId of combatant.traits) {
+      const trait = (traitsData as unknown as Trait[]).find(t => t.id === traitId);
+      if (!trait || trait.type !== type) continue;
+      
+      // Check conditions
+      let conditionMet = true;
+      // TODO: Implement complex conditions
+      
+      if (conditionMet) {
+        this.applyTraitEffect(combatant, trait, context);
+      }
+    }
+  }
+
+  private applyTraitEffect(source: Combatant, trait: Trait, context: any): void {
+    this.addLog(`${source.name}'s ${trait.name} triggered!`);
+    
+    for (const effect of trait.effects) {
+      // Stat modification (temporary or permanent)
+      if ('stat' in effect && 'value' in effect && effect.stat && effect.value) {
+        if (effect.condition === 'first_turn' && this.turn === 1) {
+           // Handled in specific logic or apply temporary buff
+           // For simplicity, we might just modify the value in the calculation context
+           if (context.modifiers) context.modifiers[effect.stat] = (context.modifiers[effect.stat] || 0) + effect.value;
+        }
+      }
+      
+      // Healing
+      if ('stat' in effect && effect.stat === 'hp' && 'multiplier' in effect && effect.multiplier && context.damageDealt) {
+        const healAmount = Math.floor(context.damageDealt * effect.multiplier);
+        source.hp = Math.min(source.maxHp, source.hp + healAmount);
+        this.addLog(`${source.name} healed for ${healAmount}!`);
+      }
+      
+      // Status Effects
+      if ('statusEffect' in effect && 'chance' in effect && effect.statusEffect && effect.chance) {
+        if (Math.random() < effect.chance && context.target) {
+          this.applyStatusEffect(context.target, effect.statusEffect as StatusEffectType, 3);
+        }
+      }
+      
+      // Reflect Damage
+      if ('stat' in effect && effect.stat === 'hp' && 'value' in effect && effect.value && effect.value < 0 && effect.condition === 'attacker' && context.attacker) {
+        const reflectDamage = Math.abs(effect.value);
+        context.attacker.hp = Math.max(0, context.attacker.hp - reflectDamage);
+        this.addLog(`${context.attacker.name} took ${reflectDamage} reflected damage!`);
+      }
+    }
+    
+    this.updateCombatUI();
+  }
+
   private playerAttack(): void {
-    const damage = Phaser.Math.Between(8, 12);
-    this.enemyHealth = Math.max(0, this.enemyHealth - damage);
-    this.playerStamina = Math.max(0, this.playerStamina - 10);
+    // Calculate damage: Attack * (100 / (100 + Defense))
+    const defense = this.enemyDefending ? this.enemy.defense * 1.5 : this.enemy.defense;
+    const damageMultiplier = 100 / (100 + defense);
+    
+    // Apply trait modifiers
+    let attackValue = this.player.attack;
+    
+    // Check for Ambush Predator (First Turn)
+    if (this.turn === 1 && this.player.traits.includes('ambush_predator')) {
+        attackValue += 10;
+        this.addLog('Ambush Predator active!');
+    }
+    
+    // Check for Adrenaline (Low HP)
+    if (this.player.hp < this.player.maxHp * 0.3 && this.player.traits.includes('adrenaline')) {
+        attackValue += 10;
+        this.addLog('Adrenaline active!');
+    }
+    
+    // Check for Apex Predator
+    if ((this.nodeType === NodeType.ELITE || this.nodeType === NodeType.BOSS) && this.player.traits.includes('apex_predator')) {
+        attackValue = Math.floor(attackValue * 1.2);
+        this.addLog('Apex Predator active!');
+    }
+
+    const baseDamage = attackValue;
+    const damage = Math.max(1, Math.floor(baseDamage * damageMultiplier * Phaser.Math.FloatBetween(0.9, 1.1)));
+    
+    this.enemy.hp = Math.max(0, this.enemy.hp - damage);
+    this.player.stamina = Math.max(0, this.player.stamina - 10);
     
     this.addLog(`You attack for ${damage} damage!`);
+    
+    // Trigger On Attack Traits (e.g. Vampiric Bite, Stunning Roar)
+    this.checkTraitTrigger(this.player, TraitType.ON_ATTACK, { target: this.enemy, damageDealt: damage });
+    
+    // Trigger On Hit Traits for Enemy (e.g. Thorned Skin)
+    this.checkTraitTrigger(this.enemy, TraitType.ON_HIT, { attacker: this.player, damageTaken: damage });
+    
     this.updateCombatUI();
     
-    if (this.enemyHealth <= 0) {
+    if (this.enemy.hp <= 0) {
+      // Trigger On Kill Traits
+      this.checkTraitTrigger(this.player, TraitType.ON_KILL);
       this.victory();
     } else {
       this.enemyTurn();
@@ -334,26 +512,50 @@ export class CombatScene extends Phaser.Scene {
   }
 
   private playerDefend(): void {
-    this.addLog('You brace for impact! (+5 DEF this turn)');
-    this.playerStamina = Math.min(70, this.playerStamina + 5);
+    this.playerDefending = true;
+    this.addLog('You brace for impact! (Defense UP)');
+    
+    // Trigger On Defend Traits
+    this.checkTraitTrigger(this.player, TraitType.ON_DEFEND);
+    
+    // Recover some stamina
+    this.player.stamina = Math.min(this.player.maxStamina, this.player.stamina + 15);
     this.updateCombatUI();
     this.enemyTurn();
   }
 
   private playerAbility(): void {
-    if (this.playerStamina < 30) {
+    if (this.player.abilityCooldown > 0) {
+      this.addLog(`Ability on cooldown! (${this.player.abilityCooldown} turns)`);
+      return;
+    }
+
+    const staminaCost = 30;
+    if (this.player.stamina < staminaCost) {
       this.addLog('Not enough stamina!');
       return;
     }
     
-    const damage = Phaser.Math.Between(15, 20);
-    this.enemyHealth = Math.max(0, this.enemyHealth - damage);
-    this.playerStamina -= 30;
+    // Ability does 1.5x damage and ignores some defense
+    const defense = this.enemyDefending ? this.enemy.defense * 1.5 : this.enemy.defense;
+    const damageMultiplier = 100 / (100 + (defense * 0.5)); // Ignores 50% defense
+    const baseDamage = this.player.attack * 1.5;
+    const damage = Math.max(1, Math.floor(baseDamage * damageMultiplier));
+    
+    this.enemy.hp = Math.max(0, this.enemy.hp - damage);
+    this.player.stamina -= staminaCost;
+    this.player.abilityCooldown = 3; // 3 turn cooldown
     
     this.addLog(`You use a special ability for ${damage} damage!`);
+    
+    // Chance to apply Bleed
+    if (Math.random() < 0.5) {
+      this.applyStatusEffect(this.enemy, StatusEffectType.BLEEDING, 3);
+    }
+    
     this.updateCombatUI();
     
-    if (this.enemyHealth <= 0) {
+    if (this.enemy.hp <= 0) {
       this.victory();
     } else {
       this.enemyTurn();
@@ -361,7 +563,11 @@ export class CombatScene extends Phaser.Scene {
   }
 
   private playerFlee(): void {
-    const fleeChance = 0.5;
+    // Chance based on speed difference
+    const speedDiff = this.player.speed - this.enemy.speed;
+    const baseChance = 0.5;
+    const fleeChance = Phaser.Math.Clamp(baseChance + (speedDiff * 0.05), 0.1, 0.9);
+    
     if (Math.random() < fleeChance) {
       this.addLog('You successfully flee from combat!');
       this.time.delayedCall(1000, () => {
@@ -373,18 +579,94 @@ export class CombatScene extends Phaser.Scene {
     }
   }
 
+  private startPlayerTurn(): void {
+    this.processStatusEffects(this.player);
+    
+    // Trigger Turn Start Traits
+    this.checkTraitTrigger(this.player, TraitType.TURN_START);
+    
+    // Decrement cooldowns
+    if (this.player.abilityCooldown > 0) {
+      this.player.abilityCooldown--;
+    }
+    
+    if (this.player.hp <= 0) {
+      this.defeat();
+      return;
+    }
+    
+    const isStunned = this.player.statusEffects.some(e => e.type === StatusEffectType.STUNNED);
+    if (isStunned) {
+      this.addLog('You are stunned and cannot act!');
+      this.time.delayedCall(1000, () => {
+        this.enemyTurn();
+      });
+    } else {
+      // Player can act
+    }
+  }
+
   private enemyTurn(): void {
     this.turn++;
     
     this.time.delayedCall(500, () => {
-      const damage = Phaser.Math.Between(5, 10);
-      this.playerHealth = Math.max(0, this.playerHealth - damage);
+      // Process enemy status effects
+      this.processStatusEffects(this.enemy);
       
-      this.addLog(`${this.enemyType} attacks for ${damage} damage!`);
+      if (this.enemy.hp <= 0) {
+        this.victory();
+        return;
+      }
+      
+      // Check for stun
+      const isStunned = this.enemy.statusEffects.some(e => e.type === StatusEffectType.STUNNED);
+      if (isStunned) {
+        this.addLog(`${this.enemy.name} is stunned and cannot act!`);
+        this.startPlayerTurn();
+        return;
+      }
+
+      // Enemy logic: Attack or Defend (simple AI)
+      let action = 'attack';
+      
+      // If low health, higher chance to defend
+      if (this.enemy.hp < this.enemy.maxHp * 0.3 && Math.random() < 0.5) {
+        action = 'defend';
+      }
+      // If player is stunned, always attack
+      else if (this.player.statusEffects.some(e => e.type === StatusEffectType.STUNNED)) {
+        action = 'attack';
+      }
+      // Random chance
+      else if (Math.random() < 0.2) {
+        action = 'defend';
+      }
+      
+      if (action === 'defend') {
+        this.enemyDefending = true;
+        this.addLog(`${this.enemy.name} braces for impact!`);
+      } else {
+        this.enemyDefending = false;
+        
+        // Calculate damage
+        const defense = this.playerDefending ? this.player.defense * 1.5 : this.player.defense;
+        const damageMultiplier = 100 / (100 + defense);
+        const baseDamage = this.enemy.attack;
+        const damage = Math.max(1, Math.floor(baseDamage * damageMultiplier * Phaser.Math.FloatBetween(0.9, 1.1)));
+        
+        this.player.hp = Math.max(0, this.player.hp - damage);
+        this.addLog(`${this.enemy.name} attacks for ${damage} damage!`);
+      }
+      
+      // Reset player defending status for next turn
+      this.playerDefending = false;
+      
       this.updateCombatUI();
       
-      if (this.playerHealth <= 0) {
+      if (this.player.hp <= 0) {
         this.defeat();
+      } else {
+        this.startPlayerTurn();
       }
       
       // Update turn counter
@@ -405,35 +687,57 @@ export class CombatScene extends Phaser.Scene {
     const staminaText = this.children.getByName('playerStaminaText') as Phaser.GameObjects.Text;
     
     if (playerHealthFill) {
-      const width = (this.playerHealth / 100) * 200;
+      const width = (this.player.hp / this.player.maxHp) * 200;
       playerHealthFill.setSize(width, 16);
       playerHealthFill.x = 250 - 200 / 2 + width / 2;
     }
     if (playerHealthText) {
-      playerHealthText.setText(`${this.playerHealth}/100`);
+      playerHealthText.setText(`${this.player.hp}/${this.player.maxHp}`);
     }
     
     if (enemyHealthFill) {
-      const width = (this.enemyHealth / 100) * 200;
+      const width = (this.enemy.hp / this.enemy.maxHp) * 200;
       enemyHealthFill.setSize(width, 16);
       enemyHealthFill.x = (GAME_CONFIG.WIDTH - 250) - 200 / 2 + width / 2;
     }
     if (enemyHealthText) {
-      enemyHealthText.setText(`${this.enemyHealth}/100`);
+      enemyHealthText.setText(`${this.enemy.hp}/${this.enemy.maxHp}`);
     }
     
     if (staminaFill) {
-      const width = (this.playerStamina / 70) * 200;
+      const width = (this.player.stamina / this.player.maxStamina) * 200;
       staminaFill.setSize(width, 11);
       staminaFill.x = 250 - 200 / 2 + width / 2;
     }
     if (staminaText) {
-      staminaText.setText(`STA: ${this.playerStamina}/70`);
+      staminaText.setText(`STA: ${this.player.stamina}/${this.player.maxStamina}`);
+    }
+    
+    // Update status effects display
+    const playerStatusText = this.children.getByName('playerStatusText') as Phaser.GameObjects.Text;
+    const enemyStatusText = this.children.getByName('enemyStatusText') as Phaser.GameObjects.Text;
+    
+    if (playerStatusText) {
+      const effects = this.player.statusEffects.map(e => `${e.name}(${e.remainingDuration})`).join(' ');
+      playerStatusText.setText(effects);
+    }
+    
+    if (enemyStatusText) {
+      const effects = this.enemy.statusEffects.map(e => `${e.name}(${e.remainingDuration})`).join(' ');
+      enemyStatusText.setText(effects);
     }
   }
 
   private victory(): void {
     this.addLog('💀 Enemy defeated! VICTORY!');
+    
+    // Update GameStateManager with current health/stamina
+    GameStateManager.getInstance().updatePlayerStats(this.player.hp, this.player.stamina);
+    
+    // Unlock Codex Entry
+    if (this.enemy && this.enemy.id) {
+      GameStateManager.getInstance().unlockCodexEntry(this.enemy.id);
+    }
     
     this.time.delayedCall(2000, () => {
       // TODO: Show rewards screen
@@ -443,6 +747,9 @@ export class CombatScene extends Phaser.Scene {
 
   private defeat(): void {
     this.addLog('💀 You have been defeated...');
+    
+    // Clear current run
+    GameStateManager.getInstance().clearCurrentRun();
     
     this.time.delayedCall(2000, () => {
       // TODO: Show game over screen with stats

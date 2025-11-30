@@ -1,0 +1,217 @@
+[
+  {
+    "id": "thick_hide",
+    "name": "Thick Hide",
+    "description": "Increases Defense by 5.",
+    "type": "passive_stat",
+    "rarity": "common",
+    "effects": [
+      {
+        "stat": "defense",
+        "value": 5
+      }
+    ],
+    "icon": "🛡️"
+  },
+  {
+    "id": "sharp_claws",
+    "name": "Sharp Claws",
+    "description": "Increases Attack by 5.",
+    "type": "passive_stat",
+    "rarity": "common",
+    "effects": [
+      {
+        "stat": "attack",
+        "value": 5
+      }
+    ],
+    "icon": "🗡️"
+  },
+  {
+    "id": "endurance",
+    "name": "Endurance",
+    "description": "Increases Max Stamina by 20.",
+    "type": "passive_stat",
+    "rarity": "common",
+    "effects": [
+      {
+        "stat": "maxStamina",
+        "value": 20
+      }
+    ],
+    "icon": "🏃"
+  },
+  {
+    "id": "vitality",
+    "name": "Vitality",
+    "description": "Increases Max HP by 20.",
+    "type": "passive_stat",
+    "rarity": "common",
+    "effects": [
+      {
+        "stat": "maxHp",
+        "value": 20
+      }
+    ],
+    "icon": "❤️"
+  },
+  {
+    "id": "swift_reflexes",
+    "name": "Swift Reflexes",
+    "description": "Increases Speed by 5.",
+    "type": "passive_stat",
+    "rarity": "common",
+    "effects": [
+      {
+        "stat": "speed",
+        "value": 5
+      }
+    ],
+    "icon": "⚡"
+  },
+  {
+    "id": "ambush_predator",
+    "name": "Ambush Predator",
+    "description": "Start combat with +10 Attack for the first turn.",
+    "type": "combat_start",
+    "rarity": "rare",
+    "effects": [
+      {
+        "stat": "attack",
+        "value": 10,
+        "condition": "first_turn"
+      }
+    ],
+    "icon": "🌿"
+  },
+  {
+    "id": "regeneration",
+    "name": "Regeneration",
+    "description": "Heal 5 HP at the start of each turn.",
+    "type": "turn_start",
+    "rarity": "rare",
+    "effects": [
+      {
+        "stat": "hp",
+        "value": 5
+      }
+    ],
+    "icon": "🦎"
+  },
+  {
+    "id": "vampiric_bite",
+    "name": "Vampiric Bite",
+    "description": "Heal for 20% of damage dealt.",
+    "type": "on_attack",
+    "rarity": "legendary",
+    "effects": [
+      {
+        "stat": "hp",
+        "multiplier": 0.2
+      }
+    ],
+    "icon": "🧛"
+  },
+  {
+    "id": "thorned_skin",
+    "name": "Thorned Skin",
+    "description": "Reflect 5 damage back to attacker when hit.",
+    "type": "on_hit",
+    "rarity": "rare",
+    "effects": [
+      {
+        "stat": "hp",
+        "value": -5,
+        "condition": "attacker"
+      }
+    ],
+    "icon": "🌵"
+  },
+  {
+    "id": "stunning_roar",
+    "name": "Stunning Roar",
+    "description": "10% chance to stun enemy on attack.",
+    "type": "on_attack",
+    "rarity": "rare",
+    "effects": [
+      {
+        "statusEffect": "stunned",
+        "chance": 0.1
+      }
+    ],
+    "icon": "📢"
+  },
+  {
+    "id": "serrated_teeth",
+    "name": "Serrated Teeth",
+    "description": "20% chance to cause bleeding on attack.",
+    "type": "on_attack",
+    "rarity": "common",
+    "effects": [
+      {
+        "statusEffect": "bleeding",
+        "chance": 0.2
+      }
+    ],
+    "icon": "🦷"
+  },
+  {
+    "id": "scavenger",
+    "name": "Scavenger",
+    "description": "Heal 20 HP when defeating an enemy.",
+    "type": "on_kill",
+    "rarity": "common",
+    "effects": [
+      {
+        "stat": "hp",
+        "value": 20
+      }
+    ],
+    "icon": "🍖"
+  },
+  {
+    "id": "adrenaline",
+    "name": "Adrenaline",
+    "description": "Gain +10 Attack when below 30% HP.",
+    "type": "passive_stat",
+    "rarity": "rare",
+    "effects": [
+      {
+        "stat": "attack",
+        "value": 10,
+        "condition": "low_hp"
+      }
+    ],
+    "icon": "💉"
+  },
+  {
+    "id": "iron_scales",
+    "name": "Iron Scales",
+    "description": "Reduce incoming damage by 3.",
+    "type": "on_hit",
+    "rarity": "rare",
+    "effects": [
+      {
+        "stat": "hp",
+        "value": 3,
+        "condition": "reduce_damage"
+      }
+    ],
+    "icon": "🛡️"
+  },
+  {
+    "id": "apex_predator",
+    "name": "Apex Predator",
+    "description": "Deal 20% more damage to Elite and Boss enemies.",
+    "type": "passive_stat",
+    "rarity": "legendary",
+    "effects": [
+      {
+        "stat": "attack",
+        "multiplier": 1.2,
+        "condition": "elite_or_boss"
+      }
+    ],
+    "icon": "👑"
+  }
+]
