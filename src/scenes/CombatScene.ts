@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { SCENE_KEYS, GAME_CONFIG, SPACING } from '../utils/Constants';
+import { SCENE_KEYS, GAME_CONFIG, SPACING, hexToColorString } from '../utils/Constants';
 import { DinosaurType } from '../types/Dinosaur.types';
 import { NodeType } from '../types/Encounter.types';
 import { StatusEffect, StatusEffectType } from '../types/Combat.types';
@@ -8,6 +8,7 @@ import dinosaursData from '../data/dinosaurs.json';
 import enemiesData from '../data/enemies.json';
 import traitsData from '../data/traits.json';
 import { GameStateManager } from '../managers/GameStateManager';
+import { COMBAT_TOOLTIPS } from '../utils/TooltipHelper';
 
 interface Combatant {
   id?: string;
@@ -317,7 +318,7 @@ export class CombatScene extends Phaser.Scene {
         costText, 
         {
           fontSize: '12px',
-          color: '#888888',
+          color: hexToColorString(GAME_CONFIG.COLORS.TEXT_MUTED),
           fontFamily: 'Courier New, monospace'
         }
       ).setOrigin(0.5);
@@ -347,7 +348,7 @@ export class CombatScene extends Phaser.Scene {
     hints.forEach((hint, index) => {
       this.add.text(startX + (spacing * index), y, hint, {
         fontSize: '12px',
-        color: '#666666',
+        color: hexToColorString(GAME_CONFIG.COLORS.TEXT_DISABLED),
         fontFamily: 'Courier New, monospace'
       }).setOrigin(0, 0.5);
     });
@@ -357,60 +358,51 @@ export class CombatScene extends Phaser.Scene {
     // Remove existing tooltip
     this.hideActionTooltip();
     
-    const tooltips: Record<string, { title: string; desc: string; extra?: string }> = {
-      attack: { 
-        title: 'Basic Attack', 
-        desc: 'Strike your enemy. Damage based on ATK vs DEF.',
-        extra: 'Cost: 10 Stamina'
-      },
-      defend: { 
-        title: 'Defend', 
-        desc: 'Increase defense by 50% and recover stamina.',
-        extra: 'Gain: +15 Stamina'
-      },
-      ability: { 
-        title: 'Special Ability', 
-        desc: 'Powerful attack that ignores 50% defense.',
-        extra: 'Cost: 30 STA • 3 turn cooldown'
-      },
-      flee: { 
-        title: 'Flee', 
-        desc: 'Attempt to escape. Success based on Speed.',
-        extra: '⚠ Failed flee allows free enemy attack'
-      }
-    };
-    
-    const tip = tooltips[actionType];
-    if (!tip) return;
+    // Use centralized tooltip definitions from TooltipHelper
+    const tooltipData = COMBAT_TOOLTIPS[actionType as keyof typeof COMBAT_TOOLTIPS];
+    if (!tooltipData) return;
     
     const container = this.add.container(x, y);
     container.setName('actionTooltip');
     container.setDepth(100);
     
     // Background
-    const bg = this.add.rectangle(0, 0, 220, 80, 0x1a1a1a, 0.95);
-    bg.setStrokeStyle(2, 0x4a9d5f);
+    const bg = this.add.rectangle(0, 0, 220, 80, GAME_CONFIG.COLORS.BACKGROUND, 0.95);
+    bg.setStrokeStyle(2, GAME_CONFIG.COLORS.PRIMARY);
     
     // Title
-    const title = this.add.text(-100, -30, tip.title, {
+    const title = this.add.text(-100, -30, tooltipData.title, {
       fontSize: '16px',
-      color: '#4a9d5f',
+      color: hexToColorString(GAME_CONFIG.COLORS.PRIMARY),
       fontFamily: 'Courier New, monospace',
       fontStyle: 'bold'
     });
     
-    // Description
-    const desc = this.add.text(-100, -8, tip.desc, {
+    // Description (shortened for in-game display)
+    const shortDesc = tooltipData.description.split('.')[0] + '.';
+    const desc = this.add.text(-100, -8, shortDesc, {
       fontSize: '12px',
-      color: '#cccccc',
+      color: hexToColorString(GAME_CONFIG.COLORS.TEXT_SECONDARY),
       fontFamily: 'Courier New, monospace',
       wordWrap: { width: 200 }
     });
     
-    // Extra info
-    const extraText = tip.extra ? this.add.text(-100, 18, tip.extra, {
+    // Extra info (cost/warning) - use type assertion to handle optional properties
+    const tipWithOptional = tooltipData as { 
+      warning?: string; 
+      cost?: string; 
+      title: string; 
+      description: string; 
+      shortcut: string; 
+    };
+    const extraInfo = tipWithOptional.warning 
+      ? `⚠ ${tipWithOptional.warning}` 
+      : (tipWithOptional.cost ? `Cost: ${tipWithOptional.cost}` : '');
+    const extraText = extraInfo ? this.add.text(-100, 18, extraInfo, {
       fontSize: '11px',
-      color: actionType === 'flee' ? '#e8a735' : '#4a8bd9',
+      color: tipWithOptional.warning 
+        ? hexToColorString(GAME_CONFIG.COLORS.WARNING) 
+        : hexToColorString(GAME_CONFIG.COLORS.INFO),
       fontFamily: 'Courier New, monospace'
     }) : null;
     

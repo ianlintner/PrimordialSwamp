@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { SCENE_KEYS, GAME_CONFIG } from '../utils/Constants';
+import { SCENE_KEYS, GAME_CONFIG, hexToColorString } from '../utils/Constants';
 import { DinosaurType } from '../types/Dinosaur.types';
 import { NodeType } from '../types/Encounter.types';
 import { GameStateManager } from '../managers/GameStateManager';
@@ -129,7 +129,7 @@ export class MapScene extends Phaser.Scene {
     const depthY = y - 40;
     this.add.text(x - 70, depthY, 'PROGRESS', {
       fontSize: '12px',
-      color: '#888888',
+      color: hexToColorString(GAME_CONFIG.COLORS.TEXT_MUTED),
       fontFamily: 'Courier New, monospace'
     });
     
@@ -189,7 +189,7 @@ export class MapScene extends Phaser.Scene {
     // Next action hint at bottom
     this.add.text(x, y + 205, 'Click a node\nto continue', {
       fontSize: '11px',
-      color: '#666666',
+      color: hexToColorString(GAME_CONFIG.COLORS.TEXT_DISABLED),
       fontFamily: 'Courier New, monospace',
       align: 'center'
     }).setOrigin(0.5);
@@ -270,7 +270,7 @@ export class MapScene extends Phaser.Scene {
       deinonychus: '🦖',
       ankylosaurus: '🦕',
       pteranodon: '🦅',
-      tyrannosaurus: '🦖'
+      tyrannosaurus: '👑🦖'
     };
     return emojiMap[id] || '🦴';
   }
