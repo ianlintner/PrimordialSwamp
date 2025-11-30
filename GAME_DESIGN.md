@@ -358,7 +358,7 @@ Check Victory/Defeat
 - **Weather Impact**: Rain, storms, heat affect combat
 - **Pack Tactics**: Allied dinosaurs provide flanking bonuses
 
-### 4. Progression Systems
+### 5. Progression Systems
 
 #### Per-Run Progression
 - **Level Up**: Gain stats from surviving encounters
@@ -372,13 +372,50 @@ Check Victory/Defeat
 - **Egg Collection**: Complete dinosaur encyclopedia
 - **Achievement Unlocks**: New encounter types, abilities
 
-#### Trait System (Roguelite Buffs)
-Examples:
-- **Apex Predator**: +15% damage vs herbivores
-- **Scavenger**: Heal 10 HP after combat
-- **Territorial**: +3 defense in repeat encounters
-- **Nocturnal Hunter**: +20% critical at low health
-- **Adaptive Immunity**: First poison doesn't affect you
+#### Trait System (55+ Traits Available)
+
+**Physical Traits**:
+- **Thick Hide**: +5 defense
+- **Sharp Claws**: +5 attack
+- **Hollow Bones**: +3 speed, -10 HP
+- **Dense Bones**: +3 defense, -1 speed
+- **Feathered Coat**: Cold immunity, +1 evasion
+- **Armored Body**: 15% physical damage reduction
+- **Serrated Teeth**: 20% bleeding on attack
+- **Club Tail**: Counter attacks stun
+- **Dome Skull**: Stun immunity, +30% headbutt damage
+- **Sickle Claw**: Crits cause bleeding
+
+**Behavioral Traits**:
+- **Pack Tactics**: +15% damage with allies
+- **Apex Predator**: +20% damage vs elite/boss
+- **Predator's Instinct**: +30% crit vs low health targets
+- **Ambush Predator**: +10 attack first turn
+- **Nocturnal Hunter**: +25% damage at night
+- **Scavenger**: Heal 20 HP on kill
+- **Territorial**: +20% damage in home biome
+- **Herd Instinct**: +2 defense with allies
+- **Alpha Status**: Allies get +10% damage, +1 defense
+
+**Special Traits**:
+- **Living Fossil**: +10% all stats
+- **Extinction Survivor**: Cheat death once per run
+- **Bone-Breaking Bite**: Crits reduce max HP
+- **Regeneration**: Heal 5 HP per turn
+- **Venomous**: 20% poison on attack
+- **Ancient Wisdom**: Gain stacking buffs after combat
+
+#### Dinosaur Roles
+- **Hunter**: High damage, pack synergies
+- **Tank**: High defense, damage mitigation
+- **Support**: Buffs, healing, team coordination
+- **Ambusher**: First-strike bonuses, stealth
+- **Powerhouse**: Massive single-target damage
+- **Controller**: Status effects, debuffs
+- **Scout**: Reveal encounters, mobility
+- **Specialist**: Unique mechanics (headbutt, sonic)
+- **Bruiser**: Balanced offense and defense
+- **Aquatic Hunter**: Water terrain bonuses
 
 ---
 
