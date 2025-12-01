@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { SCENE_KEYS, GAME_CONFIG, ANIMATION } from '../utils/Constants';
+import { SCENE_KEYS, GAME_CONFIG } from '../utils/Constants';
 
 export class MenuScene extends Phaser.Scene {
   private titleText!: Phaser.GameObjects.Text;
