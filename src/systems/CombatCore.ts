@@ -296,15 +296,26 @@ export function calculateHitDetection(
   }
 
   // Status effect penalties on attacker
+  // Define the status effects that affect accuracy
+  const accuracyAffectingEffects = [
+    StatusEffectType.BLINDED,
+    StatusEffectType.CONFUSED,
+    StatusEffectType.EXHAUSTED,
+    StatusEffectType.FROZEN,
+    StatusEffectType.STUNNED
+  ];
+
   for (const effect of attacker.activeStatusEffects) {
-    const effectMod = ACCURACY_MODIFIERS.statusEffects[effect as keyof typeof ACCURACY_MODIFIERS.statusEffects];
-    if (effectMod) {
-      modifiers.push({
-        source: `Status (${effect})`,
-        value: effectMod,
-        type: 'flat'
-      });
-      effectiveAccuracy += effectMod;
+    if (accuracyAffectingEffects.includes(effect)) {
+      const effectMod = ACCURACY_MODIFIERS.statusEffects[effect as keyof typeof ACCURACY_MODIFIERS.statusEffects];
+      if (effectMod !== undefined) {
+        modifiers.push({
+          source: `Status (${effect})`,
+          value: effectMod,
+          type: 'flat'
+        });
+        effectiveAccuracy += effectMod;
+      }
     }
   }
 

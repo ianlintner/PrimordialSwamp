@@ -442,27 +442,88 @@ export class EvolutionSystem {
   }
 
   /**
+   * Physical trait names that can be checked
+   */
+  private static readonly PHYSICAL_TRAIT_KEYS = [
+    'hasFeathers', 'hasArmor', 'hasHorns', 'hasClaws',
+    'hasTailWeapon', 'hasCrest', 'hasSail'
+  ] as const;
+
+  /**
+   * Stat names that can be accessed
+   */
+  private static readonly STAT_KEYS = [
+    'health', 'maxHealth', 'attack', 'defense',
+    'speed', 'stamina', 'maxStamina', 'level', 'experience'
+  ] as const;
+
+  /**
    * Check if a dinosaur has a physical trait
+   * Uses a type guard pattern to safely access physical traits
    */
   private hasPhysicalTrait(dinosaur: DinosaurInstance, trait: string): boolean {
     const traits = dinosaur.physicalTraits;
-    return (traits as unknown as Record<string, boolean>)[trait] === true;
+    
+    // Type guard: check if the trait is a valid physical trait key
+    if (EvolutionSystem.PHYSICAL_TRAIT_KEYS.includes(trait as typeof EvolutionSystem.PHYSICAL_TRAIT_KEYS[number])) {
+      return traits[trait as keyof typeof traits] === true;
+    }
+    return false;
   }
 
   /**
    * Get a stat value from a dinosaur
+   * Uses a type guard pattern to safely access stats
    */
   private getStatValue(dinosaur: DinosaurInstance, stat: string): number {
     const stats = dinosaur.stats;
-    return (stats as unknown as Record<string, number>)[stat] || 0;
+    
+    // Type guard: check if the stat is a valid stat key
+    if (EvolutionSystem.STAT_KEYS.includes(stat as typeof EvolutionSystem.STAT_KEYS[number])) {
+      const value = stats[stat as keyof typeof stats];
+      return typeof value === 'number' ? value : 0;
+    }
+    return 0;
   }
 
   /**
    * Set a stat value on a dinosaur
+   * Uses a switch case to safely set stats by known keys
    */
   private setStatValue(dinosaur: DinosaurInstance, stat: string, value: number): void {
-    const stats = dinosaur.stats as unknown as Record<string, number>;
-    stats[stat] = value;
+    // Use explicit switch for type safety
+    switch (stat) {
+      case 'health':
+        dinosaur.stats.health = value;
+        break;
+      case 'maxHealth':
+        dinosaur.stats.maxHealth = value;
+        break;
+      case 'attack':
+        dinosaur.stats.attack = value;
+        break;
+      case 'defense':
+        dinosaur.stats.defense = value;
+        break;
+      case 'speed':
+        dinosaur.stats.speed = value;
+        break;
+      case 'stamina':
+        dinosaur.stats.stamina = value;
+        break;
+      case 'maxStamina':
+        dinosaur.stats.maxStamina = value;
+        break;
+      case 'level':
+        dinosaur.stats.level = value;
+        break;
+      case 'experience':
+        dinosaur.stats.experience = value;
+        break;
+      default:
+        // Unknown stat, ignore
+        break;
+    }
   }
 
   /**
