@@ -272,14 +272,17 @@ export class AssetLoader {
       const b = Math.floor((topColor & 0xFF) * (1 - ratio) + (bottomColor & 0xFF) * ratio);
       const color = (r << 16) | (g << 8) | b;
       
+      // Ensure strip doesn't exceed canvas height
+      const stripHeight = Math.min(STRIP_HEIGHT, height - y);
       graphics.fillStyle(color, 1);
-      graphics.fillRect(0, y, width, STRIP_HEIGHT);
+      graphics.fillRect(0, y, width, stripHeight);
     }
     
     // Add decorative texture elements for visual interest
-    const TEXTURE_ELEMENT_COUNT = 20;
+    // Using a fixed count; could be made proportional to biome type in future
+    const DEFAULT_TEXTURE_ELEMENT_COUNT = 20;
     graphics.fillStyle(0x000000, 0.1);
-    for (let i = 0; i < TEXTURE_ELEMENT_COUNT; i++) {
+    for (let i = 0; i < DEFAULT_TEXTURE_ELEMENT_COUNT; i++) {
       const x = Math.random() * width;
       const y = Math.random() * height;
       graphics.fillCircle(x, y, Math.random() * 50 + 20);

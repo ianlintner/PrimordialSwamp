@@ -40,10 +40,9 @@ All player dinosaurs require the following animation states:
 - `idle` (6 frames recommended, looped)
 - `attack` (6 frames recommended)
 - `hurt` (4 frames)
-- `defend` (4 frames)
-- `special` (6-8 frames)
 - `death` (6 frames)
-- `victory` (6 frames, looped)
+- `special` (6-8 frames, optional)
+- `victory` (6 frames, looped, optional)
 
 > **Note**: Frame counts are recommendations. See `EXAMPLE_spritesheet.json` for a reference implementation with 6 frames per animation.
 

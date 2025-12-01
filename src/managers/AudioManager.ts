@@ -2,6 +2,21 @@ import Phaser from 'phaser';
 import { MUSIC_TRACKS, SOUND_EFFECTS, AMBIENT_SOUNDS, AudioAsset } from '../config/assets';
 
 /**
+ * Check if localStorage is available
+ */
+function isLocalStorageAvailable(): boolean {
+  try {
+    if (typeof localStorage === 'undefined') return false;
+    const testKey = '__test__';
+    localStorage.setItem(testKey, testKey);
+    localStorage.removeItem(testKey);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * AudioManager - Singleton for managing all game audio
  * Handles music, sound effects, and ambient sounds with volume control
  */
@@ -10,6 +25,8 @@ export class AudioManager {
   private scene: Phaser.Scene | null = null;
   private currentMusic: Phaser.Sound.BaseSound | null = null;
   private currentAmbient: Phaser.Sound.BaseSound | null = null;
+  private currentMusicKey: string | null = null;
+  private currentAmbientKey: string | null = null;
   private masterVolume: number = 1.0;
   private musicVolume: number = 0.5;
   private sfxVolume: number = 0.7;
@@ -36,6 +53,8 @@ export class AudioManager {
    * Load volume settings from localStorage
    */
   private loadVolumeSettings(): void {
+    if (!isLocalStorageAvailable()) return;
+    
     try {
       const settings = localStorage.getItem('primordialSwamp_audioSettings');
       if (settings) {
@@ -54,6 +73,8 @@ export class AudioManager {
    * Save volume settings to localStorage
    */
   private saveVolumeSettings(): void {
+    if (!isLocalStorageAvailable()) return;
+    
     try {
       localStorage.setItem('primordialSwamp_audioSettings', JSON.stringify({
         masterVolume: this.masterVolume,
@@ -105,7 +126,7 @@ export class AudioManager {
    * Start playing music track
    */
   private startMusic(key: string, track: AudioAsset, fadeIn: boolean): void {
-    if (!this.scene || !this.scene.sound.get(key)) {
+    if (!this.scene || !this.scene.cache.audio.exists(key)) {
       console.warn(`Music not loaded: ${key}`);
       return;
     }
@@ -116,6 +137,7 @@ export class AudioManager {
       loop: track.loop ?? true,
       volume: fadeIn ? 0 : volume,
     });
+    this.currentMusicKey = key;
 
     if (!this.isMuted) {
       this.currentMusic.play();
@@ -164,7 +186,7 @@ export class AudioManager {
       return;
     }
 
-    if (!this.scene.sound.get(key)) {
+    if (!this.scene.cache.audio.exists(key)) {
       console.warn(`Sound not loaded: ${key}`);
       return;
     }
@@ -190,7 +212,7 @@ export class AudioManager {
       this.currentAmbient.stop();
     }
 
-    if (!this.scene.sound.get(key)) {
+    if (!this.scene.cache.audio.exists(key)) {
       console.warn(`Ambient not loaded: ${key}`);
       return;
     }
@@ -201,6 +223,7 @@ export class AudioManager {
       loop: true,
       volume: this.isMuted ? 0 : volume,
     });
+    this.currentAmbientKey = key;
 
     if (!this.isMuted) {
       this.currentAmbient.play();
@@ -214,6 +237,7 @@ export class AudioManager {
     if (this.currentAmbient) {
       this.currentAmbient.stop();
       this.currentAmbient = null;
+      this.currentAmbientKey = null;
     }
   }
 
@@ -276,10 +300,8 @@ export class AudioManager {
    */
   private updateAllVolumes(): void {
     this.updateMusicVolume();
-    if (this.currentAmbient) {
-      const ambientAsset = AMBIENT_SOUNDS.find(a => 
-        this.currentAmbient && this.scene?.sound.get(a.key) === this.currentAmbient
-      );
+    if (this.currentAmbient && this.currentAmbientKey) {
+      const ambientAsset = AMBIENT_SOUNDS.find(a => a.key === this.currentAmbientKey);
       const baseVolume = ambientAsset?.volume ?? 0.3;
       this.setSoundVolume(
         this.currentAmbient,
@@ -292,10 +314,8 @@ export class AudioManager {
    * Update music volume
    */
   private updateMusicVolume(): void {
-    if (this.currentMusic) {
-      const musicAsset = MUSIC_TRACKS.find(m => 
-        this.currentMusic && this.scene?.sound.get(m.key) === this.currentMusic
-      );
+    if (this.currentMusic && this.currentMusicKey) {
+      const musicAsset = MUSIC_TRACKS.find(m => m.key === this.currentMusicKey);
       const baseVolume = musicAsset?.volume ?? 0.5;
       this.setSoundVolume(
         this.currentMusic,

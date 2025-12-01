@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { PLAYER_SPRITES, ENEMY_SPRITES, BOSS_SPRITES, EFFECT_SPRITES, SpriteAsset } from '../config/assets';
+import { PLAYER_SPRITES, ENEMY_SPRITES, BOSS_SPRITES, SpriteAsset } from '../config/assets';
 
 // Effect sprite keys - referenced from EFFECT_SPRITES config
 const EFFECT_KEYS = {
@@ -15,6 +15,14 @@ const EFFECT_ANIM_KEYS = {
 
 // Visual effect constants
 const PARTICLE_COUNT = 8;
+const PARTICLE_MIN_SIZE = 3;
+const PARTICLE_MAX_SIZE = 8;
+const PARTICLE_SPREAD = 20;
+const PARTICLE_FLOAT_DISTANCE = 50;
+const PARTICLE_HORIZONTAL_SPREAD = 40;
+const PARTICLE_VERTICAL_SPREAD = 30;
+const PARTICLE_MIN_DURATION = 300;
+const PARTICLE_MAX_DURATION = 600;
 
 /**
  * SpriteManager - Manages sprite display and animations for combat
@@ -23,6 +31,7 @@ const PARTICLE_COUNT = 8;
 export class SpriteManager {
   private scene: Phaser.Scene;
   private activeSprites: Map<string, Phaser.GameObjects.Sprite> = new Map();
+  private activeParticles: Phaser.GameObjects.Arc[] = [];
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
@@ -262,6 +271,7 @@ export class SpriteManager {
 
   /**
    * Create particle effect at position
+   * Particles are tracked and can be cleaned up if scene changes
    */
   private createParticleEffect(
     x: number,
@@ -272,15 +282,18 @@ export class SpriteManager {
     // Create multiple particles
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const particle = this.scene.add.circle(
-        x + Phaser.Math.Between(-20, 20),
-        y + Phaser.Math.Between(-20, 20),
-        Phaser.Math.Between(3, 8),
+        x + Phaser.Math.Between(-PARTICLE_SPREAD, PARTICLE_SPREAD),
+        y + Phaser.Math.Between(-PARTICLE_SPREAD, PARTICLE_SPREAD),
+        Phaser.Math.Between(PARTICLE_MIN_SIZE, PARTICLE_MAX_SIZE),
         color
       );
       particle.setDepth(100);
+      
+      // Track particle for cleanup
+      this.activeParticles.push(particle);
 
-      const endY = floatUp ? y - 50 : y + Phaser.Math.Between(-30, 30);
-      const endX = x + Phaser.Math.Between(-40, 40);
+      const endY = floatUp ? y - PARTICLE_FLOAT_DISTANCE : y + Phaser.Math.Between(-PARTICLE_VERTICAL_SPREAD, PARTICLE_VERTICAL_SPREAD);
+      const endX = x + Phaser.Math.Between(-PARTICLE_HORIZONTAL_SPREAD, PARTICLE_HORIZONTAL_SPREAD);
 
       this.scene.tweens.add({
         targets: particle,
@@ -288,9 +301,16 @@ export class SpriteManager {
         y: endY,
         alpha: 0,
         scale: 0,
-        duration: Phaser.Math.Between(300, 600),
+        duration: Phaser.Math.Between(PARTICLE_MIN_DURATION, PARTICLE_MAX_DURATION),
         ease: 'Power2',
-        onComplete: () => particle.destroy()
+        onComplete: () => {
+          // Remove from tracking array
+          const index = this.activeParticles.indexOf(particle);
+          if (index > -1) {
+            this.activeParticles.splice(index, 1);
+          }
+          particle.destroy();
+        }
       });
     }
   }
@@ -350,12 +370,20 @@ export class SpriteManager {
   }
 
   /**
-   * Clear all sprites
+   * Clear all sprites and particles
    */
   clearAll(): void {
+    // Clear sprites
     for (const sprite of this.activeSprites.values()) {
       sprite.destroy();
     }
     this.activeSprites.clear();
+    
+    // Clear any active particles
+    for (const particle of this.activeParticles) {
+      if (particle && !particle.scene) continue; // Already destroyed
+      particle.destroy();
+    }
+    this.activeParticles = [];
   }
 }

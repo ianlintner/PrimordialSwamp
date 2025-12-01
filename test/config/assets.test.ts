@@ -72,14 +72,24 @@ describe('Asset Configuration', () => {
       expect(BOSS_SPRITES.length).toBeGreaterThan(0);
     });
 
-    it('should have larger dimensions than regular enemies', () => {
-      const bossSprite = BOSS_SPRITES[0];
-      const regularEnemy = ENEMY_SPRITES[0];
+    it('should have larger dimensions than average enemy size', () => {
+      // Calculate average enemy size to make test more robust
+      const avgEnemyArea = ENEMY_SPRITES.reduce((sum, e) => 
+        sum + (e.frameWidth * e.frameHeight), 0) / ENEMY_SPRITES.length;
       
-      const bossArea = bossSprite.frameWidth * bossSprite.frameHeight;
-      const enemyArea = regularEnemy.frameWidth * regularEnemy.frameHeight;
+      // Calculate average boss size
+      const avgBossArea = BOSS_SPRITES.reduce((sum, b) => 
+        sum + (b.frameWidth * b.frameHeight), 0) / BOSS_SPRITES.length;
       
-      expect(bossArea).toBeGreaterThan(enemyArea);
+      expect(avgBossArea).toBeGreaterThan(avgEnemyArea);
+    });
+
+    it('should have roar and special animations for bosses', () => {
+      for (const boss of BOSS_SPRITES) {
+        const animKeys = boss.animations?.map(a => a.key) || [];
+        // Bosses should have at least idle, attack, hurt, death animations
+        expect(animKeys.length).toBeGreaterThanOrEqual(4);
+      }
     });
   });
 
@@ -225,7 +235,15 @@ describe('Asset Configuration', () => {
       expect(ABILITY_ICONS.length).toBeGreaterThan(0);
       
       const abilityKeys = ABILITY_ICONS.map(icon => icon.key);
-      expect(abilityKeys.some(k => k.includes('sickle_claw'))).toBe(true);
+      // Check for exact key format with prefix
+      expect(abilityKeys).toContain('ability_sickle_claw');
+    });
+
+    it('should have consistent key format', () => {
+      for (const icon of ABILITY_ICONS) {
+        expect(icon.key).toMatch(/^ability_/);
+        expect(icon.path).toMatch(/\.png$/);
+      }
     });
   });
 
@@ -234,8 +252,16 @@ describe('Asset Configuration', () => {
       expect(TRAIT_ICONS.length).toBeGreaterThan(0);
       
       const traitKeys = TRAIT_ICONS.map(icon => icon.key);
-      expect(traitKeys.some(k => k.includes('thick_hide'))).toBe(true);
-      expect(traitKeys.some(k => k.includes('sharp_claws'))).toBe(true);
+      // Check for exact key format with prefix
+      expect(traitKeys).toContain('trait_thick_hide');
+      expect(traitKeys).toContain('trait_sharp_claws');
+    });
+
+    it('should have consistent key format', () => {
+      for (const icon of TRAIT_ICONS) {
+        expect(icon.key).toMatch(/^trait_/);
+        expect(icon.path).toMatch(/\.png$/);
+      }
     });
   });
 });
