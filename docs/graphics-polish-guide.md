@@ -891,7 +891,7 @@ const introConfig: IntroSequence = {
 - [ ] Maintain 60 FPS with all effects active
 - [ ] No memory leaks from particle systems
 - [ ] Scene transitions under 500ms
-- [ ] Asset loading under 3 seconds (initial)
+- [ ] Asset loading under 2 seconds (initial, target 1.5s for optimal UX)
 
 ### Visual Consistency
 

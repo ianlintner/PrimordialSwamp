@@ -4,6 +4,23 @@
   "version": "1.0.0",
   "description": "Lighting presets for biomes, combat scenarios, and time-of-day variations",
 
+  "units": {
+    "description": "Documentation of measurement units used throughout this file",
+    "color": "Hex color values (0xRRGGBB format)",
+    "intensity": "Multiplier (0.0 to 2.0, where 1.0 is base/normal)",
+    "angle": "Degrees (0 = top, 90 = right, 180 = bottom, 270 = left)",
+    "near/far": "View distance ratio (0.0 to 1.0 of total view depth)",
+    "density": "Opacity ratio (0.0 to 1.0)",
+    "frequency": "Milliseconds between emissions (-1 for single burst)",
+    "quantity": "Particles per emission",
+    "speed": "Pixels per second",
+    "lifespan": "Milliseconds",
+    "scale": "Multiplier (1.0 = original size)",
+    "alpha": "Opacity (0.0 to 1.0)",
+    "radius": "Pixels",
+    "pulseSpeed": "Milliseconds per full cycle"
+  },
+
   "biomes": {
     "coastal_wetlands": {
       "displayName": "Coastal Wetlands",

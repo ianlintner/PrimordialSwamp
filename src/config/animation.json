@@ -162,36 +162,39 @@
     },
 
     "dinosaurProfiles": {
-      "description": "Speed profiles for different dinosaur types",
+      "description": "Speed profiles for different dinosaur types. Dinosaurs are categorized by a 'speedClass' tag in their data definitions.",
       
       "agile": {
-        "description": "Fast, nimble dinosaurs (Deinonychus, Velociraptor, Pteranodon)",
+        "description": "Fast, nimble dinosaurs with quick attack animations",
         "idleFrameRate": 10,
         "attackFrameRate": 16,
         "hurtFrameRate": 12,
         "deathFrameRate": 8,
         "movementSpeed": 1.2,
-        "applies": ["deinonychus", "velociraptor", "pteranodon", "troodon", "compsognathus", "coelophysis"]
+        "speedClassTag": "agile",
+        "examples": ["deinonychus", "velociraptor", "pteranodon", "troodon", "compsognathus", "coelophysis"]
       },
       
       "heavy": {
-        "description": "Large, slow dinosaurs (Ankylosaurus, Therizinosaurus, T-Rex)",
+        "description": "Large, slow dinosaurs with deliberate, powerful animations",
         "idleFrameRate": 6,
         "attackFrameRate": 10,
         "hurtFrameRate": 8,
         "deathFrameRate": 6,
         "movementSpeed": 0.8,
-        "applies": ["ankylosaurus", "therizinosaurus", "tyrannosaurus", "spinosaurus", "allosaurus"]
+        "speedClassTag": "heavy",
+        "examples": ["ankylosaurus", "therizinosaurus", "tyrannosaurus", "spinosaurus", "allosaurus"]
       },
       
       "balanced": {
-        "description": "Medium-sized dinosaurs with balanced timing",
+        "description": "Medium-sized dinosaurs with balanced timing (default profile)",
         "idleFrameRate": 8,
         "attackFrameRate": 12,
         "hurtFrameRate": 10,
         "deathFrameRate": 8,
         "movementSpeed": 1.0,
-        "applies": ["pachycephalosaurus", "parasaurolophus", "carnotaurus", "dilophosaurus", "kentrosaurus"]
+        "speedClassTag": "balanced",
+        "examples": ["pachycephalosaurus", "parasaurolophus", "carnotaurus", "dilophosaurus", "kentrosaurus"]
       }
     }
   },
