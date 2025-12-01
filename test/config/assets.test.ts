@@ -9,6 +9,8 @@ import {
   STATUS_ICONS,
   RESOURCE_ICONS,
   NODE_ICONS,
+  ABILITY_ICONS,
+  TRAIT_ICONS,
   MUSIC_TRACKS,
   SOUND_EFFECTS,
   AMBIENT_SOUNDS,
@@ -206,7 +208,8 @@ describe('Asset Configuration', () => {
     it('getAllImages should return all image assets', () => {
       const allImages = getAllImages();
       const totalExpected = BACKGROUND_IMAGES.length + UI_IMAGES.length + 
-                           STATUS_ICONS.length + RESOURCE_ICONS.length + NODE_ICONS.length;
+                           STATUS_ICONS.length + RESOURCE_ICONS.length + NODE_ICONS.length +
+                           ABILITY_ICONS.length + TRAIT_ICONS.length;
       expect(allImages.length).toBe(totalExpected);
     });
 
@@ -214,6 +217,25 @@ describe('Asset Configuration', () => {
       const allAudio = getAllAudio();
       const totalExpected = MUSIC_TRACKS.length + SOUND_EFFECTS.length + AMBIENT_SOUNDS.length;
       expect(allAudio.length).toBe(totalExpected);
+    });
+  });
+
+  describe('Ability Icons', () => {
+    it('should define ability icons', () => {
+      expect(ABILITY_ICONS.length).toBeGreaterThan(0);
+      
+      const abilityKeys = ABILITY_ICONS.map(icon => icon.key);
+      expect(abilityKeys.some(k => k.includes('sickle_claw'))).toBe(true);
+    });
+  });
+
+  describe('Trait Icons', () => {
+    it('should define trait icons', () => {
+      expect(TRAIT_ICONS.length).toBeGreaterThan(0);
+      
+      const traitKeys = TRAIT_ICONS.map(icon => icon.key);
+      expect(traitKeys.some(k => k.includes('thick_hide'))).toBe(true);
+      expect(traitKeys.some(k => k.includes('sharp_claws'))).toBe(true);
     });
   });
 });

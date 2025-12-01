@@ -69,20 +69,152 @@ export const PLAYER_SPRITES: SpriteAsset[] = [
       { key: 'pteranodon_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
     ],
   },
+  {
+    key: 'tyrannosaurus',
+    path: 'assets/sprites/dinosaurs/tyrannosaurus_spritesheet.png',
+    frameWidth: 128,
+    frameHeight: 96,
+    animations: [
+      { key: 'tyrannosaurus_idle', frames: { start: 0, end: 5 }, frameRate: 6, repeat: -1 },
+      { key: 'tyrannosaurus_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
+      { key: 'tyrannosaurus_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'tyrannosaurus_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'pachycephalosaurus',
+    path: 'assets/sprites/dinosaurs/pachycephalosaurus_spritesheet.png',
+    frameWidth: 64,
+    frameHeight: 64,
+    animations: [
+      { key: 'pachycephalosaurus_idle', frames: { start: 0, end: 5 }, frameRate: 8, repeat: -1 },
+      { key: 'pachycephalosaurus_attack', frames: { start: 6, end: 11 }, frameRate: 12, repeat: 0 },
+      { key: 'pachycephalosaurus_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'pachycephalosaurus_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'therizinosaurus',
+    path: 'assets/sprites/dinosaurs/therizinosaurus_spritesheet.png',
+    frameWidth: 96,
+    frameHeight: 64,
+    animations: [
+      { key: 'therizinosaurus_idle', frames: { start: 0, end: 5 }, frameRate: 6, repeat: -1 },
+      { key: 'therizinosaurus_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
+      { key: 'therizinosaurus_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'therizinosaurus_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'parasaurolophus',
+    path: 'assets/sprites/dinosaurs/parasaurolophus_spritesheet.png',
+    frameWidth: 96,
+    frameHeight: 64,
+    animations: [
+      { key: 'parasaurolophus_idle', frames: { start: 0, end: 5 }, frameRate: 8, repeat: -1 },
+      { key: 'parasaurolophus_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
+      { key: 'parasaurolophus_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'parasaurolophus_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'spinosaurus',
+    path: 'assets/sprites/dinosaurs/spinosaurus_spritesheet.png',
+    frameWidth: 128,
+    frameHeight: 96,
+    animations: [
+      { key: 'spinosaurus_idle', frames: { start: 0, end: 5 }, frameRate: 6, repeat: -1 },
+      { key: 'spinosaurus_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
+      { key: 'spinosaurus_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'spinosaurus_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'troodon',
+    path: 'assets/sprites/dinosaurs/troodon_spritesheet.png',
+    frameWidth: 48,
+    frameHeight: 48,
+    animations: [
+      { key: 'troodon_idle', frames: { start: 0, end: 5 }, frameRate: 10, repeat: -1 },
+      { key: 'troodon_attack', frames: { start: 6, end: 11 }, frameRate: 14, repeat: 0 },
+      { key: 'troodon_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'troodon_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'carnotaurus',
+    path: 'assets/sprites/dinosaurs/carnotaurus_spritesheet.png',
+    frameWidth: 80,
+    frameHeight: 64,
+    animations: [
+      { key: 'carnotaurus_idle', frames: { start: 0, end: 5 }, frameRate: 8, repeat: -1 },
+      { key: 'carnotaurus_attack', frames: { start: 6, end: 11 }, frameRate: 12, repeat: 0 },
+      { key: 'carnotaurus_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'carnotaurus_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'baryonyx',
+    path: 'assets/sprites/dinosaurs/baryonyx_spritesheet.png',
+    frameWidth: 96,
+    frameHeight: 64,
+    animations: [
+      { key: 'baryonyx_idle', frames: { start: 0, end: 5 }, frameRate: 8, repeat: -1 },
+      { key: 'baryonyx_attack', frames: { start: 6, end: 11 }, frameRate: 12, repeat: 0 },
+      { key: 'baryonyx_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'baryonyx_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'utahraptor',
+    path: 'assets/sprites/dinosaurs/utahraptor_spritesheet.png',
+    frameWidth: 64,
+    frameHeight: 64,
+    animations: [
+      { key: 'utahraptor_idle', frames: { start: 0, end: 5 }, frameRate: 8, repeat: -1 },
+      { key: 'utahraptor_attack', frames: { start: 6, end: 11 }, frameRate: 14, repeat: 0 },
+      { key: 'utahraptor_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'utahraptor_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'compsognathus',
+    path: 'assets/sprites/dinosaurs/compsognathus_spritesheet.png',
+    frameWidth: 32,
+    frameHeight: 32,
+    animations: [
+      { key: 'compsognathus_idle', frames: { start: 0, end: 5 }, frameRate: 12, repeat: -1 },
+      { key: 'compsognathus_attack', frames: { start: 6, end: 11 }, frameRate: 16, repeat: 0 },
+      { key: 'compsognathus_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'compsognathus_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
 ];
 
 // Enemy sprites
 export const ENEMY_SPRITES: SpriteAsset[] = [
   {
-    key: 'compy_pack',
-    path: 'assets/sprites/enemies/compy_pack_spritesheet.png',
+    key: 'compsognathus_pack',
+    path: 'assets/sprites/enemies/compsognathus_pack_spritesheet.png',
     frameWidth: 32,
     frameHeight: 32,
     animations: [
-      { key: 'compy_pack_idle', frames: { start: 0, end: 5 }, frameRate: 10, repeat: -1 },
-      { key: 'compy_pack_attack', frames: { start: 6, end: 11 }, frameRate: 14, repeat: 0 },
-      { key: 'compy_pack_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
-      { key: 'compy_pack_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+      { key: 'compsognathus_pack_idle', frames: { start: 0, end: 5 }, frameRate: 10, repeat: -1 },
+      { key: 'compsognathus_pack_attack', frames: { start: 6, end: 11 }, frameRate: 14, repeat: 0 },
+      { key: 'compsognathus_pack_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'compsognathus_pack_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'velociraptor',
+    path: 'assets/sprites/enemies/velociraptor_spritesheet.png',
+    frameWidth: 48,
+    frameHeight: 48,
+    animations: [
+      { key: 'velociraptor_idle', frames: { start: 0, end: 5 }, frameRate: 10, repeat: -1 },
+      { key: 'velociraptor_attack', frames: { start: 6, end: 11 }, frameRate: 14, repeat: 0 },
+      { key: 'velociraptor_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'velociraptor_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
     ],
   },
   {
@@ -98,6 +230,30 @@ export const ENEMY_SPRITES: SpriteAsset[] = [
     ],
   },
   {
+    key: 'coelophysis',
+    path: 'assets/sprites/enemies/coelophysis_spritesheet.png',
+    frameWidth: 48,
+    frameHeight: 48,
+    animations: [
+      { key: 'coelophysis_idle', frames: { start: 0, end: 5 }, frameRate: 10, repeat: -1 },
+      { key: 'coelophysis_attack', frames: { start: 6, end: 11 }, frameRate: 12, repeat: 0 },
+      { key: 'coelophysis_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'coelophysis_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'oviraptor',
+    path: 'assets/sprites/enemies/oviraptor_spritesheet.png',
+    frameWidth: 48,
+    frameHeight: 48,
+    animations: [
+      { key: 'oviraptor_idle', frames: { start: 0, end: 5 }, frameRate: 8, repeat: -1 },
+      { key: 'oviraptor_attack', frames: { start: 6, end: 11 }, frameRate: 12, repeat: 0 },
+      { key: 'oviraptor_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'oviraptor_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
     key: 'allosaurus',
     path: 'assets/sprites/enemies/allosaurus_spritesheet.png',
     frameWidth: 96,
@@ -107,6 +263,78 @@ export const ENEMY_SPRITES: SpriteAsset[] = [
       { key: 'allosaurus_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
       { key: 'allosaurus_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
       { key: 'allosaurus_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'sarcosuchus',
+    path: 'assets/sprites/enemies/sarcosuchus_spritesheet.png',
+    frameWidth: 128,
+    frameHeight: 48,
+    animations: [
+      { key: 'sarcosuchus_idle', frames: { start: 0, end: 5 }, frameRate: 6, repeat: -1 },
+      { key: 'sarcosuchus_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
+      { key: 'sarcosuchus_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'sarcosuchus_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'kentrosaurus',
+    path: 'assets/sprites/enemies/kentrosaurus_spritesheet.png',
+    frameWidth: 64,
+    frameHeight: 64,
+    animations: [
+      { key: 'kentrosaurus_idle', frames: { start: 0, end: 5 }, frameRate: 6, repeat: -1 },
+      { key: 'kentrosaurus_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
+      { key: 'kentrosaurus_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'kentrosaurus_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'carnotaurus_enemy',
+    path: 'assets/sprites/enemies/carnotaurus_enemy_spritesheet.png',
+    frameWidth: 80,
+    frameHeight: 64,
+    animations: [
+      { key: 'carnotaurus_enemy_idle', frames: { start: 0, end: 5 }, frameRate: 8, repeat: -1 },
+      { key: 'carnotaurus_enemy_attack', frames: { start: 6, end: 11 }, frameRate: 12, repeat: 0 },
+      { key: 'carnotaurus_enemy_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'carnotaurus_enemy_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'therizinosaurus_enemy',
+    path: 'assets/sprites/enemies/therizinosaurus_enemy_spritesheet.png',
+    frameWidth: 96,
+    frameHeight: 64,
+    animations: [
+      { key: 'therizinosaurus_enemy_idle', frames: { start: 0, end: 5 }, frameRate: 6, repeat: -1 },
+      { key: 'therizinosaurus_enemy_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
+      { key: 'therizinosaurus_enemy_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'therizinosaurus_enemy_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'spinosaurus_enemy',
+    path: 'assets/sprites/enemies/spinosaurus_enemy_spritesheet.png',
+    frameWidth: 128,
+    frameHeight: 96,
+    animations: [
+      { key: 'spinosaurus_enemy_idle', frames: { start: 0, end: 5 }, frameRate: 6, repeat: -1 },
+      { key: 'spinosaurus_enemy_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
+      { key: 'spinosaurus_enemy_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'spinosaurus_enemy_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'utahraptor_enemy',
+    path: 'assets/sprites/enemies/utahraptor_enemy_spritesheet.png',
+    frameWidth: 64,
+    frameHeight: 64,
+    animations: [
+      { key: 'utahraptor_enemy_idle', frames: { start: 0, end: 5 }, frameRate: 8, repeat: -1 },
+      { key: 'utahraptor_enemy_attack', frames: { start: 6, end: 11 }, frameRate: 14, repeat: 0 },
+      { key: 'utahraptor_enemy_hurt', frames: { start: 12, end: 15 }, frameRate: 10, repeat: 0 },
+      { key: 'utahraptor_enemy_death', frames: { start: 16, end: 21 }, frameRate: 8, repeat: 0 },
     ],
   },
 ];
@@ -124,6 +352,32 @@ export const BOSS_SPRITES: SpriteAsset[] = [
       { key: 'tyrannosaurus_boss_roar', frames: { start: 12, end: 17 }, frameRate: 8, repeat: 0 },
       { key: 'tyrannosaurus_boss_hurt', frames: { start: 18, end: 21 }, frameRate: 10, repeat: 0 },
       { key: 'tyrannosaurus_boss_death', frames: { start: 22, end: 27 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'mosasaurus_boss',
+    path: 'assets/sprites/bosses/mosasaurus_boss_spritesheet.png',
+    frameWidth: 192,
+    frameHeight: 96,
+    animations: [
+      { key: 'mosasaurus_boss_idle', frames: { start: 0, end: 5 }, frameRate: 6, repeat: -1 },
+      { key: 'mosasaurus_boss_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
+      { key: 'mosasaurus_boss_roar', frames: { start: 12, end: 17 }, frameRate: 8, repeat: 0 },
+      { key: 'mosasaurus_boss_hurt', frames: { start: 18, end: 21 }, frameRate: 10, repeat: 0 },
+      { key: 'mosasaurus_boss_death', frames: { start: 22, end: 27 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'giganotosaurus_boss',
+    path: 'assets/sprites/bosses/giganotosaurus_boss_spritesheet.png',
+    frameWidth: 160,
+    frameHeight: 96,
+    animations: [
+      { key: 'giganotosaurus_boss_idle', frames: { start: 0, end: 5 }, frameRate: 6, repeat: -1 },
+      { key: 'giganotosaurus_boss_attack', frames: { start: 6, end: 11 }, frameRate: 10, repeat: 0 },
+      { key: 'giganotosaurus_boss_roar', frames: { start: 12, end: 17 }, frameRate: 8, repeat: 0 },
+      { key: 'giganotosaurus_boss_hurt', frames: { start: 18, end: 21 }, frameRate: 10, repeat: 0 },
+      { key: 'giganotosaurus_boss_death', frames: { start: 22, end: 27 }, frameRate: 8, repeat: 0 },
     ],
   },
 ];
@@ -157,22 +411,88 @@ export const EFFECT_SPRITES: SpriteAsset[] = [
       { key: 'heal', frames: { start: 0, end: 5 }, frameRate: 12, repeat: 0 },
     ],
   },
+  {
+    key: 'fx_bleed',
+    path: 'assets/sprites/effects/bleed.png',
+    frameWidth: 32,
+    frameHeight: 32,
+    animations: [
+      { key: 'bleed', frames: { start: 0, end: 3 }, frameRate: 8, repeat: -1 },
+    ],
+  },
+  {
+    key: 'fx_poison',
+    path: 'assets/sprites/effects/poison.png',
+    frameWidth: 32,
+    frameHeight: 32,
+    animations: [
+      { key: 'poison', frames: { start: 0, end: 3 }, frameRate: 6, repeat: -1 },
+    ],
+  },
+  {
+    key: 'fx_stun',
+    path: 'assets/sprites/effects/stun.png',
+    frameWidth: 48,
+    frameHeight: 48,
+    animations: [
+      { key: 'stun', frames: { start: 0, end: 5 }, frameRate: 10, repeat: -1 },
+    ],
+  },
+  {
+    key: 'fx_defend',
+    path: 'assets/sprites/effects/defend.png',
+    frameWidth: 64,
+    frameHeight: 64,
+    animations: [
+      { key: 'defend', frames: { start: 0, end: 5 }, frameRate: 10, repeat: 0 },
+    ],
+  },
+  {
+    key: 'fx_death',
+    path: 'assets/sprites/effects/death.png',
+    frameWidth: 64,
+    frameHeight: 64,
+    animations: [
+      { key: 'death', frames: { start: 0, end: 5 }, frameRate: 8, repeat: 0 },
+    ],
+  },
+  {
+    key: 'fx_level_up',
+    path: 'assets/sprites/effects/level_up.png',
+    frameWidth: 128,
+    frameHeight: 128,
+    animations: [
+      { key: 'level_up', frames: { start: 0, end: 7 }, frameRate: 10, repeat: 0 },
+    ],
+  },
 ];
 
 // Background images
 export const BACKGROUND_IMAGES: ImageAsset[] = [
+  // Coastal Wetlands
   { key: 'bg_coastal_wetlands_sky', path: 'assets/backgrounds/coastal-wetlands/bg_sky.png' },
   { key: 'bg_coastal_wetlands_mid', path: 'assets/backgrounds/coastal-wetlands/bg_midground.png' },
   { key: 'bg_coastal_wetlands_fg', path: 'assets/backgrounds/coastal-wetlands/bg_foreground.png' },
+  // Fern Prairies
   { key: 'bg_fern_prairies_sky', path: 'assets/backgrounds/fern-prairies/bg_sky.png' },
   { key: 'bg_fern_prairies_mid', path: 'assets/backgrounds/fern-prairies/bg_midground.png' },
   { key: 'bg_fern_prairies_fg', path: 'assets/backgrounds/fern-prairies/bg_foreground.png' },
+  // Volcanic Highlands
   { key: 'bg_volcanic_highlands_sky', path: 'assets/backgrounds/volcanic-highlands/bg_sky.png' },
   { key: 'bg_volcanic_highlands_mid', path: 'assets/backgrounds/volcanic-highlands/bg_midground.png' },
   { key: 'bg_volcanic_highlands_fg', path: 'assets/backgrounds/volcanic-highlands/bg_foreground.png' },
+  // Tar Pits
   { key: 'bg_tar_pits_sky', path: 'assets/backgrounds/tar-pits/bg_sky.png' },
   { key: 'bg_tar_pits_mid', path: 'assets/backgrounds/tar-pits/bg_midground.png' },
   { key: 'bg_tar_pits_fg', path: 'assets/backgrounds/tar-pits/bg_foreground.png' },
+  // Ancient Forest
+  { key: 'bg_ancient_forest_sky', path: 'assets/backgrounds/ancient-forest/bg_sky.png' },
+  { key: 'bg_ancient_forest_mid', path: 'assets/backgrounds/ancient-forest/bg_midground.png' },
+  { key: 'bg_ancient_forest_fg', path: 'assets/backgrounds/ancient-forest/bg_foreground.png' },
+  // Inland Sea
+  { key: 'bg_inland_sea_sky', path: 'assets/backgrounds/inland-sea/bg_sky.png' },
+  { key: 'bg_inland_sea_mid', path: 'assets/backgrounds/inland-sea/bg_midground.png' },
+  { key: 'bg_inland_sea_fg', path: 'assets/backgrounds/inland-sea/bg_foreground.png' },
 ];
 
 // UI images
@@ -217,6 +537,36 @@ export const NODE_ICONS: ImageAsset[] = [
   { key: 'node_boss', path: 'assets/ui/icons/nodes/boss.png' },
 ];
 
+// Ability icons
+export const ABILITY_ICONS: ImageAsset[] = [
+  { key: 'ability_sickle_claw', path: 'assets/ui/icons/abilities/sickle_claw.png' },
+  { key: 'ability_tail_club', path: 'assets/ui/icons/abilities/tail_club.png' },
+  { key: 'ability_dive_attack', path: 'assets/ui/icons/abilities/dive_attack.png' },
+  { key: 'ability_crushing_bite', path: 'assets/ui/icons/abilities/crushing_bite.png' },
+  { key: 'ability_skull_bash', path: 'assets/ui/icons/abilities/skull_bash.png' },
+  { key: 'ability_scythe_slash', path: 'assets/ui/icons/abilities/scythe_slash.png' },
+  { key: 'ability_resonating_call', path: 'assets/ui/icons/abilities/resonating_call.png' },
+  { key: 'ability_ambush', path: 'assets/ui/icons/abilities/ambush.png' },
+  { key: 'ability_pack_tactics', path: 'assets/ui/icons/abilities/pack_tactics.png' },
+  { key: 'ability_roar', path: 'assets/ui/icons/abilities/roar.png' },
+];
+
+// Trait icons
+export const TRAIT_ICONS: ImageAsset[] = [
+  { key: 'trait_thick_hide', path: 'assets/ui/icons/traits/thick_hide.png' },
+  { key: 'trait_sharp_claws', path: 'assets/ui/icons/traits/sharp_claws.png' },
+  { key: 'trait_pack_hunter', path: 'assets/ui/icons/traits/pack_hunter.png' },
+  { key: 'trait_apex_predator', path: 'assets/ui/icons/traits/apex_predator.png' },
+  { key: 'trait_armored', path: 'assets/ui/icons/traits/armored.png' },
+  { key: 'trait_swift', path: 'assets/ui/icons/traits/swift.png' },
+  { key: 'trait_venomous', path: 'assets/ui/icons/traits/venomous.png' },
+  { key: 'trait_regeneration', path: 'assets/ui/icons/traits/regeneration.png' },
+  { key: 'trait_ferocious', path: 'assets/ui/icons/traits/ferocious.png' },
+  { key: 'trait_camouflage', path: 'assets/ui/icons/traits/camouflage.png' },
+  { key: 'trait_intimidating', path: 'assets/ui/icons/traits/intimidating.png' },
+  { key: 'trait_resilient', path: 'assets/ui/icons/traits/resilient.png' },
+];
+
 // Audio assets
 export const MUSIC_TRACKS: AudioAsset[] = [
   { key: 'music_main_menu', path: 'assets/audio/music/main_menu.ogg', type: 'music', loop: true, volume: 0.5 },
@@ -254,7 +604,7 @@ export function getAllSprites(): SpriteAsset[] {
 }
 
 export function getAllImages(): ImageAsset[] {
-  return [...BACKGROUND_IMAGES, ...UI_IMAGES, ...STATUS_ICONS, ...RESOURCE_ICONS, ...NODE_ICONS];
+  return [...BACKGROUND_IMAGES, ...UI_IMAGES, ...STATUS_ICONS, ...RESOURCE_ICONS, ...NODE_ICONS, ...ABILITY_ICONS, ...TRAIT_ICONS];
 }
 
 export function getAllAudio(): AudioAsset[] {
