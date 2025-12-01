@@ -1,6 +1,21 @@
 import Phaser from 'phaser';
 import { PLAYER_SPRITES, ENEMY_SPRITES, BOSS_SPRITES, EFFECT_SPRITES, SpriteAsset } from '../config/assets';
 
+// Effect sprite keys - referenced from EFFECT_SPRITES config
+const EFFECT_KEYS = {
+  CRITICAL_HIT: 'fx_critical_hit',
+  ATTACK_IMPACT: 'fx_attack_impact',
+} as const;
+
+// Animation keys - derived from effect sprites
+const EFFECT_ANIM_KEYS = {
+  CRITICAL_HIT: 'critical_hit',
+  ATTACK_IMPACT: 'attack_impact',
+} as const;
+
+// Visual effect constants
+const PARTICLE_COUNT = 8;
+
 /**
  * SpriteManager - Manages sprite display and animations for combat
  * Handles animated dinosaur sprites and visual effects
@@ -190,8 +205,8 @@ export class SpriteManager {
    * Play an impact effect at position
    */
   playImpactEffect(x: number, y: number, isCritical: boolean = false): void {
-    const effectKey = isCritical ? 'fx_critical_hit' : 'fx_attack_impact';
-    const animKey = isCritical ? 'critical_hit' : 'attack_impact';
+    const effectKey = isCritical ? EFFECT_KEYS.CRITICAL_HIT : EFFECT_KEYS.ATTACK_IMPACT;
+    const animKey = isCritical ? EFFECT_ANIM_KEYS.CRITICAL_HIT : EFFECT_ANIM_KEYS.ATTACK_IMPACT;
 
     if (!this.scene.textures.exists(effectKey)) {
       // Fallback: create particles if effect texture missing
@@ -255,7 +270,7 @@ export class SpriteManager {
     floatUp: boolean = false
   ): void {
     // Create multiple particles
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
       const particle = this.scene.add.circle(
         x + Phaser.Math.Between(-20, 20),
         y + Phaser.Math.Between(-20, 20),
