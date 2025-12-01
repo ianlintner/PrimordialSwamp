@@ -154,7 +154,6 @@ export class SpriteManager {
 
     // Store original position
     const originalX = attacker.x;
-    const originalY = attacker.y;
 
     // Lunge toward target
     const lungeDirection = attacker.flipX ? -1 : 1;
