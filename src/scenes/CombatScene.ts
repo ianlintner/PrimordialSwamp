@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { SCENE_KEYS, GAME_CONFIG, SPACING, hexToColorString } from '../utils/Constants';
+import { SCENE_KEYS, GAME_CONFIG, hexToColorString } from '../utils/Constants';
 import { DinosaurType } from '../types/Dinosaur.types';
 import { NodeType } from '../types/Encounter.types';
 import { StatusEffect, StatusEffectType } from '../types/Combat.types';
@@ -115,18 +115,16 @@ export class CombatScene extends Phaser.Scene {
   }
 
   create(): void {
-    const { WIDTH, HEIGHT, COLORS } = GAME_CONFIG;
+    const { WIDTH, HEIGHT } = GAME_CONFIG;
     
-    // Background
-    this.add.rectangle(WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT, 0x1a2a1a);
+    // Fade in
+    this.cameras.main.fadeIn(300);
     
-    // Combat arena decorations
-    this.add.text(WIDTH / 2, 30, '⚔ COMBAT ENCOUNTER ⚔', {
-      fontSize: '36px',
-      color: '#d94a3d',
-      fontFamily: 'Courier New, monospace',
-      fontStyle: 'bold'
-    }).setOrigin(0.5);
+    // Atmospheric combat background
+    this.createCombatBackground(WIDTH, HEIGHT);
+    
+    // Combat title with polish
+    this.createCombatTitle(WIDTH);
     
     // Player side (left)
     this.createCombatant(
@@ -144,13 +142,8 @@ export class CombatScene extends Phaser.Scene {
       false
     );
     
-    // VS text
-    this.add.text(WIDTH / 2, HEIGHT / 2 - 50, 'VS', {
-      fontSize: '48px',
-      color: '#888888',
-      fontFamily: 'Courier New, monospace',
-      fontStyle: 'bold'
-    }).setOrigin(0.5);
+    // VS separator with style
+    this.createVsSeparator(WIDTH, HEIGHT);
     
     // Action buttons
     this.createActionButtons();
@@ -159,11 +152,7 @@ export class CombatScene extends Phaser.Scene {
     this.createCombatLog();
     
     // Turn indicator
-    this.add.text(WIDTH / 2, HEIGHT - 40, `Turn ${this.turn}`, {
-      fontSize: '24px',
-      color: '#4a9d5f',
-      fontFamily: 'Courier New, monospace'
-    }).setOrigin(0.5).setName('turnText');
+    this.createTurnIndicator(WIDTH, HEIGHT);
     
     // Add initial log entry
     this.addLog(`Combat begins! ${this.player.name} vs ${this.enemy.name}`);
@@ -173,39 +162,181 @@ export class CombatScene extends Phaser.Scene {
     this.checkTraitTrigger(this.enemy, TraitType.COMBAT_START);
   }
 
+  private createCombatBackground(width: number, height: number): void {
+    const graphics = this.add.graphics();
+    
+    // Dark combat arena gradient
+    for (let i = 0; i < 20; i++) {
+      const t = i / 20;
+      const r = Math.floor(26 + (10 * t));
+      const g = Math.floor(36 + (6 * t));
+      const b = Math.floor(26 + (10 * t));
+      graphics.fillStyle(Phaser.Display.Color.GetColor(r, g, b), 1);
+      graphics.fillRect(0, (height / 20) * i, width, height / 20 + 1);
+    }
+    
+    // Arena floor line
+    graphics.lineStyle(2, 0x3a4a3a, 0.5);
+    graphics.lineBetween(100, height / 2 + 100, width - 100, height / 2 + 100);
+    
+    // Atmospheric dust particles
+    this.add.particles(width / 2, height / 2, 'pixel', {
+      x: { min: 0, max: width },
+      y: { min: 0, max: height },
+      speed: { min: 3, max: 10 },
+      angle: { min: 0, max: 360 },
+      scale: { start: 0.3, end: 0.1 },
+      alpha: { start: 0.2, end: 0 },
+      lifespan: 6000,
+      frequency: 300,
+      quantity: 1,
+      tint: [0x4a9d5f, 0x3d7a4d]
+    });
+  }
+
+  private createCombatTitle(width: number): void {
+    // Title background
+    const titleBg = this.add.rectangle(width / 2, 35, 400, 50, 0x1a1a1a, 0.8);
+    titleBg.setStrokeStyle(2, 0xd94a3d, 0.5);
+    
+    // Title text (no emojis)
+    this.add.text(width / 2, 35, 'COMBAT ENCOUNTER', {
+      fontSize: '32px',
+      color: '#d94a3d',
+      fontFamily: 'Courier New, monospace',
+      fontStyle: 'bold'
+    }).setOrigin(0.5);
+  }
+
+  private createVsSeparator(width: number, height: number): void {
+    // VS circle background
+    const vsBg = this.add.circle(width / 2, height / 2 - 40, 35, 0x1a1a1a, 1);
+    vsBg.setStrokeStyle(3, 0x4a4a4a);
+    
+    // VS text
+    this.add.text(width / 2, height / 2 - 40, 'VS', {
+      fontSize: '28px',
+      color: '#888888',
+      fontFamily: 'Courier New, monospace',
+      fontStyle: 'bold'
+    }).setOrigin(0.5);
+  }
+
+  private createTurnIndicator(width: number, height: number): void {
+    const turnBg = this.add.rectangle(width / 2, height - 40, 120, 35, 0x1a1a1a, 0.8);
+    turnBg.setStrokeStyle(1, 0x4a9d5f, 0.5);
+    
+    this.add.text(width / 2, height - 40, `Turn ${this.turn}`, {
+      fontSize: '20px',
+      color: '#4a9d5f',
+      fontFamily: 'Courier New, monospace'
+    }).setOrigin(0.5).setName('turnText');
+  }
+
   private createCombatant(
     x: number,
     y: number,
     combatant: Combatant,
     isPlayer: boolean
   ): void {
-    // Sprite placeholder (emoji)
-    this.add.text(x, y - 80, combatant.emoji, {
-      fontSize: '120px'
-    }).setOrigin(0.5);
+    const color = isPlayer ? 0x4a9d5f : 0xd94a3d;
     
-    // Name
-    this.add.text(x, y + 80, combatant.name.toUpperCase(), {
-      fontSize: '24px',
+    // Combatant platform
+    const platform = this.add.ellipse(x, y + 60, 140, 30, 0x2a2a2a, 0.5);
+    platform.setStrokeStyle(2, color, 0.3);
+    
+    // Dinosaur silhouette graphic instead of emoji
+    const dinoGraphic = this.createDinoSilhouette(x, y - 60, combatant.name.toLowerCase(), isPlayer ? 0x4a9d5f : 0xd94a3d);
+    dinoGraphic.setName(isPlayer ? 'playerSprite' : 'enemySprite');
+    
+    // Name with background
+    const nameBg = this.add.rectangle(x, y + 90, 180, 30, 0x1a1a1a, 0.8);
+    nameBg.setStrokeStyle(1, color, 0.5);
+    
+    this.add.text(x, y + 90, combatant.name.toUpperCase(), {
+      fontSize: '18px',
       color: isPlayer ? '#4a9d5f' : '#d94a3d',
       fontFamily: 'Courier New, monospace',
       fontStyle: 'bold'
     }).setOrigin(0.5);
     
     // Status Effects Text
-    this.add.text(x, y + 105, '', {
-      fontSize: '14px',
-      color: '#ffff00',
+    this.add.text(x, y + 115, '', {
+      fontSize: '12px',
+      color: '#ffd43b',
       fontFamily: 'Courier New, monospace'
     }).setOrigin(0.5).setName(isPlayer ? 'playerStatusText' : 'enemyStatusText');
     
     // Health bar
-    this.createHealthBar(x, y + 120, combatant.hp, combatant.maxHp, isPlayer);
+    this.createHealthBar(x, y + 135, combatant.hp, combatant.maxHp, isPlayer);
     
     if (isPlayer) {
       // Stamina bar
-      this.createStaminaBar(x, y + 150, combatant.stamina, combatant.maxStamina);
+      this.createStaminaBar(x, y + 160, combatant.stamina, combatant.maxStamina);
     }
+  }
+
+  private createDinoSilhouette(x: number, y: number, name: string, color: number): Phaser.GameObjects.Graphics {
+    const graphics = this.add.graphics();
+    graphics.setPosition(x, y);
+    graphics.fillStyle(color, 1);
+    
+    // Draw dinosaur silhouette based on name (simple shapes)
+    const scale = 1.5;
+    
+    if (name.includes('deinonychus') || name.includes('velociraptor')) {
+      // Raptor shape
+      graphics.beginPath();
+      graphics.moveTo(-30 * scale, 20 * scale);
+      graphics.lineTo(-20 * scale, -10 * scale);
+      graphics.lineTo(0, -25 * scale);
+      graphics.lineTo(20 * scale, -15 * scale);
+      graphics.lineTo(30 * scale, 0);
+      graphics.lineTo(40 * scale, 5 * scale);
+      graphics.lineTo(30 * scale, 15 * scale);
+      graphics.lineTo(10 * scale, 20 * scale);
+      graphics.lineTo(-10 * scale, 25 * scale);
+      graphics.closePath();
+      graphics.fill();
+    } else if (name.includes('ankylosaurus')) {
+      // Armored tank shape
+      graphics.fillEllipse(0, 0, 60 * scale, 35 * scale);
+      graphics.fillCircle(-25 * scale, -5 * scale, 12 * scale);
+      graphics.fillCircle(30 * scale, 5 * scale, 15 * scale);
+    } else if (name.includes('pteranodon')) {
+      // Flying shape
+      graphics.beginPath();
+      graphics.moveTo(-40 * scale, 0);
+      graphics.lineTo(-20 * scale, -20 * scale);
+      graphics.lineTo(0, -5 * scale);
+      graphics.lineTo(20 * scale, -20 * scale);
+      graphics.lineTo(40 * scale, 0);
+      graphics.lineTo(20 * scale, 10 * scale);
+      graphics.lineTo(-20 * scale, 10 * scale);
+      graphics.closePath();
+      graphics.fill();
+    } else {
+      // Generic dinosaur/theropod shape
+      graphics.beginPath();
+      graphics.moveTo(-25 * scale, 25 * scale);
+      graphics.lineTo(-20 * scale, 0);
+      graphics.lineTo(-10 * scale, -20 * scale);
+      graphics.lineTo(10 * scale, -25 * scale);
+      graphics.lineTo(25 * scale, -15 * scale);
+      graphics.lineTo(30 * scale, 0);
+      graphics.lineTo(25 * scale, 20 * scale);
+      graphics.lineTo(0, 25 * scale);
+      graphics.closePath();
+      graphics.fill();
+    }
+    
+    // Add eye
+    graphics.fillStyle(0xffffff, 1);
+    graphics.fillCircle(-5 * scale, -10 * scale, 4 * scale);
+    graphics.fillStyle(0x000000, 1);
+    graphics.fillCircle(-4 * scale, -10 * scale, 2 * scale);
+    
+    return graphics;
   }
 
   private createHealthBar(
@@ -273,17 +404,17 @@ export class CombatScene extends Phaser.Scene {
     const buttonSpacing = 160;
     const startX = 200;
     
-    // Attack button with stamina cost display
-    this.createActionButton(startX, buttonY, '⚔ ATTACK', '10 STA', 'attack', () => this.playerAttack());
+    // Attack button with stamina cost display (no emoji)
+    this.createActionButton(startX, buttonY, 'ATTACK', '10 STA', 'attack', 0xd94a3d, () => this.playerAttack());
     
-    // Defend button with effect display
-    this.createActionButton(startX + buttonSpacing, buttonY, '🛡 DEFEND', '+15 STA', 'defend', () => this.playerDefend());
+    // Defend button with effect display (no emoji)
+    this.createActionButton(startX + buttonSpacing, buttonY, 'DEFEND', '+15 STA', 'defend', 0x4a8bd9, () => this.playerDefend());
     
-    // Ability button with stamina cost display
-    this.createActionButton(startX + buttonSpacing * 2, buttonY, '✨ ABILITY', '30 STA', 'ability', () => this.playerAbility());
+    // Ability button with stamina cost display (no emoji)
+    this.createActionButton(startX + buttonSpacing * 2, buttonY, 'ABILITY', '30 STA', 'ability', 0xffd43b, () => this.playerAbility());
     
-    // Flee button
-    this.createActionButton(startX + buttonSpacing * 3, buttonY, '🏃 FLEE', '', 'flee', () => this.playerFlee());
+    // Flee button (no emoji)
+    this.createActionButton(startX + buttonSpacing * 3, buttonY, 'FLEE', '', 'flee', 0x888888, () => this.playerFlee());
     
     // Add keyboard shortcut hints below buttons
     this.addKeyboardHints(startX, buttonY + 50, buttonSpacing);
@@ -295,52 +426,81 @@ export class CombatScene extends Phaser.Scene {
     text: string, 
     costText: string,
     actionType: string,
+    accentColor: number,
     callback: () => void
   ): void {
     const container = this.add.container(x, y);
     container.setName(`btn_${actionType}`);
     
-    // Main button text
+    const buttonWidth = 130;
+    const buttonHeight = 40;
+    
+    // Button background
+    const shadow = this.add.rectangle(3, 3, buttonWidth, buttonHeight, 0x000000, 0.3);
+    const bg = this.add.rectangle(0, 0, buttonWidth, buttonHeight, 0x1a1a1a, 1);
+    bg.setStrokeStyle(2, accentColor);
+    
+    // Accent bar on top
+    const accent = this.add.rectangle(0, -buttonHeight/2 + 2, buttonWidth - 4, 3, accentColor, 0.5);
+    
+    // Button text
     const button = this.add.text(0, 0, text, {
-      fontSize: '20px',
-      color: '#4a9d5f',
+      fontSize: '16px',
+      color: `#${accentColor.toString(16).padStart(6, '0')}`,
       fontFamily: 'Courier New, monospace',
-      backgroundColor: '#2a2a2a',
-      padding: { x: SPACING.BUTTON_PADDING_X - 5, y: SPACING.BUTTON_PADDING_Y }
-    }).setInteractive({ useHandCursor: true });
+      fontStyle: 'bold'
+    }).setOrigin(0.5);
+    
+    container.add([shadow, bg, accent, button]);
+    container.setSize(buttonWidth, buttonHeight);
     
     // Cost indicator below button
-    let costIndicator: Phaser.GameObjects.Text | null = null;
     if (costText) {
-      costIndicator = this.add.text(
-        button.width / 2 + SPACING.BUTTON_PADDING_X - 5, 
-        button.height + SPACING.MD + 2, 
-        costText, 
-        {
-          fontSize: '12px',
-          color: hexToColorString(GAME_CONFIG.COLORS.TEXT_MUTED),
-          fontFamily: 'Courier New, monospace'
-        }
-      ).setOrigin(0.5);
+      const costIndicator = this.add.text(0, buttonHeight/2 + 12, costText, {
+        fontSize: '11px',
+        color: hexToColorString(GAME_CONFIG.COLORS.TEXT_MUTED),
+        fontFamily: 'Courier New, monospace'
+      }).setOrigin(0.5);
+      container.add(costIndicator);
     }
     
-    container.add(button);
-    if (costIndicator) container.add(costIndicator);
+    // Make interactive
+    bg.setInteractive({ useHandCursor: true });
     
-    // Hover effects with tooltip
-    button.on('pointerover', () => {
+    bg.on('pointerover', () => {
+      bg.setFillStyle(accentColor, 0.2);
       button.setColor('#ffffff');
-      button.setBackgroundColor('#4a9d5f');
+      this.tweens.add({
+        targets: container,
+        scaleX: 1.05,
+        scaleY: 1.05,
+        duration: 100
+      });
       this.showActionTooltip(x, y - 80, actionType);
     });
     
-    button.on('pointerout', () => {
-      button.setColor('#4a9d5f');
-      button.setBackgroundColor('#2a2a2a');
+    bg.on('pointerout', () => {
+      bg.setFillStyle(0x1a1a1a, 1);
+      button.setColor(`#${accentColor.toString(16).padStart(6, '0')}`);
+      this.tweens.add({
+        targets: container,
+        scaleX: 1,
+        scaleY: 1,
+        duration: 100
+      });
       this.hideActionTooltip();
     });
     
-    button.on('pointerdown', callback);
+    bg.on('pointerdown', () => {
+      this.tweens.add({
+        targets: container,
+        scaleX: 0.95,
+        scaleY: 0.95,
+        duration: 50,
+        yoyo: true,
+        onComplete: callback
+      });
+    });
   }
 
   private addKeyboardHints(startX: number, y: number, spacing: number): void {
@@ -862,7 +1022,7 @@ export class CombatScene extends Phaser.Scene {
   }
 
   private victory(): void {
-    this.addLog('💀 Enemy defeated! VICTORY!');
+    this.addLog('Enemy defeated! VICTORY!');
     
     // Update GameStateManager with current health/stamina
     GameStateManager.getInstance().updatePlayerStats(this.player.hp, this.player.stamina);
@@ -891,7 +1051,7 @@ export class CombatScene extends Phaser.Scene {
   }
 
   private defeat(): void {
-    this.addLog('💀 You have been defeated...');
+    this.addLog('You have been defeated...');
     
     // Get run stats before clearing
     const run = GameStateManager.getInstance().getCurrentRun();

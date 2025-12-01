@@ -96,23 +96,27 @@ export class MapScene extends Phaser.Scene {
     const x = GAME_CONFIG.WIDTH - 200;
     const y = 150;
     
-    const panel = this.add.rectangle(x, y, 180, 420, 0x2a2a2a, 1);
+    // Panel shadow
+    this.add.rectangle(x + 4, y + 4, 180, 420, 0x000000, 0.3);
+    
+    const panel = this.add.rectangle(x, y, 180, 420, 0x1a1a1a, 1);
     panel.setStrokeStyle(2, 0x4a9d5f);
     
-    // STATUS header with icon
-    this.add.text(x, y - 190, '📊 STATUS', {
-      fontSize: '18px',
+    // STATUS header
+    const headerBg = this.add.rectangle(x, y - 190, 170, 28, 0x4a9d5f, 0.2);
+    headerBg.setStrokeStyle(1, 0x4a9d5f, 0.5);
+    this.add.text(x, y - 190, 'STATUS', {
+      fontSize: '16px',
       color: '#4a9d5f',
       fontFamily: 'Courier New, monospace',
       fontStyle: 'bold'
     }).setOrigin(0.5);
     
-    // Dinosaur name with emoji
+    // Dinosaur name
     const dinoName = this.selectedDinosaur.charAt(0).toUpperCase() + 
                       this.selectedDinosaur.slice(1);
-    const dinoEmoji = this.getDinosaurEmoji(this.selectedDinosaur);
-    this.add.text(x, y - 160, `${dinoEmoji} ${dinoName}`, {
-      fontSize: '16px',
+    this.add.text(x, y - 160, dinoName, {
+      fontSize: '15px',
       color: '#ffffff',
       fontFamily: 'Courier New, monospace'
     }).setOrigin(0.5);
@@ -128,7 +132,7 @@ export class MapScene extends Phaser.Scene {
     // Depth progress with visual indicator
     const depthY = y - 40;
     this.add.text(x - 70, depthY, 'PROGRESS', {
-      fontSize: '12px',
+      fontSize: '11px',
       color: hexToColorString(GAME_CONFIG.COLORS.TEXT_MUTED),
       fontFamily: 'Courier New, monospace'
     });
@@ -147,48 +151,54 @@ export class MapScene extends Phaser.Scene {
     ).setName('depthFill');
     
     this.add.text(x, depthY + 35, `Depth ${this.currentColumn + 1}/5`, {
-      fontSize: '14px',
+      fontSize: '13px',
       color: '#ffffff',
       fontFamily: 'Courier New, monospace'
     }).setOrigin(0.5).setName('depthText');
     
-    // Fossils collected with icon
-    this.add.text(x, depthY + 60, `🦴 ${this.fossils} Fossils`, {
-      fontSize: '14px',
+    // Fossils collected
+    const fossilBg = this.add.rectangle(x, depthY + 60, 100, 22, 0xffd43b, 0.1);
+    fossilBg.setStrokeStyle(1, 0xffd43b, 0.3);
+    this.add.text(x, depthY + 60, `${this.fossils} Fossils`, {
+      fontSize: '13px',
       color: '#ffd43b',
       fontFamily: 'Courier New, monospace'
     }).setOrigin(0.5).setName('fossilText');
     
     // Legend header
+    const legendHeaderBg = this.add.rectangle(x, y + 60, 170, 22, 0x4a9d5f, 0.1);
     this.add.text(x, y + 60, 'MAP LEGEND', {
-      fontSize: '14px',
+      fontSize: '13px',
       color: '#4a9d5f',
       fontFamily: 'Courier New, monospace',
       fontStyle: 'bold'
     }).setOrigin(0.5);
     
-    // Legend with colored text
+    // Legend with colored dots instead of emojis
     const legendItems = [
-      { icon: '⚔', label: 'Combat', color: '#4a9d5f' },
-      { icon: '🌿', label: 'Resource', color: '#5f9d4a' },
-      { icon: '❓', label: 'Event', color: '#9d7a4a' },
-      { icon: '💀', label: 'Elite', color: '#9d4a4a' },
-      { icon: '🔥', label: 'Rest', color: '#4a7a9d' },
-      { icon: '👑', label: 'Boss', color: '#9d4a9d' }
+      { color: 0x4a9d5f, label: 'Combat' },
+      { color: 0x5f9d4a, label: 'Resource' },
+      { color: 0x9d7a4a, label: 'Event' },
+      { color: 0x9d4a4a, label: 'Elite' },
+      { color: 0x4a7a9d, label: 'Rest' },
+      { color: 0x9d4a9d, label: 'Boss' }
     ];
     
     legendItems.forEach((item, index) => {
-      const itemY = y + 85 + (index * 22);
-      this.add.text(x - 60, itemY, `${item.icon} ${item.label}`, {
-        fontSize: '12px',
-        color: item.color,
+      const itemY = y + 85 + (index * 20);
+      // Colored dot
+      this.add.circle(x - 65, itemY, 5, item.color);
+      // Label
+      this.add.text(x - 55, itemY, item.label, {
+        fontSize: '11px',
+        color: `#${item.color.toString(16).padStart(6, '0')}`,
         fontFamily: 'Courier New, monospace'
-      });
+      }).setOrigin(0, 0.5);
     });
     
     // Next action hint at bottom
-    this.add.text(x, y + 205, 'Click a node\nto continue', {
-      fontSize: '11px',
+    this.add.text(x, y + 200, 'Click a node\nto continue', {
+      fontSize: '10px',
       color: hexToColorString(GAME_CONFIG.COLORS.TEXT_DISABLED),
       fontFamily: 'Courier New, monospace',
       align: 'center'
@@ -412,13 +422,14 @@ export class MapScene extends Phaser.Scene {
   }
   
   private getNodeIcon(type: NodeType): string {
+    // Use simple text symbols instead of emojis
     switch (type) {
-      case NodeType.COMBAT: return '⚔';
-      case NodeType.RESOURCE: return '🌿';
-      case NodeType.EVENT: return '❓';
-      case NodeType.ELITE: return '💀';
-      case NodeType.REST: return '🔥';
-      case NodeType.BOSS: return '👑';
+      case NodeType.COMBAT: return 'X';
+      case NodeType.RESOURCE: return 'R';
+      case NodeType.EVENT: return '?';
+      case NodeType.ELITE: return '!';
+      case NodeType.REST: return 'Z';
+      case NodeType.BOSS: return 'B';
       default: return '?';
     }
   }
@@ -818,7 +829,7 @@ export class MapScene extends Phaser.Scene {
     // Update fossils
     const fossilText = this.children.getByName('fossilText') as Phaser.GameObjects.Text;
     if (fossilText) {
-      fossilText.setText(`🦴 ${this.fossils} Fossils`);
+      fossilText.setText(`${this.fossils} Fossils`);
     }
   }
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Combat/Attack sword icon -->
+  <g>
+    <!-- Blade -->
+    <path d="M12 12 L52 52 L48 56 L8 16 Z" fill="#C0C0C0" stroke="#808080" stroke-width="2"/>
+    <!-- Blade highlight -->
+    <path d="M14 14 L48 48" stroke="#FFFFFF" stroke-width="2" opacity="0.5"/>
+    <!-- Guard -->
+    <rect x="36" y="36" width="16" height="4" rx="2" fill="#8B4513" stroke="#654321" stroke-width="1" transform="rotate(-45 44 38)"/>
+    <!-- Handle -->
+    <path d="M48 56 L56 64 L54 66 L46 58 Z" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+    <!-- Pommel -->
+    <circle cx="57" cy="65" r="4" fill="#FFD700" stroke="#B8860B" stroke-width="1"/>
+  </g>
+</svg>

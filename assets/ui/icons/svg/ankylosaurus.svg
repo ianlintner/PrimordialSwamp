@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <!-- Ankylosaurus - Armored tank -->
+  <g>
+    <!-- Body (armored shell) -->
+    <ellipse cx="64" cy="65" rx="45" ry="28" fill="#6B8E23"/>
+    <!-- Armor plates pattern -->
+    <ellipse cx="45" cy="55" rx="10" ry="8" fill="#556B2F" stroke="#3D5A1F" stroke-width="1"/>
+    <ellipse cx="70" cy="50" rx="12" ry="9" fill="#556B2F" stroke="#3D5A1F" stroke-width="1"/>
+    <ellipse cx="85" cy="60" rx="9" ry="7" fill="#556B2F" stroke="#3D5A1F" stroke-width="1"/>
+    <ellipse cx="55" cy="72" rx="11" ry="8" fill="#556B2F" stroke="#3D5A1F" stroke-width="1"/>
+    <ellipse cx="78" cy="75" rx="10" ry="7" fill="#556B2F" stroke="#3D5A1F" stroke-width="1"/>
+    <!-- Spikes along back -->
+    <path d="M30 50 L25 40 L35 50" fill="#8B7355"/>
+    <path d="M50 42 L48 30 L55 42" fill="#8B7355"/>
+    <path d="M70 38 L72 26 L78 40" fill="#8B7355"/>
+    <path d="M95 48 L100 38 L100 52" fill="#8B7355"/>
+    <!-- Neck -->
+    <path d="M22 60 Q15 55 12 60" stroke="#6B8E23" stroke-width="15" fill="none" stroke-linecap="round"/>
+    <!-- Head -->
+    <ellipse cx="8" cy="62" rx="12" ry="9" fill="#6B8E23"/>
+    <!-- Horns on head -->
+    <path d="M4 55 L-2 48" stroke="#8B7355" stroke-width="3" stroke-linecap="round"/>
+    <path d="M12 54 L16 46" stroke="#8B7355" stroke-width="3" stroke-linecap="round"/>
+    <!-- Eye -->
+    <circle cx="6" cy="60" r="3" fill="#1A1A1A"/>
+    <circle cx="5.5" cy="59" r="1" fill="#FFFFFF"/>
+    <!-- Legs (sturdy) -->
+    <rect x="35" y="85" width="12" height="22" rx="4" fill="#556B2F"/>
+    <rect x="75" y="85" width="12" height="22" rx="4" fill="#556B2F"/>
+    <!-- Tail with club -->
+    <path d="M108 68 Q120 70 125 65" stroke="#6B8E23" stroke-width="10" fill="none"/>
+    <!-- Club -->
+    <ellipse cx="128" cy="62" rx="12" ry="10" fill="#8B7355" stroke="#654321" stroke-width="2"/>
+    <ellipse cx="128" cy="62" rx="8" ry="6" fill="#A0522D"/>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Elite/Danger skull icon -->
+  <g>
+    <!-- Skull shape -->
+    <ellipse cx="32" cy="28" rx="24" ry="20" fill="#F5F5DC" stroke="#D4D4AA" stroke-width="2"/>
+    <!-- Eye sockets -->
+    <ellipse cx="22" cy="28" rx="7" ry="8" fill="#1A1A1A"/>
+    <ellipse cx="42" cy="28" rx="7" ry="8" fill="#1A1A1A"/>
+    <!-- Eye glow -->
+    <ellipse cx="22" cy="26" rx="3" ry="3" fill="#D94A3D"/>
+    <ellipse cx="42" cy="26" rx="3" ry="3" fill="#D94A3D"/>
+    <!-- Nose -->
+    <path d="M32 34 L28 42 L36 42 Z" fill="#1A1A1A"/>
+    <!-- Jaw -->
+    <path d="M14 44 L18 56 L22 52 L26 56 L30 52 L34 56 L38 52 L42 56 L46 52 L50 56 L50 44" 
+          fill="#F5F5DC" stroke="#D4D4AA" stroke-width="2"/>
+    <!-- Teeth lines -->
+    <path d="M22 48 L22 56" stroke="#D4D4AA" stroke-width="1"/>
+    <path d="M30 48 L30 56" stroke="#D4D4AA" stroke-width="1"/>
+    <path d="M38 48 L38 56" stroke="#D4D4AA" stroke-width="1"/>
+    <path d="M46 48 L46 56" stroke="#D4D4AA" stroke-width="1"/>
+  </g>
+</svg>
