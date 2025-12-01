@@ -34,3 +34,64 @@ export {
   findAllPaths 
 } from './MapGenerator';
 export type { MapConfig } from './MapGenerator';
+
+// EvolutionSystem - player-driven mutation paths
+export {
+  EvolutionSystem,
+  getEvolutionSystem,
+  resetEvolutionSystem,
+  EvolutionBranch,
+  MutationTier,
+  MutationErrorCode
+} from './EvolutionSystem';
+export type {
+  Mutation,
+  MutationPrerequisites,
+  MutationEffect,
+  MutationResult,
+  BranchSelectionEvent,
+  EvolutionVisualFeedback
+} from './EvolutionSystem';
+
+// ResourceSystem - energy, nutrients, and rarity management
+export {
+  ResourceSystem,
+  getResourceSystem,
+  resetResourceSystem,
+  ResourceType,
+  Rarity,
+  RARITY_CONFIG,
+  BIOME_MODIFIERS,
+  BASE_RESOURCE_VALUES
+} from './ResourceSystem';
+export type {
+  RarityConfig,
+  ResourceDrop,
+  BiomeResourceModifier,
+  ResourceInventory,
+  ResourceTransaction,
+  ResourceCollectionEvent
+} from './ResourceSystem';
+
+// CombatCore - enhanced combat mechanics with hit detection and AI
+export {
+  calculateHitDetection,
+  calculateDamage,
+  createEnemyAI,
+  executeAI,
+  calculateFleeChance,
+  applyStatusEffect,
+  processStatusEffects
+} from './CombatCore';
+export type {
+  HitDetectionResult,
+  HitModifier,
+  DamageCalculationResult,
+  DamageBreakdown,
+  CombatantStats,
+  CombatEnvironment,
+  AIBehaviorNode,
+  AIContext,
+  AIDecision,
+  AIHistoryEntry
+} from './CombatCore';

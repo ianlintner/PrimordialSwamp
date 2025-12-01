@@ -1,0 +1,734 @@
+{
+  "version": "1.0.0",
+  "description": "Milestone rewards and unlock trigger definitions for meta-progression",
+  "milestones": {
+    "combat": [
+      {
+        "id": "first_blood",
+        "name": "First Blood",
+        "description": "Win your first combat encounter",
+        "category": "combat",
+        "trigger": {
+          "type": "combat_wins",
+          "threshold": 1
+        },
+        "rewards": {
+          "fossils": 25,
+          "unlocks": [],
+          "achievement": "first_blood"
+        },
+        "displayIcon": "⚔️",
+        "hidden": false
+      },
+      {
+        "id": "seasoned_fighter",
+        "name": "Seasoned Fighter",
+        "description": "Win 10 combat encounters",
+        "category": "combat",
+        "trigger": {
+          "type": "combat_wins",
+          "threshold": 10
+        },
+        "rewards": {
+          "fossils": 50,
+          "unlocks": ["trait_ambush_predator"],
+          "achievement": "seasoned_fighter"
+        },
+        "displayIcon": "🗡️",
+        "hidden": false
+      },
+      {
+        "id": "apex_hunter",
+        "name": "Apex Hunter",
+        "description": "Win 50 combat encounters",
+        "category": "combat",
+        "trigger": {
+          "type": "combat_wins",
+          "threshold": 50
+        },
+        "rewards": {
+          "fossils": 150,
+          "unlocks": ["trait_apex_predator"],
+          "achievement": "apex_hunter"
+        },
+        "displayIcon": "👑",
+        "hidden": false
+      },
+      {
+        "id": "extinction_event",
+        "name": "Extinction Event",
+        "description": "Defeat 100 enemies total",
+        "category": "combat",
+        "trigger": {
+          "type": "total_kills",
+          "threshold": 100
+        },
+        "rewards": {
+          "fossils": 250,
+          "unlocks": ["dinosaur_tyrannosaurus"],
+          "achievement": "extinction_event"
+        },
+        "displayIcon": "☄️",
+        "hidden": false
+      },
+      {
+        "id": "elite_slayer",
+        "name": "Elite Slayer",
+        "description": "Defeat 10 elite enemies",
+        "category": "combat",
+        "trigger": {
+          "type": "elite_kills",
+          "threshold": 10
+        },
+        "rewards": {
+          "fossils": 100,
+          "unlocks": ["trait_predator_instinct"],
+          "achievement": "elite_slayer"
+        },
+        "displayIcon": "💀",
+        "hidden": false
+      },
+      {
+        "id": "boss_breaker",
+        "name": "Boss Breaker",
+        "description": "Defeat your first boss",
+        "category": "combat",
+        "trigger": {
+          "type": "boss_kills",
+          "threshold": 1
+        },
+        "rewards": {
+          "fossils": 75,
+          "unlocks": [],
+          "achievement": "boss_breaker"
+        },
+        "displayIcon": "🏆",
+        "hidden": false
+      },
+      {
+        "id": "king_slayer",
+        "name": "King Slayer",
+        "description": "Defeat 5 different boss types",
+        "category": "combat",
+        "trigger": {
+          "type": "unique_boss_kills",
+          "threshold": 5
+        },
+        "rewards": {
+          "fossils": 300,
+          "unlocks": ["trait_bone_breaking_bite"],
+          "achievement": "king_slayer"
+        },
+        "displayIcon": "⚔️",
+        "hidden": false
+      },
+      {
+        "id": "flawless_victory",
+        "name": "Flawless Victory",
+        "description": "Win a combat without taking damage",
+        "category": "combat",
+        "trigger": {
+          "type": "no_damage_combat",
+          "threshold": 1
+        },
+        "rewards": {
+          "fossils": 50,
+          "unlocks": ["trait_swift_reflexes"],
+          "achievement": "flawless_victory"
+        },
+        "displayIcon": "✨",
+        "hidden": true
+      },
+      {
+        "id": "speed_demon",
+        "name": "Speed Demon",
+        "description": "Win a combat in 3 turns or less",
+        "category": "combat",
+        "trigger": {
+          "type": "quick_combat",
+          "threshold": 3
+        },
+        "rewards": {
+          "fossils": 40,
+          "unlocks": [],
+          "achievement": "speed_demon"
+        },
+        "displayIcon": "⚡",
+        "hidden": true
+      },
+      {
+        "id": "tank_win",
+        "name": "The Unbreakable",
+        "description": "Win 10 encounters via defensive strategy (50%+ defense stance usage)",
+        "category": "combat",
+        "trigger": {
+          "type": "defensive_wins",
+          "threshold": 10
+        },
+        "rewards": {
+          "fossils": 100,
+          "unlocks": ["dinosaur_pachycephalosaurus"],
+          "achievement": "the_unbreakable"
+        },
+        "displayIcon": "🛡️",
+        "hidden": false
+      }
+    ],
+    "exploration": [
+      {
+        "id": "pioneer",
+        "name": "Pioneer",
+        "description": "Reach depth 5",
+        "category": "exploration",
+        "trigger": {
+          "type": "max_depth",
+          "threshold": 5
+        },
+        "rewards": {
+          "fossils": 50,
+          "unlocks": [],
+          "achievement": "pioneer"
+        },
+        "displayIcon": "🌿",
+        "hidden": false
+      },
+      {
+        "id": "deep_diver",
+        "name": "Deep Diver",
+        "description": "Reach depth 10",
+        "category": "exploration",
+        "trigger": {
+          "type": "max_depth",
+          "threshold": 10
+        },
+        "rewards": {
+          "fossils": 100,
+          "unlocks": ["biome_volcanic_highlands"],
+          "achievement": "deep_diver"
+        },
+        "displayIcon": "🌋",
+        "hidden": false
+      },
+      {
+        "id": "underworld",
+        "name": "Into the Underworld",
+        "description": "Reach depth 15",
+        "category": "exploration",
+        "trigger": {
+          "type": "max_depth",
+          "threshold": 15
+        },
+        "rewards": {
+          "fossils": 200,
+          "unlocks": ["biome_tar_pits"],
+          "achievement": "into_the_underworld"
+        },
+        "displayIcon": "🕳️",
+        "hidden": false
+      },
+      {
+        "id": "biome_explorer",
+        "name": "Biome Explorer",
+        "description": "Visit all 4 biomes in a single run",
+        "category": "exploration",
+        "trigger": {
+          "type": "biomes_in_run",
+          "threshold": 4
+        },
+        "rewards": {
+          "fossils": 150,
+          "unlocks": ["trait_migratory"],
+          "achievement": "biome_explorer"
+        },
+        "displayIcon": "🗺️",
+        "hidden": false
+      },
+      {
+        "id": "completionist",
+        "name": "Completionist",
+        "description": "Clear all nodes in a biome",
+        "category": "exploration",
+        "trigger": {
+          "type": "biome_100_percent",
+          "threshold": 1
+        },
+        "rewards": {
+          "fossils": 100,
+          "unlocks": [],
+          "achievement": "completionist"
+        },
+        "displayIcon": "✅",
+        "hidden": false
+      }
+    ],
+    "collection": [
+      {
+        "id": "fossil_finder",
+        "name": "Fossil Finder",
+        "description": "Collect 100 fossils total",
+        "category": "collection",
+        "trigger": {
+          "type": "total_fossils",
+          "threshold": 100
+        },
+        "rewards": {
+          "fossils": 25,
+          "unlocks": [],
+          "achievement": "fossil_finder"
+        },
+        "displayIcon": "🦴",
+        "hidden": false
+      },
+      {
+        "id": "paleontologist",
+        "name": "Paleontologist",
+        "description": "Collect 500 fossils total",
+        "category": "collection",
+        "trigger": {
+          "type": "total_fossils",
+          "threshold": 500
+        },
+        "rewards": {
+          "fossils": 100,
+          "unlocks": ["upgrade_fossil_magnet"],
+          "achievement": "paleontologist"
+        },
+        "displayIcon": "🔬",
+        "hidden": false
+      },
+      {
+        "id": "museum_curator",
+        "name": "Museum Curator",
+        "description": "Collect 2000 fossils total",
+        "category": "collection",
+        "trigger": {
+          "type": "total_fossils",
+          "threshold": 2000
+        },
+        "rewards": {
+          "fossils": 500,
+          "unlocks": ["trait_living_fossil"],
+          "achievement": "museum_curator"
+        },
+        "displayIcon": "🏛️",
+        "hidden": false
+      },
+      {
+        "id": "codex_initiate",
+        "name": "Codex Initiate",
+        "description": "Discover 10 codex entries",
+        "category": "collection",
+        "trigger": {
+          "type": "codex_entries",
+          "threshold": 10
+        },
+        "rewards": {
+          "fossils": 50,
+          "unlocks": [],
+          "achievement": "codex_initiate"
+        },
+        "displayIcon": "📖",
+        "hidden": false
+      },
+      {
+        "id": "codex_scholar",
+        "name": "Codex Scholar",
+        "description": "Discover 25 codex entries",
+        "category": "collection",
+        "trigger": {
+          "type": "codex_entries",
+          "threshold": 25
+        },
+        "rewards": {
+          "fossils": 100,
+          "unlocks": ["trait_ancient_wisdom"],
+          "achievement": "codex_scholar"
+        },
+        "displayIcon": "📚",
+        "hidden": false
+      },
+      {
+        "id": "codex_master",
+        "name": "Codex Master",
+        "description": "Complete the entire codex",
+        "category": "collection",
+        "trigger": {
+          "type": "codex_complete",
+          "threshold": 100
+        },
+        "rewards": {
+          "fossils": 500,
+          "unlocks": ["dinosaur_special_variant"],
+          "achievement": "codex_master"
+        },
+        "displayIcon": "🎓",
+        "hidden": false
+      },
+      {
+        "id": "trait_collector",
+        "name": "Trait Collector",
+        "description": "Acquire 20 different traits across all runs",
+        "category": "collection",
+        "trigger": {
+          "type": "unique_traits",
+          "threshold": 20
+        },
+        "rewards": {
+          "fossils": 150,
+          "unlocks": [],
+          "achievement": "trait_collector"
+        },
+        "displayIcon": "🧬",
+        "hidden": false
+      }
+    ],
+    "progression": [
+      {
+        "id": "survivor",
+        "name": "Survivor",
+        "description": "Complete your first run (victory)",
+        "category": "progression",
+        "trigger": {
+          "type": "run_victories",
+          "threshold": 1
+        },
+        "rewards": {
+          "fossils": 200,
+          "unlocks": ["difficulty_permian"],
+          "achievement": "survivor"
+        },
+        "displayIcon": "🏅",
+        "hidden": false
+      },
+      {
+        "id": "veteran",
+        "name": "Veteran",
+        "description": "Complete 5 runs (any outcome)",
+        "category": "progression",
+        "trigger": {
+          "type": "total_runs",
+          "threshold": 5
+        },
+        "rewards": {
+          "fossils": 75,
+          "unlocks": [],
+          "achievement": "veteran"
+        },
+        "displayIcon": "🎖️",
+        "hidden": false
+      },
+      {
+        "id": "persistent",
+        "name": "Persistent",
+        "description": "Complete 25 runs (any outcome)",
+        "category": "progression",
+        "trigger": {
+          "type": "total_runs",
+          "threshold": 25
+        },
+        "rewards": {
+          "fossils": 200,
+          "unlocks": ["dinosaur_therizinosaurus"],
+          "achievement": "persistent"
+        },
+        "displayIcon": "🔄",
+        "hidden": false
+      },
+      {
+        "id": "master_runner",
+        "name": "Master Runner",
+        "description": "Win 10 runs",
+        "category": "progression",
+        "trigger": {
+          "type": "run_victories",
+          "threshold": 10
+        },
+        "rewards": {
+          "fossils": 500,
+          "unlocks": ["dinosaur_parasaurolophus"],
+          "achievement": "master_runner"
+        },
+        "displayIcon": "🌟",
+        "hidden": false
+      },
+      {
+        "id": "level_10",
+        "name": "Growing Strong",
+        "description": "Reach level 10 in a single run",
+        "category": "progression",
+        "trigger": {
+          "type": "max_level_run",
+          "threshold": 10
+        },
+        "rewards": {
+          "fossils": 100,
+          "unlocks": [],
+          "achievement": "growing_strong"
+        },
+        "displayIcon": "📈",
+        "hidden": false
+      }
+    ],
+    "challenge": [
+      {
+        "id": "speedrunner",
+        "name": "Speedrunner",
+        "description": "Complete a run in under 15 minutes",
+        "category": "challenge",
+        "trigger": {
+          "type": "fast_run",
+          "threshold": 900000
+        },
+        "rewards": {
+          "fossils": 150,
+          "unlocks": [],
+          "achievement": "speedrunner"
+        },
+        "displayIcon": "⏱️",
+        "hidden": true
+      },
+      {
+        "id": "pacifist_path",
+        "name": "Pacifist Path",
+        "description": "Reach depth 5 without killing any enemies",
+        "category": "challenge",
+        "trigger": {
+          "type": "pacifist_depth",
+          "threshold": 5
+        },
+        "rewards": {
+          "fossils": 100,
+          "unlocks": ["trait_camouflage"],
+          "achievement": "pacifist_path"
+        },
+        "displayIcon": "🕊️",
+        "hidden": true
+      },
+      {
+        "id": "glass_cannon",
+        "name": "Glass Cannon",
+        "description": "Win a boss fight with less than 10 HP remaining",
+        "category": "challenge",
+        "trigger": {
+          "type": "close_boss_win",
+          "threshold": 10
+        },
+        "rewards": {
+          "fossils": 75,
+          "unlocks": [],
+          "achievement": "glass_cannon"
+        },
+        "displayIcon": "💥",
+        "hidden": true
+      },
+      {
+        "id": "untouchable",
+        "name": "Untouchable",
+        "description": "Complete a biome without taking any damage",
+        "category": "challenge",
+        "trigger": {
+          "type": "no_damage_biome",
+          "threshold": 1
+        },
+        "rewards": {
+          "fossils": 200,
+          "unlocks": ["trait_extinction_survivor"],
+          "achievement": "untouchable"
+        },
+        "displayIcon": "👻",
+        "hidden": true
+      }
+    ],
+    "special": [
+      {
+        "id": "darwin_award",
+        "name": "Darwin Award",
+        "description": "Die to the same enemy species 3 times",
+        "category": "special",
+        "trigger": {
+          "type": "deaths_to_same_enemy",
+          "threshold": 3
+        },
+        "rewards": {
+          "fossils": 10,
+          "unlocks": [],
+          "achievement": "darwin_award"
+        },
+        "displayIcon": "🤦",
+        "hidden": true
+      },
+      {
+        "id": "early_extinction",
+        "name": "Early Extinction",
+        "description": "Die on the first encounter",
+        "category": "special",
+        "trigger": {
+          "type": "first_encounter_death",
+          "threshold": 1
+        },
+        "rewards": {
+          "fossils": 5,
+          "unlocks": [],
+          "achievement": "early_extinction"
+        },
+        "displayIcon": "😅",
+        "hidden": true
+      },
+      {
+        "id": "all_dinosaurs",
+        "name": "Jurassic Park",
+        "description": "Unlock all playable dinosaurs",
+        "category": "special",
+        "trigger": {
+          "type": "dinosaurs_unlocked",
+          "threshold": 7
+        },
+        "rewards": {
+          "fossils": 500,
+          "unlocks": [],
+          "achievement": "jurassic_park"
+        },
+        "displayIcon": "🦕",
+        "hidden": false
+      }
+    ]
+  },
+  "unlockRequirements": {
+    "dinosaurs": {
+      "deinonychus": {
+        "type": "always",
+        "description": "Available from start"
+      },
+      "ankylosaurus": {
+        "type": "always",
+        "description": "Available from start"
+      },
+      "pteranodon": {
+        "type": "always",
+        "description": "Available from start"
+      },
+      "tyrannosaurus": {
+        "type": "depth",
+        "value": 5,
+        "description": "Reach Swamp Depth 5"
+      },
+      "pachycephalosaurus": {
+        "type": "defensive_wins",
+        "value": 10,
+        "description": "Win 10 encounters via defensive strategy"
+      },
+      "therizinosaurus": {
+        "type": "total_runs",
+        "value": 25,
+        "description": "Complete 25 runs"
+      },
+      "parasaurolophus": {
+        "type": "run_victories",
+        "value": 10,
+        "description": "Win 10 runs"
+      }
+    },
+    "biomes": {
+      "coastal_wetlands": {
+        "type": "always",
+        "description": "Starting biome"
+      },
+      "fern_prairies": {
+        "type": "depth",
+        "value": 5,
+        "description": "Complete Coastal Wetlands"
+      },
+      "volcanic_highlands": {
+        "type": "depth",
+        "value": 10,
+        "description": "Reach depth 10"
+      },
+      "tar_pits": {
+        "type": "depth",
+        "value": 15,
+        "description": "Reach depth 15"
+      }
+    },
+    "difficulties": {
+      "normal": {
+        "type": "always",
+        "description": "Default difficulty"
+      },
+      "permian": {
+        "type": "run_victories",
+        "value": 1,
+        "description": "Complete your first run"
+      },
+      "extinction": {
+        "type": "run_victories",
+        "value": 5,
+        "description": "Win 5 runs"
+      }
+    }
+  },
+  "permanentUpgrades": {
+    "starting_hp": {
+      "name": "Robust Constitution",
+      "description": "Start runs with bonus HP",
+      "tiers": [
+        { "level": 1, "bonus": 5, "cost": 50 },
+        { "level": 2, "bonus": 10, "cost": 100 },
+        { "level": 3, "bonus": 15, "cost": 200 },
+        { "level": 4, "bonus": 20, "cost": 350 },
+        { "level": 5, "bonus": 25, "cost": 500 }
+      ],
+      "icon": "❤️"
+    },
+    "starting_fossils": {
+      "name": "Inheritance",
+      "description": "Start runs with bonus fossils",
+      "tiers": [
+        { "level": 1, "bonus": 3, "cost": 25 },
+        { "level": 2, "bonus": 5, "cost": 50 },
+        { "level": 3, "bonus": 8, "cost": 100 },
+        { "level": 4, "bonus": 10, "cost": 175 }
+      ],
+      "icon": "🦴"
+    },
+    "starting_traits": {
+      "name": "Evolutionary Head Start",
+      "description": "Start runs with pre-acquired traits",
+      "tiers": [
+        { "level": 1, "bonus": 1, "cost": 200 },
+        { "level": 2, "bonus": 2, "cost": 500 }
+      ],
+      "icon": "🧬"
+    },
+    "codex_insight": {
+      "name": "Scientific Knowledge",
+      "description": "View enemy stats before combat",
+      "tiers": [
+        { "level": 1, "bonus": "basic_stats", "cost": 150 },
+        { "level": 2, "bonus": "full_stats", "cost": 300 },
+        { "level": 3, "bonus": "weaknesses", "cost": 500 }
+      ],
+      "icon": "📖"
+    },
+    "fossil_multiplier": {
+      "name": "Keen Eye",
+      "description": "Bonus to fossil collection",
+      "tiers": [
+        { "level": 1, "bonus": 0.05, "cost": 100 },
+        { "level": 2, "bonus": 0.10, "cost": 200 },
+        { "level": 3, "bonus": 0.15, "cost": 400 },
+        { "level": 4, "bonus": 0.20, "cost": 700 }
+      ],
+      "icon": "🔍"
+    },
+    "death_retention": {
+      "name": "Preserved Legacy",
+      "description": "Keep more fossils on death",
+      "tiers": [
+        { "level": 1, "bonus": 0.55, "cost": 150 },
+        { "level": 2, "bonus": 0.60, "cost": 300 },
+        { "level": 3, "bonus": 0.70, "cost": 500 }
+      ],
+      "icon": "☠️"
+    }
+  }
+}
