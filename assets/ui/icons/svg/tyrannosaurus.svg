@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <!-- Tyrannosaurus Rex - Apex predator -->
+  <g>
+    <!-- Body -->
+    <ellipse cx="70" cy="65" rx="35" ry="25" fill="#8B4513"/>
+    <!-- Neck -->
+    <path d="M42 55 Q30 45 28 35" stroke="#8B4513" stroke-width="18" fill="none"/>
+    <!-- Head -->
+    <path d="M15 20 L40 25 L42 40 L35 45 L15 40 Z" fill="#8B4513"/>
+    <!-- Jaw -->
+    <path d="M15 40 L35 45 L38 55 L15 50 Z" fill="#A0522D"/>
+    <!-- Teeth -->
+    <path d="M18 40 L20 45 L22 40 L24 45 L26 40 L28 45 L30 40 L32 45" 
+          stroke="#FFFFFF" stroke-width="2" fill="none"/>
+    <path d="M18 50 L20 45 L22 50 L24 45 L26 50 L28 45 L30 50" 
+          stroke="#FFFFFF" stroke-width="2" fill="none"/>
+    <!-- Eye -->
+    <circle cx="28" cy="28" r="5" fill="#FFFFFF"/>
+    <circle cx="29" cy="28" r="3" fill="#D94A3D"/>
+    <circle cx="29.5" cy="27.5" r="1.5" fill="#1A1A1A"/>
+    <!-- Tiny arms -->
+    <path d="M48 55 L42 62 L40 58" stroke="#8B4513" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M40 58 L38 56 M40 58 L42 56" stroke="#654321" stroke-width="2" stroke-linecap="round"/>
+    <!-- Powerful legs -->
+    <path d="M55 85 L50 105 L58 110 L54 100 L60 88" fill="#A0522D"/>
+    <path d="M85 85 L88 105 L96 108 L92 98 L88 88" fill="#A0522D"/>
+    <!-- Tail -->
+    <path d="M105 62 Q120 58 128 48" stroke="#8B4513" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <!-- Stripes -->
+    <path d="M60 50 L65 80" stroke="#654321" stroke-width="3"/>
+    <path d="M75 48 L80 82" stroke="#654321" stroke-width="3"/>
+    <path d="M90 52 L92 75" stroke="#654321" stroke-width="3"/>
+    <!-- Belly -->
+    <ellipse cx="65" cy="78" rx="20" ry="10" fill="#D2B48C" opacity="0.6"/>
+  </g>
+</svg>

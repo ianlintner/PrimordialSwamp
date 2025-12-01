@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Ability/Magic sparkle icon -->
+  <g>
+    <!-- Main star -->
+    <path d="M32 4 L36 24 L56 28 L36 32 L32 52 L28 32 L8 28 L28 24 Z" 
+          fill="#FFD700" stroke="#B8860B" stroke-width="2"/>
+    <!-- Glow effect -->
+    <path d="M32 4 L36 24 L56 28 L36 32 L32 52 L28 32 L8 28 L28 24 Z" 
+          fill="#FFFFFF" opacity="0.3"/>
+    <!-- Small sparkles -->
+    <circle cx="48" cy="16" r="3" fill="#FFD700"/>
+    <circle cx="16" cy="44" r="2" fill="#FFD700"/>
+    <circle cx="52" cy="48" r="2.5" fill="#FFD700"/>
+    <circle cx="12" cy="12" r="2" fill="#FFD700"/>
+  </g>
+</svg>

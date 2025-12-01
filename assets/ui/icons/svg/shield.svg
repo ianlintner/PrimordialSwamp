@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Defense/Shield icon -->
+  <g>
+    <!-- Shield shape -->
+    <path d="M32 4 L56 12 L56 32 Q56 52 32 60 Q8 52 8 32 L8 12 Z" 
+          fill="#4A9D5F" stroke="#3D7A4D" stroke-width="3"/>
+    <!-- Inner border -->
+    <path d="M32 10 L50 16 L50 32 Q50 48 32 54 Q14 48 14 32 L14 16 Z" 
+          fill="none" stroke="#6AB87A" stroke-width="2"/>
+    <!-- Emblem -->
+    <path d="M32 20 L38 32 L32 44 L26 32 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1"/>
+    <!-- Highlight -->
+    <path d="M18 16 Q24 20 28 30" stroke="#FFFFFF" stroke-width="2" opacity="0.3" fill="none"/>
+  </g>
+</svg>

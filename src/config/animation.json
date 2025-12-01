@@ -1,0 +1,425 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "Primordial Swamp Animation Configuration",
+  "version": "1.0.0",
+  "description": "Animation timing, easing, and tuning parameters for sprites and UI",
+
+  "timing": {
+    "description": "All timing values in milliseconds unless otherwise noted",
+    
+    "combat": {
+      "attackWindup": 100,
+      "attackImpact": 50,
+      "attackRecovery": 150,
+      "attackLunge": 150,
+      "attackLungeDistance": 50,
+      
+      "hurtReaction": 100,
+      "hurtRecovery": 200,
+      "hurtFlash": {
+        "duration": 50,
+        "repeats": 3
+      },
+      
+      "deathFall": 400,
+      "deathFade": 500,
+      
+      "turnTransition": 200,
+      "combatIntro": 800,
+      "victoryPose": 1500,
+      "victoryBounce": 300,
+      
+      "screenShakeDuration": {
+        "light": 100,
+        "heavy": 150,
+        "critical": 300
+      }
+    },
+
+    "ui": {
+      "buttonHover": 150,
+      "buttonClick": 50,
+      "buttonClickRecover": 100,
+      
+      "panelSlideIn": 300,
+      "panelSlideOut": 200,
+      "panelFadeIn": 250,
+      "panelFadeOut": 150,
+      
+      "healthBarTransition": 300,
+      "staminaBarTransition": 200,
+      "statChange": 400,
+      
+      "damageNumberLifespan": 1000,
+      "damageNumberRise": 50,
+      
+      "tooltipDelay": 500,
+      "tooltipFadeIn": 150,
+      "tooltipFadeOut": 100,
+      
+      "notificationSlideIn": 300,
+      "notificationDuration": 3000,
+      "notificationFadeOut": 300
+    },
+
+    "scene": {
+      "fadeIn": 300,
+      "fadeOut": 300,
+      "sceneSwitch": 500,
+      "bootDelay": 500,
+      
+      "introSequencePerScene": 3000,
+      "introFadeIn": 1000,
+      "introFadeOut": 500
+    },
+
+    "map": {
+      "nodeHoverScale": 200,
+      "nodeSelectionPulse": 400,
+      "pathDrawSpeed": 100,
+      "playerMoveDuration": 300,
+      "fogReveal": 500
+    },
+
+    "effects": {
+      "particleBurst": 300,
+      "particleFade": 600,
+      "glowPulse": 1000,
+      "shimmer": 2000
+    }
+  },
+
+  "easing": {
+    "description": "Phaser easing function names for different animation contexts",
+    
+    "ui": {
+      "buttonPress": "Power2.easeOut",
+      "buttonRelease": "Power2.easeIn",
+      "panelSlide": "Sine.easeInOut",
+      "fadeTransition": "Linear",
+      "popIn": "Back.easeOut",
+      "popOut": "Back.easeIn"
+    },
+
+    "combat": {
+      "attackLunge": "Power2.easeIn",
+      "attackRecoil": "Power2.easeOut",
+      "hurtStagger": "Back.easeOut",
+      "deathFall": "Bounce.easeOut",
+      "damageNumberFloat": "Power2.easeOut"
+    },
+
+    "effects": {
+      "screenShake": "Sine.easeInOut",
+      "flash": "Power1.easeOut",
+      "glow": "Sine.easeInOut",
+      "pulse": "Sine.easeInOut"
+    },
+
+    "natural": {
+      "floating": "Sine.easeInOut",
+      "breathing": "Sine.easeInOut",
+      "bobbing": "Sine.easeInOut",
+      "swaying": "Sine.easeInOut"
+    },
+
+    "dramatic": {
+      "levelUp": "Elastic.easeOut",
+      "achievement": "Back.easeOut",
+      "victoryBounce": "Bounce.easeOut",
+      "defeatSlump": "Power3.easeIn"
+    }
+  },
+
+  "spriteAnimations": {
+    "description": "Animation configuration per sprite type",
+    "frameRates": {
+      "idle": {
+        "base": 8,
+        "slow": 6,
+        "fast": 12
+      },
+      "attack": {
+        "base": 12,
+        "slow": 10,
+        "fast": 16
+      },
+      "hurt": {
+        "base": 10,
+        "slow": 8,
+        "fast": 12
+      },
+      "death": {
+        "base": 8,
+        "slow": 6,
+        "fast": 10
+      },
+      "special": {
+        "base": 10,
+        "slow": 8,
+        "fast": 14
+      }
+    },
+
+    "dinosaurProfiles": {
+      "description": "Speed profiles for different dinosaur types. Dinosaurs are categorized by a 'speedClass' tag in their data definitions.",
+      
+      "agile": {
+        "description": "Fast, nimble dinosaurs with quick attack animations",
+        "idleFrameRate": 10,
+        "attackFrameRate": 16,
+        "hurtFrameRate": 12,
+        "deathFrameRate": 8,
+        "movementSpeed": 1.2,
+        "speedClassTag": "agile",
+        "examples": ["deinonychus", "velociraptor", "pteranodon", "troodon", "compsognathus", "coelophysis"]
+      },
+      
+      "heavy": {
+        "description": "Large, slow dinosaurs with deliberate, powerful animations",
+        "idleFrameRate": 6,
+        "attackFrameRate": 10,
+        "hurtFrameRate": 8,
+        "deathFrameRate": 6,
+        "movementSpeed": 0.8,
+        "speedClassTag": "heavy",
+        "examples": ["ankylosaurus", "therizinosaurus", "tyrannosaurus", "spinosaurus", "allosaurus"]
+      },
+      
+      "balanced": {
+        "description": "Medium-sized dinosaurs with balanced timing (default profile)",
+        "idleFrameRate": 8,
+        "attackFrameRate": 12,
+        "hurtFrameRate": 10,
+        "deathFrameRate": 8,
+        "movementSpeed": 1.0,
+        "speedClassTag": "balanced",
+        "examples": ["pachycephalosaurus", "parasaurolophus", "carnotaurus", "dilophosaurus", "kentrosaurus"]
+      }
+    }
+  },
+
+  "tweenDefaults": {
+    "description": "Default tween configurations for common animation patterns",
+    
+    "titleFloat": {
+      "y": {
+        "offset": 10,
+        "duration": 2000,
+        "yoyo": true,
+        "repeat": -1,
+        "ease": "Sine.easeInOut"
+      }
+    },
+
+    "buttonHover": {
+      "scale": {
+        "value": 1.05,
+        "duration": 150,
+        "ease": "Power2.easeOut"
+      }
+    },
+
+    "buttonClick": {
+      "scale": {
+        "value": 0.95,
+        "duration": 50,
+        "yoyo": true,
+        "ease": "Power2.easeOut"
+      }
+    },
+
+    "nodeGlow": {
+      "alpha": {
+        "min": 0.5,
+        "max": 1.0,
+        "duration": 500,
+        "yoyo": true,
+        "repeat": -1,
+        "ease": "Sine.easeInOut"
+      }
+    },
+
+    "damageNumber": {
+      "y": {
+        "offset": -50,
+        "duration": 1000,
+        "ease": "Power2.easeOut"
+      },
+      "alpha": {
+        "end": 0,
+        "duration": 1000,
+        "ease": "Power2.easeIn"
+      },
+      "scale": {
+        "critical": {
+          "start": 1.5,
+          "end": 1.0,
+          "duration": 200
+        }
+      }
+    },
+
+    "healthBarDamage": {
+      "shake": {
+        "x": {
+          "offset": 3,
+          "duration": 50,
+          "yoyo": true,
+          "repeat": 3
+        }
+      },
+      "fill": {
+        "duration": 300,
+        "ease": "Power2.easeOut"
+      }
+    },
+
+    "combatantEntry": {
+      "player": {
+        "x": {
+          "from": -200,
+          "duration": 500,
+          "ease": "Back.easeOut"
+        }
+      },
+      "enemy": {
+        "x": {
+          "from": 200,
+          "duration": 500,
+          "ease": "Back.easeOut"
+        }
+      }
+    },
+
+    "victoryPose": {
+      "jump": {
+        "y": {
+          "offset": -30,
+          "duration": 300,
+          "yoyo": true,
+          "ease": "Power2.easeOut"
+        }
+      },
+      "scale": {
+        "value": 1.1,
+        "duration": 200,
+        "yoyo": true,
+        "ease": "Power2.easeOut"
+      }
+    },
+
+    "defeatSlump": {
+      "y": {
+        "offset": 20,
+        "duration": 500,
+        "ease": "Power3.easeIn"
+      },
+      "alpha": {
+        "end": 0.5,
+        "duration": 800,
+        "ease": "Power2.easeIn"
+      }
+    }
+  },
+
+  "particleAnimations": {
+    "description": "Particle effect animation parameters",
+    
+    "hitImpact": {
+      "count": { "min": 6, "max": 10 },
+      "speed": { "min": 50, "max": 150 },
+      "angle": { "min": 0, "max": 360 },
+      "lifespan": { "min": 200, "max": 400 },
+      "scale": { "start": 1.0, "end": 0.2 },
+      "alpha": { "start": 1.0, "end": 0.0 }
+    },
+
+    "criticalHit": {
+      "count": { "min": 12, "max": 18 },
+      "speed": { "min": 100, "max": 250 },
+      "angle": { "min": 0, "max": 360 },
+      "lifespan": { "min": 300, "max": 600 },
+      "scale": { "start": 1.5, "end": 0.3 },
+      "alpha": { "start": 1.0, "end": 0.0 },
+      "blendMode": "ADD"
+    },
+
+    "healRise": {
+      "count": { "min": 4, "max": 8 },
+      "speed": { "min": 30, "max": 60 },
+      "angle": { "min": 250, "max": 290 },
+      "lifespan": { "min": 600, "max": 1000 },
+      "scale": { "start": 0.5, "end": 0.8 },
+      "alpha": { "start": 1.0, "end": 0.0 }
+    },
+
+    "death": {
+      "count": { "min": 15, "max": 25 },
+      "speed": { "min": 20, "max": 80 },
+      "angle": { "min": 0, "max": 360 },
+      "lifespan": { "min": 500, "max": 1000 },
+      "gravityY": 100,
+      "scale": { "start": 0.8, "end": 0.2 },
+      "alpha": { "start": 0.8, "end": 0.0 }
+    }
+  },
+
+  "reducedMotion": {
+    "description": "Alternative values when reduced motion is enabled",
+    "enabled": false,
+    
+    "overrides": {
+      "timing": {
+        "combat": {
+          "attackWindup": 0,
+          "attackRecovery": 0,
+          "hurtReaction": 0,
+          "victoryPose": 0
+        },
+        "ui": {
+          "buttonHover": 0,
+          "panelSlideIn": 0,
+          "panelSlideOut": 0,
+          "damageNumberLifespan": 500
+        },
+        "scene": {
+          "fadeIn": 100,
+          "fadeOut": 100
+        }
+      },
+      
+      "disableEffects": [
+        "screenShake",
+        "titleFloat",
+        "nodeGlow",
+        "particleBurst"
+      ]
+    }
+  },
+
+  "performanceProfiles": {
+    "description": "Animation complexity levels for different performance targets",
+    
+    "high": {
+      "particleCount": 1.0,
+      "animationFrameRate": 1.0,
+      "effectsEnabled": true,
+      "description": "Full animation quality"
+    },
+    
+    "medium": {
+      "particleCount": 0.6,
+      "animationFrameRate": 0.8,
+      "effectsEnabled": true,
+      "description": "Reduced particles, slightly slower animations"
+    },
+    
+    "low": {
+      "particleCount": 0.3,
+      "animationFrameRate": 0.6,
+      "effectsEnabled": false,
+      "description": "Minimal particles, basic animations only"
+    }
+  }
+}

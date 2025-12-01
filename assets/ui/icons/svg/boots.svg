@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Flee/Run boots icon -->
+  <g>
+    <!-- Boot shape -->
+    <path d="M20 8 L24 8 L28 40 L44 40 L48 48 L48 56 L8 56 L8 48 L16 40 L20 8 Z" 
+          fill="#8B4513" stroke="#654321" stroke-width="2"/>
+    <!-- Boot cuff -->
+    <path d="M18 8 L26 8 L26 16 L18 16 Z" fill="#A0522D" stroke="#654321" stroke-width="1"/>
+    <!-- Sole -->
+    <rect x="8" y="52" width="40" height="6" rx="2" fill="#2F2F2F" stroke="#1A1A1A" stroke-width="1"/>
+    <!-- Speed lines -->
+    <path d="M52 20 L62 20" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+    <path d="M54 28 L62 28" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+    <path d="M52 36 L60 36" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

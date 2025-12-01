@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Bone/Fossil icon for collectibles -->
+  <g stroke="#FFFAF0" stroke-width="3" fill="#F5F5DC">
+    <!-- Main bone shaft -->
+    <ellipse cx="32" cy="32" rx="18" ry="8" transform="rotate(-45 32 32)"/>
+    <!-- Left knob -->
+    <circle cx="19" cy="19" r="8"/>
+    <circle cx="12" cy="26" r="6"/>
+    <!-- Right knob -->
+    <circle cx="45" cy="45" r="8"/>
+    <circle cx="52" cy="38" r="6"/>
+  </g>
+  <!-- Highlight -->
+  <ellipse cx="28" cy="28" rx="6" ry="3" fill="#FFFFFF" opacity="0.3" transform="rotate(-45 28 28)"/>
+</svg>

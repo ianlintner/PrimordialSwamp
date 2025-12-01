@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Resource/Leaf icon -->
+  <g>
+    <!-- Leaf shape -->
+    <path d="M32 4 Q56 16 56 40 Q44 56 32 60 Q20 56 8 40 Q8 16 32 4 Z" 
+          fill="#4A9D5F" stroke="#3D7A4D" stroke-width="2"/>
+    <!-- Leaf vein (center) -->
+    <path d="M32 12 L32 56" stroke="#3D7A4D" stroke-width="2"/>
+    <!-- Side veins -->
+    <path d="M32 20 Q40 24 48 28" stroke="#3D7A4D" stroke-width="1.5" fill="none"/>
+    <path d="M32 20 Q24 24 16 28" stroke="#3D7A4D" stroke-width="1.5" fill="none"/>
+    <path d="M32 32 Q42 36 50 40" stroke="#3D7A4D" stroke-width="1.5" fill="none"/>
+    <path d="M32 32 Q22 36 14 40" stroke="#3D7A4D" stroke-width="1.5" fill="none"/>
+    <path d="M32 44 Q38 48 44 50" stroke="#3D7A4D" stroke-width="1.5" fill="none"/>
+    <path d="M32 44 Q26 48 20 50" stroke="#3D7A4D" stroke-width="1.5" fill="none"/>
+    <!-- Highlight -->
+    <path d="M20 16 Q28 12 32 12" stroke="#6AB87A" stroke-width="3" opacity="0.5" fill="none"/>
+  </g>
+</svg>
