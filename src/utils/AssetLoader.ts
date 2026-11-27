@@ -5,7 +5,9 @@ import {
   AudioAsset,
   getAllSprites,
   getAllImages,
-  getAllAudio,
+  getLoadableSprites,
+  getLoadableImages,
+  getLoadableAudio,
 } from '../config/assets';
 
 /**
@@ -34,7 +36,10 @@ export class AssetLoader {
   }
 
   /**
-   * Load all game assets with fallback placeholder generation
+   * Load all shipped game assets with fallback placeholder generation.
+   * Manifest entries without `available: true` are never requested: requesting
+   * them produced 124 HTTP 404s and 124 console errors at boot. Their textures
+   * are still created by generatePlaceholders(), so no scene changes appearance.
    */
   async loadAllAssets(): Promise<void> {
     // Set up error handling for missing assets
@@ -43,21 +48,18 @@ export class AssetLoader {
       this.failedAssets.add(file.key);
     });
 
-    // Load sprites
-    const sprites = getAllSprites();
-    for (const sprite of sprites) {
+    // Load only sprites whose files ship in public/
+    for (const sprite of getLoadableSprites()) {
       this.loadSpritesheet(sprite);
     }
 
-    // Load images
-    const images = getAllImages();
-    for (const image of images) {
+    // Load only images whose files ship in public/
+    for (const image of getLoadableImages()) {
       this.loadImage(image);
     }
 
-    // Load audio
-    const audio = getAllAudio();
-    for (const audioAsset of audio) {
+    // Load only audio whose files ship in public/
+    for (const audioAsset of getLoadableAudio()) {
       this.loadAudio(audioAsset);
     }
   }

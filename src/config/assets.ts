@@ -9,6 +9,8 @@ export interface SpriteAsset {
   frameWidth: number;
   frameHeight: number;
   animations?: AnimationConfig[];
+  /** True only when this file is committed under public/ and may be requested at boot. */
+  available?: boolean;
 }
 
 export interface AnimationConfig {
@@ -24,11 +26,15 @@ export interface AudioAsset {
   type: 'music' | 'sfx' | 'ambience';
   loop?: boolean;
   volume?: number;
+  /** True only when this file is committed under public/ and may be requested at boot. */
+  available?: boolean;
 }
 
 export interface ImageAsset {
   key: string;
   path: string;
+  /** True only when this file is committed under public/ and may be requested at boot. */
+  available?: boolean;
 }
 
 // Player dinosaur sprites
@@ -609,4 +615,28 @@ export function getAllImages(): ImageAsset[] {
 
 export function getAllAudio(): AudioAsset[] {
   return [...MUSIC_TRACKS, ...SOUND_EFFECTS, ...AMBIENT_SOUNDS];
+}
+
+/**
+ * Manifest entries whose files actually ship under public/. AssetLoader only
+ * requests these; every other manifest key still gets a procedural placeholder.
+ * The build and config tests enforce that an `available` entry really exists.
+ */
+export function getLoadableSprites(): SpriteAsset[] {
+  return getAllSprites().filter((asset) => asset.available === true);
+}
+
+export function getLoadableImages(): ImageAsset[] {
+  return getAllImages().filter((asset) => asset.available === true);
+}
+
+export function getLoadableAudio(): AudioAsset[] {
+  return getAllAudio().filter((asset) => asset.available === true);
+}
+
+/** Every path the boot loader will request (used by the subpath build test). */
+export function getLoadableAssetPaths(): string[] {
+  return [...getLoadableSprites(), ...getLoadableImages(), ...getLoadableAudio()].map(
+    (asset) => asset.path
+  );
 }

@@ -3,7 +3,12 @@ import { spawnSync } from 'child_process';
 import { existsSync, readFileSync, mkdtempSync } from 'fs';
 import { tmpdir } from 'os';
 import { join, resolve } from 'path';
-import { getAllSprites, getAllImages, getAllAudio } from '../../src/config/assets';
+import {
+  getAllSprites,
+  getAllImages,
+  getAllAudio,
+  getLoadableAssetPaths,
+} from '../../src/config/assets';
 import { resolveAssetUrl } from '../../src/utils/AssetLoader';
 
 const BASE = '/primordial-swamp/';
@@ -41,17 +46,25 @@ describe('subpath build (--base=/primordial-swamp/)', () => {
     }
   });
 
-  it('ships every configured game asset that exists in public/', () => {
+  it('every asset the loader will request exists in public/ and in the subpath dist/', () => {
+    const loadablePaths = getLoadableAssetPaths();
+    expect(new Set(loadablePaths).size, 'duplicate loadable asset paths').toBe(loadablePaths.length);
+
+    for (const path of loadablePaths) {
+      expect(existsSync(join(root, 'public', path)), `not in public/: ${path}`).toBe(true);
+      expect(existsSync(join(outDir, path)), `not in dist: ${path}`).toBe(true);
+    }
+
+    // Inverse guard: a file that ships but is not marked available is silently
+    // replaced by a placeholder. Catch that drift here, not in the browser.
     const all = [...getAllSprites(), ...getAllImages(), ...getAllAudio()];
-    let shipped = 0;
-    for (const a of all) {
-      if (existsSync(join(root, 'public', a.path))) {
-        expect(existsSync(join(outDir, a.path)), `not in dist: ${a.path}`).toBe(true);
-        shipped++;
+    const loadable = new Set(loadablePaths);
+    for (const asset of all) {
+      if (existsSync(join(root, 'public', asset.path))) {
+        expect(loadable.has(asset.path), `shipped but not loadable: ${asset.path}`).toBe(true);
       }
     }
-    // public/ (not repo-root assets/) is what Vite copies into dist/.
-    expect(shipped).toBeGreaterThanOrEqual(0);
+
     expect(existsSync(join(outDir, 'assets/README.md'))).toBe(true);
   });
 

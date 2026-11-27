@@ -17,6 +17,9 @@ import {
   getAllSprites,
   getAllImages,
   getAllAudio,
+  getLoadableSprites,
+  getLoadableImages,
+  getLoadableAudio,
 } from '../../src/config/assets';
 
 describe('Asset Configuration', () => {
@@ -227,6 +230,34 @@ describe('Asset Configuration', () => {
       const allAudio = getAllAudio();
       const totalExpected = MUSIC_TRACKS.length + SOUND_EFFECTS.length + AMBIENT_SOUNDS.length;
       expect(allAudio.length).toBe(totalExpected);
+    });
+  });
+
+  describe('Loadable asset selection', () => {
+    it('getLoadable* returns only manifest entries explicitly marked available', () => {
+      for (const asset of [...getLoadableSprites(), ...getLoadableImages(), ...getLoadableAudio()]) {
+        expect(asset.available).toBe(true);
+      }
+    });
+
+    it('getLoadable* is a subset of the full manifest', () => {
+      for (const [loadable, all] of [
+        [getLoadableSprites(), getAllSprites()],
+        [getLoadableImages(), getAllImages()],
+        [getLoadableAudio(), getAllAudio()],
+      ] as const) {
+        expect(loadable.length).toBeLessThanOrEqual(all.length);
+        const allPaths = new Set(all.map((asset) => asset.path));
+        for (const asset of loadable) expect(allPaths.has(asset.path)).toBe(true);
+      }
+    });
+
+    it('does not mark manifest entries available', () => {
+      // No PNG/OGG in the manifest currently ships under public/. The loader
+      // must therefore request none of them; placeholders cover every key.
+      expect(getLoadableSprites()).toEqual([]);
+      expect(getLoadableImages()).toEqual([]);
+      expect(getLoadableAudio()).toEqual([]);
     });
   });
 
