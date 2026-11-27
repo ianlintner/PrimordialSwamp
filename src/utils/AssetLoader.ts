@@ -9,6 +9,18 @@ import {
 } from '../config/assets';
 
 /**
+ * Resolve a configured asset path (e.g. `assets/sprites/x.png`) against the
+ * deployment base so the game works when hosted under a subpath such as
+ * `/primordial-swamp/`.
+ */
+export function resolveAssetUrl(path: string): string {
+  if (/^([a-z][a-z0-9+.-]*:|\/\/|data:)/i.test(path)) return path;
+  const base = import.meta.env?.BASE_URL ?? './';
+  const prefix = base.endsWith('/') ? base : `${base}/`;
+  return `${prefix}${path.replace(/^\.?\//, '')}`;
+}
+
+/**
  * AssetLoader - Handles loading and registration of all game assets
  * Provides fallback placeholder generation when assets are not available
  */
@@ -56,7 +68,7 @@ export class AssetLoader {
   private loadSpritesheet(sprite: SpriteAsset): void {
     if (this.loadedAssets.has(sprite.key)) return;
 
-    this.scene.load.spritesheet(sprite.key, sprite.path, {
+    this.scene.load.spritesheet(sprite.key, resolveAssetUrl(sprite.path), {
       frameWidth: sprite.frameWidth,
       frameHeight: sprite.frameHeight,
     });
@@ -69,7 +81,7 @@ export class AssetLoader {
   private loadImage(image: ImageAsset): void {
     if (this.loadedAssets.has(image.key)) return;
 
-    this.scene.load.image(image.key, image.path);
+    this.scene.load.image(image.key, resolveAssetUrl(image.path));
     this.loadedAssets.add(image.key);
   }
 
@@ -79,7 +91,7 @@ export class AssetLoader {
   private loadAudio(audio: AudioAsset): void {
     if (this.loadedAssets.has(audio.key)) return;
 
-    this.scene.load.audio(audio.key, audio.path);
+    this.scene.load.audio(audio.key, resolveAssetUrl(audio.path));
     this.loadedAssets.add(audio.key);
   }
 

@@ -2,6 +2,8 @@
 
 A scientifically accurate dinosaur roguelite browser game inspired by Odell Lake, featuring modern roguelite mechanics, turn-based combat, and educational content about prehistoric life.
 
+**▶ Play:** https://games.cat-herding.net/primordial-swamp/ (hosted on the [Cat Herding Games](https://github.com/ianlintner/cat-herding-games) hub, which builds this repo's `main` under the `/primordial-swamp/` subpath). Game assets live in `public/assets/` and are loaded relative to `import.meta.env.BASE_URL`; `test/build/subpath.test.ts` builds with `--base=/primordial-swamp/` and fails on regressions.
+
 ## 🎮 Game Features
 
 - **3 Playable Dinosaurs**: Deinonychus (Hunter), Ankylosaurus (Tank), Pteranodon (Scout)
