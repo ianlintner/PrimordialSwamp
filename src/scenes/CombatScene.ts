@@ -9,6 +9,8 @@ import enemiesData from '../data/enemies.json';
 import traitsData from '../data/traits.json';
 import { GameStateManager } from '../managers/GameStateManager';
 import { COMBAT_TOOLTIPS } from '../utils/TooltipHelper';
+import { buildVictorySummary } from '../utils/RunCompletion';
+import { VictorySummary } from '../types/Victory.types';
 
 interface Combatant {
   id?: string;
@@ -1032,14 +1034,37 @@ export class CombatScene extends Phaser.Scene {
       GameStateManager.getInstance().unlockCodexEntry(this.enemy.id);
     }
 
+    // Count the win so the run summary is truthful.
+    GameStateManager.getInstance().recordCombatWin();
+
     // Calculate rewards
     const fossilsEarned = 5 + Math.floor(Math.random() * 10);
     const experienceGained = 10 + (this.nodeType === 'elite' ? 15 : 0) + (this.nodeType === 'boss' ? 30 : 0);
     
     // Add fossils to run
     GameStateManager.getInstance().updateResources(fossilsEarned);
+
+    const isBossVictory = this.nodeType === NodeType.BOSS;
+    const manager = GameStateManager.getInstance();
+    const activeRun = manager.getCurrentRun();
+    const victorySummary: VictorySummary = activeRun
+      ? buildVictorySummary(activeRun)
+      : {
+          dinosaur: this.playerDinosaur,
+          depth: isBossVictory ? 5 : 1,
+          combatsWon: 1,
+          fossilsCollected: fossilsEarned,
+          runDurationMs: 0,
+        };
     
     this.time.delayedCall(1500, () => {
+      if (isBossVictory) {
+        // Win state: record a victory (not a death) and clear the current run.
+        manager.endRun(true);
+        this.scene.start(SCENE_KEYS.VICTORY, victorySummary);
+        return;
+      }
+
       this.scene.start(SCENE_KEYS.REWARDS, {
         dinosaur: this.playerDinosaur,
         enemyName: this.enemy.name,

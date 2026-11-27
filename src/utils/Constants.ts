@@ -251,5 +251,6 @@ export const SCENE_KEYS = {
   REWARDS: 'RewardsScene',
   CODEX: 'CodexScene',
   GAME_OVER: 'GameOverScene',
+  VICTORY: 'VictoryScene',
   SETTINGS: 'SettingsScene'
 } as const;
