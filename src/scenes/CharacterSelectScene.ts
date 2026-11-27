@@ -72,6 +72,9 @@ export class CharacterSelectScene extends Phaser.Scene {
       false
     );
     startButton.setName('startButton');
+
+    // Enter starts a run once a dinosaur is selected.
+    this.input.keyboard?.on('keydown-ENTER', () => this.startRun());
   }
 
   private createBackground(width: number, height: number): void {
@@ -367,9 +370,8 @@ export class CharacterSelectScene extends Phaser.Scene {
     // Enable start button
     const startButton = this.children.getByName('startButton') as Phaser.GameObjects.Container;
     if (startButton) {
+      startButton.setData('enabled', true);
       startButton.setAlpha(1);
-      const bg = startButton.getAt(1) as Phaser.GameObjects.Rectangle;
-      bg.setInteractive({ useHandCursor: true });
     }
   }
 
@@ -399,21 +401,27 @@ export class CharacterSelectScene extends Phaser.Scene {
     container.add([shadow, bg, label]);
     container.setSize(buttonWidth, buttonHeight);
     
-    if (enabled) {
-      bg.setInteractive({ useHandCursor: true });
-      
-      bg.on('pointerover', () => {
-        bg.setFillStyle(color, 0.2);
-        label.setColor('#ffffff');
-      });
-      
-      bg.on('pointerout', () => {
-        bg.setFillStyle(0x1a1a1a, 1);
-        label.setColor(`#${color.toString(16).padStart(6, '0')}`);
-      });
-      
-      bg.on('pointerdown', callback);
-    } else {
+    container.setData('enabled', enabled);
+    bg.setInteractive({ useHandCursor: true });
+
+    const isEnabled = () => container.getData('enabled') === true;
+
+    bg.on('pointerover', () => {
+      if (!isEnabled()) return;
+      bg.setFillStyle(color, 0.2);
+      label.setColor('#ffffff');
+    });
+
+    bg.on('pointerout', () => {
+      bg.setFillStyle(0x1a1a1a, 1);
+      label.setColor(`#${color.toString(16).padStart(6, '0')}`);
+    });
+
+    bg.on('pointerdown', () => {
+      if (isEnabled()) callback();
+    });
+
+    if (!enabled) {
       container.setAlpha(0.5);
     }
     
@@ -424,7 +432,8 @@ export class CharacterSelectScene extends Phaser.Scene {
     if (!this.selectedDinosaur) return;
     
     // Initialize game state
-    const seed = Math.random().toString(36).substring(7);
+    const seed = new URLSearchParams(window.location.search).get('seed')
+      || Math.random().toString(36).substring(7);
     GameStateManager.getInstance().startNewRun(this.selectedDinosaur, seed);
     
     this.cameras.main.fadeOut(300);

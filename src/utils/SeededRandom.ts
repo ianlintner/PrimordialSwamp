@@ -155,7 +155,16 @@ export function isDailySeed(seed: string): boolean {
  */
 export function getDateFromDailySeed(seed: string): Date | null {
   if (!isDailySeed(seed)) return null;
-  const dateStr = seed.replace('DAILY-', '');
-  const date = new Date(dateStr);
-  return isNaN(date.getTime()) ? null : date;
+  const match = /^DAILY-(\d{4})-(\d{2})-(\d{2})$/.exec(seed);
+  if (!match) return null;
+
+  // new Date('YYYY-MM-DD') parses as UTC, shifting the calendar day west of UTC.
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const date = new Date(year, month - 1, day);
+  if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) {
+    return null;
+  }
+  return date;
 }
