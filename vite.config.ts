@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, configDefaults } from 'vitest/config';
 import { resolve } from 'path';
 
 export default defineConfig({
@@ -29,5 +29,8 @@ export default defineConfig({
       '@assets': resolve(__dirname, 'public/assets'),
       '@data': resolve(__dirname, 'src/data')
     }
+  },
+  test: {
+    exclude: [...configDefaults.exclude, 'e2e/**']
   }
 });
