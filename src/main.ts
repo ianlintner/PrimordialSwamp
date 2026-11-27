@@ -7,6 +7,7 @@ import { CombatScene } from './scenes/CombatScene';
 import { CodexScene } from './scenes/CodexScene';
 import { RewardsScene } from './scenes/RewardsScene';
 import { GameOverScene } from './scenes/GameOverScene';
+import { VictoryScene } from './scenes/VictoryScene';
 import { SettingsScene } from './scenes/SettingsScene';
 
 const config: Phaser.Types.Core.GameConfig = {
@@ -36,6 +37,7 @@ const config: Phaser.Types.Core.GameConfig = {
     CodexScene,
     RewardsScene,
     GameOverScene,
+    VictoryScene,
     SettingsScene
   ]
 };

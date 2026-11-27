@@ -3,6 +3,8 @@ import { SCENE_KEYS, GAME_CONFIG, hexToColorString } from '../utils/Constants';
 import { DinosaurType } from '../types/Dinosaur.types';
 import { NodeType } from '../types/Encounter.types';
 import { GameStateManager } from '../managers/GameStateManager';
+import { buildVictorySummary, isRunComplete } from '../utils/RunCompletion';
+import { VictorySummary } from '../types/Victory.types';
 import dinosaursData from '../data/dinosaurs.json';
 
 interface MapNodeUI {
@@ -30,6 +32,7 @@ export class MapScene extends Phaser.Scene {
   private playerMaxStamina: number = 70;
   private fossils: number = 0;
   private playerTraits: string[] = [];
+  private redirectScene?: string;
 
   constructor() {
     super({ key: SCENE_KEYS.MAP });
@@ -59,11 +62,16 @@ export class MapScene extends Phaser.Scene {
       this.selectedDinosaur = data.dinosaur;
     } else {
       // Error state, go back to menu
-      this.scene.start(SCENE_KEYS.MENU);
+      this.redirectScene = SCENE_KEYS.MENU;
     }
   }
 
   create(): void {
+    if (this.redirectScene) {
+      this.scene.start(this.redirectScene);
+      return;
+    }
+
     const { WIDTH, HEIGHT, COLORS } = GAME_CONFIG;
     
     // Background
@@ -87,9 +95,31 @@ export class MapScene extends Phaser.Scene {
     } else {
       this.generateMap();
     }
-    
+
+    // Boss defeated with no playable node left: finish the run instead of idling.
+    if (isRunComplete(this.nodes)) {
+      this.goToVictory();
+      return;
+    }
+
     // Back button
     this.createBackButton();
+  }
+
+  private goToVictory(): void {
+    const manager = GameStateManager.getInstance();
+    const run = manager.getCurrentRun();
+    const summary: VictorySummary = run
+      ? buildVictorySummary(run)
+      : {
+          dinosaur: this.selectedDinosaur,
+          depth: 5,
+          combatsWon: 0,
+          fossilsCollected: this.fossils,
+          runDurationMs: 0,
+        };
+    manager.endRun(true);
+    this.scene.start(SCENE_KEYS.VICTORY, summary);
   }
 
   private createStatsPanel(): void {

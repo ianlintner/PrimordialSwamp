@@ -171,6 +171,13 @@ export class GameStateManager {
     }
   }
 
+  public recordCombatWin(): void {
+    if (this.state.currentRun) {
+      this.state.currentRun.combatsWon++;
+      this.saveState();
+    }
+  }
+
   public clearCurrentRun(): void {
     this.endRun(false);
   }
