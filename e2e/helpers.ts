@@ -4,8 +4,9 @@ import { mkdirSync } from 'node:fs';
 export const GAME_WIDTH = 1280;
 export const GAME_HEIGHT = 720;
 
-const CAPTURE_DIR =
-  process.env.PS_CAPTURE_DIR || '/home/ilintner/lab/artifacts/primordial-swamp/t_9a1f6407';
+// Repo-relative by default so CI and other machines can write captures;
+// PS_CAPTURE_DIR overrides it for local artifact collection.
+const CAPTURE_DIR = process.env.PS_CAPTURE_DIR || 'test-results/captures';
 
 export interface Clickable {
   scene: string;
