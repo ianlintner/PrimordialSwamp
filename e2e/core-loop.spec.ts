@@ -9,9 +9,26 @@ import {
 
 const SEED = 'ps-play-1';
 
+// Headless Chromium can log GPU-driver performance warnings at error level.
+// Only those are filtered; we deliberately listen for type === 'error' so a
+// warning logged at warning level can never be mistaken for an allowed error.
+const GPU_DRIVER_PERF_ERROR =
+  /Automatic fallback to software WebGL|GPU stall due to ReadPixels|GL Driver Message|SwiftShader/i;
+
 test('core loop: menu -> select -> map -> combat -> resolution -> map/select', async ({ page }) => {
+  const consoleErrors: string[] = [];
   const pageErrors: string[] = [];
+  const failedResponses: string[] = [];
+
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
   page.on('pageerror', (error) => pageErrors.push(String(error)));
+  page.on('response', (response) => {
+    if (response.status() >= 400) {
+      failedResponses.push(`${response.status()} ${new URL(response.url()).pathname}`);
+    }
+  });
 
   await page.goto(`/?seed=${SEED}`);
   await waitForScene(page, 'MenuScene');
@@ -44,6 +61,8 @@ test('core loop: menu -> select -> map -> combat -> resolution -> map/select', a
   );
   await waitForScene(page, 'CombatScene');
   await page.waitForTimeout(500);
+  const combatCapture = await capture(page, 'ps-play-clean-boot-combat-1280.png');
+  console.log(`capture=${combatCapture}`);
 
   // 5. Click ATTACK/DEFEND until the fight resolves.
   let outcome: 'RewardsScene' | 'GameOverScene' | null = null;
@@ -87,10 +106,13 @@ test('core loop: menu -> select -> map -> combat -> resolution -> map/select', a
     await waitForScene(page, 'CharacterSelectScene');
   }
 
-  // Headless Chromium cannot decode this repo's audio assets; that is pre-existing
-  // and unrelated to the core loop. Any other page error is a real regression.
-  const unexpectedErrors = pageErrors.filter(
-    (error) => !error.includes('Unable to decode audio data')
-  );
-  expect(unexpectedErrors, `page errors: ${unexpectedErrors.join(' | ')}`).toEqual([]);
+  // Boot through the first combat must be free of console errors, page errors
+  // and failed responses. Before this fix the same window produced 124 × 404.
+  const unexpectedConsoleErrors = consoleErrors.filter((error) => !GPU_DRIVER_PERF_ERROR.test(error));
+  expect(
+    unexpectedConsoleErrors,
+    `console errors: ${unexpectedConsoleErrors.join(' | ')}`
+  ).toEqual([]);
+  expect(pageErrors, `page errors: ${pageErrors.join(' | ')}`).toEqual([]);
+  expect(failedResponses, `failed responses: ${failedResponses.join(' | ')}`).toEqual([]);
 });
